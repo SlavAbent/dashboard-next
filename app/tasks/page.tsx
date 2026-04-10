@@ -1,12 +1,11 @@
-import Aside from "@/app/_components/Aside";
-import Header from "@/app/_components/Header";
+import Aside from "@/app/entities/aside/ui";
 
 export default function Tasks() {
-    return (
-        <div className="flex ">
-            <Aside />
-            <Header />
-            {/*<Tasks />*/}
-        </div>
-    );
+  return (
+    <div className="flex ">
+      <Aside />
+      {/*<Header />*/}
+      {/*<Tasks />*/}
+    </div>
+  );
 }

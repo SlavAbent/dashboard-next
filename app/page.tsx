@@ -1,5 +1,3 @@
 export default function Home() {
-  return (
-    <>welcome to dashboard - next</>
-  );
+  return <>welcome to dashboard - next</>;
 }
