@@ -1,31 +1,38 @@
 {
-  "folders": [
-    {
-      "id": 1,
-      "name": "Dashboard",
-      "colorId": 1
-    },
-    {
-      "id": 2,
-      "name": "Notes",
-      "colorId": 2
-    },
-    {
-      "id": 3,
-      "name": "Tasks",
-      "colorId": 3
-    },
-    {
-      "id": 4,
-      "name": "Calendars",
-      "colorId": 4
-    },
-    {
-      "id": 5,
-      "name": "Личное",
-      "colorId": 5
-    }
-  ],
+  "folders": {
+    "menu": [
+      {
+        "id": 1,
+        "name": "Dashboard",
+        "colorId": 1,
+        "icon": "dashboard"
+      },
+      {
+        "id": 2,
+        "name": "Notes",
+        "colorId": 2,
+        "icon": "notes"
+      },
+      {
+        "id": 3,
+        "name": "Tasks",
+        "colorId": 3,
+        "icon": "tasks"
+      },
+      {
+        "id": 4,
+        "name": "Calendars",
+        "colorId": 4,
+        "icon": "calendar"
+      },
+      {
+        "id": 5,
+        "name": "Личное",
+        "colorId": 5,
+        "icon": "personal"
+      }
+    ]
+  },
   "tasks": [
     {
       "id": 1,

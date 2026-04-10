@@ -1,15 +1,14 @@
-import { IconType } from "@/app/shared/ui/icons/types";
+import { IconType } from '@/app/shared/ui/icons/types';
 
 export const Logo = (props: IconType) => {
   return (
     <svg
       width={props.size?.width}
       height={props.size?.height}
-      viewBox="0 0 28 25"
       fill={props.currentColor}
       className={props.className}
-      xmlns="http://www.w3.org/2000/svg"
-    >
+      viewBox="0 0 28 25"
+      xmlns="http://www.w3.org/2000/svg">
       <path
         d="M24.8842 2.75641e-08L28 5.37805L24.8842 10.7561H18.6525L15.5366 5.37805L18.6525 0L24.8842 2.75641e-08Z"
         fill={props.currentColor}

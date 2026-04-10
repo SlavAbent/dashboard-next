@@ -1,14 +1,14 @@
-import React from "react";
-import { Logo } from "@/app/shared/ui/icons/Logo";
-import Link from "next/link";
+import React from 'react';
+import { Logo } from '@/app/shared/ui/icons/Logo';
+import Link from 'next/link';
 
 const AsideHeader = () => {
   return (
-    <div className="flex items-center py-[22px] px-7">
-      <Link href="/">
-        <Logo className="w-[28px] h-[24px]" />
+    <div className="border-bottom min-w-[250px] px-7 py-[22px]">
+      <Link href="/" className="flex items-center">
+        <Logo className="h-[24px] w-[28px]" />
+        <p className="ml-3 text-xl">Venture</p>
       </Link>
-      <p className="text-xl ml-3">Venture</p>
     </div>
   );
 };

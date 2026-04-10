@@ -1,12 +1,12 @@
-import React from "react";
-import Folders from "@/app/widgets/folders/ui";
-import AsideHeader from "@/app/entities/aside/ui/header";
+import React from 'react';
+import AsideFolders from '@/app/widgets/aside/ui';
+import AsideHeader from '@/app/entities/aside/ui/header';
 
 const Aside = () => {
   return (
-    <div>
+    <div className="border-right bg-neutral-20 flex max-h-screen flex-col">
       <AsideHeader />
-      <Folders />
+      <AsideFolders />
     </div>
   );
 };

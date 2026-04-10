@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>welcome to dashboard - next</>;
+  return <div>welcome to dashboard - next</div>;
 }
