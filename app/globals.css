@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+    --color-*: initial;
+
+    --color-white: oklch(100% 0 0);
+    --color-black: oklch(0% 0 0);
+
+    /* Основные цвета */
+    --color-blue-60: oklch(55% 0.18 250);      /* #4976F4 */
+    --color-blue-10: oklch(96% 0.02 250);      /* #EDF2FE */
+
+    --color-green-60: oklch(62% 0.13 145);     /* #589E67 */
+    --color-green-10: oklch(96% 0.03 145);     /* #EEF5F0 */
+
+    --color-orange-60: oklch(68% 0.15 45);     /* #D28E3D */
+    --color-orange-10: oklch(97% 0.025 45);    /* #FBF4EC */
+
+    --color-yellow-100: oklch(72% 0.14 85);    /* #B1AB1D */
+    --color-yellow-10: oklch(97% 0.03 85);     /* #F7F7E8 */
+
+    --color-purple-100: oklch(52% 0.19 310);   /* #954BAF */
+    --color-purple-10: oklch(96% 0.025 310);   /* #F4EDF7 */
+
+    --color-neutral-20: oklch(98% 0.003 0);
+    --color-neutral-30: oklch(95% 0.005 0);
+    --color-neutral-50: oklch(90% 0.006 0);    /* #E4E4E4 */
+    --color-neutral-70: oklch(72% 0.01 0);     /* #AFAFAF */
+    --color-neutral-80: oklch(48% 0.015 0);    /* #727272 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+    body {
+        background-color: hsl(var(--color-white));
+        color: hsl(var(--color-black));
+
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        font-size: 1rem;
+
+        /* Дополнительные полезные дефолтные стили */
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    /* Можно также задать для html */
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@layer components {
+    .border-bottom {
+        border-bottom-width: 1px;
+        border-bottom-color: oklch(72% 0.01 0 / 0.5);
+    }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    .border-right {
+        border-right-width: 1px;
+        border-right-color: oklch(72% 0.01 0 / 0.5);
+    }
+
+    .btn {
+        @apply px-6 py-3 rounded-2xl font-medium transition-all active:scale-95;
+    }
 }
