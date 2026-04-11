@@ -3,6 +3,7 @@
 import Card from '@/app/shared/ui/Card';
 import CardItem from '@/app/shared/ui/CardItem';
 import { SvgIcon } from '@/app/shared/ui/SvgIcon';
+import { useAsideStore } from '@/app/shared/store/aside.store';
 
 type Folder = {
   id: string | number;
@@ -18,6 +19,8 @@ type Props = {
 };
 
 const FoldersCreate = ({ data }: Props) => {
+  const collapsed = useAsideStore((state) => state.collapsed);
+
   const handleClickToFolder = (folderId: string | number) => {
     console.log('Clicked folder:', folderId);
   };
@@ -31,9 +34,14 @@ const FoldersCreate = ({ data }: Props) => {
           onClick={() => handleClickToFolder(folder.id)}>
           <SvgIcon
             icon={folder.icon}
-            className="text-[#727272] transition-colors group-hover:text-black"
+            className={`text-[#727272] transition-colors group-hover:text-black ${collapsed ? 'mr-0' : 'mr-5'}`}
           />
-          <span className="text-neutral-80 text-sm duration-150 group-hover:text-black">
+          <span
+            className={`overflow-hidden whitespace-nowrap transition-all ${
+              collapsed
+                ? 'ml-0 max-w-0 opacity-0'
+                : 'text-neutral-80 ml-3 max-w-[150px] text-sm opacity-100 duration-150 group-hover:text-black'
+            }`}>
             {folder.name}
           </span>
         </CardItem>
