@@ -1,4 +1,4 @@
-import { IconType } from '@/app/shared/ui/icons/types';
+import { IconType } from '@/app/shared/icons/types';
 
 export const Tasks = (props: IconType) => {
   return (

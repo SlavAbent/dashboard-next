@@ -1,5 +1,5 @@
-import { SvgIconType } from '@/app/shared/components/SvgIcon/types';
-import { iconMapper } from '@/app/shared/ui/iconMapper';
+import { SvgIconType } from '@/app/shared/ui/SvgIcon/types';
+import { iconMapper } from '@/app/shared/icons/iconMapper';
 
 export const SvgIcon = ({ icon, className }: SvgIconType) => {
   const Icon = iconMapper[icon];

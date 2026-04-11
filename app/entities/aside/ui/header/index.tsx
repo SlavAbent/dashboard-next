@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logo } from '@/app/shared/ui/icons/Logo';
+import { Logo } from '@/app/shared/icons/ui/Logo';
 import Link from 'next/link';
 
 const AsideHeader = () => {

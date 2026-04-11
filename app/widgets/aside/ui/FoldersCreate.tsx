@@ -1,8 +1,8 @@
 'use client';
 
-import Card from '@/app/shared/components/Card';
-import CardItem from '@/app/shared/components/CardItem';
-import { SvgIcon } from '@/app/shared/components/SvgIcon';
+import Card from '@/app/shared/ui/Card';
+import CardItem from '@/app/shared/ui/CardItem';
+import { SvgIcon } from '@/app/shared/ui/SvgIcon';
 
 type Folder = {
   id: string | number;

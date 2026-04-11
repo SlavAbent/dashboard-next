@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardItemType } from '@/app/shared/components/CardItem/types';
+import { CardItemType } from '@/app/shared/ui/CardItem/types';
 import { cva } from 'class-variance-authority';
 
 const CardItem = ({ children, onClick, className }: CardItemType) => {
