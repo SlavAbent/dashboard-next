@@ -1,8 +1,12 @@
 import React from 'react';
 import { CardType } from '@/app/shared/ui/Card/types';
 
-const Card = ({ children }: CardType) => {
-  return <div className="border-bottom px-4 py-5">{children}</div>;
+const Card = ({ children, className }: CardType) => {
+  return (
+    <div className={`border-bottom px-3 py-5 ${className ?? ''}`}>
+      {children}
+    </div>
+  );
 };
 
 export default Card;
