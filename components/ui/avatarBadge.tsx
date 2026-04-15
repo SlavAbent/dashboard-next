@@ -28,9 +28,7 @@ export function AvatarDropdown(props: AvatarDropdownType) {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger>
-        <Button
-          variant="ghost"
-          className="hover:none flex cursor-pointer items-center gap-2 px-2 hover:bg-transparent hover:text-current hover:shadow-none">
+        <div className="hover:none flex cursor-pointer items-center gap-2 px-2 hover:bg-transparent hover:text-current hover:shadow-none">
           <Avatar className="h-8 w-8">
             <AvatarImage src={src} alt="avatar" />
             <AvatarFallback>{name.split('')[0]}</AvatarFallback>
@@ -46,14 +44,18 @@ export function AvatarDropdown(props: AvatarDropdownType) {
               open && 'rotate-180'
             )}
           />
-        </Button>
+        </div>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuGroup>
           {options &&
             options.map((option: AvatarDropdownOptionType) => {
-              return <DropdownMenuItem>{option.title}</DropdownMenuItem>;
+              return (
+                <DropdownMenuItem key={option.id}>
+                  {option.title}
+                </DropdownMenuItem>
+              );
             })}
         </DropdownMenuGroup>
 
@@ -62,7 +64,9 @@ export function AvatarDropdown(props: AvatarDropdownType) {
         {footer &&
           footer.map((option: AvatarDropdownOptionType) => {
             return (
-              <DropdownMenuItem className="text-red-500 focus:text-red-500">
+              <DropdownMenuItem
+                key={option.id}
+                className="text-red-500 focus:text-red-500">
                 {option.title}
               </DropdownMenuItem>
             );

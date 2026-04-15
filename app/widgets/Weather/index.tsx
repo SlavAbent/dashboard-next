@@ -1,13 +1,6 @@
 'use client';
 
-import React, {
-  ChangeEvent,
-  KeyboardEventHandler,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { ChevronDown, CloudIcon, CloudSun, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { TypographySmall } from '@/components/ui/typographySmall';
@@ -69,10 +62,8 @@ const Weather = ({ className }: WeatherType) => {
     <div className={cn('flex items-center gap-2', className)}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger>
-          <Button
-            variant="ghost"
-            className="hover:none flex cursor-pointer items-center gap-2 px-2 hover:bg-transparent hover:text-current hover:shadow-none">
-            <CloudIcon size={32} />
+          <div className="flex cursor-pointer items-center gap-2 px-2 hover:bg-transparent hover:text-current hover:shadow-none">
+            <CloudIcon size={28} color="#AFAFAF" />
             <TypographySmall text={`${currentTemp}°C`} />
             <ChevronDown
               width={16}
@@ -82,7 +73,7 @@ const Weather = ({ className }: WeatherType) => {
                 open && 'rotate-180'
               )}
             />
-          </Button>
+          </div>
         </PopoverTrigger>
 
         <PopoverContent
@@ -109,7 +100,7 @@ const Weather = ({ className }: WeatherType) => {
                 .split('-');
 
               return (
-                <div key={item.dt} className="p-4 pb-0">
+                <div key={`${item.dt}-${item.dt_txt}`} className="p-4 pb-0">
                   <div className="flex flex-col gap-3">
                     <TypographySmall
                       className="text-[12px] font-bold"
