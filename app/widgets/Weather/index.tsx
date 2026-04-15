@@ -46,7 +46,7 @@ const Weather = ({ className }: WeatherType) => {
 
     const map = new Map();
 
-    for (let item of data.list) {
+    for (const item of data.list) {
       const day = item.dt_txt.split(' ')[0];
       if (!map.has(day) && item.dt_txt.includes('12:00:00')) {
         map.set(day, item);
