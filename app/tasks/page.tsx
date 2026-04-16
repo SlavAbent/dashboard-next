@@ -1,5 +1,5 @@
-import Aside from '@/app/entities/aside/ui';
-import Header from '@/app/widgets/header';
+import Aside from '@/entities/aside/ui';
+import Header from '@/widgets/header';
 
 export default function Tasks() {
   return (
