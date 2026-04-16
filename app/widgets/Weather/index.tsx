@@ -4,7 +4,7 @@ import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { ChevronDown, CloudIcon, CloudSun, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { TypographySmall } from '@/components/ui/typographySmall';
-import { useWeatherStore } from '@/app/shared/store/weather.store';
+import { useWeatherStore } from '@/app/shared/store/weather/weather.store';
 import {
   Popover,
   PopoverContent,
@@ -25,6 +25,7 @@ const Weather = ({ className }: WeatherType) => {
   const loading = useWeatherStore((s) => s.loading);
   const error = useWeatherStore((s) => s.error);
   const fetchWeather = useWeatherStore((s) => s.fetchWeather);
+  const fetchWeatherByCoords = useWeatherStore((s) => s.fetchWeatherByCoords);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -32,6 +33,23 @@ const Weather = ({ className }: WeatherType) => {
       fetchWeather(city);
     }
   }, [data, city, fetchWeather]);
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      fetchWeather(city);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        fetchWeatherByCoords(latitude, longitude);
+      },
+      () => {
+        fetchWeather(city);
+      }
+    );
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.currentTarget.value);
