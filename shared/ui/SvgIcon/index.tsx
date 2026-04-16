@@ -1,0 +1,10 @@
+import { SvgIconType } from '@/shared/ui/SvgIcon/types';
+import { iconMapper } from '@/shared/icons/iconMapper';
+
+export const SvgIcon = ({ icon, className }: SvgIconType) => {
+  const Icon = iconMapper[icon];
+
+  return (
+    <Icon className={`flex h-5 w-5 items-center justify-center ${className}`} />
+  );
+};
