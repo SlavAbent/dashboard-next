@@ -1,8 +1,8 @@
 import React from 'react';
-import { Input } from '@/components/ui/input';
+import { Input } from '@/shared/ui/input';
 import { Search } from '@/shared/icons/ui/Search';
 import IconWrapper from '@/shared/icons/iconWrapper';
-import { AvatarDropdown } from '@/components/ui/avatarBadge';
+import { AvatarDropdown } from '@/shared/ui/avatarBadge';
 import Weather from '@/widgets/Weather';
 
 const Header = () => {

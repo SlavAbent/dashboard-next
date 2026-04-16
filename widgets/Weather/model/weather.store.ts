@@ -1,10 +1,10 @@
 import { create } from 'zustand';
-import { WeatherState } from '@/shared/store/weather/types';
+import { WeatherState } from './types';
 import {
   API_KEY,
   defaultWeatherApi,
   weatherApi,
-} from '@/shared/store/weather/_api';
+} from './_api';
 
 export const useWeatherStore = create<WeatherState>((set) => ({
   city: 'Los Angeles',

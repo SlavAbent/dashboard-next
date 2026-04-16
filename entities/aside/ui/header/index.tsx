@@ -1,6 +1,6 @@
 'use client';
 
-import { useAsideStore } from '@/shared/store/aside.store';
+import { useAsideStore } from '@/entities/aside/model/aside.store';
 import Link from 'next/link';
 import { Toggle } from '@/shared/icons/ui/Toggle';
 import { Logo } from '@/shared/icons/ui/Logo';

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/shared/ui/dropdown-menu';
 
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -18,7 +18,7 @@ import {
   AvatarDropdownOptionType,
   AvatarDropdownType,
 } from '@/components/types';
-import { TypographySmall } from '@/components/ui/typographySmall';
+import { TypographySmall } from '@/shared/ui/typographySmall';
 
 export function AvatarDropdown(props: AvatarDropdownType) {
   const { src, name, separator, options, footer } = props;

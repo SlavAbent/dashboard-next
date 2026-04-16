@@ -9,15 +9,15 @@ import React, {
 } from 'react';
 import { ChevronDown, CloudIcon, CloudSun, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { TypographySmall } from '@/components/ui/typographySmall';
-import { useWeatherStore } from '@/shared/store/weather/weather.store';
+import { TypographySmall } from '@/shared/ui/typographySmall';
+import { useWeatherStore } from '@/widgets/Weather/model/weather.store';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+} from '@/shared/ui/popover';
+import { Button } from '@/shared/ui/button';
+import { Input } from '@/shared/ui/input';
 
 type WeatherType = {
   className: string;

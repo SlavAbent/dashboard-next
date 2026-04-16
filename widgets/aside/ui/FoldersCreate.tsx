@@ -3,7 +3,7 @@
 import Card from '@/shared/ui/Card';
 import CardItem from '@/shared/ui/CardItem';
 import { SvgIcon } from '@/shared/ui/SvgIcon';
-import { useAsideStore } from '@/shared/store/aside.store';
+import { useAsideStore } from '@/entities/aside/model/aside.store';
 import { FolderCreateType } from '@/widgets/aside/types';
 
 const FoldersCreate = ({ data }: FolderCreateType) => {
