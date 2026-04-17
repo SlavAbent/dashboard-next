@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server ./app/db/db.json --watch --port 4001",
+    "json-server": "json-server shared/db/db.json --watch --port 4001",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write \" **/*.{js,jsx,ts,tsx,json,css,md} \" ",

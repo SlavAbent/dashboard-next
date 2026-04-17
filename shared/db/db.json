@@ -21,13 +21,13 @@
       },
       {
         "id": 4,
-        "name": "Calendars",
+        "name": "Calendar",
         "colorId": 4,
         "icon": "calendar"
       },
       {
         "id": 5,
-        "name": "Личное",
+        "name": "Personal",
         "colorId": 5,
         "icon": "personal"
       }
