@@ -5,6 +5,9 @@ import { Calendar } from '@/shared/icons/ui/Calendar';
 import { Tasks } from '@/shared/icons/ui/Tasks';
 import { Dashboard } from '@/shared/icons/ui/Dashboard';
 import { IconType } from '@/shared/icons/types';
+import { List } from '@/shared/icons/ui/List';
+import { Table } from '@/shared/icons/ui/Table';
+import { Kanban } from '@/shared/icons/ui/Kanban';
 
 export const iconMapper: Record<string, FC<IconType>> = {
   dashboard: Dashboard,
@@ -12,4 +15,7 @@ export const iconMapper: Record<string, FC<IconType>> = {
   tasks: Tasks,
   calendar: Calendar,
   personal: Personal,
+  list: List,
+  kanban: Kanban,
+  table: Table,
 };

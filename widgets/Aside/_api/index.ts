@@ -4,7 +4,7 @@ export async function getFolders() {
   });
 
   if (!folders.ok) {
-    throw new Error('No aside found.');
+    throw new Error('No Aside found.');
   }
 
   return folders.json();

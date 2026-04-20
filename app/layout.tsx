@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import Aside from '@/entities/aside/ui';
-import Header from '@/widgets/header';
+import Header from '@/widgets/Header';
 import Filters from '@/widgets/Filters';
 
 const jetbrainsMono = JetBrains_Mono({

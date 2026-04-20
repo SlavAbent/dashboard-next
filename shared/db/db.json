@@ -148,5 +148,24 @@
       "hex": "#FF6464",
       "name": "red"
     }
-  ]
+  ],
+  "filters": {
+    "tasks": [
+      {
+        "id": 1,
+        "name": "List",
+        "icon": "List"
+      },
+      {
+        "id": 2,
+        "name": "Kanban",
+        "icon": "Kanban"
+      },
+      {
+        "id": 3,
+        "name": "Table",
+        "icon": "Table"
+      }
+    ]
+  }
 }

@@ -1,7 +1,13 @@
-import React from 'react';
+'use server';
 
-const Filters = () => {
-  return <div>123</div>;
+import React from 'react';
+import FiltersCreate from '@/widgets/Filters/FiltersCreate';
+import { getFilters } from '@/widgets/Filters/_api';
+
+const Filters = async () => {
+  const filtersData = await getFilters();
+
+  return <FiltersCreate data={filtersData} />;
 };
 
 export default Filters;

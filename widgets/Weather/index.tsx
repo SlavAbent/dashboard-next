@@ -9,13 +9,9 @@ import React, {
 } from 'react';
 import { ChevronDown, CloudIcon, CloudSun, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { TypographySmall } from '@/shared/ui/typographySmall';
+import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { useWeatherStore } from '@/widgets/Weather/model/weather.store';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/shared/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
 

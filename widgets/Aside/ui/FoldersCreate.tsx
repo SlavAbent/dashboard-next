@@ -5,7 +5,7 @@ import CardItem from '@/shared/ui/CardItem';
 import { SvgIcon } from '@/shared/ui/SvgIcon';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
-import { FolderCreateType } from '@/widgets/aside/types';
+import { FolderCreateType } from '@/widgets/Aside/types';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -50,7 +50,6 @@ const FoldersCreate = ({ data }: FolderCreateType) => {
                   )}
                 />
               </div>
-
               <span
                 className={cn(
                   'overflow-hidden whitespace-nowrap transition-all duration-300 ease-in-out',
