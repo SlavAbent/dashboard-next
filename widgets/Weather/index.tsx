@@ -141,7 +141,7 @@ const Weather = ({ className }: WeatherType) => {
             <Button
               onClick={() => fetchWeather(query)}
               className="rounded-sm py-[17px]">
-              SearchIcon
+              Search
             </Button>
           </div>
           <div className="flex items-center justify-between">
