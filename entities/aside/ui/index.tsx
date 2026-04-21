@@ -1,5 +1,5 @@
 import React from 'react';
-import AsideFolders from '@/widgets/aside/ui';
+import AsideFolders from '@/widgets/Aside/ui';
 import AsideHeader from '@/entities/aside/ui/header';
 
 const Aside = () => {

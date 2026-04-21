@@ -1,15 +1,21 @@
-import { Personal } from '@/shared/icons/ui/Personal';
-import { Notes } from '@/shared/icons/ui/Notes';
+import { PersonalIcon } from '@/shared/icons/ui/PersonalIcon';
+import { NotesIcon } from '@/shared/icons/ui/NotesIcon';
 import { FC } from 'react';
-import { Calendar } from '@/shared/icons/ui/Calendar';
-import { Tasks } from '@/shared/icons/ui/Tasks';
-import { Dashboard } from '@/shared/icons/ui/Dashboard';
+import { CalendarIcon } from '@/shared/icons/ui/CalendarIcon';
+import { TasksIcon } from '@/shared/icons/ui/TasksIcon';
+import { DashboardIcon } from '@/shared/icons/ui/DashboardIcon';
 import { IconType } from '@/shared/icons/types';
+import { ListIcon } from '@/shared/icons/ui/ListIcon';
+import { TableIcon } from '@/shared/icons/ui/TableIcon';
+import { KanbanIcon } from '@/shared/icons/ui/KanbanIcon';
 
 export const iconMapper: Record<string, FC<IconType>> = {
-  dashboard: Dashboard,
-  notes: Notes,
-  tasks: Tasks,
-  calendar: Calendar,
-  personal: Personal,
+  dashboard: DashboardIcon,
+  notes: NotesIcon,
+  tasks: TasksIcon,
+  calendar: CalendarIcon,
+  personal: PersonalIcon,
+  list: ListIcon,
+  kanban: KanbanIcon,
+  table: TableIcon,
 };

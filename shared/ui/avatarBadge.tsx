@@ -18,7 +18,7 @@ import {
   AvatarDropdownOptionType,
   AvatarDropdownType,
 } from '@/components/types';
-import { TypographySmall } from '@/shared/ui/typographySmall';
+import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 
 export function AvatarDropdown(props: AvatarDropdownType) {
   const { src, name, separator, options, footer } = props;
