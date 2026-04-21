@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { FilterType } from '@/widgets/Filters/types';
 
-const Filter = ({
+const View = ({
   filter,
   isActive,
   handleFilterClick,
@@ -37,4 +37,4 @@ const Filter = ({
   );
 };
 
-export default Filter;
+export default View;

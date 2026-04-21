@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
 import { FiltersCreateType, FilterType } from '@/widgets/Filters/types';
-import Filter from '@/widgets/Filters/Filter';
+import View from '@/widgets/Filters/View';
 import FilterActions from '@/widgets/Filters/FilterActions';
 
 const DEFAULT_FILTER_ID = 2;
@@ -35,7 +35,7 @@ const Filters = ({ data }: FiltersCreateType) => {
         <div className="flex items-center gap-5">
           {data?.tasks?.map((filter: FilterType) => {
             return (
-              <Filter
+              <View
                 key={filter.id}
                 filter={filter}
                 isActive={activeFilterId === filter.id}
