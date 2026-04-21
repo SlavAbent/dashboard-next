@@ -1,6 +1,6 @@
 import { IconType } from '@/shared/icons/types';
 
-export const Calendar = (props: IconType) => {
+export const CalendarIcon = (props: IconType) => {
   return (
     <svg
       width={props.size?.width}

@@ -2,8 +2,8 @@
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
 import Link from 'next/link';
-import { Toggle } from '@/shared/icons/ui/Toggle';
-import { Logo } from '@/shared/icons/ui/Logo';
+import { ToggleIcon } from '@/shared/icons/ui/ToggleIcon';
+import { LogoIcon } from '@/shared/icons/ui/LogoIcon';
 
 const AsideHeader = () => {
   const collapsed = useAsideStore((state) => state.collapsed);
@@ -23,7 +23,7 @@ const AsideHeader = () => {
         className={`flex items-center ${animationClass} ${
           collapsed ? 'justify-center' : 'justify-start'
         }`}>
-        <Logo className="h-[24px] w-[28px] shrink-0" />
+        <LogoIcon className="h-[24px] w-[28px] shrink-0" />
 
         <span
           className={`overflow-hidden whitespace-nowrap ${animationClass} ${
@@ -38,7 +38,7 @@ const AsideHeader = () => {
       <div
         onClick={toggle}
         className="absolute top-1/2 -right-[14px] z-10 -translate-y-1/2 cursor-pointer">
-        <Toggle
+        <ToggleIcon
           size={{
             width: 28,
             height: 28,

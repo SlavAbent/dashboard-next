@@ -1,6 +1,6 @@
 import { IconType } from '@/shared/icons/types';
 
-export const Logo = (props: IconType) => {
+export const LogoIcon = (props: IconType) => {
   return (
     <svg
       width={props.size?.width}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from '@/shared/ui/input';
-import { Search } from '@/shared/icons/ui/Search';
+import { SearchIcon } from '@/shared/icons/ui/SearchIcon';
 import IconWrapper from '@/shared/icons/iconWrapper';
 import { AvatarDropdown } from '@/shared/ui/avatarBadge';
 import Weather from '@/widgets/Weather';
@@ -10,10 +10,10 @@ const Header = () => {
     <div className="border-bottom flex items-center px-8 py-[15.5]">
       <div className="grow">
         <Input
-          placeholder="Search"
+          placeholder="SearchIcon"
           className="min-w-[360px]"
           leftIcon={
-            <Search
+            <SearchIcon
               size={{
                 width: 20,
                 height: 20,

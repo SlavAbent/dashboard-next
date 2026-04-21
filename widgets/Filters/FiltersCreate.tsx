@@ -11,7 +11,7 @@ import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { DropdownOption } from '@/shared/ui/Menu/types';
 import { Separator } from '@base-ui/react';
 import { Menu } from '@/shared/ui/Menu';
-import { SortBy } from '@/shared/icons/ui/SortBy';
+import { SortByIcon } from '@/shared/icons/ui/SortByIcon';
 import { FiltersIcon } from '@/shared/icons/ui/FiltersIcon';
 
 const sortOptions: DropdownOption[] = [
@@ -92,7 +92,7 @@ const Filters = ({ data }: FiltersCreateType) => {
         <Menu
           label="Sort by"
           icon={
-            <SortBy
+            <SortByIcon
               size={{
                 width: 16,
                 height: 16,

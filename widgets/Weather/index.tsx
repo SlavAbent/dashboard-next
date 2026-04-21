@@ -135,13 +135,13 @@ const Weather = ({ className }: WeatherType) => {
               value={query}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
-              placeholder="Search city..."
+              placeholder="SearchIcon city..."
               className="w-[300px]"
             />
             <Button
               onClick={() => fetchWeather(query)}
               className="rounded-sm py-[17px]">
-              Search
+              SearchIcon
             </Button>
           </div>
           <div className="flex items-center justify-between">

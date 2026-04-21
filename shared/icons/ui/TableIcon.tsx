@@ -1,6 +1,6 @@
 import { IconType } from '@/shared/icons/types';
 
-export const Table = (props: IconType) => {
+export const TableIcon = (props: IconType) => {
   return (
     <svg
       width={props.size?.width}
