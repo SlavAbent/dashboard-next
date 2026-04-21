@@ -1,5 +1,14 @@
 import { z } from 'zod';
 
+export type Coords = {
+  lat: number;
+  lon: number;
+};
+
+export type WeatherType = {
+  className: string;
+};
+
 export const OpenWeatherForecastResponseSchema = z.object({
   city: z
     .object({
@@ -36,15 +45,3 @@ export const OpenWeatherForecastResponseSchema = z.object({
 export type OpenWeatherForecastResponse = z.infer<
   typeof OpenWeatherForecastResponseSchema
 >;
-
-export type WeatherState = {
-  city: string;
-  query: string;
-  data: OpenWeatherForecastResponse | null;
-  loading: boolean;
-  error: string;
-  setQuery: (q: string) => void;
-  setCity: (c: string) => void;
-  fetchWeather: (city: string) => Promise<void>;
-  fetchWeatherByCoords: (lat: number, lon: number) => Promise<void>;
-};

@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import Aside from '@/entities/aside/ui';
 import Header from '@/widgets/Header';
 import Filters from '@/widgets/Filters';
+import Providers from '@/app/_providers';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -35,14 +36,16 @@ export default function RootLayout({
     <html lang="en" className={cn('font-mono', jetbrainsMono.variable)}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="flex h-screen max-w-full">
-          <Aside />
-          <div className="flex w-full flex-col">
-            <Header />
-            <Filters />
-            {children}
+        <Providers>
+          <div className="flex h-screen max-w-full">
+            <Aside />
+            <div className="flex w-full flex-col">
+              <Header />
+              <Filters />
+              {children}
+            </div>
           </div>
-        </div>
+        </Providers>
       </body>
     </html>
   );
