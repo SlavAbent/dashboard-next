@@ -17,14 +17,9 @@ export const Menu = ({
 }: MenuProps) => {
   return (
     <DropdownMenu open={open} onOpenChange={onOpenChange}>
-      <DropdownMenuTrigger className="flex cursor-pointer items-center gap-2 rounded-sm border border-black px-3 py-2">
+      <DropdownMenuTrigger className="flex cursor-pointer items-center gap-2 rounded-sm border border-black px-3 py-1">
         {icon}
-
-        <button
-          type="button"
-          className="flex cursor-pointer items-center gap-2 text-sm font-medium">
-          {label}
-        </button>
+        {label}
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-40">
