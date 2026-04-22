@@ -4,7 +4,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import Aside from '@/entities/aside/ui';
 import Header from '@/widgets/Header';
-import Filters from '@/widgets/Filters';
+import Filters from '@/widgets/SubHeader';
 import Providers from '@/app/_providers';
 
 const jetbrainsMono = JetBrains_Mono({

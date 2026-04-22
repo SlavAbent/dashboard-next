@@ -8,12 +8,22 @@ function getCurrentPosition(): Promise<Coords> {
       return;
     }
 
-    navigator.geolocation.getCurrentPosition((pos) => {
-      resolve({
-        lat: pos.coords.latitude,
-        lon: pos.coords.longitude,
-      });
-    }, reject);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        resolve({
+          lat: pos.coords.latitude,
+          lon: pos.coords.longitude,
+        });
+      },
+      (err) => {
+        reject(err);
+      },
+      {
+        timeout: 5000,
+        enableHighAccuracy: true,
+        maximumAge: 0,
+      }
+    );
   });
 }
 
@@ -21,7 +31,7 @@ export function useCurrentCoords() {
   return useQuery({
     queryKey: ['geo'],
     queryFn: getCurrentPosition,
-    staleTime: 1000 * 60 * 60,
-    retry: false,
+    retry: 2,
+    refetchOnMount: 'always',
   });
 }

@@ -1,7 +1,7 @@
 'use server';
 
 import React from 'react';
-import { getFolders } from '@/widgets/Aside/_api';
+import { getFolders } from '@/shared/_api/foldersApi';
 import FoldersCreate from '@/widgets/Aside/ui/FoldersCreate';
 
 const AsideFolders = async () => {
