@@ -2,7 +2,7 @@ import React from 'react';
 import { SvgIcon } from '@/shared/ui/SvgIcon';
 import { cn } from '@/lib/utils';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
-import { FilterType } from '@/widgets/Filters/types';
+import { FilterType } from '@/widgets/SubHeader/types';
 
 const View = ({
   filter,

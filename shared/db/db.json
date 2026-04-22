@@ -5,31 +5,51 @@
         "id": 1,
         "name": "Dashboard",
         "colorId": 1,
-        "icon": "dashboard"
+        "icon": "dashboard",
+        "subheader": {
+          "filters": false,
+          "grid": false
+        }
       },
       {
         "id": 2,
         "name": "Notes",
         "colorId": 2,
-        "icon": "notes"
+        "icon": "notes",
+        "subheader": {
+          "filters": true,
+          "grid": false
+        }
       },
       {
         "id": 3,
         "name": "Tasks",
         "colorId": 3,
-        "icon": "tasks"
+        "icon": "tasks",
+        "subheader": {
+          "filters": true,
+          "grid": true
+        }
       },
       {
         "id": 4,
         "name": "Calendar",
         "colorId": 4,
-        "icon": "calendar"
+        "icon": "calendar",
+        "subheader": {
+          "filters": false,
+          "grid": false
+        }
       },
       {
         "id": 5,
         "name": "Personal",
         "colorId": 5,
-        "icon": "personal"
+        "icon": "personal",
+        "subheader": {
+          "filters": true,
+          "grid": true
+        }
       }
     ]
   },
@@ -149,23 +169,26 @@
       "name": "red"
     }
   ],
-  "filters": {
-    "tasks": [
-      {
-        "id": 1,
-        "name": "List",
-        "icon": "List"
-      },
-      {
-        "id": 2,
-        "name": "Kanban",
-        "icon": "Kanban"
-      },
-      {
-        "id": 3,
-        "name": "Table",
-        "icon": "Table"
-      }
-    ]
+  "subheader": {
+    "page": {
+      "name": "tasks",
+      "view": [
+        {
+          "id": 1,
+          "name": "List",
+          "icon": "List"
+        },
+        {
+          "id": 2,
+          "name": "Kanban",
+          "icon": "Kanban"
+        },
+        {
+          "id": 3,
+          "name": "Table",
+          "icon": "Table"
+        }
+      ]
+    }
   }
 }

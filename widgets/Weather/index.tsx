@@ -13,6 +13,11 @@ import { WeatherType } from '@/widgets/Weather/types';
 import { useCurrentCoords } from '@/widgets/Weather/hooks/useCurrentPosition';
 import { getDays } from '@/widgets/Weather/config';
 
+const DEFAULT_COORDS = {
+  lat: 59.9343,
+  lon: 30.3351,
+};
+
 const Weather = ({ className }: WeatherType) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -20,7 +25,7 @@ const Weather = ({ className }: WeatherType) => {
 
   const geocode = useGeocodeCity(city);
   const position = useCurrentCoords();
-  const coords = geocode.data ?? position.data ?? null;
+  const coords = geocode.data ?? position.data ?? DEFAULT_COORDS;
   const weather = useWeather(coords);
 
   const data = weather.data;
@@ -38,21 +43,12 @@ const Weather = ({ className }: WeatherType) => {
     setCity(next);
   };
 
-  const refreshByLocation = () => {
-    setCity(null);
-    position.refetch();
-  };
-
   return (
     <div className={cn('flex items-center gap-2', className)}>
       <Popover
         open={open}
         onOpenChange={(nextOpen) => {
           setOpen(nextOpen);
-
-          if (!nextOpen) {
-            refreshByLocation();
-          }
         }}>
         <PopoverTrigger>
           <div className="flex cursor-pointer items-center gap-2 px-2">
