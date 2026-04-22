@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useDebugValue, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
 import { FilterType, SubHeaderCreateType } from '@/widgets/SubHeader/types';
 import View from '@/widgets/SubHeader/View';
 import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
 import { Folder } from '@/widgets/Aside/types';
-import { getCurrentPath } from '@/shared/config/getCurrentPath';
+import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
 
 const DEFAULT_FILTER_ID = 2;
@@ -17,7 +17,8 @@ const SubHeaderCreate = ({
   subheaderData,
 }: SubHeaderCreateType) => {
   const pathname = usePathname();
-  const segment = getCurrentPath(pathname);
+  const pageKey = routeToKeyMap[pathname];
+
   const [activeFilterId, setActiveFilterId] = useState<number | null>(
     DEFAULT_FILTER_ID
   );
@@ -27,16 +28,18 @@ const SubHeaderCreate = ({
   };
 
   const currentPage = foldersData.menu.find((folder: Folder) => {
-    return folder.name.toLowerCase() === segment;
+    return folder.name.toLowerCase() === pageKey;
   });
 
   const hasFilters = currentPage?.subheader?.filters;
   const hasGrid = currentPage?.subheader?.grid;
 
+  const title = currentPage?.name?.trim() || formatedTitle(pageKey);
+
   return (
     <div className="border-bottom flex min-h-[69px] items-center px-8">
       <div className="flex grow items-center">
-        <TypographyH3 text={formatedTitle(segment ?? '')} className="mr-9" />
+        <TypographyH3 text={title} className="mr-9" />
 
         <div className="flex items-center gap-5">
           {hasGrid &&
