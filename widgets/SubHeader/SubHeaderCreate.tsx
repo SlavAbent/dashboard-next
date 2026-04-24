@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useDebugValue, useState } from 'react';
+import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
 import { FilterType, SubHeaderCreateType } from '@/widgets/SubHeader/types';

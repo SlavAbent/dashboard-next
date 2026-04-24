@@ -15,7 +15,7 @@ const SubHeaderFilters = () => {
     useFiltersStore();
 
   const handleAddTask = () => {
-    console.log('Adding task');
+    console.log('Adding board');
   };
 
   const handleSortSelect = () => {

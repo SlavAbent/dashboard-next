@@ -1,3 +1,11 @@
+import { TaskBoard } from '@/widgets/Board';
+
 export default function Tasks() {
-  return <div>tasks</div>;
+  // const { isList, isKanban, isTable } = useViewStore();
+
+  return (
+    <div>
+      <TaskBoard />
+    </div>
+  );
 }
