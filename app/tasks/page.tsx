@@ -4,7 +4,7 @@ export default function Tasks() {
   // const { isList, isKanban, isTable } = useViewStore();
 
   return (
-    <div>
+    <div className="p-8">
       <TaskBoard />
     </div>
   );

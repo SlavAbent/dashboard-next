@@ -60,6 +60,10 @@
 }
 
 @layer components {
+    .border {
+        border-bottom-width: 1px;
+        border-bottom-color: oklch(72% 0.01 0 / 0.5);
+    }
     .border-bottom {
         border-bottom-width: 1px;
         border-bottom-color: oklch(72% 0.01 0 / 0.5);
@@ -70,8 +74,8 @@
         border-right-color: oklch(72% 0.01 0 / 0.5);
     }
 
-    .btn {
-        @apply px-6 py-3 rounded-2xl font-medium transition-all active:scale-95;
+    .button {
+        @apply flex cursor-pointer items-center gap-2 px-3 py-2;
     }
 }
 

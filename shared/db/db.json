@@ -54,9 +54,9 @@
     ]
   },
   "columns": [
-    { "id": "planning", "title": "Planning", "order": 1 },
-    { "id": "upcoming", "title": "Upcoming", "order": 2 },
-    { "id": "completed", "title": "Completed", "order": 3 }
+    { "id": "planning", "title": "Planning", "order": 1, "color": "#B1AB1D" },
+    { "id": "upcoming", "title": "Upcoming", "order": 2, "color": "#6884FD" },
+    { "id": "completed", "title": "Completed", "order": 3, "color": "#39C682" }
   ],
   "tasks": [
     {

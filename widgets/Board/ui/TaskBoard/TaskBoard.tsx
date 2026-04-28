@@ -15,6 +15,7 @@ const TaskBoard = async () => {
         id: column.id,
         title: column.title,
         order: column.order,
+        color: column.color,
         tasks: [],
       };
     }
@@ -22,6 +23,7 @@ const TaskBoard = async () => {
     for (const task of tasks) {
       if (!columnsMap[task.column]) {
         columnsMap[task.column] = {
+          color: '',
           id: task.column,
           title: task.text,
           order: 999,
