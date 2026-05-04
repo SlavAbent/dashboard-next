@@ -1,29 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { BoardColumn } from '@/widgets/Board/types';
-import TaskCreate from '@/widgets/Board/ui/List/TaskCreate/TaskCreate';
-import ColumnCreate from '@/widgets/Board/ui/List/ColumnCreate/ColumnCreate';
+import { useListStore } from '@/entities/board/model/list.store';
+import { viewMap } from '@/widgets/Board/ui/BoardCreate/model/viewMap';
 
 const BoardCreate = ({ boardData }: { boardData: BoardColumn[] }) => {
-  const [closedFolders, setClosedFolders] = useState<Set<string>>(new Set());
-  return (
-    <>
-      {boardData.map((column) => {
-        const isOpen = !closedFolders.has(column.id);
-        return (
-          <div key={column.id} className="mb-8 flex flex-col">
-            <ColumnCreate
-              column={column}
-              isOpen={isOpen}
-              setClosedFolders={setClosedFolders}
-            />
-            {isOpen && <TaskCreate column={column} />}
-          </div>
-        );
-      })}
-    </>
-  );
+  const { view } = useListStore();
+
+  const ViewComponents = viewMap[view];
+
+  return <ViewComponents boardData={boardData} />;
 };
 
 export default BoardCreate;
