@@ -1,8 +1,7 @@
 import { create } from 'zustand';
+import { ViewType } from '@/entities/board/types';
 
 const DEFAULT_FILTER_ID: number = 1;
-
-export type ViewType = 'List' | 'Kanban' | 'Table';
 
 type ListStore = {
   view: ViewType;

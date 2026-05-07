@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ColumnCreate from '@/entities/board/ui/List/ColumnCreate/ColumnCreate';
-import TaskCreate from '@/entities/board/ui/List/TaskCreate/TaskCreate';
+import ColumnCreate from '@/entities/board/ui/List/ColumnCreate';
+import TaskCreate from '@/entities/board/ui/List/TaskCreate';
 import { BoardColumn } from '@/widgets/Board/types';
 
 const List = ({ column }: { column: BoardColumn }) => {

@@ -76,31 +76,31 @@
   "tasks": [
     {
       "id": "1",
-      "column": "planning",
+      "column": "upcoming",
       "tags": [],
       "text": "Изучить JavaScript",
       "completed": false
     },
     {
       "id": "2",
-      "column": "planning",
+      "column": "upcoming",
       "tags": [],
       "text": "Изучить паттерны проектирования",
       "completed": false
     },
     {
       "id": "3",
-      "column": "planning",
+      "column": "upcoming",
       "tags": [],
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       "completed": false
     },
     {
       "id": "4",
-      "column": "upcoming",
+      "column": "completed",
       "tags": [],
       "text": "Redux (redux-observable, redux-saga)",
-      "completed": false
+      "completed": true
     }
   ],
   "subtasks": [
@@ -180,5 +180,6 @@
         }
       ]
     }
-  }
+  },
+  "$schema": "./node_modules/json-server/schema.json"
 }
