@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { usePathname } from 'next/navigation';
 import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
 import { FilterType, SubHeaderCreateType } from '@/widgets/SubHeader/types';
@@ -9,7 +9,8 @@ import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
 import { Folder } from '@/widgets/Aside/types';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
-import { useListStore, ViewType } from '@/entities/board/model/list.store';
+import { useListStore } from '@/entities/board/model/list.store';
+import { ViewType } from '@/entities/board/types';
 
 const SubHeaderCreate = ({
   foldersData,

@@ -1,5 +1,7 @@
+import { subHeaderApi } from '@/shared/_api/instances';
+
 export async function getSubHeaderData() {
-  const filters = await fetch('http://localhost:4001/subheader', {
+  const filters = await fetch(subHeaderApi, {
     cache: 'no-cache',
   });
 

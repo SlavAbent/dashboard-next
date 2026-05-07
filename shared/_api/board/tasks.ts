@@ -2,10 +2,11 @@
 
 import { Task } from '@/widgets/Board/types';
 import { getNextColumn } from '@/widgets/Board/shared/getNextColumn';
-import { revalidatePath } from 'next/cache';
+import { tasksApi } from '@/shared/_api/instances';
+import { patchTask } from '@/shared/_api/patchTask';
 
 export async function getTasks(): Promise<Task[]> {
-  const tasks = await fetch('http://localhost:4001/tasks', {
+  const tasks = await fetch(tasksApi, {
     next: {
       revalidate: 0,
     },
@@ -19,18 +20,9 @@ export async function getTasks(): Promise<Task[]> {
 }
 
 export async function updateTask(id: number, currentColumn: string) {
-  const nextColumn = getNextColumn(currentColumn);
+  return patchTask(id, getNextColumn(currentColumn));
+}
 
-  await fetch(`http://localhost:4001/tasks/${id}`, {
-    method: 'PATCH',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      column: nextColumn,
-      completed: nextColumn === 'completed',
-    }),
-  });
-
-  revalidatePath('/tasks');
+export async function updateTaskColumn(id: number, column: string) {
+  return patchTask(id, column);
 }

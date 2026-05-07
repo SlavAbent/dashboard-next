@@ -1,47 +1,58 @@
 'use client';
 
-import React, { useState } from 'react';
-import { BoardColumn, Task } from '@/widgets/Board/types';
+import React, { useMemo, useState } from 'react';
 import Kanban from '@/entities/board/ui/Kanban';
 import { DragDropProvider } from '@dnd-kit/react';
 import KanbanColumn from '@/entities/board/ui/Kanban/KanbanColumn/ui';
 import { move } from '@dnd-kit/helpers';
 import { KanbanViewType } from '@/entities/board/ui/Kanban/KanbanView/types';
+import { updateTaskColumn } from '@/shared/_api/board/tasks';
+import { normalizeBoardData } from '@/entities/board/ui/Kanban/config';
 
 const KanbanView = ({ boardData }: KanbanViewType) => {
-  const columns = boardData.reduce(
-    (acc, col) => {
-      acc[col.id] = col;
+  const {
+    columns,
+    tasksMap,
+    items: initialItems,
+    taskToColumn: initialMap,
+  } = useMemo(() => normalizeBoardData(boardData), [boardData]);
 
-      return acc;
-    },
-    {} as Record<string, BoardColumn>
-  );
+  const [items, setItems] = useState(initialItems);
+  const [taskToColumn, setTaskToColumn] = useState(initialMap);
 
-  const [items, setItems] = useState<Record<string, number[]>>(
-    boardData.reduce(
-      (acc, col) => {
-        acc[col.id] = col.tasks.map((task) => task.id);
-        return acc;
-      },
-      {} as Record<string, number[]>
-    )
-  );
+  const handleDragEnd = (e: any) => {
+    if (e.canceled) return;
 
-  const tasksMap = boardData.reduce(
-    (acc, col) => {
-      col.tasks.forEach((task) => (acc[task.id] = task));
+    const { source, target } = e.operation;
+    if (!target) return;
 
-      return acc;
-    },
-    {} as Record<string, Task>
-  );
+    const taskId = Number(source?.id);
+    if (!taskId) return;
+
+    const oldColumnId = taskToColumn[taskId];
+
+    const next = move(items, e);
+
+    const newColumnId = Object.keys(next).find((colId) =>
+      next[colId].includes(taskId)
+    );
+
+    setItems(next);
+
+    const columnChanged = newColumnId && oldColumnId !== newColumnId;
+
+    if (columnChanged) {
+      setTaskToColumn((prev) => ({
+        ...prev,
+        [taskId]: newColumnId,
+      }));
+
+      updateTaskColumn(taskId, newColumnId);
+    }
+  };
 
   return (
-    <DragDropProvider
-      onDragEnd={(event) => {
-        setItems((prev) => move(prev, event));
-      }}>
+    <DragDropProvider onDragEnd={(e) => handleDragEnd(e)}>
       <div className="flex h-full items-start gap-6">
         {Object.entries(columns).map(([columnId, column]) => {
           return (
