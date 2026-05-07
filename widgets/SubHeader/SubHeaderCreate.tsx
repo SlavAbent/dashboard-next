@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useDebugValue, useState } from 'react';
+import React from 'react';
 import { usePathname } from 'next/navigation';
 import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
 import { FilterType, SubHeaderCreateType } from '@/widgets/SubHeader/types';
@@ -9,8 +9,8 @@ import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
 import { Folder } from '@/widgets/Aside/types';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
-
-const DEFAULT_FILTER_ID = 2;
+import { useListStore } from '@/entities/board/model/list.store';
+import { ViewType } from '@/entities/board/types';
 
 const SubHeaderCreate = ({
   foldersData,
@@ -18,13 +18,11 @@ const SubHeaderCreate = ({
 }: SubHeaderCreateType) => {
   const pathname = usePathname();
   const pageKey = routeToKeyMap[pathname];
+  const { setView, activeFilterId, setActiveFilterId } = useListStore();
 
-  const [activeFilterId, setActiveFilterId] = useState<number | null>(
-    DEFAULT_FILTER_ID
-  );
-
-  const handleFilterClick = (id: number) => {
+  const handleFilterClick = (id: number | null, name: ViewType) => {
     setActiveFilterId(id);
+    setView(name);
   };
 
   const currentPage = foldersData.menu.find((folder: Folder) => {
@@ -44,12 +42,15 @@ const SubHeaderCreate = ({
         <div className="flex items-center gap-5">
           {hasGrid &&
             subheaderData?.page?.view?.map((filter: FilterType) => {
+              const { id, name } = filter;
               return (
                 <View
-                  key={filter.id}
+                  key={id}
                   filter={filter}
-                  isActive={activeFilterId === filter.id}
-                  handleFilterClick={handleFilterClick}
+                  isActive={activeFilterId === id}
+                  handleFilterClick={() =>
+                    handleFilterClick(Number(id), name as ViewType)
+                  }
                 />
               );
             })}

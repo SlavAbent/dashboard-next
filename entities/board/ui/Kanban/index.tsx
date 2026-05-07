@@ -1,0 +1,23 @@
+'use client';
+
+import React from 'react';
+import KanbanItem from '@/entities/board/ui/Kanban/KanbanItem/ui';
+import { KanbanType } from '@/entities/board/ui/Kanban/types';
+import ColumnHeader from '@/entities/board/ui/Kanban/KanbanColumn/ui/ColumnHeader/ui';
+
+const Kanban = ({ column, itemIds, tasksMap }: KanbanType) => {
+  return (
+    <>
+      <ColumnHeader column={column} tasksLength={itemIds.length} />
+      <div className="flex flex-col gap-4">
+        {itemIds.map((id, index) => {
+          return (
+            <KanbanItem key={id} id={id} task={tasksMap[id]} index={index} />
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default Kanban;

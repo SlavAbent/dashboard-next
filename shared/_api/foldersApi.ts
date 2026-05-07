@@ -1,5 +1,7 @@
+import { foldersApi } from '@/shared/_api/instances';
+
 export async function getFolders() {
-  const folders = await fetch('http://localhost:4001/folders', {
+  const folders = await fetch(foldersApi, {
     cache: 'no-cache',
   });
 

@@ -19,6 +19,8 @@ import {
   AvatarDropdownType,
 } from '@/components/types';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
+import { iconSize } from '@/shared/icons/iconSize';
+import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
 
 export function AvatarDropdown(props: AvatarDropdownType) {
   const { src, name, separator, options, footer } = props;
@@ -35,9 +37,8 @@ export function AvatarDropdown(props: AvatarDropdownType) {
 
           <TypographySmall className="text-sm font-medium" text={name} />
 
-          <ChevronDown
-            width={16}
-            height={16}
+          <ArrowIcon
+            size={iconSize(16)}
             className={cn(
               'color-[#000000] h-4 w-4 transition-transform duration-200',
               open && 'rotate-180'

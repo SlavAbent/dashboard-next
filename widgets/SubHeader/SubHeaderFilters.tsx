@@ -5,7 +5,7 @@ import { filterOptions, sortOptions } from '@/widgets/SubHeader/constants';
 import { FiltersIcon } from '@/shared/icons/ui/FiltersIcon';
 import { Separator } from '@base-ui/react';
 import { Button } from '@/shared/ui/button';
-import { Plus } from '@/shared/icons/ui/Plus';
+import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { useFiltersStore } from '@/widgets/SubHeader/model/filters.store';
 import { iconSize } from '@/shared/icons/iconSize';
@@ -15,7 +15,7 @@ const SubHeaderFilters = () => {
     useFiltersStore();
 
   const handleAddTask = () => {
-    console.log('Adding task');
+    console.log('Adding board');
   };
 
   const handleSortSelect = () => {
@@ -48,11 +48,8 @@ const SubHeaderFilters = () => {
         orientation="vertical"
         className="h-[50px] w-[1px] gap-4 bg-[#E4E4E4]"
       />
-      <Button
-        onClick={handleAddTask}
-        size="lg"
-        className="flex h-[38px] cursor-pointer items-center gap-2 rounded-sm px-3 py-2">
-        <Plus size={iconSize(16)} />
+      <Button onClick={handleAddTask} size="lg" className="button rounded-sm">
+        <PlusIcon size={iconSize(16)} />
         <TypographySmall text="Add task" className="!leading-[150%]" />
       </Button>
     </div>
