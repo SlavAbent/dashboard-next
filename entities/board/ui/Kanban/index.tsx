@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import KanbanItem from '@/entities/board/ui/Kanban/KanbanItem/ui';
+import KanbanItem from '@/features/KanbanItem/ui';
 import { KanbanType } from '@/entities/board/ui/Kanban/types';
-import ColumnHeader from '@/entities/board/ui/Kanban/KanbanColumn/ui/ColumnHeader/ui';
+import ColumnHeader from '@/features/ColumnHeader/ui';
 
 const Kanban = ({ column, itemIds, tasksMap }: KanbanType) => {
   return (

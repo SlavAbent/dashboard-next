@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useDroppable } from '@dnd-kit/react';
-import { KanbanColumnType } from '@/entities/board/ui/Kanban/KanbanColumn/types';
+import { KanbanColumnType } from '@/features/KanbanColumn/types';
 
 const KanbanColumn = (props: KanbanColumnType) => {
   const { children, id, className } = props;

@@ -1,5 +1,5 @@
 import { BoardColumn, Task } from '@/widgets/Board/types';
-import { KanbanViewType } from '@/entities/board/ui/Kanban/KanbanView/types';
+import { KanbanViewType } from '@/widgets/KanbanView/types';
 
 export const normalizeBoardData = (boardData: KanbanViewType['boardData']) => {
   const columns: Record<string, BoardColumn> = {};

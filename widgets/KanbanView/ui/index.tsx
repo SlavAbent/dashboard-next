@@ -3,9 +3,9 @@
 import React, { useMemo, useState } from 'react';
 import Kanban from '@/entities/board/ui/Kanban';
 import { DragDropProvider } from '@dnd-kit/react';
-import KanbanColumn from '@/entities/board/ui/Kanban/KanbanColumn/ui';
+import KanbanColumn from '@/features/KanbanColumn/ui';
 import { move } from '@dnd-kit/helpers';
-import { KanbanViewType } from '@/entities/board/ui/Kanban/KanbanView/types';
+import { KanbanViewType } from '@/widgets/KanbanView/types';
 import { updateTaskColumn } from '@/shared/_api/board/tasks';
 import { normalizeBoardData } from '@/entities/board/ui/Kanban/config';
 

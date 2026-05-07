@@ -3,7 +3,7 @@
 import React from 'react';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { useSortable } from '@dnd-kit/react/sortable';
-import { KanbanItemType } from '@/entities/board/ui/Kanban/KanbanItem/types';
+import { KanbanItemType } from '@/features/KanbanItem/types';
 
 const KanbanItem = (props: KanbanItemType) => {
   const { id, index, task } = props;

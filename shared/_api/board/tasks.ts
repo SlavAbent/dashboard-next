@@ -1,7 +1,7 @@
 'use server';
 
 import { Task } from '@/widgets/Board/types';
-import { getNextColumn } from '@/widgets/Board/shared/getNextColumn';
+import { getNextColumn } from '@/widgets/Board/config/getNextColumn';
 import { tasksApi } from '@/shared/_api/instances';
 import { patchTask } from '@/shared/_api/patchTask';
 

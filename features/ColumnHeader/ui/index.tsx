@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui/button';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
-import { ColumnHeaderType } from '@/entities/board/ui/Kanban/KanbanColumn/ui/ColumnHeader/types';
+import { ColumnHeaderType } from '@/features/ColumnHeader/types';
 
 const ColumnHeader = ({ column, tasksLength }: ColumnHeaderType) => {
   const isCompletedColumn = column.id === 'completed';
