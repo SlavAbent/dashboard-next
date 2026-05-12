@@ -11,7 +11,7 @@ import { KanbanIcon } from '@/shared/icons/ui/KanbanIcon';
 
 export const iconMapper: Record<string, FC<IconType>> = {
   dashboard: DashboardIcon,
-  notes: NotesIcon,
+  chat: NotesIcon,
   tasks: TasksIcon,
   calendar: CalendarIcon,
   personal: PersonalIcon,
