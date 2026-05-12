@@ -15,15 +15,7 @@ const KanbanView = ({ boardData }: KanbanViewType) => {
     columns,
     tasksMap,
     items: initialItems,
-    taskToColumn: initialMap,
   } = useMemo(() => normalizeBoardData(boardData), [boardData]);
-
-  console.log({
-    columns,
-    tasksMap,
-    items: initialItems,
-    taskToColumn: initialMap,
-  });
 
   const [items, setItems] = useState(initialItems);
 

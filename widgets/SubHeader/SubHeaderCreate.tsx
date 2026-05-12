@@ -36,10 +36,10 @@ const SubHeaderCreate = ({
 
   return (
     <div className="border-bottom flex min-h-[69px] items-center px-8">
-      <div className="flex grow items-center">
-        <TypographyH3 text={title} className="mr-9" />
+      <div className="flex grow items-center gap-9">
+        <TypographyH3 text={title} />
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center">
           {hasGrid &&
             subheaderData?.page?.view?.map((filter: FilterType) => {
               const { id, name } = filter;
