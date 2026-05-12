@@ -17,5 +17,4 @@ export const iconMapper: Record<string, FC<IconType>> = {
   personal: PersonalIcon,
   list: ListIcon,
   kanban: KanbanIcon,
-  table: TableIcon,
 };

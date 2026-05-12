@@ -6,17 +6,15 @@ import { tasksApi } from '@/shared/_api/instances';
 import { patchTask } from '@/shared/_api/patchTask';
 
 export async function getTasks(): Promise<Task[]> {
-  const tasks = await fetch(tasksApi, {
-    next: {
-      revalidate: 0,
-    },
+  const response = await fetch(tasksApi, {
+    cache: 'no-store',
   });
 
-  if (!tasks.ok) {
+  if (!response.ok) {
     throw new Error('Failed fetch tasks data');
   }
 
-  return tasks.json();
+  return response.json();
 }
 
 export async function updateTask(id: number, currentColumn: string) {

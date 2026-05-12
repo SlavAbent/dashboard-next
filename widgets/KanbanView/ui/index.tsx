@@ -8,6 +8,7 @@ import { move } from '@dnd-kit/helpers';
 import { KanbanViewType } from '@/widgets/KanbanView/types';
 import { updateTaskColumn } from '@/shared/_api/board/tasks';
 import { normalizeBoardData } from '@/entities/board/ui/Kanban/config';
+import type { DragEndEvent } from '@dnd-kit/react';
 
 const KanbanView = ({ boardData }: KanbanViewType) => {
   const {
@@ -17,37 +18,47 @@ const KanbanView = ({ boardData }: KanbanViewType) => {
     taskToColumn: initialMap,
   } = useMemo(() => normalizeBoardData(boardData), [boardData]);
 
-  const [items, setItems] = useState(initialItems);
-  const [taskToColumn, setTaskToColumn] = useState(initialMap);
+  console.log({
+    columns,
+    tasksMap,
+    items: initialItems,
+    taskToColumn: initialMap,
+  });
 
-  const handleDragEnd = (e: any) => {
+  const [items, setItems] = useState(initialItems);
+
+  const findColumnByTaskId = (
+    data: Record<string, number[]>,
+    taskId: string
+  ) => {
+    return Object.keys(data).find((columnId) =>
+      data[columnId].some((id) => String(id) === taskId)
+    );
+  };
+
+  const handleDragEnd = async (e: DragEndEvent) => {
     if (e.canceled) return;
 
     const { source, target } = e.operation;
-    if (!target) return;
+    if (!source || !target) return;
+    const taskId = String(source.id);
 
-    const taskId = Number(source?.id);
-    if (!taskId) return;
-
-    const oldColumnId = taskToColumn[taskId];
-
+    const prevItems = items;
     const next = move(items, e);
 
-    const newColumnId = Object.keys(next).find((colId) =>
-      next[colId].includes(taskId)
-    );
+    const oldColumnId = findColumnByTaskId(prevItems, taskId);
+    const newColumnId = findColumnByTaskId(next, taskId);
+
+    if (!newColumnId || oldColumnId === newColumnId) return;
 
     setItems(next);
 
-    const columnChanged = newColumnId && oldColumnId !== newColumnId;
+    try {
+      await updateTaskColumn(Number(taskId), newColumnId);
+    } catch (error) {
+      console.error(error);
 
-    if (columnChanged) {
-      setTaskToColumn((prev) => ({
-        ...prev,
-        [taskId]: newColumnId,
-      }));
-
-      updateTaskColumn(taskId, newColumnId);
+      setItems(prevItems);
     }
   };
 
