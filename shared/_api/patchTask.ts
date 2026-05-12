@@ -2,7 +2,7 @@ import { tasksApi } from '@/shared/_api/instances';
 import { revalidatePath } from 'next/cache';
 
 export async function patchTask(id: number, column: string) {
-  await fetch(`${tasksApi}/${id}`, {
+  const response = await fetch(`${tasksApi}/${id}`, {
     method: 'PATCH',
     headers: {
       'content-type': 'application/json',
@@ -13,5 +13,11 @@ export async function patchTask(id: number, column: string) {
     }),
   });
 
+  if (!response.ok) {
+    throw new Error('Failed update task');
+  }
+
   revalidatePath('/tasks');
+
+  return response.json();
 }

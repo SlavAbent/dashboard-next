@@ -1,6 +1,6 @@
 import React from 'react';
 import { BoardColumn } from '@/widgets/Board/types';
-import List from '..';
+import List from '../../entities/board/ui/List';
 
 const ListView = ({ boardData }: { boardData: BoardColumn[] }) => {
   return (

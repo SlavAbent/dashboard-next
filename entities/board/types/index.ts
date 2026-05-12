@@ -1,1 +1,1 @@
-export type ViewType = 'List' | 'Kanban' | 'Table';
+export type ViewType = 'List' | 'Kanban';

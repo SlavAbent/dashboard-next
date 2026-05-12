@@ -13,9 +13,9 @@
       },
       {
         "id": 2,
-        "name": "Notes",
+        "name": "Chat",
         "colorId": 2,
-        "icon": "notes",
+        "icon": "chat",
         "subheader": {
           "filters": true,
           "grid": false
@@ -76,31 +76,31 @@
   "tasks": [
     {
       "id": "1",
-      "column": "upcoming",
+      "column": "planning",
       "tags": [],
       "text": "Изучить JavaScript",
       "completed": false
     },
     {
       "id": "2",
-      "column": "upcoming",
+      "column": "planning",
       "tags": [],
       "text": "Изучить паттерны проектирования",
       "completed": false
     },
     {
       "id": "3",
-      "column": "upcoming",
+      "column": "completed",
       "tags": [],
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": false
+      "completed": true
     },
     {
       "id": "4",
-      "column": "completed",
+      "column": "upcoming",
       "tags": [],
       "text": "Redux (redux-observable, redux-saga)",
-      "completed": true
+      "completed": false
     }
   ],
   "subtasks": [
@@ -172,14 +172,8 @@
           "id": 2,
           "name": "Kanban",
           "icon": "Kanban"
-        },
-        {
-          "id": 3,
-          "name": "Table",
-          "icon": "Table"
         }
       ]
     }
-  },
-  "$schema": "./node_modules/json-server/schema.json"
+  }
 }

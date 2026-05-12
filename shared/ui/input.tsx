@@ -7,7 +7,14 @@ type InputProps = React.ComponentProps<'input'> & {
   rightIcon?: React.ReactNode;
 };
 
-function Input({ className, type, leftIcon, rightIcon, ...props }: InputProps) {
+function Input({
+  className,
+  type,
+  leftIcon,
+  rightIcon,
+  onChange,
+  ...props
+}: InputProps) {
   return (
     <div className="relative w-fit">
       {leftIcon && (
@@ -18,6 +25,7 @@ function Input({ className, type, leftIcon, rightIcon, ...props }: InputProps) {
 
       <InputPrimitive
         type={type}
+        onChange={onChange}
         data-slot="input"
         className={cn(
           'w-full rounded-sm border border-[#AFAFAF] bg-transparent py-[7px] text-[14px] transition-colors outline-none',

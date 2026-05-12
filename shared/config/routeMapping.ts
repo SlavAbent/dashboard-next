@@ -1,6 +1,6 @@
 export const routeToKeyMap: Record<string, string> = {
   '/dashboard': 'dashboard',
-  '/notes': 'notes',
+  '/chat': 'chat',
   '/tasks': 'tasks',
   '/calendar': 'calendar',
   '/personal': 'personal',

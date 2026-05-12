@@ -1,9 +1,8 @@
 import { BoardColumn } from '@/widgets/Board/types';
 import React from 'react';
-import Index from '@/entities/board/ui/List/ListView';
-import Table from '@/entities/board/ui/Table';
+import Index from '@/widgets/ListView';
 import { ViewType } from '@/entities/board/types';
-import KanbanView from '@/entities/board/ui/Kanban/KanbanView/ui';
+import KanbanView from '@/widgets/KanbanView/ui';
 
 type ViewProps = {
   boardData: BoardColumn[];
@@ -12,5 +11,4 @@ type ViewProps = {
 export const viewMap: Record<ViewType, React.FC<ViewProps>> = {
   List: Index,
   Kanban: KanbanView,
-  Table: Table,
 };

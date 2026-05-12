@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Checkbox } from '@/shared/ui/checkbox';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import {
   DropdownMenu,

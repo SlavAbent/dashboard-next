@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import { Input } from '@/shared/ui/input';
 import { SearchIcon } from '@/shared/icons/ui/SearchIcon';
 import IconWrapper from '@/shared/icons/iconWrapper';
@@ -7,10 +9,35 @@ import Weather from '@/widgets/Weather';
 import { iconSize } from '@/shared/icons/iconSize';
 
 const Header = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isMac = navigator.platform.toLowerCase().includes('mac');
+      const isSearchShortCut =
+        (isMac && e.metaKey && e.key.toLowerCase() === 'f') ||
+        (!isMac && e.ctrlKey && e.key.toLowerCase() === 'f');
+
+      if (isSearchShortCut) {
+        e.preventDefault();
+
+        inputRef.current?.focus();
+        inputRef.current?.select();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="border-bottom flex items-center px-8 py-[15.5]">
       <div className="grow">
         <Input
+          ref={inputRef}
           placeholder="SearchIcon"
           className="min-w-[360px]"
           leftIcon={<SearchIcon size={iconSize(20)} />}

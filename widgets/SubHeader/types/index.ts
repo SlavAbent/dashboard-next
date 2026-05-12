@@ -17,3 +17,9 @@ export type SubHeaderCreateType = {
     menu: Folder[];
   };
 };
+
+export type ViewType = {
+  filter: FilterType;
+  isActive: boolean;
+  handleFilterClick: (id: number) => void;
+};
