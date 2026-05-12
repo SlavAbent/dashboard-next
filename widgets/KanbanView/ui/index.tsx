@@ -70,7 +70,7 @@ const KanbanView = ({ boardData }: KanbanViewType) => {
             <KanbanColumn
               key={columnId}
               id={columnId}
-              className="mb-8 flex h-full flex-col rounded-xl border p-5">
+              className="mb-8 flex h-full flex-1 flex-col rounded-xl border p-5">
               <Kanban
                 column={column}
                 itemIds={items[columnId]}
