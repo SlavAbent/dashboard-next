@@ -6,13 +6,10 @@ import { KanbanColumnType } from '@/features/KanbanColumn/types';
 
 const KanbanColumn = (props: KanbanColumnType) => {
   const { children, id, className } = props;
-  const { isDropTarget, ref } = useDroppable({ id });
+  const { ref } = useDroppable({ id });
 
   return (
-    <div
-      className={className}
-      ref={ref}
-      style={isDropTarget ? { background: '#00000030' } : undefined}>
+    <div className={className} ref={ref}>
       {children}
     </div>
   );

@@ -9,7 +9,7 @@ const Kanban = ({ column, itemIds, tasksMap }: KanbanType) => {
   return (
     <>
       <ColumnHeader column={column} tasksLength={itemIds.length} />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 overflow-auto">
         {itemIds.map((id, index) => {
           return (
             <KanbanItem key={id} id={id} task={tasksMap[id]} index={index} />

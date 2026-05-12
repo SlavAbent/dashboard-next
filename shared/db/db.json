@@ -83,7 +83,7 @@
     },
     {
       "id": "2",
-      "column": "upcoming",
+      "column": "planning",
       "tags": [],
       "text": "Изучить паттерны проектирования",
       "completed": false
