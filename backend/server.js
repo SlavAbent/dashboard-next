@@ -20,11 +20,32 @@ app.prepare().then(() => {
   io.on('connection', (socket) => {
     console.log('User connected', socket.id);
 
-    socket.on('send-message', (message) => {
-      io.emit('receive-message', {
+    socket.on('send-message', async (message) => {
+      const newMessage = {
         id: crypto.randomUUID(),
+
         text: message.text,
+
+        firstName: message.firstName,
+
+        lastName: message.lastName,
+
+        userId: message.userId,
+
+        createdAt: message.createdAt,
+      };
+
+      await fetch('http://localhost:4001/messages', {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify(newMessage),
       });
+
+      io.emit('receive-message', newMessage);
     });
 
     socket.on('disconnect', () => {

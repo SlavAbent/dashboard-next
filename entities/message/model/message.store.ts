@@ -5,6 +5,8 @@ interface ChatMessageStore {
   messages: ChatMessage[];
 
   addMessage: (message: ChatMessage) => void;
+
+  setMessages: (messages: ChatMessage[]) => void;
 }
 
 export const useMessageStore = create<ChatMessageStore>((set) => ({
@@ -14,5 +16,11 @@ export const useMessageStore = create<ChatMessageStore>((set) => ({
     set((state) => ({
       messages: [...state.messages, message],
     }));
+  },
+
+  setMessages: (messages) => {
+    set({
+      messages,
+    });
   },
 }));
