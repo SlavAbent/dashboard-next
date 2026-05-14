@@ -1,6 +1,6 @@
 import BoardCreate from '../BoardCreate/BoardCreate';
-import { getTasks } from '@/shared/_api/board/tasks';
-import { getColumns } from '@/shared/_api/board/columns';
+import { getTasks } from '@/entities/board/api/tasks';
+import { getColumns } from '@/entities/board/api/columns';
 import { groupTasks } from '@/widgets/Board/config/groupTasks';
 
 const TaskBoard = async () => {

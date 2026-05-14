@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { BoardColumn } from '@/widgets/Board/types';
+import type { BoardColumn } from '@/entities/board/model/types';
 import { useListStore } from '@/entities/board/model/list.store';
 import { viewMap } from '@/widgets/Board/ui/BoardCreate/model/viewMap';
 

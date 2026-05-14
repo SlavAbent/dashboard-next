@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
-import Aside from '@/entities/aside/ui';
-import Header from '@/widgets/Header';
-import Filters from '@/widgets/SubHeader';
+import { cn } from '@/shared/lib/cn';
+import AppAside from '@/widgets/Aside/ui/AppAside';
+import Header from '@/widgets/Header/Header';
+import SubHeader from '@/widgets/SubHeader/SubHeader';
 import Providers from '@/app/_providers';
 
 const jetbrainsMono = JetBrains_Mono({
@@ -38,10 +38,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
           <div className="flex h-screen max-w-full">
-            <Aside />
+            <AppAside />
             <div className="flex w-full flex-col">
               <Header />
-              <Filters />
+              <SubHeader />
               {children}
             </div>
           </div>

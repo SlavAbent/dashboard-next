@@ -1,4 +1,4 @@
-import { OpenWeatherForecastResponse } from '@/widgets/Weather/types';
+import { OpenWeatherForecastResponse } from '@/widgets/Weather/types/weather.types';
 
 export function getDays(data: OpenWeatherForecastResponse | undefined) {
   if (!data?.list) return [];

@@ -3,7 +3,7 @@ import {
   defaultWeatherApi,
   weatherApi,
 } from '@/widgets/Weather/_api/constants';
-import { Coords } from '@/widgets/Weather/types';
+import { Coords } from '@/widgets/Weather/types/weather.types';
 
 export async function getCoordsByCity(city: string): Promise<Coords> {
   const res = await fetch(

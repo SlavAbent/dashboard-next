@@ -1,12 +1,12 @@
 'use client';
 
-import Card from '@/shared/ui/Card';
-import CardItem from '@/shared/ui/CardItem';
-import { SvgIcon } from '@/shared/ui/SvgIcon';
+import Card from '@/shared/ui/Card/Card';
+import CardItem from '@/shared/ui/CardItem/CardItem';
+import { SvgIcon } from '@/shared/ui/SvgIcon/SvgIcon';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
-import { FolderCreateType } from '@/widgets/Aside/types';
-import { cn } from '@/lib/utils';
+import type { FolderCreateType } from '@/widgets/Aside/types/folder.types';
+import { cn } from '@/shared/lib/cn';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 

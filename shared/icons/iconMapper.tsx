@@ -4,9 +4,8 @@ import { FC } from 'react';
 import { CalendarIcon } from '@/shared/icons/ui/CalendarIcon';
 import { TasksIcon } from '@/shared/icons/ui/TasksIcon';
 import { DashboardIcon } from '@/shared/icons/ui/DashboardIcon';
-import { IconType } from '@/shared/icons/types';
+import { IconType } from '@/shared/icons/types/icon.types';
 import { ListIcon } from '@/shared/icons/ui/ListIcon';
-import { TableIcon } from '@/shared/icons/ui/TableIcon';
 import { KanbanIcon } from '@/shared/icons/ui/KanbanIcon';
 
 export const iconMapper: Record<string, FC<IconType>> = {

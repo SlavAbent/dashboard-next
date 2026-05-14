@@ -1,4 +1,4 @@
-import { TypographyType } from '@/shared/ui/Typography/types';
+import { TypographyType } from '@/shared/ui/Typography/typography.types';
 
 export function TypographyH2({ text, className }: TypographyType) {
   return (
