@@ -1,15 +1,12 @@
-import BoardCreate from '../BoardCreate/BoardCreate';
 import { getTasks } from '@/entities/board/api/tasks';
 import { getColumns } from '@/entities/board/api/columns';
-import { groupTasks } from '@/widgets/Board/config/groupTasks';
+import BoardHydrator from '@/widgets/Board/ui/BoardHydrator/BoardHydrator';
 
 const TaskBoard = async () => {
   const tasksData = await getTasks();
   const columnsData = await getColumns();
 
-  const data = groupTasks(tasksData, columnsData);
-
-  return <BoardCreate boardData={data} />;
+  return <BoardHydrator tasks={tasksData} columns={columnsData} />;
 };
 
 export default TaskBoard;

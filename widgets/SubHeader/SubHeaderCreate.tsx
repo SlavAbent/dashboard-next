@@ -12,8 +12,8 @@ import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
 import type { Folder } from '@/widgets/Aside/types/folder.types';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
-import { useListStore } from '@/entities/board/model/list.store';
-import type { BoardViewMode } from '@/entities/board/model/types';
+import { useViewStore } from '@/entities/board/model/list.store';
+import type { BoardViewMode } from '@/entities/board/model/types/list-types';
 
 const SubHeaderCreate = ({
   foldersData,
@@ -21,7 +21,9 @@ const SubHeaderCreate = ({
 }: SubHeaderCreateType) => {
   const pathname = usePathname();
   const pageKey = routeToKeyMap[pathname];
-  const { setView, activeFilterId, setActiveFilterId } = useListStore();
+  const setView = useViewStore((state) => state.setView);
+  const activeFilterId = useViewStore((state) => state.activeFilterId);
+  const setActiveFilterId = useViewStore((state) => state.setActiveFilterId);
 
   const handleFilterClick = (id: number | null, name: BoardViewMode) => {
     setActiveFilterId(id);

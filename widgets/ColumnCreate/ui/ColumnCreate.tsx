@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { cn } from '@/shared/lib/cn';
@@ -10,35 +10,23 @@ import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { Button } from '@/shared/ui/button';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
-import type { BoardColumn } from '@/entities/board/model/types';
+import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
+import { useBoardStore } from '@/entities/board/model/useDataStore';
 
-type ColumnCreateType = {
-  column: BoardColumn;
-  isOpen: boolean;
-  setClosedFolders: Dispatch<SetStateAction<Set<string>>>;
+const mockDataToAddTask = {
+  id: 12,
+  column: 'planning',
+  tags: [],
+  text: 'Random text',
+  completed: false,
 };
 
-const ColumnCreate = ({
-  column,
-  isOpen,
-  setClosedFolders,
-}: ColumnCreateType) => {
+const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const isCompletedColumn = column.id === 'completed';
   const columnText = `${column.tasks.length} ${isCompletedColumn ? 'completed' : 'open'} tasks`;
 
-  const toggleFolder = (columnId: string) => {
-    setClosedFolders((prev) => {
-      const next = new Set(prev);
-
-      if (next.has(columnId)) {
-        next.delete(columnId);
-      } else {
-        next.add(columnId);
-      }
-
-      return next;
-    });
-  };
+  const toggleFolder = useBoardStore((state) => state.toggleColumn);
+  const addTask = useBoardStore((state) => state.addTask);
 
   return (
     <div className="mb-5 flex flex-col justify-start">
@@ -56,13 +44,13 @@ const ColumnCreate = ({
         <div className="flex items-end gap-2">
           <TypographyH3 text={column.title} />
           <TypographyP
-            text={`${columnText}`}
-            className={'text-neutral-80 !leading-[145%]'}
+            text={columnText}
+            className="text-neutral-80 !leading-[145%]"
           />
         </div>
       </div>
       <Button
-        disabled
+        onClick={() => addTask(mockDataToAddTask)}
         size="lg"
         className="button !h-[40] cursor-pointer rounded-sm">
         <PlusIcon size={iconSize(16)} className="text-neutral-80" />

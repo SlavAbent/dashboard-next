@@ -1,4 +1,4 @@
-import type { Column } from '@/entities/board/model/types';
+import type { Column } from '@/entities/board/model/types/list-types';
 import { columnsApi } from '@/shared/_api/instances';
 
 export async function getColumns(): Promise<Column[]> {

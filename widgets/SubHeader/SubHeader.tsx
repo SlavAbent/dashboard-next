@@ -2,8 +2,8 @@
 
 import React from 'react';
 import SubHeaderCreate from '@/widgets/SubHeader/SubHeaderCreate';
-import { getSubHeaderData } from '@/shared/_api/subheaderApi';
-import { getFolders } from '@/shared/_api/foldersApi';
+import { getSubHeaderData } from '@/shared/_api/subheader/subheaderApi';
+import { getFolders } from '@/shared/_api/folders/foldersApi';
 
 const SubHeader = async () => {
   const foldersData = await getFolders();

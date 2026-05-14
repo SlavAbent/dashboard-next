@@ -1,5 +1,6 @@
 import type { BoardColumn } from '@/entities/board/model/types/list-types';
 
-export type KanbanViewType = {
-  boardData: BoardColumn[];
+export type ColumnCreateType = {
+  column: BoardColumn;
+  isOpen: boolean;
 };

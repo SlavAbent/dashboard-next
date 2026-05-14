@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import {
@@ -12,15 +12,25 @@ import {
 } from '@/shared/ui/dropdown-menu';
 import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
 import { iconSize } from '@/shared/icons/iconSize';
-import type { BoardColumn, Task } from '@/entities/board/model/types';
+import type { Task } from '@/entities/board/model/types/list-types';
 import { updateTask } from '@/entities/board/api/tasks';
+import { useBoardStore } from '@/entities/board/model/useDataStore';
 
-const TaskCreate = ({ column }: { column: BoardColumn }) => {
+const Task = ({ columnId }: { columnId: string }) => {
   const [openId, setOpenId] = useState<number | null>(null);
+
+  const allTasks = useBoardStore((state) => state.tasks);
+
+  const tasks = useMemo(
+    () => allTasks.filter((task) => task.column === columnId),
+    [allTasks, columnId]
+  );
+
+  const deleteTask = useBoardStore((state) => state.removeTask);
 
   return (
     <div className="flex flex-col gap-5">
-      {column.tasks.map((task: Task) => (
+      {tasks.map((task: Task) => (
         <div
           key={task.id}
           className="flex items-center rounded-sm border px-5 py-[18px]">
@@ -47,7 +57,9 @@ const TaskCreate = ({ column }: { column: BoardColumn }) => {
             <DropdownMenuContent align="end" className="w-40">
               <DropdownMenuGroup>
                 <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem>Delete</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => deleteTask(task.id)}>
+                  Delete
+                </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -57,4 +69,4 @@ const TaskCreate = ({ column }: { column: BoardColumn }) => {
   );
 };
 
-export default TaskCreate;
+export default Task;

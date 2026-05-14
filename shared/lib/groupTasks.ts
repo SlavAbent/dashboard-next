@@ -1,4 +1,8 @@
-import type { BoardColumn, Column, Task } from '@/entities/board/model/types';
+import {
+  BoardColumn,
+  Column,
+  Task,
+} from '@/entities/board/model/types/list-types';
 
 export function groupTasks(tasks: Task[], columns: Column[]): BoardColumn[] {
   const columnsMap: Record<string, BoardColumn> = {};
@@ -16,10 +20,10 @@ export function groupTasks(tasks: Task[], columns: Column[]): BoardColumn[] {
   for (const task of tasks) {
     if (!columnsMap[task.column]) {
       columnsMap[task.column] = {
-        color: '',
         id: task.column,
-        title: task.text,
+        title: task.column,
         order: 999,
+        color: '',
         tasks: [],
       };
     }

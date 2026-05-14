@@ -1,4 +1,7 @@
-import type { BoardColumn, Task } from '@/entities/board/model/types';
+import type {
+  BoardColumn,
+  Task,
+} from '@/entities/board/model/types/list-types';
 
 export type BoardKanbanType = {
   column: BoardColumn;
