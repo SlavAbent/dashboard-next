@@ -40,17 +40,19 @@ const KanbanView = () => {
 
     const { source, target } = e.operation;
     if (!source || !target) return;
-    const taskId = String(source.id);
 
+    const taskId = String(source.id);
     const prevItems = items;
     const next = move(items, e);
 
     const oldColumnId = findColumnByTaskId(prevItems, taskId);
     const newColumnId = findColumnByTaskId(next, taskId);
 
-    if (!newColumnId || oldColumnId === newColumnId) return;
+    if (!newColumnId) return;
 
     setItems(next);
+
+    if (oldColumnId === newColumnId) return;
 
     try {
       await updateTaskColumn(Number(taskId), newColumnId);
