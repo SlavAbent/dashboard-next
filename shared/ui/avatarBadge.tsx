@@ -12,11 +12,11 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/ui/dropdown-menu';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/cn';
 import {
   AvatarDropdownOptionType,
   AvatarDropdownType,
-} from '@/shared/ui/types';
+} from '@/shared/ui/avatar-dropdown.types';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { iconSize } from '@/shared/icons/iconSize';
 import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';

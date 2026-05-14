@@ -3,14 +3,17 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
-import { FilterType, SubHeaderCreateType } from '@/widgets/SubHeader/types';
+import {
+  FilterType,
+  SubHeaderCreateType,
+} from '@/widgets/SubHeader/types/sub-header.types';
 import View from '@/widgets/SubHeader/View';
 import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
-import { Folder } from '@/widgets/Aside/types';
+import type { Folder } from '@/widgets/Aside/types/folder.types';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
 import { useListStore } from '@/entities/board/model/list.store';
-import { ViewType } from '@/entities/board/types';
+import type { BoardViewMode } from '@/entities/board/model/types';
 
 const SubHeaderCreate = ({
   foldersData,
@@ -20,7 +23,7 @@ const SubHeaderCreate = ({
   const pageKey = routeToKeyMap[pathname];
   const { setView, activeFilterId, setActiveFilterId } = useListStore();
 
-  const handleFilterClick = (id: number | null, name: ViewType) => {
+  const handleFilterClick = (id: number | null, name: BoardViewMode) => {
     setActiveFilterId(id);
     setView(name);
   };
@@ -48,7 +51,7 @@ const SubHeaderCreate = ({
                   filter={filter}
                   isActive={activeFilterId === id}
                   handleFilterClick={() =>
-                    handleFilterClick(Number(id), name as ViewType)
+                    handleFilterClick(Number(id), name as BoardViewMode)
                   }
                 />
               );

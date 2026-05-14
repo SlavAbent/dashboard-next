@@ -1,4 +1,4 @@
-import { TaskBoard } from '@/widgets/Board';
+import { TaskBoard } from '@/widgets/Board/task-board';
 
 export default function Tasks() {
   return (
