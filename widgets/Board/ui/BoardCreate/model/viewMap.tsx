@@ -1,14 +1,16 @@
-import { BoardColumn } from '@/widgets/Board/types';
+import type {
+  BoardColumn,
+  BoardViewMode,
+} from '@/entities/board/model/types';
 import React from 'react';
-import Index from '@/widgets/ListView';
-import { ViewType } from '@/entities/board/types';
-import KanbanView from '@/widgets/KanbanView/ui';
+import BoardListView from '@/widgets/ListView/BoardListView';
+import KanbanView from '@/widgets/KanbanView/ui/KanbanView';
 
 type ViewProps = {
   boardData: BoardColumn[];
 };
 
-export const viewMap: Record<ViewType, React.FC<ViewProps>> = {
-  List: Index,
+export const viewMap: Record<BoardViewMode, React.FC<ViewProps>> = {
+  List: BoardListView,
   Kanban: KanbanView,
 };

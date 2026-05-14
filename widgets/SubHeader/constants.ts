@@ -1,4 +1,4 @@
-import { DropdownOption } from '@/shared/ui/Menu/types';
+import { DropdownOption } from '@/shared/ui/Menu/menu.types';
 
 export const sortOptions: DropdownOption[] = [
   {

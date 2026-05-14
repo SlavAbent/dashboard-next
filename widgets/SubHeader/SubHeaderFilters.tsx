@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from '@/shared/ui/Menu';
+import { Menu } from '@/shared/ui/Menu/Menu';
 import { SortByIcon } from '@/shared/icons/ui/SortByIcon';
 import { filterOptions, sortOptions } from '@/widgets/SubHeader/constants';
 import { FiltersIcon } from '@/shared/icons/ui/FiltersIcon';

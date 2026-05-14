@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Coords } from '../types';
+import { Coords } from '@/widgets/Weather/types/weather.types';
 
 function getCurrentPosition(): Promise<Coords> {
   return new Promise((resolve, reject) => {

@@ -1,4 +1,4 @@
-import { BoardColumn, Column, Task } from '@/widgets/Board/types';
+import type { BoardColumn, Column, Task } from '@/entities/board/model/types';
 
 export function groupTasks(tasks: Task[], columns: Column[]): BoardColumn[] {
   const columnsMap: Record<string, BoardColumn> = {};

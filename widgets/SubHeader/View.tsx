@@ -1,10 +1,14 @@
 import React from 'react';
-import { SvgIcon } from '@/shared/ui/SvgIcon';
-import { cn } from '@/lib/utils';
+import { SvgIcon } from '@/shared/ui/SvgIcon/SvgIcon';
+import { cn } from '@/shared/lib/cn';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
-import { ViewType } from '@/widgets/SubHeader/types';
+import { SubHeaderViewControlType } from '@/widgets/SubHeader/types/sub-header.types';
 
-const View = ({ filter, isActive, handleFilterClick }: ViewType) => {
+const View = ({
+  filter,
+  isActive,
+  handleFilterClick,
+}: SubHeaderViewControlType) => {
   const isActiveElement = isActive
     ? 'text-black'
     : 'text-neutral-80 group-hover:text-black';

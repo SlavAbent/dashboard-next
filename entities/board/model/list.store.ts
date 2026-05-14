@@ -1,12 +1,12 @@
 import { create } from 'zustand';
-import { ViewType } from '@/entities/board/types';
+import type { BoardViewMode } from '@/entities/board/model/types';
 
 const DEFAULT_FILTER_ID: number = 1;
 
 type ListStore = {
-  view: ViewType;
+  view: BoardViewMode;
   activeFilterId: number | null;
-  setView: (view: ViewType) => void;
+  setView: (view: BoardViewMode) => void;
   setActiveFilterId: (id: number | null) => void;
 };
 
@@ -14,7 +14,7 @@ export const useListStore = create<ListStore>((set) => ({
   view: 'List',
   activeFilterId: DEFAULT_FILTER_ID,
 
-  setView: (view: ViewType) =>
+  setView: (view: BoardViewMode) =>
     set(() => ({
       view,
     })),
