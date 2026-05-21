@@ -9,7 +9,7 @@ import {
 } from '@/widgets/SubHeader/types/sub-header.types';
 import View from '@/widgets/SubHeader/View';
 import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
-import type { Folder } from '@/widgets/Aside/types/folder.types';
+import type { NavigationMenuItem } from '@/entities/navigation';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
 import { useViewStore } from '@/entities/board/model/list.store';
@@ -30,8 +30,8 @@ const SubHeaderCreate = ({
     setView(name);
   };
 
-  const currentPage = foldersData.menu.find((folder: Folder) => {
-    return folder.name.toLowerCase() === pageKey;
+  const currentPage = foldersData.menu.find((item: NavigationMenuItem) => {
+    return item.name.toLowerCase() === pageKey;
   });
 
   const hasFilters = currentPage?.subheader?.filters;

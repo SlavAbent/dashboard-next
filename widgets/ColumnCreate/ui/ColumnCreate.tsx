@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { cn } from '@/shared/lib/cn';
@@ -11,18 +11,30 @@ import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
-import { useModalStore } from '@/entities/modal/model/modal.store';
+import { useBoardModalStore } from '@/features/board-modal';
+import {
+  countCompletedTasksInColumn,
+  countIncompleteTasksInColumn,
+  getColumnTasksLabel,
+} from '@/entities/board/lib/count-column-tasks';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
-  const isCompletedColumn = column.id === 'completed';
-  const columnText = `${column.folders.length} ${isCompletedColumn ? 'completed' : 'open'} tasks`;
+  const incompleteCount = useMemo(
+    () => countIncompleteTasksInColumn(column),
+    [column]
+  );
+  const completedCount = useMemo(
+    () => countCompletedTasksInColumn(column),
+    [column]
+  );
+  const columnText = getColumnTasksLabel(
+    column.id,
+    incompleteCount,
+    completedCount
+  );
 
   const toggleFolder = useBoardStore((state) => state.toggleColumn);
-  const openModal = useModalStore((state) => state.openModal);
-
-  const handleAddFolder = (id: string) => {
-    openModal(id);
-  };
+  const openCreateFolder = useBoardModalStore((state) => state.openCreateFolder);
 
   return (
     <div className="mb-5 flex flex-col justify-start">
@@ -46,7 +58,7 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
         </div>
       </div>
       <div
-        onClick={() => handleAddFolder(column.id)}
+        onClick={() => openCreateFolder(column.id)}
         className="flex !h-[40] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
         <PlusIcon size={iconSize(16)} className="text-neutral-80" />
         <TypographySmall text="Create Folder" className="text-neutral-80" />

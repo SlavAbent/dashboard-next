@@ -4,7 +4,6 @@ import React, { useMemo } from 'react';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
 import { TasksFolder } from '@/entities/board/model/types/list-types';
 import FolderContent from '@/widgets/Folder/FolderContent';
-import ModalFolder from '@/entities/modal/ui/ModalFolder';
 
 const Folder = ({ columnId }: { columnId: string }) => {
   const allFolders = useBoardStore((state) => state.tasksFolder);
@@ -17,18 +16,17 @@ const Folder = ({ columnId }: { columnId: string }) => {
   return (
     <div className="flex flex-col gap-5">
       {folders.map((folder: TasksFolder) => {
-        const { id, columnId, title } = folder;
+        const { id, columnId: folderColumnId, title } = folder;
 
         return (
           <FolderContent
             key={id}
             folderId={id}
-            columnId={columnId}
+            columnId={folderColumnId}
             title={title}
           />
         );
       })}
-      <ModalFolder />
     </div>
   );
 };

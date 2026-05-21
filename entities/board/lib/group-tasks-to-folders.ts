@@ -1,5 +1,3 @@
-'use client';
-
 import {
   BoardColumn,
   BoardFolder,
@@ -7,6 +5,7 @@ import {
   Task,
   TasksFolder,
 } from '@/entities/board/model/types/list-types';
+import { toIdString } from '@/shared/lib/same-id';
 
 export function groupTasksToFolders(
   tasks: Task[],
@@ -14,7 +13,7 @@ export function groupTasksToFolders(
   tasksFolders: TasksFolder[]
 ): BoardColumn[] {
   const columnsMap: Record<string, BoardColumn> = {};
-  const foldersMap: Record<number, BoardFolder> = {};
+  const foldersMap: Record<string, BoardFolder> = {};
 
   for (const column of columns) {
     columnsMap[column.id] = {
@@ -29,7 +28,7 @@ export function groupTasksToFolders(
       tasks: [],
     };
 
-    foldersMap[folder.id] = folderData;
+    foldersMap[toIdString(folder.id)] = folderData;
 
     if (columnsMap[folder.columnId]) {
       columnsMap[folder.columnId].folders.push(folderData);
@@ -37,7 +36,9 @@ export function groupTasksToFolders(
   }
 
   for (const task of tasks) {
-    const folder = foldersMap[task.tasksFolderId];
+    if (task.tasksFolderId == null) continue;
+
+    const folder = foldersMap[toIdString(task.tasksFolderId)];
 
     if (folder) {
       folder.tasks.push(task);

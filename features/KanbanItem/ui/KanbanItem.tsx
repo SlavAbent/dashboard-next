@@ -4,12 +4,13 @@ import React from 'react';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { useSortable } from '@dnd-kit/react/sortable';
 import { KanbanItemType } from '@/features/KanbanItem/types/kanban-item.types';
+import { toIdString } from '@/shared/lib/same-id';
 import cn from 'clsx';
 
 const KanbanItem = (props: KanbanItemType) => {
-  const { id, index, task } = props;
+  const { id, index, folder } = props;
   const { ref, isDragging } = useSortable({
-    id: String(id),
+    id: toIdString(id),
     index,
   });
 
@@ -20,7 +21,7 @@ const KanbanItem = (props: KanbanItemType) => {
       ref={ref}
       data-dragging={isDragging}
       className={cn('rounded-sm border p-[18px]', styledCardOnMove)}>
-      <TypographyP text={task.text} />
+      <TypographyP text={folder.title} />
     </div>
   );
 };

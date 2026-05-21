@@ -1,11 +1,9 @@
-'use server';
-
 import React from 'react';
-import { getFolders } from '@/shared/_api/folders/foldersApi';
+import { getNavigationMenu } from '@/entities/navigation';
 import FoldersCreate from '@/widgets/Aside/ui/FoldersCreate';
 
 const AsideFolders = async () => {
-  const foldersData = await getFolders();
+  const foldersData = await getNavigationMenu();
 
   return <FoldersCreate data={foldersData} />;
 };

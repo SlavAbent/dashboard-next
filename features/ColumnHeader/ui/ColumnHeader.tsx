@@ -7,10 +7,18 @@ import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { ColumnHeaderType } from '@/features/ColumnHeader/types/column-header.types';
+import {
+  countCompletedTasksInColumn,
+  countIncompleteTasksInColumn,
+  getColumnTasksLabel,
+} from '@/entities/board/lib/count-column-tasks';
 
-const ColumnHeader = ({ column, tasksLength }: ColumnHeaderType) => {
-  const isCompletedColumn = column.id === 'completed';
-  const columnText = `${tasksLength} ${isCompletedColumn ? 'completed' : 'open'} tasks`;
+const ColumnHeader = ({ column }: ColumnHeaderType) => {
+  const columnText = getColumnTasksLabel(
+    column.id,
+    countIncompleteTasksInColumn(column),
+    countCompletedTasksInColumn(column)
+  );
 
   return (
     <>

@@ -75,63 +75,157 @@
   ],
   "tasksFolder": [
     {
+      "id": "1",
       "title": "planning folder",
-      "columnId": "planning",
-      "id": "MgXF-eX0lNA"
+      "columnId": "completed",
+      "completed": true
     },
     {
+      "id": "2",
       "title": "upcoming folder",
       "columnId": "upcoming",
-      "id": "-41wmXVljxo"
+      "completed": false
     },
     {
+      "id": "3",
       "title": "completed folder",
       "columnId": "completed",
-      "id": "u1PsTgPnXnc"
+      "completed": true
+    },
+    {
+      "title": "укеы",
+      "columnId": "completed",
+      "id": "-hrXJRO5XUY"
+    },
+    {
+      "title": "еуые",
+      "columnId": "upcoming",
+      "id": "DDqk_6p1rOs"
+    },
+    {
+      "title": "test",
+      "columnId": "completed",
+      "id": "n83gTrxXU0Y",
+      "completed": true
+    },
+    {
+      "title": "234",
+      "columnId": "planning",
+      "id": "uMFZxwUENv0"
     }
   ],
   "tasks": [
     {
-      "id": "2",
-      "column": "upcoming",
+      "id": "1",
+      "tasksFolderId": 2,
       "tags": [],
       "text": "Изучить паттерны проектирования",
       "completed": false
     },
     {
-      "id": "3",
-      "column": "completed",
+      "id": "2",
+      "tasksFolderId": 3,
       "tags": [],
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       "completed": true
     },
     {
-      "id": "4",
-      "column": "planning",
+      "id": "3",
+      "tasksFolderId": 1,
       "tags": [],
       "text": "Redux (redux-observable, redux-saga)",
       "completed": false
     },
     {
-      "id": "b7JTDiCxB3o",
-      "column": "planning",
+      "id": "4",
+      "tasksFolderId": 1,
       "tags": [],
-      "text": "Random text",
+      "text": "Настроить CI pipeline",
       "completed": false
     },
     {
-      "id": "aKpFDoFhJfY",
-      "column": "planning",
+      "id": "5",
+      "tasksFolderId": 1,
       "tags": [],
-      "text": "Random text",
-      "completed": false
+      "text": "Покрыть тестами store",
+      "completed": true
     },
     {
-      "id": "6sFq7v57dSA",
-      "column": "planning",
+      "text": "234532",
       "tags": [],
-      "text": "Random text",
-      "completed": false
+      "completed": false,
+      "tasksFolderId": "u_hAC91iKnk",
+      "id": "TJhO7uekbjs"
+    },
+    {
+      "text": "345",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "lDDu6hACuLE"
+    },
+    {
+      "text": "234234",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "PMZW9mC1G2s"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "exErRENJe7I"
+    },
+    {
+      "text": "test",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": 1,
+      "id": "Pj4VC3HwUrg"
+    },
+    {
+      "text": "ц234",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "tcBGVX5U2VU"
+    },
+    {
+      "text": "324",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "iKf2MbNRAPI"
+    },
+    {
+      "text": "цйуйцу",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "ddeIhavIXTI"
+    },
+    {
+      "text": "йцу",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": "DDqk_6p1rOs",
+      "id": "fcUksPtYFyo"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "n83gTrxXU0Y",
+      "id": "OsyRY8AR2E0"
+    },
+    {
+      "text": "fix test",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "n83gTrxXU0Y",
+      "id": "GVDtw1ORDws"
     }
   ],
   "subtasks": [

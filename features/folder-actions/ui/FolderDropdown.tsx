@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   DropdownMenu,
@@ -10,20 +12,21 @@ import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardModalStore } from '@/features/board-modal';
+import type { EntityId } from '@/shared/lib/same-id';
 
-const FolderDropdown = ({
-  folderId,
-}: {
-  folderId: number;
+type FolderDropdownProps = {
+  folderId: EntityId;
   columnId: string;
-}) => {
-  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null);
+};
+
+const FolderDropdown = ({ folderId, columnId }: FolderDropdownProps) => {
+  const [openDropdown, setOpenDropdown] = useState(false);
   const removeFolder = useBoardStore((state) => state.removeFolder);
+  const openEditFolder = useBoardModalStore((state) => state.openEditFolder);
 
   return (
-    <DropdownMenu
-      open={openDropdownId === folderId}
-      onOpenChange={(isOpen) => setOpenDropdownId(isOpen ? folderId : null)}>
+    <DropdownMenu open={openDropdown} onOpenChange={setOpenDropdown}>
       <DropdownMenuTrigger>
         <div
           role="button"
@@ -34,13 +37,21 @@ const FolderDropdown = ({
 
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              openEditFolder(folderId, columnId);
+              setOpenDropdown(false);
+            }}>
             <TypographyP
               text="Edit"
               className="text-neutral-80 !leading-[145%]"
             />
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => removeFolder(folderId)}>
+          <DropdownMenuItem
+            onClick={() => {
+              removeFolder(folderId);
+              setOpenDropdown(false);
+            }}>
             <TypographyP
               text="Delete"
               className="text-neutral-80 !leading-[145%]"

@@ -1,12 +1,10 @@
-import { getTasks } from '@/entities/board/api/tasks';
-import { getColumns } from '@/entities/board/api/columns';
+import { getTasks, getColumns, getTasksFolders } from '@/entities/board/api/board-api';
 import BoardHydrator from '@/widgets/Board/ui/BoardHydrator/BoardHydrator';
-import { getFolders } from '@/entities/board/api/getFolders';
 
 const TaskBoard = async () => {
   const tasksData = await getTasks();
   const columnsData = await getColumns();
-  const folders = await getFolders();
+  const folders = await getTasksFolders();
 
   return (
     <BoardHydrator tasks={tasksData} columns={columnsData} folders={folders} />

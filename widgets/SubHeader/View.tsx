@@ -16,7 +16,7 @@ const View = ({
   return (
     <div
       className="relative flex cursor-pointer items-center gap-1 border-transparent p-5 transition-colors"
-      onClick={() => handleFilterClick(Number(filter.id))}>
+      onClick={handleFilterClick}>
       <SvgIcon
         icon={filter.icon}
         className={cn('transition-colors duration-300', isActiveElement)}
