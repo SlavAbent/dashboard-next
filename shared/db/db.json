@@ -73,14 +73,24 @@
       "color": "#39C682"
     }
   ],
-  "tasks": [
+  "tasksFolder": [
     {
-      "id": "1",
-      "column": "planning",
-      "tags": [],
-      "text": "Изучить JavaScript",
-      "completed": false
+      "title": "planning folder",
+      "columnId": "planning",
+      "id": "MgXF-eX0lNA"
     },
+    {
+      "title": "upcoming folder",
+      "columnId": "upcoming",
+      "id": "-41wmXVljxo"
+    },
+    {
+      "title": "completed folder",
+      "columnId": "completed",
+      "id": "u1PsTgPnXnc"
+    }
+  ],
+  "tasks": [
     {
       "id": "2",
       "column": "upcoming",
@@ -100,6 +110,27 @@
       "column": "planning",
       "tags": [],
       "text": "Redux (redux-observable, redux-saga)",
+      "completed": false
+    },
+    {
+      "id": "b7JTDiCxB3o",
+      "column": "planning",
+      "tags": [],
+      "text": "Random text",
+      "completed": false
+    },
+    {
+      "id": "aKpFDoFhJfY",
+      "column": "planning",
+      "tags": [],
+      "text": "Random text",
+      "completed": false
+    },
+    {
+      "id": "6sFq7v57dSA",
+      "column": "planning",
+      "tags": [],
+      "text": "Random text",
       "completed": false
     }
   ],

@@ -3,14 +3,15 @@
 import React, { useMemo } from 'react';
 import BoardColumns from '@/widgets/ListView/BoardColumns';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
-import { groupTasks } from '@/shared/lib/groupTasks';
+import { groupTasksToFolders } from '@/shared/lib/groupTasksToFolders';
 
 const BoardView = () => {
   const tasks = useBoardStore((state) => state.tasks);
   const columns = useBoardStore((state) => state.columns);
+  const tasksFolders = useBoardStore((state) => state.tasksFolder);
 
   const boardData = useMemo(() => {
-    return groupTasks(tasks, columns);
+    return groupTasksToFolders(tasks, columns, tasksFolders);
   }, [tasks, columns]);
 
   return (

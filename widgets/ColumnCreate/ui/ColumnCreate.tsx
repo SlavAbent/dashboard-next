@@ -7,26 +7,22 @@ import { cn } from '@/shared/lib/cn';
 import Ellipse from '@/shared/ui/Ellipse/Ellipse';
 import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
-import { Button } from '@/shared/ui/button';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
-
-const mockDataToAddTask = {
-  id: 12,
-  column: 'planning',
-  tags: [],
-  text: 'Random text',
-  completed: false,
-};
+import { useModalStore } from '@/entities/modal/model/modal.store';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const isCompletedColumn = column.id === 'completed';
-  const columnText = `${column.tasks.length} ${isCompletedColumn ? 'completed' : 'open'} tasks`;
+  const columnText = `${column.folders.length} ${isCompletedColumn ? 'completed' : 'open'} tasks`;
 
   const toggleFolder = useBoardStore((state) => state.toggleColumn);
-  const addTask = useBoardStore((state) => state.addTask);
+  const openModal = useModalStore((state) => state.openModal);
+
+  const handleAddFolder = (id: string) => {
+    openModal(id);
+  };
 
   return (
     <div className="mb-5 flex flex-col justify-start">
@@ -49,13 +45,12 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
           />
         </div>
       </div>
-      <Button
-        onClick={() => addTask(mockDataToAddTask)}
-        size="lg"
-        className="button !h-[40] cursor-pointer rounded-sm">
+      <div
+        onClick={() => handleAddFolder(column.id)}
+        className="flex !h-[40] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
         <PlusIcon size={iconSize(16)} className="text-neutral-80" />
-        <TypographySmall text="Create Task" className="text-neutral-80" />
-      </Button>
+        <TypographySmall text="Create Folder" className="text-neutral-80" />
+      </div>
     </div>
   );
 };

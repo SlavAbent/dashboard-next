@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ColumnCreate from '@/widgets/ColumnCreate/ui/ColumnCreate';
-import Task from '@/widgets/Task/Task';
+import Folder from '@/widgets/Folder/Folder';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
 import { BoardColumnsType } from '@/widgets/ListView/types/board-columns';
 
@@ -15,7 +15,7 @@ const BoardColumns = ({ column }: BoardColumnsType) => {
     <>
       <ColumnCreate column={column} isOpen={isOpen} />
 
-      {isOpen && <Task columnId={column.id} />}
+      {isOpen && <Folder columnId={column.id} />}
     </>
   );
 };

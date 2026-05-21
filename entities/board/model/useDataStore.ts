@@ -1,22 +1,38 @@
 import { create } from 'zustand';
-import { Column, Task } from '@/entities/board/model/types/list-types';
-import { addTask, deleteTask } from '@/entities/board/api/tasks';
+import {
+  Column,
+  CreateFolder,
+  Task,
+  TasksFolder,
+} from '@/entities/board/model/types/list-types';
+import {
+  addTask,
+  createFolderTask,
+  deleteFolder,
+} from '@/entities/board/api/tasks';
+import { getNextColumn } from '@/entities/board/lib/get-next-column';
+import { updateFolders } from '@/shared/_api/folder/updateFolders';
 
 type BoardStore = {
   tasks: Task[];
+  tasksFolder: TasksFolder[];
   columns: Column[];
 
   closedColumns: string[];
 
   setBoardData: (tasks: Task[], columns: Column[]) => void;
+  setFolders: (folders: TasksFolder[]) => void;
+  moveFolder: (id: number, currentColumn: string) => void;
 
   addTask: (task: Task) => void;
-  removeTask: (id: number) => void;
+  addFolder: (folder: CreateFolder) => void;
+  removeFolder: (id: number) => void;
   toggleColumn: (columnId: string) => void;
 };
 
 export const useBoardStore = create<BoardStore>((set) => ({
   tasks: [],
+  tasksFolder: [],
   columns: [],
   closedColumns: [],
 
@@ -27,6 +43,32 @@ export const useBoardStore = create<BoardStore>((set) => ({
     });
   },
 
+  setFolders: (folders) => {
+    set({
+      tasksFolder: folders,
+    });
+  },
+
+  moveFolder: async (id, currentColumn) => {
+    const nextColumn = getNextColumn(currentColumn);
+
+    const updatedFolder = await updateFolders(id, nextColumn);
+
+    set((state) => ({
+      tasksFolder: state.tasksFolder.map((folder) =>
+        folder.id === id ? updatedFolder : folder
+      ),
+    }));
+  },
+
+  addFolder: async (tasksFolder) => {
+    const createFolder = await createFolderTask(tasksFolder);
+
+    set((state) => ({
+      tasksFolder: [...state.tasksFolder, createFolder],
+    }));
+  },
+
   addTask: async (task) => {
     await addTask(task);
 
@@ -34,11 +76,11 @@ export const useBoardStore = create<BoardStore>((set) => ({
       tasks: [...state.tasks, task],
     }));
   },
-  removeTask: async (id) => {
-    await deleteTask(id);
+  removeFolder: async (id) => {
+    await deleteFolder(id);
 
     set((state) => ({
-      tasks: state.tasks.filter((task) => task.id !== id),
+      tasksFolder: state.tasksFolder.filter((folder) => folder.id !== id),
     }));
   },
   toggleColumn: (columnId) =>

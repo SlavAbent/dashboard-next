@@ -37,7 +37,7 @@ const AsideHeader = () => {
 
       <div
         onClick={toggle}
-        className="absolute top-1/2 -right-[14px] z-10 -translate-y-1/2 cursor-pointer">
+        className="absolute top-1/2 -right-[14px] -translate-y-1/2 cursor-pointer">
         <ToggleIcon
           size={{
             width: 28,

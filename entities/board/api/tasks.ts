@@ -1,9 +1,13 @@
 'use server';
 
-import type { Task } from '@/entities/board/model/types/list-types';
+import {
+  CreateFolder,
+  Task,
+  TasksFolder,
+} from '@/entities/board/model/types/list-types';
 import { getNextColumn } from '@/entities/board/lib/get-next-column';
-import { tasksApi } from '@/shared/_api/instances';
-import { patchTask } from '@/shared/_api/tasks/patchTask';
+import { tasksApi, tasksFolderApi } from '@/shared/_api/instances';
+import { updateFolders } from '@/shared/_api/folder/updateFolders';
 
 export async function getTasks(): Promise<Task[]> {
   const response = await fetch(tasksApi, {
@@ -11,18 +15,36 @@ export async function getTasks(): Promise<Task[]> {
   });
 
   if (!response.ok) {
-    throw new Error('Failed fetch tasks data');
+    throw new Error('Failed fetch folder data');
   }
 
   return response.json();
 }
 
-export async function updateTask(id: number, currentColumn: string) {
-  return patchTask(id, getNextColumn(currentColumn));
+export async function updateFolder(id: number, currentColumn: string) {
+  return await updateFolders(id, getNextColumn(currentColumn));
 }
 
-export async function updateTaskColumn(id: number, column: string) {
-  return patchTask(id, column);
+export async function updateFolderColumn(id: number, column: string) {
+  return updateFolders(id, column);
+}
+
+export async function createFolderTask(
+  tasksFolder: CreateFolder
+): Promise<TasksFolder> {
+  const response = await fetch(tasksFolderApi, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(tasksFolder),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add folder for folder');
+  }
+
+  return response.json();
 }
 
 export async function addTask(task: Task) {
@@ -41,13 +63,13 @@ export async function addTask(task: Task) {
   return response.json();
 }
 
-export async function deleteTask(id: number) {
-  const response = await fetch(`${tasksApi}/${id}`, {
+export async function deleteFolder(id: number) {
+  const response = await fetch(`${tasksFolderApi}/${id}`, {
     method: 'DELETE',
   });
 
   if (!response.ok) {
-    throw new Error('Failed to delete task');
+    throw new Error('Failed to delete folder');
   }
 
   return true;

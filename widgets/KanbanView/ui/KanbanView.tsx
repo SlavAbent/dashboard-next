@@ -5,17 +5,21 @@ import BoardKanban from '@/widgets/Board/ui/BoardKanban/BoardKanban';
 import { DragDropProvider } from '@dnd-kit/react';
 import KanbanColumn from '@/features/KanbanColumn/ui/KanbanColumn';
 import { move } from '@dnd-kit/helpers';
-import { updateTaskColumn } from '@/entities/board/api/tasks';
 import { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
 import type { DragEndEvent } from '@dnd-kit/react';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
-import { groupTasks } from '@/shared/lib/groupTasks';
+import { groupTasksToFolders } from '@/shared/lib/groupTasksToFolders';
+import { updateFolderColumn } from '@/entities/board/api/tasks';
 
 const KanbanView = () => {
   const tasks = useBoardStore((state) => state.tasks);
   const columns = useBoardStore((state) => state.columns);
+  const tasksFolders = useBoardStore((state) => state.tasksFolder);
 
-  const boardData = useMemo(() => groupTasks(tasks, columns), [tasks, columns]);
+  const boardData = useMemo(
+    () => groupTasksToFolders(tasks, columns, tasksFolders),
+    [tasks, columns]
+  );
 
   const normalized = useMemo(() => normalizeBoardData(boardData), [boardData]);
   const { columns: columnMap, tasksMap, items: derivedItems } = normalized;
@@ -55,7 +59,7 @@ const KanbanView = () => {
     if (oldColumnId === newColumnId) return;
 
     try {
-      await updateTaskColumn(Number(taskId), newColumnId);
+      await updateFolderColumn(Number(taskId), newColumnId);
     } catch (error) {
       console.error(error);
 
