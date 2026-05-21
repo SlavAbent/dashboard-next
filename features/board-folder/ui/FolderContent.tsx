@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, type Ref } from 'react';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { FolderDropdown } from '@/features/folder-actions';
@@ -8,14 +8,23 @@ import { FolderTaskList } from '@/features/folder-task';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
 import { useBoardModalStore } from '@/features/board-modal';
 import { sameId, type EntityId } from '@/shared/lib/same-id';
+import { cn } from '@/shared/lib/cn';
 
 type FolderContentProps = {
   folderId: EntityId;
   columnId: string;
   title: string;
+  dragHandleRef?: Ref<HTMLDivElement>;
+  isDragging?: boolean;
 };
 
-const FolderContent = ({ folderId, columnId, title }: FolderContentProps) => {
+const FolderContent = ({
+  folderId,
+  columnId,
+  title,
+  dragHandleRef,
+  isDragging,
+}: FolderContentProps) => {
   const moveFolder = useBoardStore((state) => state.moveFolder);
   const tasks = useBoardStore((state) => state.tasks);
   const openCreateTask = useBoardModalStore((state) => state.openCreateTask);
@@ -31,8 +40,17 @@ const FolderContent = ({ folderId, columnId, title }: FolderContentProps) => {
   );
 
   return (
-    <div className="flex flex-col rounded-sm border">
-      <div className="flex items-center px-5 py-[18px]">
+    <div
+      className={cn(
+        'flex flex-col rounded-sm border bg-white',
+        isDragging && 'opacity-60'
+      )}>
+      <div
+        ref={dragHandleRef}
+        className={cn(
+          'flex items-center px-5 py-[18px]',
+          dragHandleRef && 'cursor-grab active:cursor-grabbing'
+        )}>
         <div className="flex grow items-center gap-4">
           <Checkbox
             checked={columnId === 'completed'}

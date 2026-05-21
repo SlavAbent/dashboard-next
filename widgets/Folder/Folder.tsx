@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
 import { TasksFolder } from '@/entities/board/model/types/list-types';
-import FolderContent from '@/widgets/Folder/FolderContent';
+import { FolderContent } from '@/features/board-folder';
 
 const Folder = ({ columnId }: { columnId: string }) => {
   const allFolders = useBoardStore((state) => state.tasksFolder);
@@ -20,7 +20,7 @@ const Folder = ({ columnId }: { columnId: string }) => {
 
         return (
           <FolderContent
-            key={id}
+            key={String(id)}
             folderId={id}
             columnId={folderColumnId}
             title={title}

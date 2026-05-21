@@ -9,6 +9,7 @@ import { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
 import type { DragEndEvent } from '@dnd-kit/react';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
 import { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders';
+import { BoardModals } from '@/features/board-modal';
 import type { EntityId } from '@/shared/lib/same-id';
 import { toIdString } from '@/shared/lib/same-id';
 
@@ -69,24 +70,27 @@ const KanbanView = () => {
   };
 
   return (
-    <DragDropProvider onDragEnd={(e) => handleDragEnd(e)}>
-      <div className="flex h-full items-start gap-6">
-        {Object.entries(columnMap).map(([columnId, column]) => {
-          return (
-            <KanbanColumn
-              key={columnId}
-              id={columnId}
-              className="mb-8 flex h-full flex-1 flex-col rounded-xl border p-5">
-              <BoardKanban
-                column={column}
-                itemIds={items[columnId] ?? []}
-                tasksMap={tasksMap}
-              />
-            </KanbanColumn>
-          );
-        })}
-      </div>
-    </DragDropProvider>
+    <>
+      <BoardModals />
+      <DragDropProvider onDragEnd={(e) => handleDragEnd(e)}>
+        <div className="flex h-full items-start gap-6">
+          {Object.entries(columnMap).map(([columnId, column]) => {
+            return (
+              <KanbanColumn
+                key={columnId}
+                id={columnId}
+                className="mb-8 flex h-full flex-1 flex-col rounded-xl border p-5">
+                <BoardKanban
+                  column={column}
+                  itemIds={items[columnId] ?? []}
+                  tasksMap={tasksMap}
+                />
+              </KanbanColumn>
+            );
+          })}
+        </div>
+      </DragDropProvider>
+    </>
   );
 };
 

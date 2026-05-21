@@ -77,13 +77,13 @@
     {
       "id": "1",
       "title": "planning folder",
-      "columnId": "completed",
-      "completed": true
+      "columnId": "upcoming",
+      "completed": false
     },
     {
       "id": "2",
       "title": "upcoming folder",
-      "columnId": "upcoming",
+      "columnId": "planning",
       "completed": false
     },
     {
@@ -100,7 +100,8 @@
     {
       "title": "еуые",
       "columnId": "upcoming",
-      "id": "DDqk_6p1rOs"
+      "id": "DDqk_6p1rOs",
+      "completed": false
     },
     {
       "title": "test",
