@@ -8,20 +8,21 @@ import { move } from '@dnd-kit/helpers';
 import { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
 import type { DragEndEvent } from '@dnd-kit/react';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
 import { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders';
 import { BoardModals } from '@/features/board-modal';
 import type { EntityId } from '@/shared/lib/same-id';
 import { toIdString } from '@/shared/lib/same-id';
 
 const KanbanView = () => {
-  const tasks = useBoardStore((state) => state.tasks);
+  const filteredTasks = useFilteredTasks();
   const columns = useBoardStore((state) => state.columns);
   const tasksFolders = useBoardStore((state) => state.tasksFolder);
   const updateFolder = useBoardStore((state) => state.updateFolder);
 
   const boardData = useMemo(
-    () => groupTasksToFolders(tasks, columns, tasksFolders),
-    [tasks, columns, tasksFolders]
+    () => groupTasksToFolders(filteredTasks, columns, tasksFolders),
+    [filteredTasks, columns, tasksFolders]
   );
 
   const normalized = useMemo(() => normalizeBoardData(boardData), [boardData]);

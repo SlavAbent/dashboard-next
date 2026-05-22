@@ -77,13 +77,13 @@
     {
       "id": "1",
       "title": "planning folder",
-      "columnId": "upcoming",
+      "columnId": "planning",
       "completed": false
     },
     {
       "id": "2",
       "title": "upcoming folder",
-      "columnId": "planning",
+      "columnId": "upcoming",
       "completed": false
     },
     {
@@ -135,14 +135,14 @@
       "tasksFolderId": 1,
       "tags": [],
       "text": "Redux (redux-observable, redux-saga)",
-      "completed": false
+      "completed": true
     },
     {
       "id": "4",
       "tasksFolderId": 1,
       "tags": [],
       "text": "Настроить CI pipeline",
-      "completed": false
+      "completed": true
     },
     {
       "id": "5",
@@ -227,6 +227,41 @@
       "completed": true,
       "tasksFolderId": "n83gTrxXU0Y",
       "id": "GVDtw1ORDws"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "1",
+      "id": "OFOUn4Jwdbc"
+    },
+    {
+      "text": "345",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "1",
+      "id": "AgHNXbzak8c"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "uMFZxwUENv0",
+      "id": "X_qTZaxi2Cg"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "uMFZxwUENv0",
+      "id": "4oU4HgcGH2s"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "uMFZxwUENv0",
+      "id": "PTi7OvFtCAQ"
     }
   ],
   "subtasks": [

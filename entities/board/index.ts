@@ -30,3 +30,10 @@ export {
   deleteFolder,
   updateFolderDetails,
 } from '@/entities/board/api/board-api';
+export { useFiltersStore } from '@/entities/board/model/filters.store';
+export { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
+export { applyTaskFiltersAndSort } from '@/entities/board/lib/filter-sort-tasks';
+export type {
+  TaskFilterOption,
+  TaskSortOption,
+} from '@/entities/board/model/filters.types';

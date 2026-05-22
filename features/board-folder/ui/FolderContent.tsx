@@ -6,6 +6,7 @@ import { Checkbox } from '@/shared/ui/checkbox';
 import { FolderDropdown } from '@/features/folder-actions';
 import { FolderTaskList } from '@/features/folder-task';
 import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
 import { useBoardModalStore } from '@/features/board-modal';
 import { sameId, type EntityId } from '@/shared/lib/same-id';
 import { cn } from '@/shared/lib/cn';
@@ -26,17 +27,17 @@ const FolderContent = ({
   isDragging,
 }: FolderContentProps) => {
   const moveFolder = useBoardStore((state) => state.moveFolder);
-  const tasks = useBoardStore((state) => state.tasks);
+  const filteredTasks = useFilteredTasks();
   const openCreateTask = useBoardModalStore((state) => state.openCreateTask);
   const openEditTask = useBoardModalStore((state) => state.openEditTask);
 
   const folderTasks = useMemo(
     () =>
-      tasks.filter(
+      filteredTasks.filter(
         (task) =>
           task.tasksFolderId != null && sameId(task.tasksFolderId, folderId)
       ),
-    [tasks, folderId]
+    [filteredTasks, folderId]
   );
 
   return (
