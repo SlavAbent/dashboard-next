@@ -9,11 +9,11 @@ import {
 } from '@/widgets/SubHeader/types/sub-header.types';
 import View from '@/widgets/SubHeader/View';
 import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
-import type { Folder } from '@/widgets/Aside/types/folder.types';
+import type { NavigationMenuItem } from '@/entities/navigation';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
-import { useListStore } from '@/entities/board/model/list.store';
-import type { BoardViewMode } from '@/entities/board/model/types';
+import { useViewStore } from '@/entities/board/model/list.store';
+import type { BoardViewMode } from '@/entities/board/model/types/list-types';
 
 const SubHeaderCreate = ({
   foldersData,
@@ -21,15 +21,17 @@ const SubHeaderCreate = ({
 }: SubHeaderCreateType) => {
   const pathname = usePathname();
   const pageKey = routeToKeyMap[pathname];
-  const { setView, activeFilterId, setActiveFilterId } = useListStore();
+  const setView = useViewStore((state) => state.setView);
+  const activeFilterId = useViewStore((state) => state.activeFilterId);
+  const setActiveFilterId = useViewStore((state) => state.setActiveFilterId);
 
   const handleFilterClick = (id: number | null, name: BoardViewMode) => {
     setActiveFilterId(id);
     setView(name);
   };
 
-  const currentPage = foldersData.menu.find((folder: Folder) => {
-    return folder.name.toLowerCase() === pageKey;
+  const currentPage = foldersData.menu.find((item: NavigationMenuItem) => {
+    return item.name.toLowerCase() === pageKey;
   });
 
   const hasFilters = currentPage?.subheader?.filters;

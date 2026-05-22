@@ -1,4 +1,4 @@
-import type { Folder } from '@/widgets/Aside/types/folder.types';
+import type { NavigationMenuItem } from '@/entities/navigation';
 
 export type FilterType = {
   id: string | number;
@@ -7,19 +7,17 @@ export type FilterType = {
 };
 
 export type SubHeaderCreateType = {
+  foldersData: { menu: NavigationMenuItem[] };
   subheaderData: {
     page: {
       name: string;
       view: FilterType[];
     };
   };
-  foldersData: {
-    menu: Folder[];
-  };
 };
 
 export type SubHeaderViewControlType = {
   filter: FilterType;
   isActive: boolean;
-  handleFilterClick: (id: number) => void;
+  handleFilterClick: () => void;
 };

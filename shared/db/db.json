@@ -73,34 +73,195 @@
       "color": "#39C682"
     }
   ],
-  "tasks": [
+  "tasksFolder": [
     {
       "id": "1",
-      "column": "planning",
-      "tags": [],
-      "text": "Изучить JavaScript",
+      "title": "planning folder",
+      "columnId": "planning",
       "completed": false
     },
     {
       "id": "2",
-      "column": "upcoming",
+      "title": "upcoming folder",
+      "columnId": "upcoming",
+      "completed": false
+    },
+    {
+      "id": "3",
+      "title": "completed folder",
+      "columnId": "completed",
+      "completed": true
+    },
+    {
+      "title": "укеы",
+      "columnId": "completed",
+      "id": "-hrXJRO5XUY"
+    },
+    {
+      "title": "еуые",
+      "columnId": "upcoming",
+      "id": "DDqk_6p1rOs",
+      "completed": false
+    },
+    {
+      "title": "test",
+      "columnId": "completed",
+      "id": "n83gTrxXU0Y",
+      "completed": true
+    },
+    {
+      "title": "234",
+      "columnId": "planning",
+      "id": "uMFZxwUENv0"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "tasksFolderId": 2,
       "tags": [],
       "text": "Изучить паттерны проектирования",
       "completed": false
     },
     {
-      "id": "3",
-      "column": "completed",
+      "id": "2",
+      "tasksFolderId": 3,
       "tags": [],
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       "completed": true
     },
     {
-      "id": "4",
-      "column": "planning",
+      "id": "3",
+      "tasksFolderId": 1,
       "tags": [],
       "text": "Redux (redux-observable, redux-saga)",
-      "completed": false
+      "completed": true
+    },
+    {
+      "id": "4",
+      "tasksFolderId": 1,
+      "tags": [],
+      "text": "Настроить CI pipeline",
+      "completed": true
+    },
+    {
+      "id": "5",
+      "tasksFolderId": 1,
+      "tags": [],
+      "text": "Покрыть тестами store",
+      "completed": true
+    },
+    {
+      "text": "234532",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": "u_hAC91iKnk",
+      "id": "TJhO7uekbjs"
+    },
+    {
+      "text": "345",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "lDDu6hACuLE"
+    },
+    {
+      "text": "234234",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "PMZW9mC1G2s"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "exErRENJe7I"
+    },
+    {
+      "text": "test",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": 1,
+      "id": "Pj4VC3HwUrg"
+    },
+    {
+      "text": "ц234",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "tcBGVX5U2VU"
+    },
+    {
+      "text": "324",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "iKf2MbNRAPI"
+    },
+    {
+      "text": "цйуйцу",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": null,
+      "id": "ddeIhavIXTI"
+    },
+    {
+      "text": "йцу",
+      "tags": [],
+      "completed": false,
+      "tasksFolderId": "DDqk_6p1rOs",
+      "id": "fcUksPtYFyo"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "n83gTrxXU0Y",
+      "id": "OsyRY8AR2E0"
+    },
+    {
+      "text": "fix test",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "n83gTrxXU0Y",
+      "id": "GVDtw1ORDws"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "1",
+      "id": "OFOUn4Jwdbc"
+    },
+    {
+      "text": "345",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "1",
+      "id": "AgHNXbzak8c"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "uMFZxwUENv0",
+      "id": "X_qTZaxi2Cg"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "uMFZxwUENv0",
+      "id": "4oU4HgcGH2s"
+    },
+    {
+      "text": "123",
+      "tags": [],
+      "completed": true,
+      "tasksFolderId": "uMFZxwUENv0",
+      "id": "PTi7OvFtCAQ"
     }
   ],
   "subtasks": [

@@ -1,12 +1,10 @@
-'use server';
-
 import React from 'react';
 import SubHeaderCreate from '@/widgets/SubHeader/SubHeaderCreate';
-import { getSubHeaderData } from '@/shared/_api/subheaderApi';
-import { getFolders } from '@/shared/_api/foldersApi';
+import { getSubHeaderData } from '@/shared/_api/subheader/subheaderApi';
+import { getNavigationMenu } from '@/entities/navigation';
 
 const SubHeader = async () => {
-  const foldersData = await getFolders();
+  const foldersData = await getNavigationMenu();
   const subheaderData = await getSubHeaderData();
 
   return (

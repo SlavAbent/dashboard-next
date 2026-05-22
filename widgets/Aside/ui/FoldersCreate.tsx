@@ -3,14 +3,17 @@
 import Card from '@/shared/ui/Card/Card';
 import CardItem from '@/shared/ui/CardItem/CardItem';
 import { SvgIcon } from '@/shared/ui/SvgIcon/SvgIcon';
-
 import { useAsideStore } from '@/entities/aside/model/aside.store';
-import type { FolderCreateType } from '@/widgets/Aside/types/folder.types';
+import type { NavigationMenu } from '@/entities/navigation';
 import { cn } from '@/shared/lib/cn';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-const FoldersCreate = ({ data }: FolderCreateType) => {
+type FoldersCreateProps = {
+  data: NavigationMenu;
+};
+
+const FoldersCreate = ({ data }: FoldersCreateProps) => {
   const pathname = usePathname();
   const collapsed = useAsideStore((state) => state.collapsed);
 

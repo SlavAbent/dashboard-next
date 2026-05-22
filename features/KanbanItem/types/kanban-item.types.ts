@@ -1,7 +1,8 @@
-import type { Task } from '@/entities/board/model/types';
+import type { TasksFolder } from '@/entities/board/model/types/list-types';
+import type { EntityId } from '@/shared/lib/same-id';
 
 export type KanbanItemType = {
-  id: number;
+  id: EntityId;
   index: number;
-  task: Task;
+  folder: TasksFolder;
 };
