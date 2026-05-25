@@ -2,12 +2,9 @@ import type { Task } from '@/entities/board/model/types/list-types';
 import type {
   TaskFilterOption,
   TaskSortOption,
-} from '@/entities/board/model/filters.types';
+} from '@/entities/board/model/types/filters.types';
 
-export function filterTasks(
-  tasks: Task[],
-  filter: TaskFilterOption
-): Task[] {
+export function filterTasks(tasks: Task[], filter: TaskFilterOption): Task[] {
   switch (filter) {
     case 'open':
       return tasks.filter((task) => !task.completed);

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { TasksFolder } from '@/entities/board/model/types/list-types';
 import { FolderContent } from '@/features/board-folder';
 

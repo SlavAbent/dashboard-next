@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import BoardColumns from '@/widgets/ListView/BoardColumns';
 import { BoardModals } from '@/features/board-modal';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
 import { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders';
 

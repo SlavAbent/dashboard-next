@@ -5,7 +5,7 @@ import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { FolderDropdown } from '@/features/folder-actions';
 import { FolderTaskList } from '@/features/folder-task';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
 import { useBoardModalStore } from '@/features/board-modal';
 import { sameId, type EntityId } from '@/shared/lib/same-id';

@@ -7,7 +7,7 @@ import KanbanColumn from '@/features/KanbanColumn/ui/KanbanColumn';
 import { move } from '@dnd-kit/helpers';
 import { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
 import type { DragEndEvent } from '@dnd-kit/react';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
 import { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders';
 import { BoardModals } from '@/features/board-modal';

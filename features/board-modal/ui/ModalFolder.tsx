@@ -1,14 +1,9 @@
 'use client';
 
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useEffect,
-  useState,
-} from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useBoardModalStore } from '@/features/board-modal/model/modal.store';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
@@ -27,7 +22,9 @@ const ModalFolder = () => {
   const isOpen = useBoardModalStore((state) => state.isOpen);
   const mode = useBoardModalStore((state) => state.mode);
   const closeModal = useBoardModalStore((state) => state.closeModal);
-  const selectedColumnId = useBoardModalStore((state) => state.selectedColumnId);
+  const selectedColumnId = useBoardModalStore(
+    (state) => state.selectedColumnId
+  );
   const editingFolderId = useBoardModalStore((state) => state.editingFolderId);
 
   const isEditMode = mode === 'edit-folder';

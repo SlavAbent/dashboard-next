@@ -11,7 +11,7 @@ import {
 import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
 import type { EntityId } from '@/shared/lib/same-id';
 

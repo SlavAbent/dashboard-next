@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { cn } from '@/shared/lib/cn';
 
 type ColumnSelectProps = {
@@ -18,7 +18,7 @@ const ColumnSelect = ({ value, onChange, className }: ColumnSelectProps) => {
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'mb-4 w-full rounded-sm border border-[#AFAFAF] bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1 focus-visible:ring-ring/50',
+        'focus-visible:ring-ring/50 mb-4 w-full rounded-sm border border-[#AFAFAF] bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1',
         className
       )}>
       {columns.map((column) => (

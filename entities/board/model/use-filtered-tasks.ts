@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useFiltersStore } from '@/entities/board/model/filters.store';
 import { applyTaskFiltersAndSort } from '@/entities/board/lib/filter-sort-tasks';
 

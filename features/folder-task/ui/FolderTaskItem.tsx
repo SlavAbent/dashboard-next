@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { cn } from '@/shared/lib/cn';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import type { Task } from '@/entities/board/model/types/list-types';
 import {
   DropdownMenu,

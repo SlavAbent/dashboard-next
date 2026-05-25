@@ -1,14 +1,9 @@
 'use client';
 
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useEffect,
-  useState,
-} from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useBoardModalStore } from '@/features/board-modal/model/modal.store';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
@@ -74,7 +69,7 @@ const ModalTask = () => {
     setError(null);
 
     if (!taskValue.trim() || folderId === '') {
-      setError('Укажите название и папку');
+      setError('What is your folder name?');
       return;
     }
 
@@ -98,7 +93,9 @@ const ModalTask = () => {
 
       closeModal();
     } catch {
-      setError('Не удалось сохранить задачу. Проверьте, что json-server запущен.');
+      setError(
+        'Не удалось сохранить задачу. Проверьте, что json-server запущен.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -114,7 +111,7 @@ const ModalTask = () => {
         <Dialog.Overlay className="fixed inset-0 bg-black/40" />
         <Dialog.Content className="fixed top-1/2 left-1/2 z-10 w-[min(100%-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-6 shadow-lg">
           <Dialog.Title className="mb-4 text-black">
-            {isEditMode ? 'Редактирование задачи' : 'Новая задача'}
+            {isEditMode ? 'Edit task' : 'New task'}
           </Dialog.Title>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <Input
@@ -122,7 +119,7 @@ const ModalTask = () => {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setTaskValue(e.target.value)
               }
-              placeholder="Название задачи"
+              placeholder="Name task"
               className="!w-full"
               autoFocus
               disabled={isSubmitting}
@@ -130,7 +127,7 @@ const ModalTask = () => {
 
             {isEditMode && tasksFolder.length > 0 && (
               <div className="flex flex-col gap-1">
-                <span className="text-sm text-neutral-80">Папка</span>
+                <span className="text-neutral-80 text-sm">Folder</span>
                 <FolderSelect
                   value={folderId}
                   onChange={(id) => setFolderId(id)}
@@ -142,11 +139,9 @@ const ModalTask = () => {
               <label className="flex cursor-pointer items-center gap-3">
                 <Checkbox
                   checked={completed}
-                  onCheckedChange={(checked) =>
-                    setCompleted(checked === true)
-                  }
+                  onCheckedChange={(checked) => setCompleted(checked)}
                 />
-                <span className="text-sm text-neutral-80">Выполнена</span>
+                <span className="text-neutral-80 text-sm">Check</span>
               </label>
             )}
 
@@ -158,13 +153,7 @@ const ModalTask = () => {
               className="flex !h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)] disabled:opacity-50">
               <PlusIcon size={iconSize(16)} className="text-neutral-80" />
               <TypographySmall
-                text={
-                  isSubmitting
-                    ? 'Сохранение...'
-                    : isEditMode
-                      ? 'Сохранить'
-                      : 'Создать'
-                }
+                text={isSubmitting ? 'Save...' : isEditMode ? 'Save' : 'Create'}
                 className="text-neutral-80"
               />
             </button>

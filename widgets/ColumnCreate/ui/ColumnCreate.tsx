@@ -10,7 +10,7 @@ import { TypographyP } from '@/shared/ui/Typography/TypographyP';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
 import {
   countCompletedTasksInColumn,
@@ -34,7 +34,9 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   );
 
   const toggleFolder = useBoardStore((state) => state.toggleColumn);
-  const openCreateFolder = useBoardModalStore((state) => state.openCreateFolder);
+  const openCreateFolder = useBoardModalStore(
+    (state) => state.openCreateFolder
+  );
 
   return (
     <div className="mb-5 flex flex-col justify-start">

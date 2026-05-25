@@ -8,7 +8,7 @@ import { Separator } from '@base-ui/react';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { useFiltersStore } from '@/entities/board/model/filters.store';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
 import { iconSize } from '@/shared/icons/iconSize';
 import {
