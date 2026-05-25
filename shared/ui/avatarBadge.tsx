@@ -22,14 +22,14 @@ import { iconSize } from '@/shared/icons/iconSize';
 import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
 
 export function AvatarDropdown(props: AvatarDropdownType) {
-  const { src, name, separator, options, footer } = props;
+  const { src, name, separator, options, footer, className } = props;
   const [open, setOpen] = useState(false);
 
   const avatarName: string = name.split('')[0];
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className={className}>
         <div className="hover:none flex cursor-pointer items-center gap-2 px-2 hover:bg-transparent hover:text-current hover:shadow-none">
           <Avatar className="h-8 w-8">
             <AvatarImage src={src} alt="avatar" />
