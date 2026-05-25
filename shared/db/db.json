@@ -83,31 +83,32 @@
     {
       "id": "2",
       "title": "upcoming folder",
-      "columnId": "upcoming",
+      "columnId": "planning",
       "completed": false
     },
     {
       "id": "3",
       "title": "completed folder",
-      "columnId": "completed",
-      "completed": true
+      "columnId": "upcoming",
+      "completed": false
     },
     {
       "title": "укеы",
-      "columnId": "completed",
-      "id": "-hrXJRO5XUY"
+      "columnId": "upcoming",
+      "id": "-hrXJRO5XUY",
+      "completed": false
     },
     {
       "title": "еуые",
-      "columnId": "upcoming",
+      "columnId": "planning",
       "id": "DDqk_6p1rOs",
       "completed": false
     },
     {
       "title": "test",
-      "columnId": "completed",
+      "columnId": "upcoming",
       "id": "n83gTrxXU0Y",
-      "completed": true
+      "completed": false
     },
     {
       "title": "234",
@@ -182,7 +183,7 @@
     {
       "text": "test",
       "tags": [],
-      "completed": false,
+      "completed": true,
       "tasksFolderId": 1,
       "id": "Pj4VC3HwUrg"
     },

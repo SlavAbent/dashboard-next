@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useBoardStore } from '@/entities/board/model/useDataStore';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { cn } from '@/shared/lib/cn';
 import { toIdString, type EntityId } from '@/shared/lib/same-id';
 
@@ -20,7 +20,7 @@ const FolderSelect = ({ value, onChange, className }: FolderSelectProps) => {
       value={toIdString(value)}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'w-full rounded-sm border border-[#AFAFAF] bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1 focus-visible:ring-ring/50',
+        'focus-visible:ring-ring/50 w-full rounded-sm border border-[#AFAFAF] bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1',
         className
       )}>
       {tasksFolder.map((folder) => {

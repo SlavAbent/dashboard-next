@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import type {
   TaskFilterOption,
   TaskSortOption,
-} from '@/entities/board/model/filters.types';
+} from '@/entities/board/model/types/filters.types';
 
 type FiltersStore = {
   isOpenSort: boolean;

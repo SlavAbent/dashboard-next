@@ -1,4 +1,4 @@
-export { useBoardStore } from '@/entities/board/model/useDataStore';
+export { useBoardStore } from '@/entities/board/model/use-data.store';
 export { useViewStore } from '@/entities/board/model/list.store';
 export type {
   Task,
@@ -36,4 +36,4 @@ export { applyTaskFiltersAndSort } from '@/entities/board/lib/filter-sort-tasks'
 export type {
   TaskFilterOption,
   TaskSortOption,
-} from '@/entities/board/model/filters.types';
+} from '@/entities/board/model/types/filters.types';

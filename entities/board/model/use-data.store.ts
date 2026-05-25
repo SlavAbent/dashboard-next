@@ -28,10 +28,11 @@ type BoardStore = {
 
   closedColumns: string[];
 
-  setBoardData: (tasks: Task[], columns: Column[]) => void;
-  setFolders: (folders: TasksFolder[]) => void;
-  moveFolder: (id: EntityId, currentColumn: string) => void;
-  updateFolder: (id: EntityId, data: UpdateFolderPayload) => void;
+  setBoardData: (
+    tasks: Task[],
+    columns: Column[],
+    folders: TasksFolder[]
+  ) => void;
 
   addTask: (task: CreateTask) => Promise<void>;
   editTask: (
@@ -41,6 +42,8 @@ type BoardStore = {
   toggleTask: (id: EntityId) => Promise<void>;
   removeTask: (id: EntityId) => Promise<void>;
 
+  moveFolder: (id: EntityId, currentColumn: string) => void;
+  updateFolder: (id: EntityId, data: UpdateFolderPayload) => void;
   addFolder: (folder: CreateFolder) => Promise<void>;
   removeFolder: (id: EntityId) => Promise<void>;
   toggleColumn: (columnId: string) => void;
@@ -52,15 +55,10 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   columns: [],
   closedColumns: [],
 
-  setBoardData: (tasks, columns) => {
+  setBoardData: (tasks, columns, folders) => {
     set({
       tasks: tasks.filter((task) => task.tasksFolderId != null),
       columns,
-    });
-  },
-
-  setFolders: (folders) => {
-    set({
       tasksFolder: folders,
     });
   },
