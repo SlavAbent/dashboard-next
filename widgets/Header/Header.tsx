@@ -7,6 +7,7 @@ import IconWrapper from '@/shared/icons/iconWrapper';
 import { AvatarDropdown } from '@/shared/ui/avatarBadge';
 import Weather from '@/widgets/Weather/Weather';
 import { iconSize } from '@/shared/icons/iconSize';
+import { PomodoroTimer } from '@/features/pomodoro';
 
 const Header = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -49,12 +50,14 @@ const Header = () => {
           }
         />
       </div>
-      <div className="flex items-center">
-        <Weather className="mr-4 cursor-pointer" />
+      <div className="flex items-center gap-2">
+        <PomodoroTimer />
+        <Weather className="cursor-pointer" />
         <AvatarDropdown
           src=""
           name="Abent S."
           separator
+          className="min-w-fit rounded-xs p-1 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30"
           footer={[
             {
               id: 1,

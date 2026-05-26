@@ -8,3 +8,9 @@ export type IconType = {
   className?: string;
   currentColor?: string;
 };
+
+export type CircleProgressProps = {
+  progress?: number;
+  size?: IconSizeType;
+  className?: string;
+};

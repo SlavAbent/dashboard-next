@@ -7,6 +7,7 @@ import { DashboardIcon } from '@/shared/icons/ui/DashboardIcon';
 import { IconType } from '@/shared/icons/types/icon.types';
 import { ListIcon } from '@/shared/icons/ui/ListIcon';
 import { KanbanIcon } from '@/shared/icons/ui/KanbanIcon';
+import { PomodoroIcon } from '@/shared/icons/ui/Pomodoro';
 
 export const iconMapper: Record<string, FC<IconType>> = {
   dashboard: DashboardIcon,
