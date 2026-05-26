@@ -57,7 +57,7 @@ const Header = () => {
           src=""
           name="Abent S."
           separator
-          className="min-w-fit"
+          className="min-w-fit rounded-xs p-1 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30"
           footer={[
             {
               id: 1,

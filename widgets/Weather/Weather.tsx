@@ -51,8 +51,8 @@ const Weather = ({ className }: WeatherType) => {
           setOpen(nextOpen);
         }}>
         <PopoverTrigger>
-          <div className="flex cursor-pointer items-center gap-2 px-2">
-            <CloudIcon size={28} color="#AFAFAF" />
+          <div className="flex cursor-pointer items-center gap-1 px-2">
+            <CloudIcon size={24} color="#AFAFAF" />
 
             <div className="flex items-center gap-2">
               <TypographySmall

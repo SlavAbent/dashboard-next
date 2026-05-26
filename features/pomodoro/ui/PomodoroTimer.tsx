@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { TimerDisplay } from '@/features/pomodoro/ui/TimerDisplay';
 import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
-import { ChevronDown, RotateCcw, SkipForward } from 'lucide-react';
+import { RotateCcw, SkipForward } from 'lucide-react';
 import { usePomodoro } from '@/features/pomodoro/hooks/usePomodoro';
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
-import { cn } from '@/shared/lib/cn';
 import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
 import { formatTitle } from '@/features/pomodoro/lib/format';
+import { CircleProgress } from '@/shared/icons/ui/CircleProgress';
+import { iconSize } from '@/shared/icons/iconSize';
 
 export function PomodoroTimer() {
   const [open, setOpen] = useState(false);
   const { startPause, reset } = usePomodoro();
-  const { remaining, running } = usePomodoroStore();
+  const { remaining, running, totalSeconds } = usePomodoroStore();
 
   const isDone = remaining === 0;
+  const progress = isDone ? 0 : remaining / totalSeconds;
   const startLabel = running ? 'Pause' : isDone ? 'Ready' : 'Start';
 
   return (
@@ -23,27 +25,24 @@ export function PomodoroTimer() {
         setOpen(nextOpen);
       }}>
       <PopoverTrigger>
-        <div className="flex cursor-pointer items-center">
+        <div className="flex min-w-[36px] cursor-pointer items-center gap-2 rounded-xs px-1 py-2 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30">
           {isDone ? (
             <TypographySmall text="Done! Rest & chill" />
           ) : (
-            <TypographySmall text={formatTitle(remaining)} />
+            <>
+              <TypographySmall
+                text={formatTitle(remaining)}
+                className="tabular-nums"
+              />
+              <CircleProgress progress={progress} size={iconSize(18)} />
+            </>
           )}
-
-          <ChevronDown
-            width={16}
-            height={16}
-            className={cn(
-              'h-4 w-4 transition-transform duration-200',
-              open && 'rotate-180'
-            )}
-          />
         </div>
       </PopoverTrigger>
 
       <PopoverContent
         align="end"
-        className="w-100 rounded-sm border border-[#AFAFAF]">
+        className="max-w-auto rounded-sm border border-[#AFAFAF]">
         <div className="flex flex-col items-center justify-center rounded-2xl">
           <TimerDisplay remaining={remaining} />
 
