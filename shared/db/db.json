@@ -334,6 +334,5 @@
       "lastName": "Abent",
       "createdAt": "2026-05-27T09:01:56.663Z"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
