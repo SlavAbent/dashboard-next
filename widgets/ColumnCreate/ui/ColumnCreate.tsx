@@ -40,8 +40,10 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
 
   return (
     <div className="mb-5 flex flex-col justify-start">
-      <div className="mb-6 flex items-center gap-2">
-        <div onClick={() => toggleFolder(column.id)}>
+      <div
+        className="mb-6 flex cursor-pointer items-center gap-2"
+        onClick={() => toggleFolder(column.id)}>
+        <div>
           <ArrowIcon
             size={iconSize(16)}
             className={cn(
@@ -61,7 +63,7 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
       </div>
       <div
         onClick={() => openCreateFolder(column.id)}
-        className="flex !h-[40] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
+        className="flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
         <PlusIcon size={iconSize(16)} className="text-neutral-80" />
         <TypographySmall text="Create Folder" className="text-neutral-80" />
       </div>

@@ -41,7 +41,7 @@ const ColumnHeader = ({ column }: ColumnHeaderType) => {
       <div
         role="button"
         onClick={() => openCreateFolder(column.id)}
-        className="mb-4 flex !h-[40] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
+        className="mb-4 flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
         <PlusIcon size={iconSize(16)} className="text-neutral-80" />
         <TypographySmall text="Create Folder" className="text-neutral-80" />
       </div>

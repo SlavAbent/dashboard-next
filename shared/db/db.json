@@ -77,13 +77,13 @@
     {
       "id": "1",
       "title": "planning folder",
-      "columnId": "planning",
+      "columnId": "upcoming",
       "completed": false
     },
     {
       "id": "2",
       "title": "upcoming folder",
-      "columnId": "planning",
+      "columnId": "upcoming",
       "completed": false
     },
     {
@@ -96,12 +96,6 @@
       "title": "укеы",
       "columnId": "upcoming",
       "id": "-hrXJRO5XUY",
-      "completed": false
-    },
-    {
-      "title": "еуые",
-      "columnId": "planning",
-      "id": "DDqk_6p1rOs",
       "completed": false
     },
     {
@@ -122,7 +116,7 @@
       "tasksFolderId": 2,
       "tags": [],
       "text": "Изучить паттерны проектирования",
-      "completed": false
+      "completed": true
     },
     {
       "id": "2",
@@ -209,16 +203,9 @@
       "id": "ddeIhavIXTI"
     },
     {
-      "text": "йцу",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": "DDqk_6p1rOs",
-      "id": "fcUksPtYFyo"
-    },
-    {
       "text": "123",
       "tags": [],
-      "completed": true,
+      "completed": false,
       "tasksFolderId": "n83gTrxXU0Y",
       "id": "OsyRY8AR2E0"
     },
