@@ -136,7 +136,7 @@
       "tasksFolderId": 1,
       "tags": [],
       "text": "Redux (redux-observable, redux-saga)",
-      "completed": true
+      "completed": false
     },
     {
       "id": "4",
@@ -338,5 +338,14 @@
       ]
     }
   },
+  "messages": [
+    {
+      "id": "NAuhfFjVf5E",
+      "text": "123",
+      "firstName": "Svyatoslav",
+      "lastName": "Abent",
+      "createdAt": "2026-05-27T09:01:56.663Z"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

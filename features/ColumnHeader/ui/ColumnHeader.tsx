@@ -16,7 +16,9 @@ import {
 import { useBoardModalStore } from '@/features/board-modal';
 
 const ColumnHeader = ({ column }: ColumnHeaderType) => {
-  const openCreateFolder = useBoardModalStore((state) => state.openCreateFolder);
+  const openCreateFolder = useBoardModalStore(
+    (state) => state.openCreateFolder
+  );
 
   const columnText = getColumnTasksLabel(
     column.id,

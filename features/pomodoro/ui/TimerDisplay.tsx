@@ -23,7 +23,7 @@ export function TimerDisplay({ remaining }: TimerDisplayProps) {
         {OPTIONS.map((min) => (
           <div key={min}>
             <button
-              role="button"
+              type="button"
               aria-selected={selectedMin === min}
               onClick={() => setMode(min)}
               className={`flex w-full items-center justify-between px-4 py-2.5 font-mono text-sm transition-colors ${

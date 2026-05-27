@@ -1,4 +1,8 @@
-import { getTasks, getColumns, getTasksFolders } from '@/entities/board/api/board-api';
+import {
+  getTasks,
+  getColumns,
+  getTasksFolders,
+} from '@/entities/board/api/board-api';
 import BoardHydrator from '@/widgets/Board/ui/BoardHydrator/BoardHydrator';
 
 const TaskBoard = async () => {

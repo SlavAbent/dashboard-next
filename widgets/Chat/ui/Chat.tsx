@@ -28,46 +28,46 @@ export const ChatBoard = () => {
   return (
     <div className="flex h-full flex-col gap-4 p-10">
       <div className="flex h-full max-h-[400px] flex-col gap-4 overflow-scroll overflow-y-auto border p-4">
-        {messages.map((message) => {
-          const isCurrentUser = message.userId === currentUser.id;
-          const createdAtTime = new Date(message.createdAt).toLocaleTimeString(
-            [],
-            {
+        {messages &&
+          messages.map((message) => {
+            const isCurrentUser = message.userId === currentUser.id;
+            const createdAtTime = new Date(
+              message.createdAt
+            ).toLocaleTimeString([], {
               hour: '2-digit',
               minute: '2-digit',
-            }
-          );
+            });
 
-          return (
-            <div
-              key={message.id}
-              className={cn(
-                'flex',
-                isCurrentUser ? 'justify-end' : 'justify-start'
-              )}>
-              <div className="flex flex-col">
-                <div className="max-w-auto mb-2 flex flex-col items-start rounded-xl bg-gray-100">
-                  <div className="mb-2 flex w-full items-end">
-                    <Avatar className="mr-2 h-8 w-8">
-                      <AvatarImage src={''} alt="avatar" />
-                      <AvatarFallback>A</AvatarFallback>
-                    </Avatar>
-                    <div className="ml-2 text-[10px] text-gray-500">
-                      {createdAtTime}
+            return (
+              <div
+                key={message.id}
+                className={cn(
+                  'flex',
+                  isCurrentUser ? 'justify-end' : 'justify-start'
+                )}>
+                <div className="flex flex-col">
+                  <div className="max-w-auto mb-2 flex flex-col items-start rounded-xl bg-gray-100">
+                    <div className="mb-2 flex w-full items-end">
+                      <Avatar className="mr-2 h-8 w-8">
+                        <AvatarImage src={''} alt="avatar" />
+                        <AvatarFallback>A</AvatarFallback>
+                      </Avatar>
+                      <div className="ml-2 text-[10px] text-gray-500">
+                        {createdAtTime}
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <p className="mr-1 text-sm font-bold">
+                        {message.firstName}
+                      </p>
+                      <p className="text-sm font-bold">{message.lastName}</p>
                     </div>
                   </div>
-                  <div className="flex items-center">
-                    <p className="mr-1 text-sm font-bold">
-                      {message.firstName}
-                    </p>
-                    <p className="text-sm font-bold">{message.lastName}</p>
-                  </div>
+                  <p className="text-xs text-gray-500">{message.text}</p>
                 </div>
-                <p className="text-xs text-gray-500">{message.text}</p>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
       <div className="flex items-center gap-2">
         <Input

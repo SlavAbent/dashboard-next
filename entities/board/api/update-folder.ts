@@ -2,10 +2,7 @@ import type { UpdateFolderPayload } from '@/entities/board/model/types/list-type
 import { tasksFolderApi } from '@/shared/_api/instances';
 import type { EntityId } from '@/shared/lib/same-id';
 
-export async function updateFolders(
-  id: EntityId,
-  data: UpdateFolderPayload
-) {
+export async function updateFolders(id: EntityId, data: UpdateFolderPayload) {
   const body: UpdateFolderPayload & { completed?: boolean } = { ...data };
 
   if (data.columnId) {
