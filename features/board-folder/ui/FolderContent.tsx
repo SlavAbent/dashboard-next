@@ -49,8 +49,7 @@ const FolderContent = ({
       <div
         ref={dragHandleRef}
         className={cn(
-          'flex items-center px-5 py-[18px]',
-          dragHandleRef && 'cursor-grab active:cursor-grabbing'
+          'flex cursor-grab items-center px-5 py-[18px] active:cursor-grabbing'
         )}>
         <div className="flex grow items-center gap-4">
           <Checkbox

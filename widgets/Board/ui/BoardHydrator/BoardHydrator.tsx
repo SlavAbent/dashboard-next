@@ -15,7 +15,7 @@ const BoardHydrator = ({ tasks, columns, folders }: BoardHydratorType) => {
     setBoardData(tasks, columns, folders);
 
     hydratedRef.current = true;
-  }, []);
+  }, [columns, folders, setBoardData, tasks]);
 
   return <BoardCreate />;
 };
