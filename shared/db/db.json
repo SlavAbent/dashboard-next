@@ -83,7 +83,7 @@
     {
       "id": "2",
       "title": "upcoming folder",
-      "columnId": "planning",
+      "columnId": "upcoming",
       "completed": false
     },
     {
@@ -99,21 +99,16 @@
       "completed": false
     },
     {
-      "title": "еуые",
-      "columnId": "planning",
-      "id": "DDqk_6p1rOs",
-      "completed": false
-    },
-    {
       "title": "test",
-      "columnId": "upcoming",
+      "columnId": "planning",
       "id": "n83gTrxXU0Y",
       "completed": false
     },
     {
       "title": "234",
-      "columnId": "planning",
-      "id": "uMFZxwUENv0"
+      "columnId": "upcoming",
+      "id": "uMFZxwUENv0",
+      "completed": false
     }
   ],
   "tasks": [
@@ -122,7 +117,7 @@
       "tasksFolderId": 2,
       "tags": [],
       "text": "Изучить паттерны проектирования",
-      "completed": false
+      "completed": true
     },
     {
       "id": "2",
@@ -143,7 +138,7 @@
       "tasksFolderId": 1,
       "tags": [],
       "text": "Настроить CI pipeline",
-      "completed": true
+      "completed": false
     },
     {
       "id": "5",
@@ -209,23 +204,16 @@
       "id": "ddeIhavIXTI"
     },
     {
-      "text": "йцу",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": "DDqk_6p1rOs",
-      "id": "fcUksPtYFyo"
-    },
-    {
       "text": "123",
       "tags": [],
-      "completed": true,
+      "completed": false,
       "tasksFolderId": "n83gTrxXU0Y",
       "id": "OsyRY8AR2E0"
     },
     {
       "text": "fix test",
       "tags": [],
-      "completed": true,
+      "completed": false,
       "tasksFolderId": "n83gTrxXU0Y",
       "id": "GVDtw1ORDws"
     },
@@ -246,7 +234,7 @@
     {
       "text": "123",
       "tags": [],
-      "completed": true,
+      "completed": false,
       "tasksFolderId": "uMFZxwUENv0",
       "id": "X_qTZaxi2Cg"
     },
@@ -338,5 +326,13 @@
       ]
     }
   },
-  "$schema": "./node_modules/json-server/schema.json"
+  "messages": [
+    {
+      "id": "NAuhfFjVf5E",
+      "text": "123",
+      "firstName": "Svyatoslav",
+      "lastName": "Abent",
+      "createdAt": "2026-05-27T09:01:56.663Z"
+    }
+  ]
 }

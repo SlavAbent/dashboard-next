@@ -25,7 +25,7 @@ const FolderTaskList = ({
     <div className="flex flex-col gap-1 border-t border-[#E8E8E8] px-5 pt-3 pb-4">
       <div className="flex flex-col gap-1">
         {tasks.length === 0 ? (
-          <p className="py-2 text-sm text-neutral-80">Нет задач</p>
+          <p className="text-neutral-80 py-2 text-sm">Нет задач</p>
         ) : (
           tasks.map((task) => (
             <FolderTaskItem

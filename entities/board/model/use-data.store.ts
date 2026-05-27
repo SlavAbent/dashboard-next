@@ -116,17 +116,23 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   },
 
   toggleTask: async (id) => {
-    const task = get().tasks.find((item) => sameId(item.id, id));
+    try {
+      const task = get().tasks.find((item) => sameId(item.id, id));
 
-    if (!task) return;
+      if (!task) return;
 
-    const updatedTask = await updateTask(id, { completed: !task.completed });
+      set((state) => ({
+        tasks: state.tasks.map((item) =>
+          sameId(item.id, id) ? { ...item, completed: !item.completed } : item
+        ),
+      }));
 
-    set((state) => ({
-      tasks: state.tasks.map((item) =>
-        sameId(item.id, id) ? updatedTask : item
-      ),
-    }));
+      await updateTask(id, {
+        completed: !task.completed,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   },
 
   removeTask: async (id) => {

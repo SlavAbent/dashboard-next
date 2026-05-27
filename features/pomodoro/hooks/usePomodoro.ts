@@ -20,7 +20,7 @@ export function usePomodoro() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [store.running]);
+  }, [store, store.running]);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;

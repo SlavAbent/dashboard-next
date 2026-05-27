@@ -8,11 +8,7 @@ import {
 } from '@/entities/board/model/types/list-types';
 import { getNextColumn } from '@/entities/board/lib/get-next-column';
 import { updateFolders } from '@/entities/board/api/update-folder';
-import {
-  columnsApi,
-  tasksApi,
-  tasksFolderApi,
-} from '@/shared/_api/instances';
+import { columnsApi, tasksApi, tasksFolderApi } from '@/shared/_api/instances';
 import type { EntityId } from '@/shared/lib/same-id';
 
 export async function getTasks(): Promise<Task[]> {

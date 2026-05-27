@@ -33,6 +33,7 @@ const ModalFolder = () => {
 
   useEffect(() => {
     if (!isVisible) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFolderValue('');
       setColumnId('');
       return;
@@ -75,7 +76,7 @@ const ModalFolder = () => {
 
       closeModal();
     } catch {
-      // ошибка сети / json-server
+      console.log(e);
     }
   };
 

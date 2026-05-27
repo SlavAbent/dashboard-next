@@ -35,7 +35,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="border-bottom flex items-center px-8 py-[15.5]">
+    <div className="border-bottom flex min-h-[70px] items-center px-8 py-[15.5]">
       <div className="grow">
         <Input
           ref={inputRef}

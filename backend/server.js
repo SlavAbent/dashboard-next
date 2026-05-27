@@ -1,6 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { createServer } = require('http');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const next = require('next');
-
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { Server } = require('socket.io');
 
 const dev = process.env.NODE_ENV !== 'production';
