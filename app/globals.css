@@ -30,6 +30,14 @@
   --color-neutral-50: oklch(90% 0.006 0); /* #E4E4E4 */
   --color-neutral-70: oklch(72% 0.01 0); /* #AFAFAF */
   --color-neutral-80: oklch(48% 0.015 0); /* #727272 */
+
+  --animate-blink: blink 2s steps(1, end) infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
 }
 
 @layer base {
