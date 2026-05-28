@@ -51,34 +51,34 @@ const Weather = ({ className }: WeatherType) => {
           setOpen(nextOpen);
         }}>
         <PopoverTrigger>
-          <div className="flex cursor-pointer items-center gap-1 px-2">
+          <div className="flex cursor-pointer items-center gap-1">
             <CloudIcon size={24} color="#AFAFAF" />
 
             <div className="flex items-center gap-2">
-              <TypographySmall
-                text={currentCity}
-                className="max-w-[120px] truncate !leading-5"
-              />
               <TypographySmall
                 text={`${currentTemp}°C`}
                 className="!leading-5"
               />
             </div>
 
-            <ChevronDown
+            {/* <ChevronDown
               width={16}
               height={16}
               className={cn(
                 'h-4 w-4 transition-transform duration-200',
                 open && 'rotate-180'
               )}
-            />
+            /> */}
           </div>
         </PopoverTrigger>
 
         <PopoverContent
           align="end"
           className="w-100 rounded-sm border border-[#AFAFAF] p-4">
+          <TypographySmall
+            text={`Current city: ${currentCity}`}
+            className="!leading-5"
+          />
           <div className="flex items-center gap-2">
             <Input
               value={query}
