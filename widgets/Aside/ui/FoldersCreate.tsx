@@ -1,8 +1,8 @@
 'use client';
 
-import Card from '@/shared/ui/Card/Card';
-import CardItem from '@/shared/ui/CardItem/CardItem';
-import { SvgIcon } from '@/shared/ui/SvgIcon/SvgIcon';
+import Card from '@/shared/components/Card/Card';
+import CardItem from '@/shared/components/CardItem/CardItem';
+import { SvgIcon } from '@/shared/components/SvgIcon/SvgIcon';
 import { useAsideStore } from '@/entities/aside/model/aside.store';
 import type { NavigationMenu } from '@/entities/navigation';
 import { cn } from '@/shared/lib/cn';

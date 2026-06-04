@@ -4,8 +4,8 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/ui/dropdown-menu';
-import { MenuProps } from '@/shared/ui/Menu/menu.types';
+} from '@/shared/components/dropdown-menu';
+import { MenuProps } from '@/shared/components/Menu/menu.types';
 
 export const Menu = ({
   label,

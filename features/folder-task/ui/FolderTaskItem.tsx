@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Checkbox } from '@/shared/ui/checkbox';
-import { TypographyP } from '@/shared/ui/Typography/TypographyP';
+import { Checkbox } from '@/shared/components/checkbox';
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { cn } from '@/shared/lib/cn';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
 import type { Task } from '@/entities/board/model/types/list-types';
@@ -12,7 +12,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/ui/dropdown-menu';
+} from '@/shared/components/dropdown-menu';
 import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 

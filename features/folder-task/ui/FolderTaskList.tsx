@@ -4,7 +4,7 @@ import React from 'react';
 import FolderTaskItem from '@/features/folder-task/ui/FolderTaskItem';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
-import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import type { Task } from '@/entities/board/model/types/list-types';
 import type { EntityId } from '@/shared/lib/same-id';
 

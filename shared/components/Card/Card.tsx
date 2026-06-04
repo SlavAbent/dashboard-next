@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardType } from '@/shared/ui/Card/card.types';
+import { CardType } from '@/shared/components/Card/card.types';
 
 const Card = ({ children, className }: CardType) => {
   return (

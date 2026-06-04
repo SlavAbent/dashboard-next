@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardItemType } from '@/shared/ui/CardItem/card-item.types';
+import { CardItemType } from '@/shared/components/CardItem/card-item.types';
 import { cn } from '@/shared/lib/cn';
 
 const CardItem = ({ children, onClick, className }: CardItemType) => {

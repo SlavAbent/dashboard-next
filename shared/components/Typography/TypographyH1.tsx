@@ -1,4 +1,4 @@
-import { TypographyType } from '@/shared/ui/Typography/typography.types';
+import { TypographyType } from '@/shared/components/Typography/typography.types';
 
 export function TypographyH1({ text, className }: TypographyType) {
   return (

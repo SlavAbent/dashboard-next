@@ -7,10 +7,10 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/ui/dropdown-menu';
+} from '@/shared/components/dropdown-menu';
 import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
 import { iconSize } from '@/shared/icons/iconSize';
-import { TypographyP } from '@/shared/ui/Typography/TypographyP';
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
 import type { EntityId } from '@/shared/lib/same-id';

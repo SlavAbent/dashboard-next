@@ -9,6 +9,7 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -19,18 +20,34 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "tailwindcss",
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": "error",
+
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
-    "no-console": "warn"
+
+    "no-console": "warn",
+
+    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/no-contradicting-classname": "error",
+    "tailwindcss/enforces-shorthand": "warn"
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "tailwindcss": {
+      "config": "./tailwind.config.ts"
     }
   }
 }

@@ -6,6 +6,7 @@ import AppAside from '@/widgets/Aside/ui/AppAside';
 import Header from '@/widgets/Header/Header';
 import SubHeader from '@/widgets/SubHeader/SubHeader';
 import Providers from '@/app/_providers';
+import { ReactNode } from 'react';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" className={cn('font-mono', jetbrainsMono.variable)}>
