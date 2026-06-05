@@ -8,7 +8,7 @@ import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { Input } from '@/shared/components/input';
-import { Checkbox } from '@/shared/components/checkbox';
+import { Checkbox } from '@/shared/components/Checkbox/checkbox';
 import FolderSelect from '@/features/board-modal/ui/FolderSelect';
 import type { Task } from '@/entities/board/model/types/list-types';
 import { sameId, type EntityId } from '@/shared/lib/same-id';

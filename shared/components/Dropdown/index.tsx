@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuTrigger,
-} from '@/shared/components/dropdown-menu';
+} from '@/shared/components/Dropdown/ui/dropdown-menu';
 
 import { DropdownProps } from '@/shared/components/Dropdown/types/dropdown.types';
 import { DropdownHeader } from '@/shared/components/Dropdown/ui/dropdown-header';

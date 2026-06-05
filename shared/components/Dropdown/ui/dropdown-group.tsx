@@ -9,7 +9,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from '@/shared/components/dropdown-menu';
+} from '@/shared/components/Dropdown/ui/dropdown-menu';
 
 export function DropdownGroup({ options }: DropdownProps) {
   if (!options?.length) return null;

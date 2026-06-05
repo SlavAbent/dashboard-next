@@ -2,7 +2,7 @@ import React from 'react';
 import { CardItemType } from '@/shared/components/CardItem/card-item.types';
 import { cn } from '@/shared/lib/cn';
 
-const CardItem = ({ children, onClick, className }: CardItemType) => {
+export const CardItem = ({ children, onClick, className }: CardItemType) => {
   return (
     <div
       className={cn(
@@ -14,5 +14,3 @@ const CardItem = ({ children, onClick, className }: CardItemType) => {
     </div>
   );
 };
-
-export default CardItem;

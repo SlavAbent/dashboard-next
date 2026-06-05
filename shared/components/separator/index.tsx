@@ -1,9 +1,9 @@
 'use client';
 
 import { Separator as SeparatorPrimitive } from '@base-ui/react/separator';
-import { cn } from '@/shared/lib/cn';
+import cn from 'clsx';
 
-export const Separator = ({
+export const Index = ({
   className,
   orientation = 'horizontal',
   ...props

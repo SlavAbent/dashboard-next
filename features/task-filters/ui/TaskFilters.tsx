@@ -16,7 +16,7 @@ import {
   sortOptions,
   sortLabels,
 } from '@/features/task-filters/config/filter-options';
-import { Separator } from '@/shared/components/separator';
+import { Index } from '@/shared/components/separator';
 
 const TaskFilters = () => {
   const {
@@ -80,7 +80,7 @@ const TaskFilters = () => {
         }
       />
 
-      <Separator
+      <Index
         orientation="vertical"
         className="h-[50px] w-[1px] gap-4 bg-[#E4E4E4]"
       />

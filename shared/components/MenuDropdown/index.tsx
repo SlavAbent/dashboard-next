@@ -4,7 +4,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/components/dropdown-menu';
+} from '@/shared/components/Dropdown/ui/dropdown-menu';
 import { MenuProps } from '@/shared/components/MenuDropdown/menu.types';
 import cn from 'clsx';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';

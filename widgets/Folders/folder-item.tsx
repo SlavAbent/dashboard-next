@@ -3,12 +3,12 @@
 import React from 'react';
 import { normalizePath } from '@/shared/config/normalizePath';
 import Link from 'next/link';
-import CardItem from '@/shared/components/CardItem/CardItem';
 import { cn } from '@/shared/lib/cn';
 import { SvgIcon } from '@/shared/icons/SvgIcon';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { FolderItemProps } from '@/entities/navigation/model/types';
 import { usePathname } from 'next/navigation';
+import { CardItem } from '@/shared/components/CardItem/card-item';
 
 export const FolderItem = ({
   id,

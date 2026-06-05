@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Checkbox } from '@/shared/components/checkbox';
+import { Checkbox } from '@/shared/components/Checkbox/checkbox';
 import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { cn } from '@/shared/lib/cn';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
@@ -12,7 +12,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/components/dropdown-menu';
+} from '@/shared/components/Dropdown/ui/dropdown-menu';
 import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 

@@ -7,7 +7,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/components/dropdown-menu';
+} from '@/shared/components/Dropdown/ui/dropdown-menu';
 import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographyP } from '@/shared/components/Typography/TypographyP';
