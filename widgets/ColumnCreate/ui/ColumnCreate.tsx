@@ -4,7 +4,6 @@ import React, { useMemo } from 'react';
 import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { cn } from '@/shared/lib/cn';
-import Ellipse from '@/shared/components/Ellipse/Ellipse';
 import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
 import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
@@ -17,6 +16,7 @@ import {
   countIncompleteTasksInColumn,
   getColumnTasksLabel,
 } from '@/entities/board/lib/count-column-tasks';
+import { Ellipse } from '@/shared/components/Ellipse';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const incompleteCount = useMemo(

@@ -40,7 +40,14 @@
 
     "tailwindcss/classnames-order": "warn",
     "tailwindcss/no-contradicting-classname": "error",
-    "tailwindcss/enforces-shorthand": "warn"
+    "tailwindcss/enforces-shorthand": "warn",
+
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/stable-query-client": "error",
+    "@tanstack/query/no-unstable-deps": "error"
   },
   "settings": {
     "react": {

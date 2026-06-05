@@ -11,6 +11,8 @@ export type NavigationMenuItem = {
   subheader: NavigationSubheader;
 };
 
+export type FolderItemProps = Pick<NavigationMenuItem, 'id' | 'name' | 'icon'>;
+
 export type NavigationMenu = {
   menu: NavigationMenuItem[];
 };

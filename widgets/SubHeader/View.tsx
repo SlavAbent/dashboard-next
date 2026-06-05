@@ -1,5 +1,5 @@
 import React from 'react';
-import { SvgIcon } from '@/shared/components/SvgIcon/SvgIcon';
+import { SvgIcon } from '@/shared/icons/SvgIcon';
 import { cn } from '@/shared/lib/cn';
 import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { SubHeaderViewControlType } from '@/widgets/SubHeader/types/sub-header.types';

@@ -25,7 +25,7 @@ export const MenuDropdown = ({
     <DropdownMenu open={open} onOpenChange={onOpenChange}>
       <DropdownMenuTrigger
         className={cn(
-          'flex cursor-pointer items-center gap-2 rounded-sm border border-black px-3 py-1',
+          'flex h-10 cursor-pointer items-center gap-2 rounded-sm border border-black px-3 py-1',
           className
         )}>
         {icon}
