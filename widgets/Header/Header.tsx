@@ -60,7 +60,7 @@ const Header = () => {
           isAvatar
           text="Abent S."
           className="min-w-fit rounded-xs p-1 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30"
-          items={[
+          options={[
             { id: '1', title: 'Profile' },
             { id: '2', title: 'Billing' },
             { id: '3', separator: true },

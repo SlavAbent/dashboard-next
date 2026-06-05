@@ -19,7 +19,7 @@ export type DropdownBase = {
 };
 
 export type DropdownProps = DropdownBase & {
-  items?: DropdownItem[];
+  options?: DropdownItem[];
 };
 
 export type DropdownHeaderProps = Pick<

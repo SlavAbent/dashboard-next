@@ -9,7 +9,7 @@ import {
 
 import { DropdownProps } from '@/shared/components/Dropdown/types/dropdown.types';
 import { DropdownHeader } from '@/shared/components/Dropdown/ui/dropdown-header';
-import { AvatarGroup } from '@/shared/components/Dropdown/ui/dropdown-group';
+import { DropdownGroup } from '@/shared/components/Dropdown/ui/dropdown-group';
 import { useState } from 'react';
 import DropdownText from '@/shared/components/Dropdown/ui/dropdown-text';
 
@@ -19,7 +19,7 @@ export function Dropdown(props: DropdownProps) {
     isAvatar,
     text = 'User',
     size,
-    items,
+    options,
     classNameContainer,
     classNameText,
   } = props;
@@ -42,7 +42,7 @@ export function Dropdown(props: DropdownProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuGroup>
-          <AvatarGroup items={items} />
+          <DropdownGroup options={options} />
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

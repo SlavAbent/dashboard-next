@@ -6,6 +6,9 @@ export type DropdownOption = {
 };
 
 export type MenuProps = {
+  className?: string;
+  classNameItem?: string;
+  classNameText?: string;
   label: string;
   open: boolean;
   icon: ReactNode;

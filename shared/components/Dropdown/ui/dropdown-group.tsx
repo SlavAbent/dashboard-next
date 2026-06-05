@@ -11,19 +11,19 @@ import {
   DropdownMenuSeparator,
 } from '@/shared/components/dropdown-menu';
 
-export function AvatarGroup({ items }: DropdownProps) {
-  if (!items?.length) return null;
+export function DropdownGroup({ options }: DropdownProps) {
+  if (!options?.length) return null;
 
   return (
     <DropdownMenuGroup>
-      {items.map((item: DropdownItem) => {
-        if (item.separator) {
-          return <DropdownMenuSeparator key={item.id} />;
+      {options.map((option: DropdownItem) => {
+        if (option.separator) {
+          return <DropdownMenuSeparator key={option.id} />;
         }
 
         return (
-          <DropdownMenuItem key={item.id} onClick={item.onClick}>
-            {item.title}
+          <DropdownMenuItem key={option.id} onClick={option.onClick}>
+            {option.title}
           </DropdownMenuItem>
         );
       })}
