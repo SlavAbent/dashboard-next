@@ -1,12 +1,11 @@
 'use client';
 
 import React from 'react';
-import Ellipse from '@/shared/ui/Ellipse/Ellipse';
-import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
-import { TypographyP } from '@/shared/ui/Typography/TypographyP';
+import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
-import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { ColumnHeaderType } from '@/features/ColumnHeader/types/column-header.types';
 import {
   countCompletedTasksInColumn,
@@ -14,6 +13,7 @@ import {
   getColumnTasksLabel,
 } from '@/entities/board/lib/count-column-tasks';
 import { useBoardModalStore } from '@/features/board-modal';
+import { Ellipse } from '@/shared/components/Ellipse';
 
 const ColumnHeader = ({ column }: ColumnHeaderType) => {
   const openCreateFolder = useBoardModalStore(

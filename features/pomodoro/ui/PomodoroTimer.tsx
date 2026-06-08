@@ -3,8 +3,12 @@ import { TimerDisplay } from '@/features/pomodoro/ui/TimerDisplay';
 import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
 import { RotateCcw, SkipForward } from 'lucide-react';
 import { usePomodoro } from '@/features/pomodoro/hooks/usePomodoro';
-import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
-import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/shared/components/Popover/popover';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { formatTitle } from '@/features/pomodoro/lib/format';
 import { CircleProgress } from '@/shared/icons/ui/CircleProgress';
 import { iconSize } from '@/shared/icons/iconSize';

@@ -3,13 +3,17 @@
 import React, { useState } from 'react';
 import { useConnectChat } from '@/features/connect-chat/model/useConnectChat';
 import { useMessageStore } from '@/entities/message/model/message.store';
-import { Input } from '@/shared/ui/input';
-import { Button } from '@/shared/ui/button';
+import { Input } from '@/shared/components/Input/input';
+import { Button } from '@/shared/components/Button/button';
 import { useSendMessage } from '@/features/connect-chat/model/useSendMessage';
 import { currentUser } from '@/shared/config/current-user';
 import cn from 'clsx';
-import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
-import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/shared/components/Avatar/avatar';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 
 export const ChatBoard = () => {
   useConnectChat();

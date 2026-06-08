@@ -2,18 +2,18 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
+import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
 import {
   FilterType,
   SubHeaderCreateType,
 } from '@/widgets/SubHeader/types/sub-header.types';
 import View from '@/widgets/SubHeader/View';
-import SubHeaderFilters from '@/widgets/SubHeader/SubHeaderFilters';
 import type { NavigationMenuItem } from '@/entities/navigation';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 import { formatedTitle } from '@/shared/config/formattedTitle';
 import { useViewStore } from '@/entities/board/model/list.store';
 import type { BoardViewMode } from '@/entities/board/model/types/list-types';
+import { TaskFilters } from '@/features/task-filters';
 
 const SubHeaderCreate = ({
   foldersData,
@@ -60,7 +60,7 @@ const SubHeaderCreate = ({
             })}
         </div>
       </div>
-      {hasFilters && <SubHeaderFilters />}
+      {hasFilters && <TaskFilters />}
     </div>
   );
 };

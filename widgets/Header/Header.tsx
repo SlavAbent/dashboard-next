@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Input } from '@/shared/ui/input';
+import { Input } from '@/shared/components/Input/input';
 import { SearchIcon } from '@/shared/icons/ui/SearchIcon';
 import IconWrapper from '@/shared/icons/iconWrapper';
-import { AvatarDropdown } from '@/shared/ui/avatarBadge';
+import { Dropdown } from '@/shared/components/Dropdown';
 import Weather from '@/widgets/Weather/Weather';
 import { iconSize } from '@/shared/icons/iconSize';
 import { PomodoroTimer } from '@/features/pomodoro';
@@ -55,29 +55,19 @@ const Header = () => {
         <PomodoroTimer />
         <Weather className="min-w-fit cursor-pointer rounded-xs p-1 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30" />
         <Clock className="" />
-        <AvatarDropdown
+        <Dropdown
           src=""
-          name="Abent S."
-          separator
+          isAvatar
+          text="Abent S."
           className="min-w-fit rounded-xs p-1 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30"
-          footer={[
-            {
-              id: 1,
-              title: 'Log out',
-            },
-          ]}
           options={[
+            { id: '1', title: 'Profile' },
+            { id: '2', title: 'Billing' },
+            { id: '3', separator: true },
             {
-              id: 1,
-              title: 'Profile',
-            },
-            {
-              id: 2,
-              title: 'Billing',
-            },
-            {
-              id: 3,
-              title: 'Settings',
+              id: '4',
+              title: 'Log out',
+              destructive: true,
             },
           ]}
         />

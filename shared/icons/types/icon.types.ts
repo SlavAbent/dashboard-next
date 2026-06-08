@@ -14,3 +14,5 @@ export type CircleProgressProps = {
   size?: IconSizeType;
   className?: string;
 };
+
+export type SvgIconType = { icon: string; className?: string };

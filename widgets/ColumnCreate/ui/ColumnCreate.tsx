@@ -4,11 +4,10 @@ import React, { useMemo } from 'react';
 import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { cn } from '@/shared/lib/cn';
-import Ellipse from '@/shared/ui/Ellipse/Ellipse';
-import { TypographyH3 } from '@/shared/ui/Typography/TypographyH3';
-import { TypographyP } from '@/shared/ui/Typography/TypographyP';
+import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
-import { TypographySmall } from '@/shared/ui/Typography/TypographySmall';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
@@ -17,6 +16,7 @@ import {
   countIncompleteTasksInColumn,
   getColumnTasksLabel,
 } from '@/entities/board/lib/count-column-tasks';
+import { Ellipse } from '@/shared/components/Ellipse';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const incompleteCount = useMemo(
