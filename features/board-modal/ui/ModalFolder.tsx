@@ -7,7 +7,7 @@ import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
-import { Input } from '@/shared/components/input';
+import { Input } from '@/shared/components/Input/input';
 import ColumnSelect from '@/features/board-modal/ui/ColumnSelect';
 import { sameId } from '@/shared/lib/same-id';
 

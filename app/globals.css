@@ -4,32 +4,37 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-*: initial;
+    --color-*: initial;
 
-  --color-white: oklch(100% 0 0);
-  --color-black: oklch(0% 0 0);
+    --color-white: oklch(100% 0 0);
+    --color-black: oklch(0% 0 0);
 
-  /* Основные цвета */
-  --color-blue-60: oklch(55% 0.18 250); /* #4976F4 */
-  --color-blue-10: oklch(96% 0.02 250); /* #EDF2FE */
+    /* Blue */
+    --color-blue-60: oklch(62% 0.21 262);
+    --color-blue-10: oklch(97% 0.015 262);
 
-  --color-green-60: oklch(62% 0.13 145); /* #589E67 */
-  --color-green-10: oklch(96% 0.03 145); /* #EEF5F0 */
+    /* Green */
+    --color-green-60: oklch(65% 0.12 145);
+    --color-green-10: oklch(97% 0.015 145);
 
-  --color-orange-60: oklch(68% 0.15 45); /* #D28E3D */
-  --color-orange-10: oklch(97% 0.025 45); /* #FBF4EC */
+    /* Orange */
+    --color-orange-60: oklch(72% 0.14 55);
+    --color-orange-10: oklch(98% 0.015 55);
 
-  --color-yellow-100: oklch(72% 0.14 85); /* #B1AB1D */
-  --color-yellow-10: oklch(97% 0.03 85); /* #F7F7E8 */
+    /* Yellow */
+    --color-yellow-100: oklch(80% 0.12 100);
+    --color-yellow-10: oklch(98% 0.015 100);
 
-  --color-purple-100: oklch(52% 0.19 310); /* #954BAF */
-  --color-purple-10: oklch(96% 0.025 310); /* #F4EDF7 */
+    /* Purple */
+    --color-purple-100: oklch(58% 0.18 315);
+    --color-purple-10: oklch(97% 0.015 315);
 
-  --color-neutral-20: oklch(98% 0.003 0);
-  --color-neutral-30: oklch(95% 0.005 0);
-  --color-neutral-50: oklch(90% 0.006 0); /* #E4E4E4 */
-  --color-neutral-70: oklch(72% 0.01 0); /* #AFAFAF */
-  --color-neutral-80: oklch(48% 0.015 0); /* #727272 */
+    /* Neutral */
+    --color-neutral-20: oklch(98% 0 0);
+    --color-neutral-30: oklch(95% 0 0);
+    --color-neutral-50: oklch(90% 0.002 260);
+    --color-neutral-70: oklch(72% 0.003 260);
+    --color-neutral-80: oklch(48% 0.004 260);
 
   --animate-blink: blink 2s steps(1, end) infinite;
 

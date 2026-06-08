@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { useConnectChat } from '@/features/connect-chat/model/useConnectChat';
 import { useMessageStore } from '@/entities/message/model/message.store';
-import { Input } from '@/shared/components/input';
-import { Button } from '@/shared/components/button';
+import { Input } from '@/shared/components/Input/input';
+import { Button } from '@/shared/components/Button/button';
 import { useSendMessage } from '@/features/connect-chat/model/useSendMessage';
 import { currentUser } from '@/shared/config/current-user';
 import cn from 'clsx';

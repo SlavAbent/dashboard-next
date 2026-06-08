@@ -7,7 +7,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/shared/components/popover';
+} from '@/shared/components/Popover/popover';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { formatTitle } from '@/features/pomodoro/lib/format';
 import { CircleProgress } from '@/shared/icons/ui/CircleProgress';

@@ -16,7 +16,7 @@ import {
   sortOptions,
   sortLabels,
 } from '@/features/task-filters/config/filter-options';
-import { Index } from '@/shared/components/separator';
+import { Index } from '@/shared/components/Separator';
 
 const TaskFilters = () => {
   const {

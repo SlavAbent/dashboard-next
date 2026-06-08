@@ -1,20 +1,16 @@
 import * as React from 'react';
 import { Input as InputPrimitive } from '@base-ui/react/input';
 import { cn } from '@/shared/lib/cn';
+import { InputProps } from '@/shared/components/Input/input.types';
 
-type InputProps = React.ComponentProps<'input'> & {
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-};
-
-function Input({
+export const Input = ({
   className,
   type,
   leftIcon,
   rightIcon,
   onChange,
   ...props
-}: InputProps) {
+}: InputProps) => {
   return (
     <div className="relative w-fit">
       {leftIcon && (
@@ -44,6 +40,4 @@ function Input({
       )}
     </div>
   );
-}
-
-export { Input };
+};

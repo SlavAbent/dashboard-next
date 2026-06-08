@@ -1,16 +1,16 @@
 'use client';
 
 import React, { ChangeEvent, useState } from 'react';
-import { ChevronDown, CloudIcon, CloudSun, Loader2 } from 'lucide-react';
+import { CloudIcon, CloudSun, Loader2 } from 'lucide-react';
 import { cn } from '@/shared/lib/cn';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/shared/components/popover';
-import { Button } from '@/shared/components/button';
-import { Input } from '@/shared/components/input';
+} from '@/shared/components/Popover/popover';
+import { Button } from '@/shared/components/Button/button';
+import { Input } from '@/shared/components/Input/input';
 import { useGeocodeCity } from '@/widgets/Weather/hooks/useGeocodeCity';
 import { useWeather } from '@/widgets/Weather/hooks/useWeather';
 import { WeatherType } from '@/widgets/Weather/types/weather.types';

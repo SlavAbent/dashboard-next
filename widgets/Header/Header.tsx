@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Input } from '@/shared/components/input';
+import { Input } from '@/shared/components/Input/input';
 import { SearchIcon } from '@/shared/icons/ui/SearchIcon';
 import IconWrapper from '@/shared/icons/iconWrapper';
 import { Dropdown } from '@/shared/components/Dropdown';
