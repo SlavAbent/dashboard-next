@@ -32,10 +32,5 @@
 
     /* Animation */
     --animate-blink: blink 2s steps(1, end) infinite;
-
-    @keyframes blink {
-        50% {
-            opacity: 0;
-        }
-    }
+    --animate-shimmer: shimmer 1.6s infinite;
 }

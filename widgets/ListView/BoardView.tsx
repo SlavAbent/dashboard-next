@@ -20,7 +20,7 @@ const BoardView = () => {
     <>
       <BoardModals />
       {boardData.map((column) => (
-        <div key={column.id} className="mb-8 flex flex-col">
+        <div key={column.id} className="mb-8 flex flex-col gap-4">
           <BoardColumns column={column} />
         </div>
       ))}

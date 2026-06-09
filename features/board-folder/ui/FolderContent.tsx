@@ -32,11 +32,7 @@ const FolderContent = ({
   const openEditTask = useBoardModalStore((state) => state.openEditTask);
 
   const folderTasks = useMemo(
-    () =>
-      filteredTasks.filter(
-        (task) =>
-          sameId(task.taskFolderId, folderId)
-      ),
+    () => filteredTasks.filter((task) => sameId(task.taskFolderId, folderId)),
     [filteredTasks, folderId]
   );
 

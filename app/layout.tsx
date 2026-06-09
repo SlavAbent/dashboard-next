@@ -1,23 +1,13 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import '../shared/styles/global.css';
 import { cn } from '@/shared/lib/cn';
 import Providers from '@/app/_providers';
 import { ReactNode } from 'react';
 import { App } from '@/app/app';
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-});
-
 const geistSans = Geist({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
   subsets: ['latin'],
 });
 
@@ -32,10 +22,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn(geistSans.variable, jetbrainsMono.variable)}
-      suppressHydrationWarning>
+    <html lang="en" className={cn(geistSans.variable)} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -43,8 +30,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={cn(geistSans.variable, geistMono.variable, 'antialiased')}>
+      <body className="antialiased">
         <Providers>
           <App children={children} />
         </Providers>
