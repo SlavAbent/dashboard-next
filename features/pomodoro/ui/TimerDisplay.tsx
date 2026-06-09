@@ -14,7 +14,7 @@ export function TimerDisplay({ remaining }: TimerDisplayProps) {
   return (
     <>
       <div
-        className="group flex items-center gap-1.5 font-mono text-[48px] leading-none font-bold tracking-tight text-black transition-colors"
+        className="text-foreground group flex items-center gap-1.5 font-mono text-[48px] leading-none font-bold tracking-tight transition-colors"
         aria-label="select duration">
         <span>{formatTitle(remaining)}</span>
       </div>
@@ -28,8 +28,8 @@ export function TimerDisplay({ remaining }: TimerDisplayProps) {
               onClick={() => setMode(min)}
               className={`flex w-full items-center justify-between px-4 py-2.5 font-mono text-sm transition-colors ${
                 selectedMin === min
-                  ? 'text-black'
-                  : 'text-[#aaa] hover:bg-white/[0.04] hover:text-black'
+                  ? 'text-foreground'
+                  : 'text-muted-foreground hover:bg-muted hover:text-foreground'
               } `}>
               <span>{padDuration(min)}</span>
             </button>

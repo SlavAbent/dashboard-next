@@ -1,25 +1,13 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google';
-import './globals.css';
+import { Geist } from 'next/font/google';
+import '../shared/styles/global.css';
 import { cn } from '@/shared/lib/cn';
-import AppAside from '@/widgets/Aside/ui/app-aside';
-import Header from '@/widgets/Header/Header';
-import SubHeader from '@/widgets/SubHeader/SubHeader';
 import Providers from '@/app/_providers';
 import { ReactNode } from 'react';
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-});
+import { App } from '@/app/app';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
   subsets: ['latin'],
 });
 
@@ -34,18 +22,17 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn('font-mono', jetbrainsMono.variable)}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className={cn(geistSans.variable)} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=JSON.parse(localStorage.getItem('theme-storage')||'{}');if(t.state&&t.state.theme==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className="antialiased">
         <Providers>
-          <div className="flex h-screen max-w-full">
-            <AppAside />
-            <div className="flex w-full flex-col">
-              <Header />
-              <SubHeader />
-              {children}
-            </div>
-          </div>
+          <App children={children} />
         </Providers>
       </body>
     </html>

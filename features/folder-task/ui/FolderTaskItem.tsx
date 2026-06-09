@@ -45,7 +45,7 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
           text={task.text}
           className={cn(
             '!text-sm !leading-[145%]',
-            task.completed && 'text-neutral-80 line-through'
+            task.completed && 'text-muted-foreground line-through'
           )}
         />
       </button>
@@ -53,7 +53,7 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
         <DropdownMenuTrigger className="shrink-0">
           <div
             role="button"
-            className="flex cursor-pointer items-center px-1 py-1 transition duration-500 hover:bg-[#F2F2F2]">
+            className="interactive-hover flex cursor-pointer items-center px-1 py-1">
             <DotsMenuIcon size={iconSize(16)} />
           </div>
         </DropdownMenuTrigger>
@@ -62,7 +62,7 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
             <DropdownMenuItem onClick={handleOpenEdit}>
               <TypographyP
                 text="Edit"
-                className="text-neutral-80 !text-sm !leading-[145%]"
+                className="text-muted-foreground !text-sm !leading-[145%]"
               />
             </DropdownMenuItem>
             <DropdownMenuItem
@@ -72,7 +72,7 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
               }}>
               <TypographyP
                 text="Delete"
-                className="text-neutral-80 !text-sm !leading-[145%]"
+                className="text-muted-foreground !text-sm !leading-[145%]"
               />
             </DropdownMenuItem>
           </DropdownMenuGroup>

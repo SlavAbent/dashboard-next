@@ -50,13 +50,13 @@ export const ChatBoard = () => {
                   isCurrentUser ? 'justify-end' : 'justify-start'
                 )}>
                 <div className="flex flex-col">
-                  <div className="max-w-auto mb-2 flex flex-col items-start rounded-xl bg-gray-100">
+                  <div className="bg-muted max-w-auto mb-2 flex flex-col items-start rounded-xl">
                     <div className="mb-2 flex w-full items-end">
                       <Avatar className="mr-2 h-8 w-8">
                         <AvatarImage src={''} alt="avatar" />
                         <AvatarFallback>A</AvatarFallback>
                       </Avatar>
-                      <div className="ml-2 text-[10px] text-gray-500">
+                      <div className="text-muted-foreground ml-2 text-[10px]">
                         {createdAtTime}
                       </div>
                     </div>
@@ -67,7 +67,7 @@ export const ChatBoard = () => {
                       <p className="text-sm font-bold">{message.lastName}</p>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-500">{message.text}</p>
+                  <p className="text-muted-foreground text-xs">{message.text}</p>
                 </div>
               </div>
             );

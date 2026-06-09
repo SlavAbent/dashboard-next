@@ -32,18 +32,14 @@ const FolderContent = ({
   const openEditTask = useBoardModalStore((state) => state.openEditTask);
 
   const folderTasks = useMemo(
-    () =>
-      filteredTasks.filter(
-        (task) =>
-          task.tasksFolderId != null && sameId(task.tasksFolderId, folderId)
-      ),
+    () => filteredTasks.filter((task) => sameId(task.taskFolderId, folderId)),
     [filteredTasks, folderId]
   );
 
   return (
     <div
       className={cn(
-        'flex flex-col rounded-sm border bg-white',
+        'bg-card flex flex-col rounded-sm border',
         isDragging && 'opacity-60'
       )}>
       <div

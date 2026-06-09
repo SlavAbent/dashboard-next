@@ -1,18 +1,19 @@
-import type { EntityId } from '@/shared/lib/same-id';
-
 export type Task = {
-  id: EntityId;
+  id: string;
   text: string;
   tags: string[];
   completed: boolean;
-  tasksFolderId: EntityId;
+  taskFolderId: string;
+  order: number;
+  createdAt: string;
+  updatedAt?: string;
 };
 
-export type TasksFolder = {
-  id: EntityId;
+export type TaskFolder = {
+  id: string;
   columnId: string;
   title: string;
-  completed: boolean;
+  order: number;
 };
 
 export type Column = {
@@ -23,14 +24,14 @@ export type Column = {
 };
 
 export type BoardTask = Task;
-export type CreateFolder = Omit<TasksFolder, 'id' | 'completed'>;
-export type CreateTask = Omit<Task, 'id'>;
+export type CreateFolder = Omit<TaskFolder, 'id'>;
+export type CreateTask = Omit<Task, 'id' | 'createdAt' | 'updatedAt'>;
 export type UpdateFolderPayload = {
   title?: string;
   columnId?: string;
 };
 
-export type BoardFolder = TasksFolder & {
+export type BoardFolder = TaskFolder & {
   tasks: BoardTask[];
 };
 

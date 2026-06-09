@@ -45,21 +45,21 @@ const Header = () => {
           leftIcon={<SearchIcon size={iconSize(20)} />}
           rightIcon={
             <div className="flex items-center gap-2">
-              <IconWrapper className="bg-[#D8D8D8]">⌘</IconWrapper>
-              <IconWrapper className="bg-[#F2F2F2]">F</IconWrapper>
+              <IconWrapper className="bg-muted">⌘</IconWrapper>
+              <IconWrapper className="bg-secondary">F</IconWrapper>
             </div>
           }
         />
       </div>
       <div className="flex items-center gap-2">
         <PomodoroTimer />
-        <Weather className="min-w-fit cursor-pointer rounded-xs p-1 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30" />
+        <Weather className="interactive-hover min-w-fit cursor-pointer rounded-xs p-1" />
         <Clock className="" />
         <Dropdown
           src=""
           isAvatar
           text="Abent S."
-          className="min-w-fit rounded-xs p-1 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30"
+          className="interactive-hover min-w-fit rounded-xs p-1"
           options={[
             { id: '1', title: 'Profile' },
             { id: '2', title: 'Billing' },

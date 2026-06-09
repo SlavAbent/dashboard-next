@@ -3,15 +3,15 @@ import {
   BoardFolder,
   Column,
   Task,
-  TasksFolder,
+  TaskFolder,
 } from '@/entities/board/model/types/list-types';
 import { toIdString } from '@/shared/lib/same-id';
 
-export function groupTasksToFolders(
+export const groupTasksToFolders = (
   tasks: Task[],
   columns: Column[],
-  tasksFolders: TasksFolder[]
-): BoardColumn[] {
+  taskFolders: TaskFolder[]
+): BoardColumn[] => {
   const columnsMap: Record<string, BoardColumn> = {};
   const foldersMap: Record<string, BoardFolder> = {};
 
@@ -22,7 +22,7 @@ export function groupTasksToFolders(
     };
   }
 
-  for (const folder of tasksFolders) {
+  for (const folder of taskFolders) {
     const folderData: BoardFolder = {
       ...folder,
       tasks: [],
@@ -36,9 +36,7 @@ export function groupTasksToFolders(
   }
 
   for (const task of tasks) {
-    if (task.tasksFolderId == null) continue;
-
-    const folder = foldersMap[toIdString(task.tasksFolderId)];
+    const folder = foldersMap[toIdString(task.taskFolderId)];
 
     if (folder) {
       folder.tasks.push(task);
@@ -46,4 +44,4 @@ export function groupTasksToFolders(
   }
 
   return Object.values(columnsMap).sort((a, b) => a.order - b.order);
-}
+};

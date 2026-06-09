@@ -1,19 +1,13 @@
-import type { NavigationMenuItem } from '@/entities/navigation';
+import type { NavigationMenu } from '@/entities/navigation';
 
 export type FilterType = {
-  id: string | number;
+  id: string;
   name: string;
   icon: string;
 };
 
 export type SubHeaderCreateType = {
-  foldersData: { menu: NavigationMenuItem[] };
-  subheaderData: {
-    page: {
-      name: string;
-      view: FilterType[];
-    };
-  };
+  navigation: NavigationMenu;
 };
 
 export type SubHeaderViewControlType = {

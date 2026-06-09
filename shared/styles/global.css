@@ -1,0 +1,69 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@import './theme.css';
+@import './semantic.css';
+
+@theme {
+    --font-geist-sans: sans-serif;
+    --font-geist-mono: monospace;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+
+        min-height: 100vh;
+        font-family: var(--font-geist-sans), system-ui, sans-serif;
+
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    * {
+        @apply border-border outline-ring/50;
+    }
+}
+
+@layer components {
+    .border-bottom {
+        @apply border-border border-b;
+    }
+
+    .border-bottom-large {
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+        border-bottom-color: var(--foreground);
+    }
+
+    .interactive-hover {
+        @apply transition-colors duration-200 hover:bg-muted;
+    }
+
+    .border-right {
+        @apply border-r border-border;
+    }
+
+    .button {
+        @apply inline-flex cursor-pointer items-center gap-2;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}

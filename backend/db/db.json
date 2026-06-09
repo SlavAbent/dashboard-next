@@ -1,54 +1,83 @@
 {
-  "folders": {
+  "navigation": {
     "menu": [
       {
-        "id": 1,
+        "id": "nav-dashboard",
         "name": "Dashboard",
-        "colorId": 1,
+        "slug": "dashboard",
         "icon": "dashboard",
+        "colorId": "grey",
         "subheader": {
           "filters": false,
           "grid": false
         }
       },
       {
-        "id": 2,
+        "id": "nav-chat",
         "name": "Chat",
-        "colorId": 2,
+        "slug": "chat",
         "icon": "chat",
+        "colorId": "green",
         "subheader": {
           "filters": true,
           "grid": false
         }
       },
       {
-        "id": 3,
+        "id": "nav-tasks",
         "name": "Tasks",
-        "colorId": 3,
+        "slug": "tasks",
         "icon": "tasks",
+        "colorId": "blue",
         "subheader": {
           "filters": true,
-          "grid": true
+          "grid": true,
+          "view": [
+            {
+              "id": "list",
+              "name": "List",
+              "icon": "List"
+            },
+            {
+              "id": "kanban",
+              "name": "Kanban",
+              "icon": "Kanban"
+            }
+          ]
         }
       },
       {
-        "id": 4,
+        "id": "nav-calendar",
         "name": "Calendar",
-        "colorId": 4,
+        "slug": "calendar",
         "icon": "calendar",
+        "colorId": "pink",
         "subheader": {
           "filters": false,
           "grid": false
         }
       },
       {
-        "id": 5,
+        "id": "nav-personal",
         "name": "Personal",
-        "colorId": 5,
+        "slug": "personal",
         "icon": "personal",
+        "colorId": "lime",
         "subheader": {
           "filters": true,
-          "grid": true
+          "grid": true,
+          "view": [
+            {
+              "id": "list",
+              "name": "List",
+              "icon": "List"
+            },
+            {
+              "id": "kanban",
+              "name": "Kanban",
+              "icon": "Kanban"
+            }
+          ]
         }
       }
     ]
@@ -73,263 +102,135 @@
       "color": "#39C682"
     }
   ],
-  "tasksFolder": [
+  "taskFolders": [
     {
-      "id": "1",
-      "title": "planning folder",
+      "id": "folder-planning-1",
+      "title": "Sprint backlog",
       "columnId": "planning",
-      "completed": false
+      "order": 1
     },
     {
-      "id": "2",
-      "title": "upcoming folder",
-      "columnId": "upcoming",
-      "completed": false
-    },
-    {
-      "id": "3",
-      "title": "completed folder",
-      "columnId": "upcoming",
-      "completed": false
-    },
-    {
-      "title": "укеы",
-      "columnId": "upcoming",
-      "id": "-hrXJRO5XUY",
-      "completed": false
-    },
-    {
-      "title": "test",
+      "id": "folder-upcoming-1",
+      "title": "Upcoming work",
       "columnId": "planning",
-      "id": "n83gTrxXU0Y",
-      "completed": false
+      "order": 1
     },
     {
-      "title": "234",
-      "columnId": "upcoming",
-      "id": "uMFZxwUENv0",
-      "completed": false
+      "id": "folder-completed-1",
+      "title": "Done items",
+      "columnId": "completed",
+      "order": 1
     }
   ],
   "tasks": [
     {
-      "id": "1",
-      "tasksFolderId": 2,
-      "tags": [],
-      "text": "Изучить паттерны проектирования",
-      "completed": true
-    },
-    {
-      "id": "2",
-      "tasksFolderId": 3,
-      "tags": [],
+      "id": "task-2",
+      "taskFolderId": "folder-completed-1",
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": true
+      "tags": [
+        "react"
+      ],
+      "completed": true,
+      "order": 1,
+      "createdAt": "2026-01-08T10:00:00.000Z",
+      "updatedAt": "2026-01-12T14:30:00.000Z"
     },
     {
-      "id": "3",
-      "tasksFolderId": 1,
-      "tags": [],
+      "id": "task-3",
+      "taskFolderId": "folder-planning-1",
       "text": "Redux (redux-observable, redux-saga)",
-      "completed": true
+      "tags": [
+        "redux"
+      ],
+      "completed": true,
+      "order": 1,
+      "createdAt": "2026-01-05T11:00:00.000Z",
+      "updatedAt": "2026-01-09T16:00:00.000Z"
     },
     {
-      "id": "4",
-      "tasksFolderId": 1,
-      "tags": [],
+      "id": "task-4",
+      "taskFolderId": "folder-planning-1",
       "text": "Настроить CI pipeline",
-      "completed": false
+      "tags": [
+        "devops"
+      ],
+      "completed": false,
+      "order": 2,
+      "createdAt": "2026-01-11T08:00:00.000Z",
+      "updatedAt": "2026-06-09T07:29:58.367Z"
     },
     {
-      "id": "5",
-      "tasksFolderId": 1,
-      "tags": [],
+      "id": "task-5",
+      "taskFolderId": "folder-planning-1",
       "text": "Покрыть тестами store",
-      "completed": true
-    },
-    {
-      "text": "234532",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": "u_hAC91iKnk",
-      "id": "TJhO7uekbjs"
-    },
-    {
-      "text": "345",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": null,
-      "id": "lDDu6hACuLE"
-    },
-    {
-      "text": "234234",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": null,
-      "id": "PMZW9mC1G2s"
-    },
-    {
-      "text": "123",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": null,
-      "id": "exErRENJe7I"
-    },
-    {
-      "text": "test",
-      "tags": [],
+      "tags": [
+        "testing"
+      ],
       "completed": true,
-      "tasksFolderId": 1,
-      "id": "Pj4VC3HwUrg"
+      "order": 3,
+      "createdAt": "2026-01-07T13:00:00.000Z",
+      "updatedAt": "2026-01-10T18:00:00.000Z"
     },
     {
-      "text": "ц234",
-      "tags": [],
+      "id": "task-6",
+      "taskFolderId": "folder-upcoming-1",
+      "text": "Оптимизировать загрузку boardы",
+      "tags": [
+        "performance"
+      ],
       "completed": false,
-      "tasksFolderId": null,
-      "id": "tcBGVX5U2VU"
-    },
-    {
-      "text": "324",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": null,
-      "id": "iKf2MbNRAPI"
-    },
-    {
-      "text": "цйуйцу",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": null,
-      "id": "ddeIhavIXTI"
-    },
-    {
-      "text": "123",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": "n83gTrxXU0Y",
-      "id": "OsyRY8AR2E0"
-    },
-    {
-      "text": "fix test",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": "n83gTrxXU0Y",
-      "id": "GVDtw1ORDws"
-    },
-    {
-      "text": "123",
-      "tags": [],
-      "completed": true,
-      "tasksFolderId": "1",
-      "id": "OFOUn4Jwdbc"
-    },
-    {
-      "text": "345",
-      "tags": [],
-      "completed": true,
-      "tasksFolderId": "1",
-      "id": "AgHNXbzak8c"
-    },
-    {
-      "text": "123",
-      "tags": [],
-      "completed": false,
-      "tasksFolderId": "uMFZxwUENv0",
-      "id": "X_qTZaxi2Cg"
-    },
-    {
-      "text": "123",
-      "tags": [],
-      "completed": true,
-      "tasksFolderId": "uMFZxwUENv0",
-      "id": "4oU4HgcGH2s"
-    },
-    {
-      "text": "123",
-      "tags": [],
-      "completed": true,
-      "tasksFolderId": "uMFZxwUENv0",
-      "id": "PTi7OvFtCAQ"
-    }
-  ],
-  "subtasks": [
-    {
-      "subtaskId": 1,
-      "text": "testtesttest",
-      "completed": false,
-      "id": "yZRpA4VNC8E"
-    },
-    {
-      "subtaskId": 2,
-      "text": "testtesttest",
-      "completed": false,
-      "id": "W0jNBpH3H2E"
+      "order": 2,
+      "createdAt": "2026-01-14T09:30:00.000Z",
+      "updatedAt": "2026-06-09T07:30:14.979Z"
     }
   ],
   "colors": [
     {
-      "id": "1",
+      "id": "grey",
       "hex": "#C9D1D3",
       "name": "grey"
     },
     {
-      "id": "2",
+      "id": "green",
       "hex": "#42B883",
       "name": "green"
     },
     {
-      "id": "3",
+      "id": "blue",
       "hex": "#64C4ED",
       "name": "blue"
     },
     {
-      "id": "4",
+      "id": "pink",
       "hex": "#FFBBCC",
       "name": "pink"
     },
     {
-      "id": "5",
+      "id": "lime",
       "hex": "#B6E6BD",
       "name": "lime"
     },
     {
-      "id": "6",
+      "id": "purple",
       "hex": "#C355F5",
       "name": "purple"
     },
     {
-      "id": "7",
+      "id": "black",
       "hex": "#110133",
       "name": "black"
     },
     {
-      "id": "8",
+      "id": "red",
       "hex": "#FF6464",
       "name": "red"
     }
   ],
-  "subheader": {
-    "page": {
-      "name": "tasks",
-      "view": [
-        {
-          "id": 1,
-          "name": "List",
-          "icon": "List"
-        },
-        {
-          "id": 2,
-          "name": "Kanban",
-          "icon": "Kanban"
-        }
-      ]
-    }
-  },
   "messages": [
     {
-      "id": "NAuhfFjVf5E",
-      "text": "123",
+      "id": "msg-1",
+      "userId": "1",
+      "text": "Привет! Как продвигается спринт?",
       "firstName": "Svyatoslav",
       "lastName": "Abent",
       "createdAt": "2026-05-27T09:01:56.663Z"

@@ -9,57 +9,45 @@ import { TypographySmall } from '@/shared/components/Typography/TypographySmall'
 import { FolderItemProps } from '@/entities/navigation/model/types';
 import { usePathname } from 'next/navigation';
 import { CardItem } from '@/shared/components/CardItem/card-item';
+import { useAsideStore } from '@/entities/aside/model/aside.store';
 
-export const FolderItem = ({
-  id,
-  collapsed,
-  name,
-  icon,
-}: FolderItemProps & {
-  collapsed: boolean;
-}) => {
+const transition = 'duration-300 ease-in-out';
+
+export const FolderItem = ({ name, slug, icon }: FolderItemProps) => {
+  const collapsed = useAsideStore((state) => state.collapsed);
   const pathname = usePathname();
-  const { isActive, href } = normalizePath(pathname, name);
+  const { isActive, href } = normalizePath(pathname, slug);
 
-  const itemClass = collapsed
-    ? 'h-9 w-9 justify-center gap-0 p-0'
-    : 'w-[216px] justify-start gap-3 px-4';
-
-  const labelClass = collapsed
-    ? 'ml-0 max-w-0 opacity-0'
-    : 'max-w-[150px] text-sm opacity-100';
-
-  const animatedClass = 'transition-all duration-300 ease-in-out';
-
-  const activeText = (isActive: boolean) => {
-    return isActive ? 'text-black' : 'text-neutral-80 group-hover:text-black';
-  };
+  const activeClass = isActive
+    ? 'text-primary dark:text-black'
+    : 'text-muted-foreground group-hover:text-primary dark:group-hover:text-black';
 
   return (
-    <Link key={id} href={href} className="block">
+    <Link href={href} prefetch>
       <CardItem
         className={cn(
           'group flex items-center overflow-hidden',
-          animatedClass,
-          isActive && 'bg-neutral-50',
-          itemClass
+          'transition-[width,padding,gap]',
+          transition,
+          collapsed
+            ? 'h-9 w-9 justify-center gap-0 p-0'
+            : 'w-[216px] gap-3 px-4',
+          isActive &&
+            'text-primary bg-neutral-50 dark:bg-neutral-50 dark:text-black'
         )}>
-        <div className="flex size-5 shrink-0 items-center justify-center">
-          <SvgIcon
-            icon={icon}
-            className={cn(
-              'transition-colors duration-300',
-              activeText(isActive)
-            )}
-          />
-        </div>
+        <SvgIcon
+          icon={icon}
+          className={cn('shrink-0 transition-colors', transition, activeClass)}
+        />
+
         <TypographySmall
           text={name}
           className={cn(
             'overflow-hidden whitespace-nowrap',
-            animatedClass,
-            labelClass,
-            activeText(isActive)
+            'transition-[max-width,opacity]',
+            transition,
+            collapsed ? 'max-w-0 opacity-0' : 'max-w-[150px] opacity-100',
+            activeClass
           )}
         />
       </CardItem>

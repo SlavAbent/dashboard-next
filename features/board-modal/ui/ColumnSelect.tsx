@@ -18,7 +18,7 @@ const ColumnSelect = ({ value, onChange, className }: ColumnSelectProps) => {
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'focus-visible:ring-ring/50 mb-4 w-full rounded-sm border border-[#AFAFAF] bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1',
+        'border-input focus-visible:ring-ring/50 mb-4 w-full rounded-sm border bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1',
         className
       )}>
       {columns.map((column) => (

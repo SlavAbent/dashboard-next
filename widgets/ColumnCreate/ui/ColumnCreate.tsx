@@ -57,15 +57,15 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
           <TypographyH3 text={column.title} />
           <TypographyP
             text={columnText}
-            className="text-neutral-80 !leading-[145%]"
+            className="text-muted-foreground !leading-[145%]"
           />
         </div>
       </div>
       <div
         onClick={() => openCreateFolder(column.id)}
-        className="flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
-        <PlusIcon size={iconSize(16)} className="text-neutral-80" />
-        <TypographySmall text="Create Folder" className="text-neutral-80" />
+        className="bg-secondary text-secondary-foreground flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
+        <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
+        <TypographySmall text="Create Folder" className="text-muted-foreground" />
       </div>
     </div>
   );

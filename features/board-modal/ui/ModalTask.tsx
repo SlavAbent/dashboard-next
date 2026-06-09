@@ -27,7 +27,7 @@ const ModalTask = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const tasks = useBoardStore((state) => state.tasks);
-  const tasksFolder = useBoardStore((state) => state.tasksFolder);
+  const taskFolders = useBoardStore((state) => state.taskFolders);
   const addTask = useBoardStore((state) => state.addTask);
   const editTask = useBoardStore((state) => state.editTask);
 
@@ -55,15 +55,15 @@ const ModalTask = () => {
 
     if (isEditMode && editingTask) {
       setTaskValue(editingTask.text);
-      setFolderId(editingTask.tasksFolderId);
+      setFolderId(editingTask.taskFolderId);
       setCompleted(editingTask.completed);
       return;
     }
 
     setTaskValue('');
     setCompleted(false);
-    setFolderId(editingFolderId ?? tasksFolder[0]?.id ?? '');
-  }, [isVisible, isEditMode, editingTask, editingFolderId, tasksFolder]);
+    setFolderId(editingFolderId ?? taskFolders[0]?.id ?? '');
+  }, [isVisible, isEditMode, editingTask, editingFolderId, taskFolders]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -80,15 +80,19 @@ const ModalTask = () => {
       if (isEditMode && editingTaskId != null) {
         await editTask(editingTaskId, {
           text: taskValue.trim(),
-          tasksFolderId: folderId,
+          taskFolderId: String(folderId),
           completed,
         });
       } else {
+        const nextOrder =
+          tasks.filter((task) => sameId(task.taskFolderId, folderId)).length + 1;
+
         await addTask({
           text: taskValue.trim(),
           tags: [],
           completed: false,
-          tasksFolderId: folderId,
+          taskFolderId: String(folderId),
+          order: nextOrder,
         });
       }
 
@@ -110,8 +114,8 @@ const ModalTask = () => {
       }}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/40" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 z-10 w-[min(100%-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-6 shadow-lg">
-          <Dialog.Title className="mb-4 text-black">
+        <Dialog.Content className="bg-card text-card-foreground fixed top-1/2 left-1/2 z-10 w-[min(100%-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-md p-6 shadow-lg">
+          <Dialog.Title className="mb-4">
             {isEditMode ? 'Edit task' : 'New task'}
           </Dialog.Title>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -126,9 +130,9 @@ const ModalTask = () => {
               disabled={isSubmitting}
             />
 
-            {isEditMode && tasksFolder.length > 0 && (
+            {isEditMode && taskFolders.length > 0 && (
               <div className="flex flex-col gap-1">
-                <span className="text-neutral-80 text-sm">Folder</span>
+                <span className="text-muted-foreground text-sm">Folder</span>
                 <FolderSelect
                   value={folderId}
                   onChange={(id) => setFolderId(id)}
@@ -142,7 +146,7 @@ const ModalTask = () => {
                   checked={completed}
                   onCheckedChange={(checked) => setCompleted(checked)}
                 />
-                <span className="text-neutral-80 text-sm">Check</span>
+                <span className="text-muted-foreground text-sm">Check</span>
               </label>
             )}
 
@@ -151,11 +155,11 @@ const ModalTask = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex !h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)] disabled:opacity-50">
-              <PlusIcon size={iconSize(16)} className="text-neutral-80" />
+              className="bg-secondary text-secondary-foreground flex !h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm disabled:opacity-50">
+              <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
               <TypographySmall
                 text={isSubmitting ? 'Save...' : isEditMode ? 'Save' : 'Create'}
-                className="text-neutral-80"
+                className="text-muted-foreground"
               />
             </button>
           </form>

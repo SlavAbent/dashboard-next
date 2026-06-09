@@ -2,7 +2,7 @@ export { useBoardStore } from '@/entities/board/model/use-data.store';
 export { useViewStore } from '@/entities/board/model/list.store';
 export type {
   Task,
-  TasksFolder,
+  TaskFolder,
   Column,
   BoardColumn,
   BoardFolder,
@@ -22,7 +22,7 @@ export {
 export {
   getTasks,
   getColumns,
-  getTasksFolders,
+  getTaskFolders,
   createTask,
   updateTask,
   deleteTask,

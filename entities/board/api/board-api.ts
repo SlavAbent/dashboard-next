@@ -3,17 +3,21 @@ import {
   CreateFolder,
   CreateTask,
   Task,
-  TasksFolder,
+  TaskFolder,
   UpdateFolderPayload,
 } from '@/entities/board/model/types/list-types';
 import { getNextColumn } from '@/entities/board/lib/get-next-column';
 import { updateFolders } from '@/entities/board/api/update-folder';
-import { columnsApi, tasksApi, tasksFolderApi } from '@/shared/_api/instances';
+import {
+  columnsApi,
+  tasksApi,
+  taskFoldersApi,
+} from '@/shared/_api/instances';
 import type { EntityId } from '@/shared/lib/same-id';
 
 export async function getTasks(): Promise<Task[]> {
   const response = await fetch(tasksApi, {
-    cache: 'no-store',
+    next: { revalidate: 30 },
   });
 
   if (!response.ok) {
@@ -25,7 +29,7 @@ export async function getTasks(): Promise<Task[]> {
 
 export async function getColumns(): Promise<Column[]> {
   const response = await fetch(columnsApi, {
-    cache: 'no-cache',
+    next: { revalidate: 60 },
   });
 
   if (!response.ok) {
@@ -35,9 +39,9 @@ export async function getColumns(): Promise<Column[]> {
   return response.json();
 }
 
-export async function getTasksFolders(): Promise<TasksFolder[]> {
-  const response = await fetch(tasksFolderApi, {
-    cache: 'no-cache',
+export async function getTaskFolders(): Promise<TaskFolder[]> {
+  const response = await fetch(taskFoldersApi, {
+    next: { revalidate: 30 },
   });
 
   if (!response.ok) {
@@ -63,14 +67,14 @@ export async function updateFolderDetails(
 }
 
 export async function createFolderTask(
-  tasksFolder: CreateFolder
-): Promise<TasksFolder> {
-  const response = await fetch(tasksFolderApi, {
+  taskFolder: CreateFolder
+): Promise<TaskFolder> {
+  const response = await fetch(taskFoldersApi, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(tasksFolder),
+    body: JSON.stringify(taskFolder),
   });
 
   if (!response.ok) {
@@ -86,7 +90,11 @@ export async function createTask(task: CreateTask): Promise<Task> {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(task),
+    body: JSON.stringify({
+      ...task,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }),
   });
 
   if (!response.ok) {
@@ -98,14 +106,17 @@ export async function createTask(task: CreateTask): Promise<Task> {
 
 export async function updateTask(
   id: EntityId,
-  data: Partial<Pick<Task, 'text' | 'completed' | 'tasksFolderId' | 'tags'>>
+  data: Partial<Pick<Task, 'text' | 'completed' | 'taskFolderId' | 'tags'>>
 ): Promise<Task> {
   const response = await fetch(`${tasksApi}/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      ...data,
+      updatedAt: new Date().toISOString(),
+    }),
   });
 
   if (!response.ok) {
@@ -128,7 +139,7 @@ export async function deleteTask(id: EntityId) {
 }
 
 export async function deleteFolder(id: EntityId) {
-  const response = await fetch(`${tasksFolderApi}/${id}`, {
+  const response = await fetch(`${taskFoldersApi}/${id}`, {
     method: 'DELETE',
   });
 

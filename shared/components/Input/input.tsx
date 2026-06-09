@@ -24,7 +24,7 @@ export const Input = ({
         onChange={onChange}
         data-slot="input"
         className={cn(
-          'w-full rounded-sm border border-[#AFAFAF] bg-transparent py-[7px] text-[14px] transition-colors outline-none',
+          'border-input w-full rounded-sm border bg-transparent py-[7px] text-[14px] transition-colors outline-none',
           leftIcon ? 'pl-10' : 'pl-3',
           rightIcon ? 'pr-18' : 'pr-3',
           'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-1',

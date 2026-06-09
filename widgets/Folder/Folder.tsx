@@ -2,11 +2,11 @@
 
 import React, { useMemo } from 'react';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
-import { TasksFolder } from '@/entities/board/model/types/list-types';
+import { TaskFolder } from '@/entities/board/model/types/list-types';
 import { FolderContent } from '@/features/board-folder';
 
 const Folder = ({ columnId }: { columnId: string }) => {
-  const allFolders = useBoardStore((state) => state.tasksFolder);
+  const allFolders = useBoardStore((state) => state.taskFolders);
 
   const folders = useMemo(
     () => allFolders.filter((folder) => folder.columnId === columnId),
@@ -14,20 +14,18 @@ const Folder = ({ columnId }: { columnId: string }) => {
   );
 
   return (
-    <div className="flex flex-col gap-5">
-      {folders.map((folder: TasksFolder) => {
-        const { id, columnId: folderColumnId, title } = folder;
-
+    <>
+      {folders.map((folder: TaskFolder) => {
         return (
           <FolderContent
-            key={String(id)}
-            folderId={id}
-            columnId={folderColumnId}
-            title={title}
+            key={folder.id}
+            folderId={folder.id}
+            columnId={folder.columnId}
+            title={folder.title}
           />
         );
       })}
-    </div>
+    </>
   );
 };
 

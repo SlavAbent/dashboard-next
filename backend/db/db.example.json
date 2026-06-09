@@ -1,0 +1,239 @@
+{
+  "navigation": {
+    "menu": [
+      {
+        "id": "nav-dashboard",
+        "name": "Dashboard",
+        "slug": "dashboard",
+        "icon": "dashboard",
+        "colorId": "grey",
+        "subheader": {
+          "filters": false,
+          "grid": false
+        }
+      },
+      {
+        "id": "nav-chat",
+        "name": "Chat",
+        "slug": "chat",
+        "icon": "chat",
+        "colorId": "green",
+        "subheader": {
+          "filters": true,
+          "grid": false
+        }
+      },
+      {
+        "id": "nav-tasks",
+        "name": "Tasks",
+        "slug": "tasks",
+        "icon": "tasks",
+        "colorId": "blue",
+        "subheader": {
+          "filters": true,
+          "grid": true,
+          "view": [
+            {
+              "id": "list",
+              "name": "List",
+              "icon": "List"
+            },
+            {
+              "id": "kanban",
+              "name": "Kanban",
+              "icon": "Kanban"
+            }
+          ]
+        }
+      },
+      {
+        "id": "nav-calendar",
+        "name": "Calendar",
+        "slug": "calendar",
+        "icon": "calendar",
+        "colorId": "pink",
+        "subheader": {
+          "filters": false,
+          "grid": false
+        }
+      },
+      {
+        "id": "nav-personal",
+        "name": "Personal",
+        "slug": "personal",
+        "icon": "personal",
+        "colorId": "lime",
+        "subheader": {
+          "filters": true,
+          "grid": true,
+          "view": [
+            {
+              "id": "list",
+              "name": "List",
+              "icon": "List"
+            },
+            {
+              "id": "kanban",
+              "name": "Kanban",
+              "icon": "Kanban"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "columns": [
+    {
+      "id": "planning",
+      "title": "Planning",
+      "order": 1,
+      "color": "#B1AB1D"
+    },
+    {
+      "id": "upcoming",
+      "title": "Upcoming",
+      "order": 2,
+      "color": "#6884FD"
+    },
+    {
+      "id": "completed",
+      "title": "Completed",
+      "order": 3,
+      "color": "#39C682"
+    }
+  ],
+  "taskFolders": [
+    {
+      "id": "folder-planning-1",
+      "title": "Sprint backlog",
+      "columnId": "planning",
+      "order": 1
+    },
+    {
+      "id": "folder-upcoming-1",
+      "title": "Upcoming work",
+      "columnId": "upcoming",
+      "order": 1
+    },
+    {
+      "id": "folder-completed-1",
+      "title": "Done items",
+      "columnId": "completed",
+      "order": 1
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "taskFolderId": "folder-upcoming-1",
+      "text": "Изучить паттерны проектирования",
+      "tags": ["learning"],
+      "completed": false,
+      "order": 1,
+      "createdAt": "2026-01-10T09:00:00.000Z",
+      "updatedAt": "2026-01-10T09:00:00.000Z"
+    },
+    {
+      "id": "task-2",
+      "taskFolderId": "folder-completed-1",
+      "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
+      "tags": ["react"],
+      "completed": true,
+      "order": 1,
+      "createdAt": "2026-01-08T10:00:00.000Z",
+      "updatedAt": "2026-01-12T14:30:00.000Z"
+    },
+    {
+      "id": "task-3",
+      "taskFolderId": "folder-planning-1",
+      "text": "Redux (redux-observable, redux-saga)",
+      "tags": ["redux"],
+      "completed": true,
+      "order": 1,
+      "createdAt": "2026-01-05T11:00:00.000Z",
+      "updatedAt": "2026-01-09T16:00:00.000Z"
+    },
+    {
+      "id": "task-4",
+      "taskFolderId": "folder-planning-1",
+      "text": "Настроить CI pipeline",
+      "tags": ["devops"],
+      "completed": false,
+      "order": 2,
+      "createdAt": "2026-01-11T08:00:00.000Z",
+      "updatedAt": "2026-01-11T08:00:00.000Z"
+    },
+    {
+      "id": "task-5",
+      "taskFolderId": "folder-planning-1",
+      "text": "Покрыть тестами store",
+      "tags": ["testing"],
+      "completed": true,
+      "order": 3,
+      "createdAt": "2026-01-07T13:00:00.000Z",
+      "updatedAt": "2026-01-10T18:00:00.000Z"
+    },
+    {
+      "id": "task-6",
+      "taskFolderId": "folder-upcoming-1",
+      "text": "Оптимизировать загрузку board",
+      "tags": ["performance"],
+      "completed": false,
+      "order": 2,
+      "createdAt": "2026-01-14T09:30:00.000Z",
+      "updatedAt": "2026-01-14T09:30:00.000Z"
+    }
+  ],
+  "colors": [
+    {
+      "id": "grey",
+      "hex": "#C9D1D3",
+      "name": "grey"
+    },
+    {
+      "id": "green",
+      "hex": "#42B883",
+      "name": "green"
+    },
+    {
+      "id": "blue",
+      "hex": "#64C4ED",
+      "name": "blue"
+    },
+    {
+      "id": "pink",
+      "hex": "#FFBBCC",
+      "name": "pink"
+    },
+    {
+      "id": "lime",
+      "hex": "#B6E6BD",
+      "name": "lime"
+    },
+    {
+      "id": "purple",
+      "hex": "#C355F5",
+      "name": "purple"
+    },
+    {
+      "id": "black",
+      "hex": "#110133",
+      "name": "black"
+    },
+    {
+      "id": "red",
+      "hex": "#FF6464",
+      "name": "red"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1",
+      "userId": "1",
+      "text": "Привет! Как продвигается спринт?",
+      "firstName": "Svyatoslav",
+      "lastName": "Abent",
+      "createdAt": "2026-05-27T09:01:56.663Z"
+    }
+  ]
+}

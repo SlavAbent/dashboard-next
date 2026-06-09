@@ -1,13 +1,13 @@
 import type {
   BoardColumn,
-  TasksFolder,
+  TaskFolder,
 } from '@/entities/board/model/types/list-types';
 import type { EntityId } from '@/shared/lib/same-id';
 import { toIdString } from '@/shared/lib/same-id';
 
 export const normalizeBoardData = (boardData: BoardColumn[]) => {
   const columns: Record<string, BoardColumn> = {};
-  const tasksMap: Record<string, TasksFolder> = {};
+  const tasksMap: Record<string, TaskFolder> = {};
   const items: Record<string, EntityId[]> = {};
 
   for (const col of boardData) {
