@@ -1,8 +1,9 @@
+import { cache } from 'react';
 import { subHeaderApi } from '@/shared/_api/instances';
 
-export async function getSubHeaderData() {
+export const getSubHeaderData = cache(async () => {
   const filters = await fetch(subHeaderApi, {
-    cache: 'no-cache',
+    next: { revalidate: 60 },
   });
 
   if (!filters.ok) {
@@ -10,4 +11,4 @@ export async function getSubHeaderData() {
   }
 
   return filters.json();
-}
+});

@@ -23,7 +23,7 @@ export const FolderItem = ({ name, icon }: FolderItemProps) => {
     : 'text-muted-foreground group-hover:text-primary dark:group-hover:text-black';
 
   return (
-    <Link href={href}>
+    <Link href={href} prefetch>
       <CardItem
         className={cn(
           'group flex items-center overflow-hidden',
