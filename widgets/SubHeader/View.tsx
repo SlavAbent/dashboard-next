@@ -10,8 +10,8 @@ const View = ({
   handleFilterClick,
 }: SubHeaderViewControlType) => {
   const isActiveElement = isActive
-    ? 'text-black'
-    : 'text-neutral-80 group-hover:text-black';
+    ? 'text-foreground'
+    : 'text-muted-foreground group-hover:text-foreground';
 
   return (
     <div

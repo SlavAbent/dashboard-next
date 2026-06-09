@@ -29,7 +29,7 @@ export function PomodoroTimer() {
         setOpen(nextOpen);
       }}>
       <PopoverTrigger>
-        <div className="flex min-w-[36px] cursor-pointer items-center gap-2 rounded-xs px-1 py-2 transition-colors duration-200 ease-in-out hover:bg-[#D8D8D8]/30">
+        <div className="interactive-hover flex min-w-[36px] cursor-pointer items-center gap-2 rounded-xs px-1 py-2">
           {isDone ? (
             <TypographySmall text="Done! Rest & chill" />
           ) : (
@@ -46,7 +46,7 @@ export function PomodoroTimer() {
 
       <PopoverContent
         align="end"
-        className="max-w-auto rounded-sm border border-[#AFAFAF]">
+        className="max-w-auto rounded-sm border border-border">
         <div className="flex flex-col items-center justify-center rounded-2xl">
           <TimerDisplay remaining={remaining} />
 
@@ -54,14 +54,14 @@ export function PomodoroTimer() {
             <button
               onClick={reset}
               aria-label="Reset"
-              className="flex cursor-pointer items-center gap-2 rounded-full p-2 text-[#444] transition-colors">
+              className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-2 rounded-full p-2 transition-colors">
               <RotateCcw size={18} />
               <TypographySmall text="Reset" />
             </button>
 
             <button
               onClick={startPause}
-              className="flex cursor-pointer items-center gap-2 rounded-full p-2 text-[#444] transition-colors">
+              className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-2 rounded-full p-2 transition-colors">
               <SkipForward size={18} />
               <TypographySmall text={startLabel} />
             </button>

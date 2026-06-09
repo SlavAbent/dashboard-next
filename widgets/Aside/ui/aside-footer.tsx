@@ -7,12 +7,12 @@ import { MoonStar, Sun } from 'lucide-react';
 
 const AsideFooter = () => {
   const theme = useThemeStore((state) => state.theme);
-  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  const setTheme = useThemeStore((state) => state.setTheme);
   const isDark = theme === 'dark';
   const isDarkIcon = !isDark ? 'text-foreground' : 'text-muted-foreground';
 
   return (
-    <div className="bg-muted-background dark:bg-background flex grow items-end justify-center px-3 py-5">
+    <div className="bg-sidebar flex grow items-end justify-center px-3 py-5">
       <div className="flex items-center gap-2">
         {isDark ? (
           <MoonStar className={isDarkIcon} />
@@ -20,7 +20,10 @@ const AsideFooter = () => {
           <Sun className={isDarkIcon} />
         )}
 
-        <Switch checked={isDark} onCheckedChange={toggleTheme} />
+        <Switch
+          checked={isDark}
+          onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+        />
       </div>
     </div>
   );

@@ -42,7 +42,11 @@
     .border-bottom-large {
         border-bottom-width: 4px;
         border-bottom-style: solid;
-        border-bottom-color: oklch(0% 0 0);
+        border-bottom-color: var(--foreground);
+    }
+
+    .interactive-hover {
+        @apply transition-colors duration-200 hover:bg-muted;
     }
 
     .border-right {

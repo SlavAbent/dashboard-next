@@ -36,6 +36,13 @@ export default function RootLayout({
       lang="en"
       className={cn(geistSans.variable, jetbrainsMono.variable)}
       suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=JSON.parse(localStorage.getItem('theme-storage')||'{}');if(t.state&&t.state.theme==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className={cn(geistSans.variable, geistMono.variable, 'antialiased')}>
         <Providers>

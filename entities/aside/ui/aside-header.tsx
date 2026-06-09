@@ -17,7 +17,7 @@ export const AsideHeader = () => {
   return (
     <header
       className={cn(
-        'border-bottom bg-muted-background dark:bg-background relative flex w-full flex-col transition-[width,padding]',
+        'border-bottom bg-sidebar relative flex w-full flex-col transition-[width,padding]',
         transition,
         collapsed
           ? 'w-16 items-center px-0 py-5'

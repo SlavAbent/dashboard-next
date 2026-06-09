@@ -56,7 +56,7 @@ const Weather = ({ className }: WeatherType) => {
         }}>
         <PopoverTrigger>
           <div className="flex cursor-pointer items-center gap-1">
-            <CloudIcon size={24} color="#AFAFAF" />
+            <CloudIcon size={24} className="text-muted-foreground" />
 
             <div className="flex items-center gap-2">
               <TypographySmall
@@ -78,7 +78,7 @@ const Weather = ({ className }: WeatherType) => {
 
         <PopoverContent
           align="end"
-          className="w-100 rounded-sm border border-[#AFAFAF] p-4">
+          className="w-100 rounded-sm border border-border p-4">
           <TypographySmall
             text={`Current city: ${currentCity}`}
             className="!leading-5"

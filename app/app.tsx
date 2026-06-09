@@ -5,12 +5,12 @@ import SubHeader from '@/widgets/SubHeader/SubHeader';
 
 export const App = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex h-screen md:min-h-dvh">
+    <div className="bg-background flex h-screen md:min-h-dvh">
       <AppAside />
-      <div className="flex w-full flex-col">
+      <div className="bg-background flex w-full flex-col">
         <Header />
         <SubHeader />
-        <main className="flex-1 overflow-auto">{children}</main>
+        <main className="bg-background flex-1 overflow-auto">{children}</main>
       </div>
     </div>
   );

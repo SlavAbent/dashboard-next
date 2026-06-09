@@ -43,7 +43,7 @@ const FolderContent = ({
   return (
     <div
       className={cn(
-        'flex flex-col rounded-sm border bg-white',
+        'bg-card flex flex-col rounded-sm border',
         isDragging && 'opacity-60'
       )}>
       <div

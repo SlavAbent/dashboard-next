@@ -82,14 +82,14 @@ const TaskFilters = () => {
 
       <Index
         orientation="vertical"
-        className="h-[50px] w-[1px] gap-4 bg-[#E4E4E4]"
+        className="bg-border h-[50px] w-[1px] gap-4"
       />
 
       <button
         type="button"
         onClick={handleAddTask}
         disabled={tasksFolders.length === 0}
-        className="button flex h-10 cursor-pointer items-center gap-2 rounded-sm border border-black px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50">
+        className="button border-border flex h-10 cursor-pointer items-center gap-2 rounded-sm border px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50">
         <PlusIcon size={iconSize(16)} />
         <TypographySmall text="Add task" className="!leading-[150%]" />
       </button>

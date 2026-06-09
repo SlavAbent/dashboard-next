@@ -20,7 +20,7 @@ const FolderSelect = ({ value, onChange, className }: FolderSelectProps) => {
       value={toIdString(value)}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'focus-visible:ring-ring/50 w-full rounded-sm border border-[#AFAFAF] bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1',
+        'border-input focus-visible:ring-ring/50 w-full rounded-sm border bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1',
         className
       )}>
       {tasksFolder.map((folder) => {

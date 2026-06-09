@@ -30,7 +30,7 @@ const FolderDropdown = ({ folderId, columnId }: FolderDropdownProps) => {
       <DropdownMenuTrigger>
         <div
           role="button"
-          className="flex cursor-pointer items-center gap-2 px-1 py-1 transition duration-500 hover:bg-[#F2F2F2]">
+          className="interactive-hover flex cursor-pointer items-center gap-2 px-1 py-1">
           <DotsMenuIcon size={iconSize(20)} />
         </div>
       </DropdownMenuTrigger>
@@ -44,7 +44,7 @@ const FolderDropdown = ({ folderId, columnId }: FolderDropdownProps) => {
             }}>
             <TypographyP
               text="Edit"
-              className="text-neutral-80 !leading-[145%]"
+              className="text-muted-foreground !leading-[145%]"
             />
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -54,7 +54,7 @@ const FolderDropdown = ({ folderId, columnId }: FolderDropdownProps) => {
             }}>
             <TypographyP
               text="Delete"
-              className="text-neutral-80 !leading-[145%]"
+              className="text-muted-foreground !leading-[145%]"
             />
           </DropdownMenuItem>
         </DropdownMenuGroup>

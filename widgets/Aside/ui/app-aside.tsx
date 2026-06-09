@@ -5,7 +5,7 @@ import { AsideFolders } from '@/widgets/Aside/ui/aside-folders';
 
 export const AppAside = () => {
   return (
-    <div className={`border-right bg-neutral-20 flex max-h-screen flex-col`}>
+    <div className="border-right bg-sidebar flex max-h-screen flex-col">
       <AsideHeader />
       <AsideFolders />
       <AsideFooter />

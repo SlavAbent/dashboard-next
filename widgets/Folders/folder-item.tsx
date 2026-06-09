@@ -19,8 +19,8 @@ export const FolderItem = ({ name, icon }: FolderItemProps) => {
   const { isActive, href } = normalizePath(pathname, name);
 
   const activeClass = isActive
-    ? 'text-primary'
-    : 'text-muted-foreground group-hover:text-primary';
+    ? 'text-primary dark:text-black'
+    : 'text-muted-foreground group-hover:text-primary dark:group-hover:text-black';
 
   return (
     <Link href={href}>
@@ -32,7 +32,7 @@ export const FolderItem = ({ name, icon }: FolderItemProps) => {
           collapsed
             ? 'h-9 w-9 justify-center gap-0 p-0'
             : 'w-[216px] gap-3 px-4',
-          isActive && 'dark:bg-secondary bg-neutral-50'
+          isActive && 'bg-neutral-50 text-primary dark:bg-neutral-50 dark:text-black'
         )}>
         <SvgIcon
           icon={icon}

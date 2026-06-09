@@ -88,8 +88,8 @@ const ModalFolder = () => {
       }}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/40" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 z-10 w-[min(100%-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-6 shadow-lg">
-          <Dialog.Title className="mb-4 text-black">
+        <Dialog.Content className="bg-card text-card-foreground fixed top-1/2 left-1/2 z-10 w-[min(100%-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-md p-6 shadow-lg">
+          <Dialog.Title className="mb-4">
             {isEditMode ? 'Edit folder' : 'Add new folder'}
           </Dialog.Title>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -106,11 +106,11 @@ const ModalFolder = () => {
 
             <button
               type="submit"
-              className="flex !h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[rgba(114,114,114,0.2)]">
-              <PlusIcon size={iconSize(16)} className="text-neutral-80" />
+              className="bg-secondary text-secondary-foreground flex !h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
+              <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
               <TypographySmall
                 text={isEditMode ? 'Save folder' : 'Create folder'}
-                className="text-neutral-80"
+                className="text-muted-foreground"
               />
             </button>
           </form>
