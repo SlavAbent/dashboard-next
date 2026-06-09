@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google';
-import './globals.css';
+import '../shared/styles/global.css';
 import { cn } from '@/shared/lib/cn';
-import AppAside from '@/widgets/Aside/ui/app-aside';
-import Header from '@/widgets/Header/Header';
-import SubHeader from '@/widgets/SubHeader/SubHeader';
 import Providers from '@/app/_providers';
 import { ReactNode } from 'react';
+import { App } from '@/app/app';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -34,18 +32,14 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn('font-mono', jetbrainsMono.variable)}>
+    <html
+      lang="en"
+      className={cn(geistSans.variable, jetbrainsMono.variable)}
+      suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={cn(geistSans.variable, geistMono.variable, 'antialiased')}>
         <Providers>
-          <div className="flex h-screen max-w-full">
-            <AppAside />
-            <div className="flex w-full flex-col">
-              <Header />
-              <SubHeader />
-              {children}
-            </div>
-          </div>
+          <App children={children} />
         </Providers>
       </body>
     </html>
