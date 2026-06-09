@@ -18,12 +18,12 @@ const KanbanView = () => {
   const filteredTasks = useFilteredTasks();
 
   const columns = useBoardStore((state) => state.columns);
-  const tasksFolders = useBoardStore((state) => state.tasksFolder);
+  const taskFolders = useBoardStore((state) => state.taskFolders);
   const updateFolder = useBoardStore((state) => state.updateFolder);
 
   const boardData = useMemo(() => {
-    return groupTasksToFolders(filteredTasks, columns, tasksFolders);
-  }, [filteredTasks, columns, tasksFolders]);
+    return groupTasksToFolders(filteredTasks, columns, taskFolders);
+  }, [filteredTasks, columns, taskFolders]);
 
   const normalized = useMemo(() => {
     return normalizeBoardData(boardData);

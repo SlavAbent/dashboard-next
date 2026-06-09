@@ -29,11 +29,11 @@ const TaskFilters = () => {
     setFilterBy,
   } = useFiltersStore();
 
-  const tasksFolders = useBoardStore((state) => state.tasksFolder);
+  const taskFolders = useBoardStore((state) => state.taskFolders);
   const openCreateTask = useBoardModalStore((state) => state.openCreateTask);
 
   const handleAddTask = () => {
-    const firstFolder = tasksFolders[0];
+    const firstFolder = taskFolders[0];
 
     if (firstFolder) {
       openCreateTask(firstFolder.id);
@@ -88,7 +88,7 @@ const TaskFilters = () => {
       <button
         type="button"
         onClick={handleAddTask}
-        disabled={tasksFolders.length === 0}
+        disabled={taskFolders.length === 0}
         className="button border-border flex h-10 cursor-pointer items-center gap-2 rounded-sm border px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50">
         <PlusIcon size={iconSize(16)} />
         <TypographySmall text="Add task" className="!leading-[150%]" />

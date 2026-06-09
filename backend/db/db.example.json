@@ -112,7 +112,7 @@
     {
       "id": "folder-upcoming-1",
       "title": "Upcoming work",
-      "columnId": "planning",
+      "columnId": "upcoming",
       "order": 1
     },
     {
@@ -124,12 +124,20 @@
   ],
   "tasks": [
     {
+      "id": "task-1",
+      "taskFolderId": "folder-upcoming-1",
+      "text": "Изучить паттерны проектирования",
+      "tags": ["learning"],
+      "completed": false,
+      "order": 1,
+      "createdAt": "2026-01-10T09:00:00.000Z",
+      "updatedAt": "2026-01-10T09:00:00.000Z"
+    },
+    {
       "id": "task-2",
       "taskFolderId": "folder-completed-1",
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "tags": [
-        "react"
-      ],
+      "tags": ["react"],
       "completed": true,
       "order": 1,
       "createdAt": "2026-01-08T10:00:00.000Z",
@@ -139,9 +147,7 @@
       "id": "task-3",
       "taskFolderId": "folder-planning-1",
       "text": "Redux (redux-observable, redux-saga)",
-      "tags": [
-        "redux"
-      ],
+      "tags": ["redux"],
       "completed": true,
       "order": 1,
       "createdAt": "2026-01-05T11:00:00.000Z",
@@ -151,21 +157,17 @@
       "id": "task-4",
       "taskFolderId": "folder-planning-1",
       "text": "Настроить CI pipeline",
-      "tags": [
-        "devops"
-      ],
+      "tags": ["devops"],
       "completed": false,
       "order": 2,
       "createdAt": "2026-01-11T08:00:00.000Z",
-      "updatedAt": "2026-06-09T07:29:58.367Z"
+      "updatedAt": "2026-01-11T08:00:00.000Z"
     },
     {
       "id": "task-5",
       "taskFolderId": "folder-planning-1",
       "text": "Покрыть тестами store",
-      "tags": [
-        "testing"
-      ],
+      "tags": ["testing"],
       "completed": true,
       "order": 3,
       "createdAt": "2026-01-07T13:00:00.000Z",
@@ -174,14 +176,12 @@
     {
       "id": "task-6",
       "taskFolderId": "folder-upcoming-1",
-      "text": "Оптимизировать загрузку boardы",
-      "tags": [
-        "performance"
-      ],
+      "text": "Оптимизировать загрузку board",
+      "tags": ["performance"],
       "completed": false,
       "order": 2,
       "createdAt": "2026-01-14T09:30:00.000Z",
-      "updatedAt": "2026-06-09T07:30:14.979Z"
+      "updatedAt": "2026-01-14T09:30:00.000Z"
     }
   ],
   "colors": [
@@ -235,6 +235,5 @@
       "lastName": "Abent",
       "createdAt": "2026-05-27T09:01:56.663Z"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }

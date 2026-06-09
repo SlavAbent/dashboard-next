@@ -10,11 +10,11 @@ import { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders
 const BoardView = () => {
   const filteredTasks = useFilteredTasks();
   const columns = useBoardStore((state) => state.columns);
-  const tasksFolders = useBoardStore((state) => state.tasksFolder);
+  const taskFolders = useBoardStore((state) => state.taskFolders);
 
   const boardData = useMemo(() => {
-    return groupTasksToFolders(filteredTasks, columns, tasksFolders);
-  }, [filteredTasks, columns, tasksFolders]);
+    return groupTasksToFolders(filteredTasks, columns, taskFolders);
+  }, [filteredTasks, columns, taskFolders]);
 
   return (
     <>

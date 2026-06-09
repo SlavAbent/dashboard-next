@@ -17,7 +17,7 @@ const ModalFolder = () => {
 
   const addFolder = useBoardStore((state) => state.addFolder);
   const updateFolder = useBoardStore((state) => state.updateFolder);
-  const tasksFolder = useBoardStore((state) => state.tasksFolder);
+  const taskFolders = useBoardStore((state) => state.taskFolders);
 
   const isOpen = useBoardModalStore((state) => state.isOpen);
   const mode = useBoardModalStore((state) => state.mode);
@@ -40,7 +40,7 @@ const ModalFolder = () => {
     }
 
     if (isEditMode && editingFolderId) {
-      const folder = tasksFolder.find((item) =>
+      const folder = taskFolders.find((item) =>
         sameId(item.id, editingFolderId)
       );
 
@@ -54,7 +54,7 @@ const ModalFolder = () => {
 
     setFolderValue('');
     setColumnId(selectedColumnId ?? '');
-  }, [isVisible, isEditMode, editingFolderId, selectedColumnId, tasksFolder]);
+  }, [isVisible, isEditMode, editingFolderId, selectedColumnId, taskFolders]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -68,9 +68,14 @@ const ModalFolder = () => {
           columnId,
         });
       } else {
+        const nextOrder =
+          taskFolders.filter((folder) => folder.columnId === columnId).length +
+          1;
+
         await addFolder({
           title: folderValue.trim(),
           columnId,
+          order: nextOrder,
         });
       }
 

@@ -35,7 +35,7 @@ const FolderContent = ({
     () =>
       filteredTasks.filter(
         (task) =>
-          task.tasksFolderId != null && sameId(task.tasksFolderId, folderId)
+          sameId(task.taskFolderId, folderId)
       ),
     [filteredTasks, folderId]
   );

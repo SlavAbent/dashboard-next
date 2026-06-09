@@ -1,7 +1,7 @@
-export const normalizePath = (pathname: string, name: string) => {
-  const href = `/${name.toLowerCase()}`;
+export const normalizePath = (pathname: string, slug: string) => {
+  const href = `/${slug}`;
   const path = pathname.toLowerCase();
-  const isActive = path.startsWith(`/${href}`);
+  const isActive = path === href || path.startsWith(`${href}/`);
 
   return {
     isActive,

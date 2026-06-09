@@ -1,9 +1,9 @@
 import { cache } from 'react';
 import type { NavigationMenu } from '@/entities/navigation/model/types';
-import { foldersApi } from '@/shared/_api/instances';
+import { navigationApi } from '@/shared/_api/instances';
 
 export const getNavigationMenu = cache(async (): Promise<NavigationMenu> => {
-  const response = await fetch(foldersApi, {
+  const response = await fetch(navigationApi, {
     next: { revalidate: 60 },
   });
 

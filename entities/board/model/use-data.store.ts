@@ -6,7 +6,7 @@ import {
   CreateFolder,
   CreateTask,
   Task,
-  TasksFolder,
+  TaskFolder,
   UpdateFolderPayload,
 } from '@/entities/board/model/types/list-types';
 import {
@@ -23,7 +23,7 @@ import { sameId, type EntityId } from '@/shared/lib/same-id';
 
 type BoardStore = {
   tasks: Task[];
-  tasksFolder: TasksFolder[];
+  taskFolders: TaskFolder[];
   columns: Column[];
 
   closedColumns: string[];
@@ -31,13 +31,13 @@ type BoardStore = {
   setBoardData: (
     tasks: Task[],
     columns: Column[],
-    folders: TasksFolder[]
+    folders: TaskFolder[]
   ) => void;
 
   addTask: (task: CreateTask) => Promise<void>;
   editTask: (
     id: EntityId,
-    data: Partial<Pick<Task, 'text' | 'tasksFolderId' | 'completed'>>
+    data: Partial<Pick<Task, 'text' | 'taskFolderId' | 'completed'>>
   ) => Promise<void>;
   toggleTask: (id: EntityId) => Promise<void>;
   removeTask: (id: EntityId) => Promise<void>;
@@ -51,15 +51,15 @@ type BoardStore = {
 
 export const useBoardStore = create<BoardStore>((set, get) => ({
   tasks: [],
-  tasksFolder: [],
+  taskFolders: [],
   columns: [],
   closedColumns: [],
 
   setBoardData: (tasks, columns, folders) => {
     set({
-      tasks: tasks.filter((task) => task.tasksFolderId != null),
+      tasks,
       columns,
-      tasksFolder: folders,
+      taskFolders: folders,
     });
   },
 
@@ -69,7 +69,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     const updatedFolder = await updateFolders(id, { columnId: nextColumn });
 
     set((state) => ({
-      tasksFolder: state.tasksFolder.map((folder) =>
+      taskFolders: state.taskFolders.map((folder) =>
         sameId(folder.id, id) ? updatedFolder : folder
       ),
     }));
@@ -79,26 +79,22 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     const updatedFolder = await updateFolderDetails(id, data);
 
     set((state) => ({
-      tasksFolder: state.tasksFolder.map((folder) =>
+      taskFolders: state.taskFolders.map((folder) =>
         sameId(folder.id, id) ? updatedFolder : folder
       ),
     }));
   },
 
-  addFolder: async (tasksFolder) => {
-    const createFolder = await createFolderTask(tasksFolder);
+  addFolder: async (folder) => {
+    const createdFolder = await createFolderTask(folder);
 
     set((state) => ({
-      tasksFolder: [...state.tasksFolder, createFolder],
+      taskFolders: [...state.taskFolders, createdFolder],
     }));
   },
 
   addTask: async (task) => {
     const createdTask = await createTask(task);
-
-    if (createdTask.tasksFolderId == null) {
-      throw new Error('Task was created without folder');
-    }
 
     set((state) => ({
       tasks: [...state.tasks, createdTask],
@@ -145,7 +141,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
 
   removeFolder: async (id) => {
     const folderTasks = get().tasks.filter((task) =>
-      sameId(task.tasksFolderId, id)
+      sameId(task.taskFolderId, id)
     );
 
     await Promise.all([
@@ -154,8 +150,8 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     ]);
 
     set((state) => ({
-      tasksFolder: state.tasksFolder.filter((folder) => !sameId(folder.id, id)),
-      tasks: state.tasks.filter((task) => !sameId(task.tasksFolderId, id)),
+      taskFolders: state.taskFolders.filter((folder) => !sameId(folder.id, id)),
+      tasks: state.tasks.filter((task) => !sameId(task.taskFolderId, id)),
     }));
   },
 

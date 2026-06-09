@@ -1,7 +1,7 @@
 export {
   getTasks,
   getColumns,
-  getTasksFolders,
+  getTaskFolders,
   createTask,
   updateTask,
   deleteTask,

@@ -1,11 +1,11 @@
 import type {
   BoardColumn,
-  TasksFolder,
+  TaskFolder,
 } from '@/entities/board/model/types/list-types';
 import type { EntityId } from '@/shared/lib/same-id';
 
 export type BoardKanbanType = {
   column: BoardColumn;
   itemIds: EntityId[];
-  tasksMap: Record<string, TasksFolder>;
+  tasksMap: Record<string, TaskFolder>;
 };

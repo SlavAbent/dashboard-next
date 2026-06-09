@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"npm run json-server\"",
+    "dev": "node backend/scripts/validate-db.mjs && concurrently \"next dev\" \"npm run json-server\"",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server backend/db/db.json --watch --port 4001",
+    "validate:db": "node backend/scripts/validate-db.mjs",
+    "json-server": "node backend/scripts/validate-db.mjs && json-server backend/db/db.json --watch --port 4001",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",

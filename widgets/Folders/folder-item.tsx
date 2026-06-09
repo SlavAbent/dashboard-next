@@ -13,10 +13,10 @@ import { useAsideStore } from '@/entities/aside/model/aside.store';
 
 const transition = 'duration-300 ease-in-out';
 
-export const FolderItem = ({ name, icon }: FolderItemProps) => {
+export const FolderItem = ({ name, slug, icon }: FolderItemProps) => {
   const collapsed = useAsideStore((state) => state.collapsed);
   const pathname = usePathname();
-  const { isActive, href } = normalizePath(pathname, name);
+  const { isActive, href } = normalizePath(pathname, slug);
 
   const activeClass = isActive
     ? 'text-primary dark:text-black'
@@ -32,7 +32,8 @@ export const FolderItem = ({ name, icon }: FolderItemProps) => {
           collapsed
             ? 'h-9 w-9 justify-center gap-0 p-0'
             : 'w-[216px] gap-3 px-4',
-          isActive && 'bg-neutral-50 text-primary dark:bg-neutral-50 dark:text-black'
+          isActive &&
+            'text-primary bg-neutral-50 dark:bg-neutral-50 dark:text-black'
         )}>
         <SvgIcon
           icon={icon}

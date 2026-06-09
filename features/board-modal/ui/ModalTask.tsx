@@ -27,7 +27,7 @@ const ModalTask = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const tasks = useBoardStore((state) => state.tasks);
-  const tasksFolder = useBoardStore((state) => state.tasksFolder);
+  const taskFolders = useBoardStore((state) => state.taskFolders);
   const addTask = useBoardStore((state) => state.addTask);
   const editTask = useBoardStore((state) => state.editTask);
 
@@ -55,15 +55,15 @@ const ModalTask = () => {
 
     if (isEditMode && editingTask) {
       setTaskValue(editingTask.text);
-      setFolderId(editingTask.tasksFolderId);
+      setFolderId(editingTask.taskFolderId);
       setCompleted(editingTask.completed);
       return;
     }
 
     setTaskValue('');
     setCompleted(false);
-    setFolderId(editingFolderId ?? tasksFolder[0]?.id ?? '');
-  }, [isVisible, isEditMode, editingTask, editingFolderId, tasksFolder]);
+    setFolderId(editingFolderId ?? taskFolders[0]?.id ?? '');
+  }, [isVisible, isEditMode, editingTask, editingFolderId, taskFolders]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -80,15 +80,19 @@ const ModalTask = () => {
       if (isEditMode && editingTaskId != null) {
         await editTask(editingTaskId, {
           text: taskValue.trim(),
-          tasksFolderId: folderId,
+          taskFolderId: String(folderId),
           completed,
         });
       } else {
+        const nextOrder =
+          tasks.filter((task) => sameId(task.taskFolderId, folderId)).length + 1;
+
         await addTask({
           text: taskValue.trim(),
           tags: [],
           completed: false,
-          tasksFolderId: folderId,
+          taskFolderId: String(folderId),
+          order: nextOrder,
         });
       }
 
@@ -126,7 +130,7 @@ const ModalTask = () => {
               disabled={isSubmitting}
             />
 
-            {isEditMode && tasksFolder.length > 0 && (
+            {isEditMode && taskFolders.length > 0 && (
               <div className="flex flex-col gap-1">
                 <span className="text-muted-foreground text-sm">Folder</span>
                 <FolderSelect
