@@ -10,16 +10,18 @@ import {
   UpdateFolderPayload,
 } from '@/entities/board/model/types/list-types';
 import {
-  createFolderTask,
   createTask,
-  deleteFolder,
   deleteTask,
-  updateFolderDetails,
   updateTask,
-} from '@/entities/board/api/board-api';
+} from '@/entities/board/api/task-api';
 import { getNextColumn } from '@/entities/board/lib/get-next-column';
-import { updateFolders } from '@/entities/board/api/update-folder';
+import { updateFolders } from '@/entities/board/api/folder-api';
 import { sameId, type EntityId } from '@/shared/lib/same-id';
+import {
+  createFolderTask,
+  deleteFolder,
+  updateFolderDetails,
+} from '@/entities/board/api/tasks';
 
 type BoardStore = {
   tasks: Task[];

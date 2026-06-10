@@ -21,15 +21,18 @@ export {
 } from '@/entities/board/lib/count-column-tasks';
 export {
   getTasks,
-  getColumns,
-  getTaskFolders,
   createTask,
   updateTask,
   deleteTask,
-  createFolderTask,
+} from '@/entities/board/api/task-api';
+export {
+  updateFolders,
   deleteFolder,
+  updateFolderColumn,
   updateFolderDetails,
-} from '@/entities/board/api/board-api';
+  getColumns,
+  getTaskFolders,
+} from '@/entities/board/api/folder-api';
 export { useFiltersStore } from '@/entities/board/model/filters.store';
 export { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
 export { applyTaskFiltersAndSort } from '@/entities/board/lib/filter-sort-tasks';

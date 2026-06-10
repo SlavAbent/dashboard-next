@@ -8,7 +8,7 @@ type AsideStore = {
 };
 
 export const useAsideStore = create<AsideStore>((set) => ({
-  collapsed: false,
+  collapsed: true,
 
   toggle: () =>
     set((state) => ({

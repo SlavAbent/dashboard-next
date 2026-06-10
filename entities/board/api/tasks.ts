@@ -10,4 +10,4 @@ export {
   updateFolder,
   updateFolderColumn,
   updateFolderDetails,
-} from '@/entities/board/api/board-api';
+} from '@/entities/board/api/task-api';

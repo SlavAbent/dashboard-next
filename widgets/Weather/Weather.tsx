@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ChangeEvent, useState } from 'react';
-import { CloudIcon, CloudSun, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { cn } from '@/shared/lib/cn';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import {
@@ -16,11 +16,8 @@ import { useWeather } from '@/widgets/Weather/hooks/useWeather';
 import { WeatherType } from '@/widgets/Weather/types/weather.types';
 import { useCurrentCoords } from '@/widgets/Weather/hooks/useCurrentPosition';
 import { getDays } from '@/widgets/Weather/config';
-
-const DEFAULT_COORDS = {
-  lat: 59.9343,
-  lon: 30.3351,
-};
+import { DEFAULT_COORDS } from '@/widgets/Weather/constants';
+import { getWeatherIconByCode } from '@/widgets/Weather/lib/getWeatherIcon';
 
 const Weather = ({ className }: WeatherType) => {
   const [open, setOpen] = useState(false);
@@ -39,6 +36,8 @@ const Weather = ({ className }: WeatherType) => {
   const days = getDays(data);
   const currentTemp = Math.floor(data?.list?.[0]?.main?.temp ?? 0);
   const currentCity = data?.city?.name ?? city ?? '';
+  const currentWeatherId = data?.list?.[0]?.weather?.[0].icon ?? '01d';
+  const CurrentWeatherIcon = getWeatherIconByCode(currentWeatherId);
 
   const handleSearch = () => {
     const next = query.trim();
@@ -49,14 +48,10 @@ const Weather = ({ className }: WeatherType) => {
 
   return (
     <div className={cn('flex items-center gap-2', className)}>
-      <Popover
-        open={open}
-        onOpenChange={(nextOpen) => {
-          setOpen(nextOpen);
-        }}>
+      <Popover open={open} onOpenChange={(nextOpen) => setOpen(nextOpen)}>
         <PopoverTrigger>
           <div className="flex cursor-pointer items-center gap-1">
-            <CloudIcon size={24} className="text-muted-foreground" />
+            <CurrentWeatherIcon size={24} className="text-muted-foreground" />
 
             <div className="flex items-center gap-2">
               <TypographySmall
@@ -64,21 +59,12 @@ const Weather = ({ className }: WeatherType) => {
                 className="!leading-5"
               />
             </div>
-
-            {/* <ChevronDown
-              width={16}
-              height={16}
-              className={cn(
-                'h-4 w-4 transition-transform duration-200',
-                open && 'rotate-180'
-              )}
-            /> */}
           </div>
         </PopoverTrigger>
 
         <PopoverContent
           align="end"
-          className="w-100 rounded-sm border border-border p-4">
+          className="border-border w-100 rounded-sm border p-4">
           <TypographySmall
             text={`Current city: ${currentCity}`}
             className="!leading-5"
@@ -100,11 +86,16 @@ const Weather = ({ className }: WeatherType) => {
           </div>
 
           <div className="flex items-center justify-between">
-            {days.map((item) => {
-              const [, month, day] = item.dt_txt.split(' ')[0].split('-');
+            {days.map((dayData) => {
+              const [, month, day] = dayData.dt_txt.split(' ')[0].split('-');
+
+              const weatherId = dayData.weather?.[0].icon ?? '01d';
+              const Icon = getWeatherIconByCode(weatherId);
 
               return (
-                <div key={`${item.dt}-${item.dt_txt}`} className="p-4 pb-0">
+                <div
+                  key={`${dayData.dt}-${dayData.dt_txt}`}
+                  className="p-4 pb-0">
                   <div className="flex flex-col gap-3">
                     <TypographySmall
                       className="text-[12px] font-bold"
@@ -112,10 +103,10 @@ const Weather = ({ className }: WeatherType) => {
                     />
 
                     <div className="flex flex-col items-center gap-2">
-                      <CloudSun className="mx-auto" />
+                      <Icon className="text-muted-foreground mx-auto h-8 w-8" />
                       <TypographySmall
                         className="text-2xl font-bold"
-                        text={`${Math.round(item.main.temp)}°C`}
+                        text={`${Math.round(dayData.main.temp)}°C`}
                       />
                     </div>
                   </div>
