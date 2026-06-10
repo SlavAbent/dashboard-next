@@ -79,7 +79,7 @@ const Weather = ({ className }: WeatherType) => {
     <div className={cn('flex items-center gap-2', className)}>
       <Popover open={open} onOpenChange={(nextOpen) => setOpen(nextOpen)}>
         <PopoverTrigger>
-          <div className="flex min-w-14 cursor-pointer items-center gap-1">
+          <div className="flex min-w-16 cursor-pointer items-center gap-1">
             {!loading ? (
               <>
                 <CurrentWeatherIcon
