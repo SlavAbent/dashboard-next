@@ -15,13 +15,13 @@ import {
   updateTask,
 } from '@/entities/board/api/task-api';
 import { getNextColumn } from '@/entities/board/lib/get-next-column';
-import { updateFolders } from '@/entities/board/api/folder-api';
-import { sameId, type EntityId } from '@/shared/lib/same-id';
 import {
   createFolderTask,
   deleteFolder,
   updateFolderDetails,
-} from '@/entities/board/api/tasks';
+  updateFolders,
+} from '@/entities/board/api/folder-api';
+import { sameId, type EntityId } from '@/shared/lib/same-id';
 
 type BoardStore = {
   tasks: Task[];
@@ -56,44 +56,6 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   taskFolders: [],
   columns: [],
   closedColumns: [],
-
-  setBoardData: (tasks, columns, folders) => {
-    set({
-      tasks,
-      columns,
-      taskFolders: folders,
-    });
-  },
-
-  moveFolder: async (id, currentColumn) => {
-    const nextColumn = getNextColumn(currentColumn);
-
-    const updatedFolder = await updateFolders(id, { columnId: nextColumn });
-
-    set((state) => ({
-      taskFolders: state.taskFolders.map((folder) =>
-        sameId(folder.id, id) ? updatedFolder : folder
-      ),
-    }));
-  },
-
-  updateFolder: async (id, data) => {
-    const updatedFolder = await updateFolderDetails(id, data);
-
-    set((state) => ({
-      taskFolders: state.taskFolders.map((folder) =>
-        sameId(folder.id, id) ? updatedFolder : folder
-      ),
-    }));
-  },
-
-  addFolder: async (folder) => {
-    const createdFolder = await createFolderTask(folder);
-
-    set((state) => ({
-      taskFolders: [...state.taskFolders, createdFolder],
-    }));
-  },
 
   addTask: async (task) => {
     const createdTask = await createTask(task);
@@ -138,6 +100,44 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
 
     set((state) => ({
       tasks: state.tasks.filter((task) => !sameId(task.id, id)),
+    }));
+  },
+
+  setBoardData: (tasks, columns, folders) => {
+    set({
+      tasks,
+      columns,
+      taskFolders: folders,
+    });
+  },
+
+  moveFolder: async (id, currentColumn) => {
+    const nextColumn = getNextColumn(currentColumn);
+
+    const updatedFolder = await updateFolders(id, { columnId: nextColumn });
+
+    set((state) => ({
+      taskFolders: state.taskFolders.map((folder) =>
+        sameId(folder.id, id) ? updatedFolder : folder
+      ),
+    }));
+  },
+
+  updateFolder: async (id, data) => {
+    const updatedFolder = await updateFolderDetails(id, data);
+
+    set((state) => ({
+      taskFolders: state.taskFolders.map((folder) =>
+        sameId(folder.id, id) ? updatedFolder : folder
+      ),
+    }));
+  },
+
+  addFolder: async (folder) => {
+    const createdFolder = await createFolderTask(folder);
+
+    set((state) => ({
+      taskFolders: [...state.taskFolders, createdFolder],
     }));
   },
 

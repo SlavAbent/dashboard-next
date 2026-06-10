@@ -2,7 +2,7 @@ import React, { ReactNode, Suspense } from 'react';
 import { AppAside } from '@/widgets/Aside/ui/app-aside';
 import Header from '@/widgets/Header/Header';
 import SubHeader from '@/widgets/SubHeader/SubHeader';
-import { SubHeaderFallback } from '@/widgets/SubHeader/sub-header-fallback';
+import { Skeleton } from '@/shared/components/Skeleton/skeleton';
 
 export const App = ({ children }: { children: ReactNode }) => {
   return (
@@ -10,7 +10,7 @@ export const App = ({ children }: { children: ReactNode }) => {
       <AppAside />
       <div className="bg-background flex w-full flex-col">
         <Header />
-        <Suspense fallback={<SubHeaderFallback />}>
+        <Suspense fallback={<Skeleton mode="shimmer" />}>
           <SubHeader />
         </Suspense>
         <main className="bg-background flex-1 overflow-auto">{children}</main>

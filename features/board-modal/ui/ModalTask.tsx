@@ -85,7 +85,8 @@ const ModalTask = () => {
         });
       } else {
         const nextOrder =
-          tasks.filter((task) => sameId(task.taskFolderId, folderId)).length + 1;
+          tasks.filter((task) => sameId(task.taskFolderId, folderId)).length +
+          1;
 
         await addTask({
           text: taskValue.trim(),
