@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useMemo, useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/shared/lib/cn';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
@@ -18,6 +18,7 @@ import { useCurrentCoords } from '@/widgets/Weather/hooks/useCurrentPosition';
 import { getDays } from '@/widgets/Weather/config';
 import { DEFAULT_COORDS } from '@/widgets/Weather/constants';
 import { getWeatherIconByCode } from '@/widgets/Weather/lib/getWeatherIcon';
+import { Skeleton } from '@/shared/components/Skeleton/skeleton';
 
 const Weather = ({ className }: WeatherType) => {
   const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ const Weather = ({ className }: WeatherType) => {
   const weather = useWeather(coords);
 
   const data = weather.data;
-  const loading = weather.isLoading;
+  const loading = weather.isFetching;
   const error = weather.error;
 
   const days = getDays(data);
@@ -46,19 +47,56 @@ const Weather = ({ className }: WeatherType) => {
     setCity(next);
   };
 
+  const renderDays = useMemo(() => {
+    return days.map((dayData) => {
+      const [, month, day] = dayData.dt_txt.split(' ')[0].split('-');
+
+      const weatherId = dayData.weather?.[0].icon ?? '01d';
+      const Icon = getWeatherIconByCode(weatherId);
+
+      return (
+        <div key={`${dayData.dt}-${dayData.dt_txt}`} className="p-4 pb-0">
+          <div className="flex flex-col gap-3">
+            <TypographySmall
+              className="text-[12px] font-bold"
+              text={`${day}/${month}`}
+            />
+
+            <div className="flex flex-col items-center gap-2">
+              <Icon className="text-muted-foreground mx-auto h-8 w-8" />
+              <TypographySmall
+                className="text-2xl font-bold"
+                text={`${Math.round(dayData.main.temp)}°C`}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }, [days]);
+
   return (
     <div className={cn('flex items-center gap-2', className)}>
       <Popover open={open} onOpenChange={(nextOpen) => setOpen(nextOpen)}>
         <PopoverTrigger>
-          <div className="flex cursor-pointer items-center gap-1">
-            <CurrentWeatherIcon size={24} className="text-muted-foreground" />
+          <div className="flex min-w-14 cursor-pointer items-center gap-1">
+            {!loading ? (
+              <>
+                <CurrentWeatherIcon
+                  size={24}
+                  className="text-muted-foreground"
+                />
 
-            <div className="flex items-center gap-2">
-              <TypographySmall
-                text={`${currentTemp}°C`}
-                className="!leading-5"
-              />
-            </div>
+                <div className="flex items-center gap-2">
+                  <TypographySmall
+                    text={`${currentTemp}°C`}
+                    className="!leading-5"
+                  />
+                </div>
+              </>
+            ) : (
+              <Skeleton mode="shimmer" className="h-6 w-24 rounded-md" />
+            )}
           </div>
         </PopoverTrigger>
 
@@ -85,44 +123,12 @@ const Weather = ({ className }: WeatherType) => {
             </Button>
           </div>
 
-          <div className="flex items-center justify-between">
-            {days.map((dayData) => {
-              const [, month, day] = dayData.dt_txt.split(' ')[0].split('-');
-
-              const weatherId = dayData.weather?.[0].icon ?? '01d';
-              const Icon = getWeatherIconByCode(weatherId);
-
-              return (
-                <div
-                  key={`${dayData.dt}-${dayData.dt_txt}`}
-                  className="p-4 pb-0">
-                  <div className="flex flex-col gap-3">
-                    <TypographySmall
-                      className="text-[12px] font-bold"
-                      text={`${day}/${month}`}
-                    />
-
-                    <div className="flex flex-col items-center gap-2">
-                      <Icon className="text-muted-foreground mx-auto h-8 w-8" />
-                      <TypographySmall
-                        className="text-2xl font-bold"
-                        text={`${Math.round(dayData.main.temp)}°C`}
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="flex h-[94px] items-center justify-between">
+            {renderDays}
+            {loading && <Skeleton mode="shimmer" className="h-[94px] w-full" />}
           </div>
 
-          {loading && (
-            <div className="flex items-center gap-2">
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Loading...
-            </div>
-          )}
-
-          {error && <p className="text-red-500">{(error as Error).message}</p>}
+          {error && <TypographySmall text={(error as Error).message} />}
         </PopoverContent>
       </Popover>
     </div>
