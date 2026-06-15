@@ -1,7 +1,6 @@
 'use client';
 
 import React, { ChangeEvent, useMemo, useState } from 'react';
-import { Loader2 } from 'lucide-react';
 import { cn } from '@/shared/lib/cn';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import {

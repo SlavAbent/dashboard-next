@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
-import { cn } from '@/shared/lib/cn';
+import cn from 'clsx';
 
 type ColumnSelectProps = {
   value: string;
-  onChange: (columnId: string) => void;
+  onChange: (value: string) => void;
   className?: string;
 };
 

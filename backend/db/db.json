@@ -105,39 +105,45 @@
   "taskFolders": [
     {
       "id": "folder-planning-1",
-      "title": "Sprint backlog",
+      "title": "Planning",
       "columnId": "planning",
       "order": 1
     },
     {
       "id": "folder-upcoming-1",
-      "title": "Upcoming work",
-      "columnId": "planning",
+      "title": "Upcoming",
+      "columnId": "upcoming",
       "order": 1
     },
     {
       "id": "folder-completed-1",
-      "title": "Done items",
+      "title": "Completed",
       "columnId": "completed",
       "order": 1
+    },
+    {
+      "title": "test",
+      "columnId": "planning",
+      "order": 2,
+      "id": "qnS9ZFFbqTk"
     }
   ],
   "tasks": [
     {
       "id": "task-2",
-      "taskFolderId": "folder-completed-1",
+      "taskFolderId": "folder-planning-1",
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       "tags": [
         "react"
       ],
-      "completed": true,
+      "completed": false,
       "order": 1,
       "createdAt": "2026-01-08T10:00:00.000Z",
-      "updatedAt": "2026-01-12T14:30:00.000Z"
+      "updatedAt": "2026-06-13T19:18:57.949Z"
     },
     {
       "id": "task-3",
-      "taskFolderId": "folder-planning-1",
+      "taskFolderId": "folder-completed-1",
       "text": "Redux (redux-observable, redux-saga)",
       "tags": [
         "redux"
@@ -145,11 +151,11 @@
       "completed": true,
       "order": 1,
       "createdAt": "2026-01-05T11:00:00.000Z",
-      "updatedAt": "2026-01-09T16:00:00.000Z"
+      "updatedAt": "2026-06-11T07:28:15.263Z"
     },
     {
       "id": "task-4",
-      "taskFolderId": "folder-planning-1",
+      "taskFolderId": "folder-upcoming-1",
       "text": "Настроить CI pipeline",
       "tags": [
         "devops"
@@ -157,7 +163,7 @@
       "completed": false,
       "order": 2,
       "createdAt": "2026-01-11T08:00:00.000Z",
-      "updatedAt": "2026-06-09T07:29:58.367Z"
+      "updatedAt": "2026-06-13T19:21:20.199Z"
     },
     {
       "id": "task-5",
@@ -182,6 +188,36 @@
       "order": 2,
       "createdAt": "2026-01-14T09:30:00.000Z",
       "updatedAt": "2026-06-09T07:30:14.979Z"
+    },
+    {
+      "text": "testing test",
+      "tags": [],
+      "taskFolderId": "folder-planning-1",
+      "completed": false,
+      "order": 3,
+      "createdAt": "2026-06-15T11:56:11.065Z",
+      "updatedAt": "2026-06-15T11:56:11.065Z",
+      "id": "3-ELOrilj7w"
+    },
+    {
+      "text": "Настроить CI pipeline",
+      "tags": [],
+      "taskFolderId": "folder-planning-1",
+      "completed": false,
+      "order": 4,
+      "createdAt": "2026-06-15T12:53:12.115Z",
+      "updatedAt": "2026-06-15T12:53:12.115Z",
+      "id": "sxQwxAnrtRo"
+    },
+    {
+      "text": "testing test",
+      "tags": [],
+      "taskFolderId": "folder-planning-1",
+      "completed": false,
+      "order": 5,
+      "createdAt": "2026-06-15T12:58:34.903Z",
+      "updatedAt": "2026-06-15T12:58:34.903Z",
+      "id": "XTWwE_hv7I0"
     }
   ],
   "colors": [

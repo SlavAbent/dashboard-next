@@ -15,17 +15,9 @@ const ModalFolder = () => {
   const [folderValue, setFolderValue] = useState('');
   const [columnId, setColumnId] = useState('');
 
-  const addFolder = useBoardStore((state) => state.addFolder);
-  const updateFolder = useBoardStore((state) => state.updateFolder);
-  const taskFolders = useBoardStore((state) => state.taskFolders);
-
-  const isOpen = useBoardModalStore((state) => state.isOpen);
-  const mode = useBoardModalStore((state) => state.mode);
-  const closeModal = useBoardModalStore((state) => state.closeModal);
-  const selectedColumnId = useBoardModalStore(
-    (state) => state.selectedColumnId
-  );
-  const editingFolderId = useBoardModalStore((state) => state.editingFolderId);
+  const { addFolder, updateFolder, taskFolders } = useBoardStore();
+  const { isOpen, mode, closeModal, selectedColumnId, editingFolderId } =
+    useBoardModalStore();
 
   const isEditMode = mode === 'edit-folder';
   const isFolderModal = mode === 'create-folder' || isEditMode;
@@ -105,6 +97,7 @@ const ModalFolder = () => {
               }
               placeholder="Folder name"
               className="!w-full"
+              classNameContainer="w-full"
             />
 
             <ColumnSelect value={columnId} onChange={setColumnId} />

@@ -38,10 +38,6 @@ export async function deleteFolder(id: EntityId) {
   return true;
 }
 
-export async function folderApi(id: EntityId, currentColumn: string) {
-  return updateFolders(id, { columnId: getNextColumn(currentColumn) });
-}
-
 export async function updateFolderColumn(id: EntityId, column: string) {
   return updateFolders(id, { columnId: column });
 }

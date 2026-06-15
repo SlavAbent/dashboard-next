@@ -105,19 +105,19 @@
   "taskFolders": [
     {
       "id": "folder-planning-1",
-      "title": "Sprint backlog",
+      "title": "planning",
       "columnId": "planning",
       "order": 1
     },
     {
       "id": "folder-upcoming-1",
-      "title": "Upcoming work",
+      "title": "upcoming",
       "columnId": "upcoming",
       "order": 1
     },
     {
       "id": "folder-completed-1",
-      "title": "Done items",
+      "title": "completed",
       "columnId": "completed",
       "order": 1
     }
