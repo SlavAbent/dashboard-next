@@ -1,26 +1,33 @@
 import React from 'react';
 import { Input } from '@/shared/components/Input/input';
-import { useFormContext } from 'react-hook-form';
-import { TaskFormValues } from '@/features/board-modal/schema/task-schema';
-import { FormError } from '@/features/board-modal/ui/FormError';
+import { FieldPath, FieldValues, useFormContext, get } from 'react-hook-form';
+import { ErrorField } from '@/features/board-modal/ui/fields/ErrorField';
 
-const InputField = () => {
-  const { register, formState } = useFormContext<TaskFormValues>();
+type InputFieldProps<T extends FieldValues> = {
+  value: FieldPath<T>;
+  placeholder: string;
+};
+
+export function InputField<T extends FieldValues>({
+  value,
+  placeholder,
+}: InputFieldProps<T>) {
+  const { register, formState } = useFormContext<T>();
   const { isSubmitted, errors } = formState;
+
+  const error = get(errors, value);
 
   return (
     <>
       <Input
-        {...register('taskValue')}
+        {...register(value)}
         disabled={isSubmitted}
-        placeholder="Task name"
+        placeholder={placeholder}
         className="!w-full"
         classNameContainer="w-full"
       />
 
-      <FormError error={errors.taskValue} />
+      <ErrorField error={error} />
     </>
   );
-};
-
-export default InputField;
+}

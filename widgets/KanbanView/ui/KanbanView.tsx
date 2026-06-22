@@ -25,11 +25,11 @@ const KanbanView = () => {
     return groupTasksToFolders(filteredTasks, columns, taskFolders);
   }, [filteredTasks, columns, taskFolders]);
 
-  const normalized = useMemo(() => {
+  const normalizedData = useMemo(() => {
     return normalizeBoardData(boardData);
   }, [boardData]);
 
-  const { columns: columnMap, tasksMap, items: derivedItems } = normalized;
+  const { columns: columnMap, tasksMap, items: derivedItems } = normalizedData;
   const items = derivedItems;
 
   const findColumnByFolderId = (

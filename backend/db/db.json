@@ -218,6 +218,16 @@
       "createdAt": "2026-06-15T12:58:34.903Z",
       "updatedAt": "2026-06-15T12:58:34.903Z",
       "id": "XTWwE_hv7I0"
+    },
+    {
+      "text": "Настроить CI pipeline",
+      "tags": [],
+      "taskFolderId": "folder-planning-1",
+      "completed": false,
+      "order": 3,
+      "createdAt": "2026-06-15T13:01:03.790Z",
+      "updatedAt": "2026-06-15T13:01:03.790Z",
+      "id": "VzuTX9_YViY"
     }
   ],
   "colors": [

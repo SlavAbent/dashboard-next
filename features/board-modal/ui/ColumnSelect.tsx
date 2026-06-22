@@ -2,32 +2,45 @@
 
 import React from 'react';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
-import cn from 'clsx';
+import { AppSelect } from '@/shared/components/Select/app-select';
+import { toIdString } from '@/shared/lib/same-id';
+import { Controller, useFormContext } from 'react-hook-form';
+import { FolderValues } from '@/features/board-modal/schema/folder-schema';
+import { ErrorField } from '@/features/board-modal/ui/fields/ErrorField';
 
 type ColumnSelectProps = {
-  value: string;
-  onChange: (value: string) => void;
   className?: string;
 };
 
-const ColumnSelect = ({ value, onChange, className }: ColumnSelectProps) => {
+export const ColumnSelect = ({ className }: ColumnSelectProps) => {
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext<FolderValues>();
   const columns = useBoardStore((state) => state.columns);
 
+  const options = columns.map((column) => ({
+    value: toIdString(column.id),
+    label: column.title,
+  }));
+
   return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className={cn(
-        'border-input focus-visible:ring-ring/50 mb-4 w-full rounded-sm border bg-transparent px-3 py-[7px] text-[14px] outline-none focus-visible:ring-1',
-        className
-      )}>
-      {columns.map((column) => (
-        <option key={column.id} value={column.id}>
-          {column.title}
-        </option>
-      ))}
-    </select>
+    <div className="flex flex-col gap-1">
+      <Controller
+        name="columnId"
+        control={control}
+        render={({ field }) => (
+          <AppSelect
+            value={field.value}
+            onChange={field.onChange}
+            options={options}
+            placeholder="Select column"
+            className={className}
+          />
+        )}
+      />
+
+      <ErrorField error={errors.columnId} />
+    </div>
   );
 };
-
-export default ColumnSelect;

@@ -6,7 +6,7 @@ type Props = {
   error: FieldError | undefined;
 };
 
-export const FormError = ({ error }: Props) => {
+export const ErrorField = ({ error }: Props) => {
   if (!error) return null;
 
   return (

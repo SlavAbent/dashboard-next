@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import ModalFolder from '@/features/board-modal/ui/ModalFolder';
-import ModalTask from '@/features/board-modal/ui/ModalTask';
+import ModalFolder from '@/features/board-modal/ui/modals/ModalFolder';
+import ModalTask from '@/features/board-modal/ui/modals/ModalTask';
 
-const BoardModals = () => {
+export const BoardModals = () => {
   return (
     <>
       <ModalFolder />
@@ -12,5 +12,3 @@ const BoardModals = () => {
     </>
   );
 };
-
-export default BoardModals;

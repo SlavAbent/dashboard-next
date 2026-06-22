@@ -117,7 +117,9 @@ const Weather = ({ className }: WeatherType) => {
               className="w-[300px]"
             />
 
-            <Button onClick={handleSearch} className="rounded-sm py-[17px]">
+            <Button
+              onClick={handleSearch}
+              className="w-fit rounded-sm py-[17px]">
               Search
             </Button>
           </div>
