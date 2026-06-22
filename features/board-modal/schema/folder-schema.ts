@@ -1,9 +1,8 @@
 import { z } from 'zod';
 
 export const folderSchema = z.object({
-  folderValue: z.string(),
-  title: z.string(),
-  columnId: z.string(),
+  title: z.string().min(1, 'Folder name is required'),
+  columnId: z.string().min(1, 'Column is required'),
 });
 
 export type FolderValues = z.infer<typeof folderSchema>;

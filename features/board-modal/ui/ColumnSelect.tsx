@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useBoardStore } from '@/entities/board/model/use-data.store';
+import { useBoardStore } from '@/entities/board';
 import { AppSelect } from '@/shared/components/Select/app-select';
 import { toIdString } from '@/shared/lib/same-id';
 import { Controller, useFormContext } from 'react-hook-form';
@@ -29,15 +29,18 @@ export const ColumnSelect = ({ className }: ColumnSelectProps) => {
       <Controller
         name="columnId"
         control={control}
-        render={({ field }) => (
-          <AppSelect
-            value={field.value}
-            onChange={field.onChange}
-            options={options}
-            placeholder="Select column"
-            className={className}
-          />
-        )}
+        render={({ field }) => {
+          const value = field.value ? toIdString(field.value) : '';
+          return (
+            <AppSelect
+              value={value}
+              onChange={field.onChange}
+              options={options}
+              placeholder="Select column"
+              className={className}
+            />
+          );
+        }}
       />
 
       <ErrorField error={errors.columnId} />

@@ -3,17 +3,16 @@
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useBoardModalStore } from '@/features/board-modal/model/modal.store';
-import { useFolderForm } from '@/features/board-modal/hooks/folder/use-folder-form';
 import { FolderForm } from '@/features/board-modal/ui/forms/FolderForm';
 
 const ModalFolder = () => {
   const { isOpen, mode, closeModal } = useBoardModalStore();
-  const { isEditFolderMode } = useFolderForm();
 
+  const isEditFolderMode = mode === 'edit-folder';
   const isFolderModal = mode === 'create-folder' || isEditFolderMode;
   const isVisible = isOpen && isFolderModal;
 
-  if (!isOpen && !isVisible) {
+  if (!isOpen || !isVisible) {
     return null;
   }
 

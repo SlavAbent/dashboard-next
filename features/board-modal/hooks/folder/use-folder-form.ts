@@ -1,14 +1,14 @@
+import { useEffect, useMemo } from 'react';
 import {
   folderSchema,
   FolderValues,
 } from '@/features/board-modal/schema/folder-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useMemo } from 'react';
 import { useBoardModalStore } from '@/features/board-modal';
 import { useCreateFolder } from '@/features/board-modal/hooks/folder/use-create-folder';
 import { useEditFolder } from '@/features/board-modal/hooks/folder/use-edit-folder';
-import { sameId } from '@/shared/lib/same-id';
+import { sameId, toIdString } from '@/shared/lib/same-id';
 import { useBoardStore } from '@/entities/board';
 
 export const useFolderForm = () => {
@@ -26,9 +26,8 @@ export const useFolderForm = () => {
 
   const defaultValues = useMemo<FolderValues>(
     () => ({
-      folderValue: folder?.title ?? '',
       title: folder?.title ?? '',
-      columnId: folder?.columnId ?? selectedColumnId ?? '',
+      columnId: toIdString(folder?.columnId ?? selectedColumnId ?? ''),
     }),
     [folder, selectedColumnId]
   );
@@ -37,6 +36,10 @@ export const useFolderForm = () => {
     resolver: zodResolver(folderSchema),
     defaultValues,
   });
+
+  useEffect(() => {
+    folderForm.reset(defaultValues);
+  }, [defaultValues, folderForm]);
 
   const submitFolder = folderForm.handleSubmit(async (data) => {
     if (isEditFolderMode && editingFolderId) {

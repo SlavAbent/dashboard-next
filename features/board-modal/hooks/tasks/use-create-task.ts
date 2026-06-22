@@ -15,7 +15,7 @@ export const useCreateTask = () => {
     await addTask({
       text: data.taskValue,
       tags: [],
-      taskFolderId: String(data.folderId),
+      taskFolderId: data.folderId,
       completed: false,
       order: nextOrder,
     });

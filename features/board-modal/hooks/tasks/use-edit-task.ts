@@ -10,7 +10,7 @@ export const useEditTask = () => {
   return async (taskId: EntityId, data: TaskFormValues) => {
     await editTask(taskId, {
       text: data.taskValue,
-      taskFolderId: String(data.folderId),
+      taskFolderId: data.folderId,
       completed: data.completed,
     });
 

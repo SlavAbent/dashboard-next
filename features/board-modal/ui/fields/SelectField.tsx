@@ -3,7 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { ErrorField } from '@/features/board-modal/ui/fields/ErrorField';
 import { TaskFormValues } from '@/features/board-modal/schema/task-schema';
 import { useBoardStore } from '@/entities/board';
-import { toIdString } from '@/shared/lib/same-id';
+import { sameId, toIdString } from '@/shared/lib/same-id';
 import { AppSelect } from '@/shared/components/Select/app-select';
 
 type SelectFieldProps = {
@@ -21,7 +21,8 @@ export const SelectField = ({ className }: SelectFieldProps) => {
     return folders.map((folder) => ({
       value: toIdString(folder.id),
       label: `${folder.title} — ${
-        columns.find((c) => c.id === folder.columnId)?.title ?? folder.columnId
+        columns.find((c) => sameId(c.id, folder.columnId))?.title ??
+        folder.columnId
       }`,
     }));
   }, [folders, columns]);

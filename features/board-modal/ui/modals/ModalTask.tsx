@@ -2,15 +2,14 @@
 
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { useTaskForm } from '@/features/board-modal/hooks/tasks/use-task-form';
 import { TaskForm } from '@/features/board-modal/ui/forms/TaskForm';
 import { useBoardModalStore } from '@/features/board-modal';
 
 const ModalTask = () => {
   const { closeModal, isOpen, mode } = useBoardModalStore();
-  const { isEditTaskMode } = useTaskForm();
 
-  const isTaskMode = mode === 'create-task' || mode === 'edit-task';
+  const isEditTaskMode = mode === 'edit-task';
+  const isTaskMode = mode === 'create-task' || isEditTaskMode;
 
   const isVisibleMode = isOpen && isTaskMode;
 

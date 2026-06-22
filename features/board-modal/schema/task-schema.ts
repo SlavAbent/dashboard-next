@@ -1,9 +1,8 @@
 import { z } from 'zod';
 
 export const taskSchema = z.object({
-  taskValue: z.string(),
-  //TODO revalidate data in number
-  folderId: z.union([z.string(), z.number()]),
+  taskValue: z.string().min(1, 'Task name is required'),
+  folderId: z.string().min(1, 'Folder is required'),
   completed: z.boolean(),
 });
 

@@ -14,7 +14,7 @@ export const FolderForm = () => {
   return (
     <FormProvider {...folderForm}>
       <form onSubmit={submitFolder} className="flex flex-col gap-3">
-        <InputField value="folderValue" placeholder="Folder name" />
+        <InputField value="title" placeholder="Folder name" />
 
         <ColumnSelect />
 

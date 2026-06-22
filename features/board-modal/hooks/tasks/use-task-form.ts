@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -10,6 +10,7 @@ import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/board-modal';
 import { useCreateTask } from '@/features/board-modal/hooks/tasks/use-create-task';
 import { useEditTask } from '@/features/board-modal/hooks/tasks/use-edit-task';
+import { toIdString } from '@/shared/lib/same-id';
 
 export const useTaskForm = () => {
   const { tasks, taskFolders } = useBoardStore();
@@ -26,14 +27,14 @@ export const useTaskForm = () => {
     if (isEditTaskMode && editingTask) {
       return {
         taskValue: editingTask.text,
-        folderId: editingTask.taskFolderId,
+        folderId: toIdString(editingTask.taskFolderId),
         completed: editingTask.completed,
       };
     }
 
     return {
       taskValue: '',
-      folderId: editingFolderId ?? taskFolders[0]?.id ?? '',
+      folderId: toIdString(editingFolderId ?? taskFolders[0]?.id ?? ''),
       completed: false,
     };
   }, [isEditTaskMode, editingTask, editingFolderId, taskFolders]);
@@ -42,6 +43,10 @@ export const useTaskForm = () => {
     resolver: zodResolver(taskSchema),
     defaultValues,
   });
+
+  useEffect(() => {
+    taskForm.reset(defaultValues);
+  }, [defaultValues, taskForm]);
 
   const submitTask = taskForm.handleSubmit(async (data) => {
     if (isEditTaskMode && editingTask) {
