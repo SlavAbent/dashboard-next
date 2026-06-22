@@ -23,6 +23,8 @@ export const useTaskForm = () => {
 
   const editingTask = findTaskById(tasks, editingTaskId);
 
+  const firstFolderId = toIdString(taskFolders[0]?.id ?? '');
+
   const defaultValues = useMemo<TaskFormValues>(() => {
     if (isEditTaskMode && editingTask) {
       return {
@@ -34,10 +36,18 @@ export const useTaskForm = () => {
 
     return {
       taskValue: '',
-      folderId: toIdString(editingFolderId ?? taskFolders[0]?.id ?? ''),
+      folderId: toIdString(editingFolderId ?? firstFolderId),
       completed: false,
     };
-  }, [isEditTaskMode, editingTask, editingFolderId, taskFolders]);
+  }, [
+    isEditTaskMode,
+    editingTask?.text,
+    editingTask?.taskFolderId,
+    editingTask?.completed,
+    editingTask?.id,
+    editingFolderId,
+    firstFolderId,
+  ]);
 
   const taskForm = useForm<TaskFormValues>({
     resolver: zodResolver(taskSchema),

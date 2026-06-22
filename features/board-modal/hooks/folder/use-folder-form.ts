@@ -27,9 +27,13 @@ export const useFolderForm = () => {
   const defaultValues = useMemo<FolderValues>(
     () => ({
       title: folder?.title ?? '',
-      columnId: toIdString(folder?.columnId ?? selectedColumnId ?? ''),
+      columnId: folder?.columnId
+        ? toIdString(folder.columnId)
+        : selectedColumnId
+          ? toIdString(selectedColumnId)
+          : '',
     }),
-    [folder, selectedColumnId]
+    [folder?.title, folder?.columnId, selectedColumnId]
   );
 
   const folderForm = useForm<FolderValues>({

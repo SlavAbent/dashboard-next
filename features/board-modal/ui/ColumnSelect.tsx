@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useBoardStore } from '@/entities/board';
 import { AppSelect } from '@/shared/components/Select/app-select';
 import { toIdString } from '@/shared/lib/same-id';
@@ -19,10 +19,14 @@ export const ColumnSelect = ({ className }: ColumnSelectProps) => {
   } = useFormContext<FolderValues>();
   const columns = useBoardStore((state) => state.columns);
 
-  const options = columns.map((column) => ({
-    value: toIdString(column.id),
-    label: column.title,
-  }));
+  const options = useMemo(
+    () =>
+      columns.map((column) => ({
+        value: toIdString(column.id),
+        label: column.title,
+      })),
+    [columns]
+  );
 
   return (
     <div className="flex flex-col gap-1">

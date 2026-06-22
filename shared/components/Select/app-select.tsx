@@ -7,6 +7,7 @@ import {
   SelectValue,
 } from '@/shared/components/Select/select';
 import cn from 'clsx';
+
 type SelectOptions = {
   value: string;
   label: string;
@@ -27,12 +28,16 @@ export const AppSelect = ({
   options,
   placeholder,
 }: AppSelectProps) => {
-  const safeValue = options.some((o) => o.value === value) ? value : '';
+  const safeValue = options.some((o) => o.value === value) ? value : undefined;
+
   return (
     <Select
-      value={safeValue}
+      value={safeValue ?? null}
+      modal={false}
       onValueChange={(v) => {
-        if (v !== null) onChange(v);
+        if (v != null) {
+          onChange(v);
+        }
       }}>
       <SelectTrigger className={cn('w-full', className)}>
         <SelectValue placeholder={placeholder} />
