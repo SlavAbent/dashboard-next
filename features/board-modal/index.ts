@@ -3,4 +3,4 @@ export type {
   ModalMode,
   ModalStore,
 } from '@/features/board-modal/types/modal.types';
-export { default as BoardModals } from '@/features/board-modal/ui/BoardModals';
+export { BoardModals } from '@/features/board-modal/ui/BoardModals';

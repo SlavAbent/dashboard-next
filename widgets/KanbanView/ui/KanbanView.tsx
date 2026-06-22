@@ -8,7 +8,7 @@ import { move } from '@dnd-kit/helpers';
 import { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
 import type { DragEndEvent } from '@dnd-kit/react';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
-import { useFilteredTasks } from '@/entities/board/model/use-filtered-tasks';
+import { useFilteredTasks } from '@/entities/board/hooks/use-filtered-tasks';
 import { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders';
 import { BoardModals } from '@/features/board-modal';
 import type { EntityId } from '@/shared/lib/same-id';
@@ -25,11 +25,11 @@ const KanbanView = () => {
     return groupTasksToFolders(filteredTasks, columns, taskFolders);
   }, [filteredTasks, columns, taskFolders]);
 
-  const normalized = useMemo(() => {
+  const normalizedData = useMemo(() => {
     return normalizeBoardData(boardData);
   }, [boardData]);
 
-  const { columns: columnMap, tasksMap, items: derivedItems } = normalized;
+  const { columns: columnMap, tasksMap, items: derivedItems } = normalizedData;
   const items = derivedItems;
 
   const findColumnByFolderId = (

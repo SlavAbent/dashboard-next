@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { cn } from '@/shared/lib/cn';
@@ -11,27 +11,13 @@ import { TypographySmall } from '@/shared/components/Typography/TypographySmall'
 import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
-import {
-  countCompletedTasksInColumn,
-  countIncompleteTasksInColumn,
-  getColumnTasksLabel,
-} from '@/entities/board/lib/count-column-tasks';
+import { getColumnTasksLabel } from '@/entities/board/lib/count-column-tasks';
 import { Ellipse } from '@/shared/components/Ellipse';
+import { useCountHook } from '@/shared/hooks/useCountHook';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
-  const incompleteCount = useMemo(
-    () => countIncompleteTasksInColumn(column),
-    [column]
-  );
-  const completedCount = useMemo(
-    () => countCompletedTasksInColumn(column),
-    [column]
-  );
-  const columnText = getColumnTasksLabel(
-    column.id,
-    incompleteCount,
-    completedCount
-  );
+  const { completed, incomplete } = useCountHook(column);
+  const columnText = getColumnTasksLabel(column.id, completed, incomplete);
 
   const toggleFolder = useBoardStore((state) => state.toggleColumn);
   const openCreateFolder = useBoardModalStore(
@@ -43,7 +29,7 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
       <div
         className="mb-6 flex cursor-pointer items-center gap-2"
         onClick={() => toggleFolder(column.id)}>
-        <div>
+        <>
           <ArrowIcon
             size={iconSize(16)}
             className={cn(
@@ -51,7 +37,7 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
               isOpen && 'rotate-180'
             )}
           />
-        </div>
+        </>
         <Ellipse size={8} color={column.color} />
         <div className="flex items-end gap-2">
           <TypographyH3 text={column.title} />
@@ -62,10 +48,14 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
         </div>
       </div>
       <div
+        role="button"
         onClick={() => openCreateFolder(column.id)}
         className="bg-secondary text-secondary-foreground flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
         <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
-        <TypographySmall text="Create Folder" className="text-muted-foreground" />
+        <TypographySmall
+          text="Create Folder"
+          className="text-muted-foreground"
+        />
       </div>
     </div>
   );

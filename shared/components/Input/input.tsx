@@ -5,6 +5,7 @@ import { InputProps } from '@/shared/components/Input/input.types';
 
 export const Input = ({
   className,
+  classNameContainer,
   type,
   leftIcon,
   rightIcon,
@@ -12,7 +13,7 @@ export const Input = ({
   ...props
 }: InputProps) => {
   return (
-    <div className="relative w-fit">
+    <div className={cn('relative w-fit', classNameContainer)}>
       {leftIcon && (
         <div className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 -translate-y-1/2">
           {leftIcon}
