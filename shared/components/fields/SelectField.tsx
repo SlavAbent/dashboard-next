@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { ErrorField } from '@/features/board-modal/ui/fields/ErrorField';
-import { TaskFormValues } from '@/features/board-modal/schema/task-schema';
+import { ErrorField } from '@/shared/components/fields/ErrorField';
+import { TaskFormValues } from '@/shared/schema/task-schema';
 import { useBoardStore } from '@/entities/board';
 import { sameId, toIdString } from '@/shared/lib/same-id';
 import { AppSelect } from '@/shared/components/Select/app-select';

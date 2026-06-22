@@ -7,24 +7,19 @@ import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { ColumnHeaderType } from '@/features/ColumnHeader/types/column-header.types';
-import {
-  countCompletedTasksInColumn,
-  countIncompleteTasksInColumn,
-  getColumnTasksLabel,
-} from '@/entities/board/lib/count-column-tasks';
+import { getColumnTasksLabel } from '@/entities/board/lib/count-column-tasks';
 import { useBoardModalStore } from '@/features/board-modal';
 import { Ellipse } from '@/shared/components/Ellipse';
+import { useCountHook } from '@/shared/hooks/useCountHook';
 
 const ColumnHeader = ({ column }: ColumnHeaderType) => {
   const openCreateFolder = useBoardModalStore(
     (state) => state.openCreateFolder
   );
 
-  const columnText = getColumnTasksLabel(
-    column.id,
-    countIncompleteTasksInColumn(column),
-    countCompletedTasksInColumn(column)
-  );
+  const { completed, incomplete } = useCountHook(column);
+
+  const columnText = getColumnTasksLabel(column.id, incomplete, completed);
 
   return (
     <>
@@ -43,7 +38,10 @@ const ColumnHeader = ({ column }: ColumnHeaderType) => {
         onClick={() => openCreateFolder(column.id)}
         className="bg-secondary text-secondary-foreground mb-4 flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
         <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
-        <TypographySmall text="Create Folder" className="text-muted-foreground" />
+        <TypographySmall
+          text="Create Folder"
+          className="text-muted-foreground"
+        />
       </div>
     </>
   );

@@ -5,8 +5,8 @@ import { useBoardStore } from '@/entities/board';
 import { AppSelect } from '@/shared/components/Select/app-select';
 import { toIdString } from '@/shared/lib/same-id';
 import { Controller, useFormContext } from 'react-hook-form';
-import { FolderValues } from '@/features/board-modal/schema/folder-schema';
-import { ErrorField } from '@/features/board-modal/ui/fields/ErrorField';
+import { FolderValues } from '@/shared/schema/folder-schema';
+import { ErrorField } from '@/shared/components/fields/ErrorField';
 
 type ColumnSelectProps = {
   className?: string;

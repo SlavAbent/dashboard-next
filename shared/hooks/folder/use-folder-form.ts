@@ -1,13 +1,10 @@
 import { useEffect, useMemo } from 'react';
-import {
-  folderSchema,
-  FolderValues,
-} from '@/features/board-modal/schema/folder-schema';
+import { folderSchema, FolderValues } from '@/shared/schema/folder-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useBoardModalStore } from '@/features/board-modal';
-import { useCreateFolder } from '@/features/board-modal/hooks/folder/use-create-folder';
-import { useEditFolder } from '@/features/board-modal/hooks/folder/use-edit-folder';
+import { useCreateFolder } from '@/shared/hooks/folder/use-create-folder';
+import { useEditFolder } from '@/shared/hooks/folder/use-edit-folder';
 import { sameId, toIdString } from '@/shared/lib/same-id';
 import { useBoardStore } from '@/entities/board';
 

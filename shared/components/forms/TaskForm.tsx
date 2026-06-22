@@ -1,10 +1,10 @@
 import React from 'react';
 import { FormProvider } from 'react-hook-form';
-import { useTaskForm } from '@/features/board-modal/hooks/tasks/use-task-form';
-import { InputField } from '@/features/board-modal/ui/fields/InputField';
-import { SelectField } from '@/features/board-modal/ui/fields/SelectField';
-import { CheckboxField } from '@/features/board-modal/ui/fields/CheckboxField';
-import { SubmitButton } from '@/features/board-modal/ui/fields/SubmitButton';
+import { useTaskForm } from '@/shared/hooks/tasks/use-task-form';
+import { InputField } from '@/shared/components/fields/InputField';
+import { SelectField } from '@/shared/components/fields/SelectField';
+import { CheckboxField } from '@/shared/components/fields/CheckboxField';
+import { SubmitButton } from '@/shared/components/fields/SubmitButton';
 
 export const TaskForm = () => {
   const { submitTask, taskForm, isEditTaskMode } = useTaskForm();

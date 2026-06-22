@@ -1,9 +1,9 @@
 import React from 'react';
-import { InputField } from '@/features/board-modal/ui/fields/InputField';
-import { ColumnSelect } from '@/features/board-modal/ui/ColumnSelect';
-import { SubmitButton } from '@/features/board-modal/ui/fields/SubmitButton';
+import { InputField } from '@/shared/components/fields/InputField';
+import { ColumnSelect } from '@/shared/components/Select/ColumnSelect';
+import { SubmitButton } from '@/shared/components/fields/SubmitButton';
 import { FormProvider } from 'react-hook-form';
-import { useFolderForm } from '@/features/board-modal/hooks/folder/use-folder-form';
+import { useFolderForm } from '@/shared/hooks/folder/use-folder-form';
 
 export const FolderForm = () => {
   const { folderForm, submitFolder, isEditFolderMode } = useFolderForm();

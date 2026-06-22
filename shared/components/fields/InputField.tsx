@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from '@/shared/components/Input/input';
 import { FieldPath, FieldValues, useFormContext, get } from 'react-hook-form';
-import { ErrorField } from '@/features/board-modal/ui/fields/ErrorField';
+import { ErrorField } from '@/shared/components/fields/ErrorField';
 
 type InputFieldProps<T extends FieldValues> = {
   value: FieldPath<T>;

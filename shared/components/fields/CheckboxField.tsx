@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox } from '@/shared/components/Checkbox/checkbox';
 import { Controller, useFormContext } from 'react-hook-form';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
-import { TaskFormValues } from '@/features/board-modal/schema/task-schema';
+import { TaskFormValues } from '@/shared/schema/task-schema';
 
 export const CheckboxField = () => {
   const { control } = useFormContext<TaskFormValues>();

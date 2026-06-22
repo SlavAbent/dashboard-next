@@ -1,7 +1,7 @@
 import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/board-modal';
 import { EntityId } from '@/shared/lib/same-id';
-import { TaskFormValues } from '@/features/board-modal/schema/task-schema';
+import { TaskFormValues } from '@/shared/schema/task-schema';
 
 export const useEditTask = () => {
   const { editTask } = useBoardStore();
