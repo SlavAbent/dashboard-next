@@ -202,16 +202,6 @@
       "updatedAt": "2026-06-09T07:30:14.979Z"
     },
     {
-      "text": "testing test",
-      "tags": [],
-      "taskFolderId": "folder-planning-1",
-      "completed": false,
-      "order": 3,
-      "createdAt": "2026-06-15T11:56:11.065Z",
-      "updatedAt": "2026-06-15T11:56:11.065Z",
-      "id": "3-ELOrilj7w"
-    },
-    {
       "text": "Настроить CI pipeline",
       "tags": [],
       "taskFolderId": "folder-planning-1",

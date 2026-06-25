@@ -10,7 +10,7 @@ const BoardKanban = ({ column, itemIds, tasksMap }: BoardKanbanType) => {
   return (
     <>
       <ColumnHeader column={column} />
-      <div className="flex flex-col gap-4 overflow-auto">
+      <div className="flex flex-col gap-4">
         {itemIds.map((id, index) => {
           const folder = tasksMap[toIdString(id)];
 
@@ -18,6 +18,7 @@ const BoardKanban = ({ column, itemIds, tasksMap }: BoardKanbanType) => {
 
           return (
             <KanbanItem
+              data-folder-id={folder.id}
               key={toIdString(id)}
               id={id}
               folder={folder}
