@@ -1,1 +1,32 @@
-dashboard-next
+<img width="1799" height="939" alt="Снимок экрана — 2026-06-26 в 17 16 43" src="https://github.com/user-attachments/assets/60cfbe4a-d65d-461d-bdb1-14639146aa11" />
+
+D A S H B O A R D - N E X T
+
+
+ADD TASKS
+EDIT TASKS
+DELETE TASKS
+CREATE TASKS
+
+FOLDERS, TASKS, KANBAN, TIME, POMODORO, WEATHER SEARCH, FLEXIBLE, DARK / LIGHT THEME and more...
+
+STACK:
+- REACT 18.3.1
+- NEXT 15.5.18
+- JSON MOCK SERVER
+- ZUSTAND 5.0
+- DND KIT
+- TANSTACK
+- LUCIDE ICONS
+- ZOD
+- TAILWIND 4
+- SOCKET.IO
+
+- ESLINT
+- PRETTIER
+
+- FSD
+
+PLANS:
+- PRISMA
+- POSGRESQL
