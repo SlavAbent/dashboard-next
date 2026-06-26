@@ -5,7 +5,7 @@ import { Dropdown } from '@/shared/components/Dropdown';
 import Weather from '@/widgets/Weather/Weather';
 import { PomodoroTimer } from '@/features/pomodoro';
 import { Clock } from '@/features/clock/ui/clock';
-import { Search } from '@/features/Search/ui';
+import { Search } from '@/features/Search';
 
 const Header = () => {
   return (

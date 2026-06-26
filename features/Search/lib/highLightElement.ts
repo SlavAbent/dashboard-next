@@ -1,12 +1,17 @@
 export const highLightElement = (selector: string) => {
-  const element = document.querySelector(selector);
+  const element = document.querySelector<HTMLElement>(selector);
   if (!element) return;
 
   element.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+  element.classList.remove('search-highlight');
+  void element.offsetWidth;
   element.classList.add('search-highlight');
 
-  setTimeout(() => {
+  const handleAnimationEnd = () => {
     element.classList.remove('search-highlight');
-  }, 3000);
+    element.removeEventListener('animationend', handleAnimationEnd);
+  };
+
+  element.addEventListener('animationend', handleAnimationEnd);
 };

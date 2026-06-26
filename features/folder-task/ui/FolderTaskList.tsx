@@ -6,21 +6,18 @@ import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 import { iconSize } from '@/shared/icons/iconSize';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import type { Task } from '@/entities/board/model/types/list-types';
-import type { EntityId } from '@/shared/lib/same-id';
+import { EntityId } from '@/shared/lib/same-id';
+import { useBoardModalStore } from '@/features/board-modal';
 
 type FolderTaskListProps = {
   folderId: EntityId;
   tasks: Task[];
-  onAddTask: (folderId: EntityId) => void;
-  onEditTask: (taskId: EntityId) => void;
 };
 
-const FolderTaskList = ({
-  folderId,
-  tasks,
-  onAddTask,
-  onEditTask,
-}: FolderTaskListProps) => {
+const FolderTaskList = ({ folderId, tasks }: FolderTaskListProps) => {
+  const onAddTask = useBoardModalStore((state) => state.openCreateTask);
+  const onEditTask = useBoardModalStore((state) => state.openEditTask);
+
   return (
     <div className="border-border flex flex-col gap-1 border-t px-5 pt-3 pb-4">
       <div className="flex flex-col gap-1">

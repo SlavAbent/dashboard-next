@@ -3,7 +3,7 @@ export function getColumnTasksLabel(
   incompleteCount: number,
   completedCount: number
 ): string {
-  const count = columnId === 'completed' ? completedCount : incompleteCount;
+  const count = columnId === 'completed' ? incompleteCount : completedCount;
   const suffix = columnId === 'completed' ? 'completed' : 'open';
 
   return `${count} ${suffix} tasks`;

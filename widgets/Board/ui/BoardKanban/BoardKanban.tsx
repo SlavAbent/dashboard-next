@@ -18,7 +18,6 @@ const BoardKanban = ({ column, itemIds, tasksMap }: BoardKanbanType) => {
 
           return (
             <KanbanItem
-              data-folder-id={folder.id}
               key={toIdString(id)}
               id={id}
               folder={folder}

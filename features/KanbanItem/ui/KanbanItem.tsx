@@ -14,7 +14,7 @@ const KanbanItem = (props: KanbanItemType) => {
   });
 
   return (
-    <div ref={ref} data-dragging={isDragging}>
+    <div ref={ref} data-dragging={isDragging} data-folder-id={folder.id}>
       <FolderContent
         folderId={folder.id}
         columnId={folder.columnId}

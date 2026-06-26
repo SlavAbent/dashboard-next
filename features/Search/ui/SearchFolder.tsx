@@ -3,7 +3,7 @@ import { TypographySmall } from '@/shared/components/Typography/TypographySmall'
 import { Button } from '@/shared/components/Button/button';
 import { highLightElement } from '@/features/Search/lib/highLightElement';
 
-type ResultContainerProps<T> = {
+type SearchFolderProps<T> = {
   title: string;
   resultData: T[];
   highlight: 'folder' | 'task';
@@ -11,13 +11,13 @@ type ResultContainerProps<T> = {
   getId: (item: T) => string;
 };
 
-export const ResultContainer = <T,>({
+export const SearchFolder = <T,>({
   title,
   resultData,
   highlight,
   getLabel,
   getId,
-}: ResultContainerProps<T>) => {
+}: SearchFolderProps<T>) => {
   if (!resultData.length) return null;
 
   return (
@@ -26,13 +26,14 @@ export const ResultContainer = <T,>({
       <div className="flex flex-col gap-1">
         {resultData.map((item) => {
           const id = getId(item);
+
           return (
             <Button
               key={id}
               className="gap-2"
-              onClick={() =>
-                highLightElement(`[data-${highlight}-id="${id}"]`)
-              }>
+              onClick={() => {
+                highLightElement(`[data-${highlight}-id="${id}"]`);
+              }}>
               {getLabel(item)}
             </Button>
           );

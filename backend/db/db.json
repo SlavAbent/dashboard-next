@@ -126,18 +126,6 @@
       "columnId": "planning",
       "order": 2,
       "id": "qnS9ZFFbqTk"
-    },
-    {
-      "title": "q231",
-      "columnId": "planning",
-      "order": 3,
-      "id": "LhWFwz4GypA"
-    },
-    {
-      "title": "123",
-      "columnId": "completed",
-      "order": 2,
-      "id": "i6rVjJf7ikc"
     }
   ],
   "tasks": [
@@ -242,16 +230,6 @@
       "id": "cZOnoI8NQsw"
     },
     {
-      "text": "134",
-      "tags": [],
-      "taskFolderId": "LhWFwz4GypA",
-      "completed": false,
-      "order": 1,
-      "createdAt": "2026-06-22T12:07:00.284Z",
-      "updatedAt": "2026-06-22T12:07:00.284Z",
-      "id": "4beLdroxJ4c"
-    },
-    {
       "text": "123",
       "tags": [],
       "taskFolderId": "folder-planning-1",
@@ -260,16 +238,6 @@
       "createdAt": "2026-06-22T12:07:08.193Z",
       "updatedAt": "2026-06-22T12:07:08.193Z",
       "id": "rcSW1UK7D1E"
-    },
-    {
-      "text": "123123",
-      "tags": [],
-      "taskFolderId": "i6rVjJf7ikc",
-      "completed": false,
-      "order": 1,
-      "createdAt": "2026-06-22T12:12:12.297Z",
-      "updatedAt": "2026-06-22T12:12:12.297Z",
-      "id": "WxW7OcsNNKg"
     }
   ],
   "colors": [
