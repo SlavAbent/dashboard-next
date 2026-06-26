@@ -32,7 +32,7 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
   };
 
   return (
-    <div className="flex items-center gap-3 py-1">
+    <div className="flex items-center gap-3 py-1" data-task-id={task.id}>
       <Checkbox
         checked={task.completed}
         onCheckedChange={() => toggleTask(task.id)}

@@ -7,7 +7,6 @@ import { FolderDropdown } from '@/features/folder-actions';
 import { FolderTaskList } from '@/features/folder-task';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useFilteredTasks } from '@/entities/board/hooks/use-filtered-tasks';
-import { useBoardModalStore } from '@/features/board-modal';
 import { sameId, type EntityId } from '@/shared/lib/same-id';
 import { cn } from '@/shared/lib/cn';
 
@@ -28,8 +27,6 @@ const FolderContent = ({
 }: FolderContentProps) => {
   const moveFolder = useBoardStore((state) => state.moveFolder);
   const filteredTasks = useFilteredTasks();
-  const openCreateTask = useBoardModalStore((state) => state.openCreateTask);
-  const openEditTask = useBoardModalStore((state) => state.openEditTask);
 
   const folderTasks = useMemo(
     () => filteredTasks.filter((task) => sameId(task.taskFolderId, folderId)),
@@ -38,8 +35,9 @@ const FolderContent = ({
 
   return (
     <div
+      data-folder-id={folderId}
       className={cn(
-        'bg-card flex flex-col rounded-sm border',
+        'flex flex-col rounded-sm border',
         isDragging && 'opacity-60'
       )}>
       <div
@@ -56,12 +54,7 @@ const FolderContent = ({
         </div>
         <FolderDropdown folderId={folderId} columnId={columnId} />
       </div>
-      <FolderTaskList
-        folderId={folderId}
-        tasks={folderTasks}
-        onAddTask={openCreateTask}
-        onEditTask={openEditTask}
-      />
+      <FolderTaskList folderId={folderId} tasks={folderTasks} />
     </div>
   );
 };
