@@ -6,7 +6,7 @@ export const CardItem = ({ children, onClick, className }: CardItemType) => {
   return (
     <div
       className={cn(
-        'flex cursor-pointer flex-row items-center gap-y-1 rounded-sm p-2 duration-150 hover:bg-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-black',
+        'flex cursor-pointer flex-row items-center rounded-sm p-2 hover:bg-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-black',
         className
       )}
       onClick={onClick}>

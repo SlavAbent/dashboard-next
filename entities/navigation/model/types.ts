@@ -16,12 +16,14 @@ export type NavigationMenuItem = {
   slug: string;
   colorId: string;
   icon: string;
+  href: string;
+  isActive: boolean;
   subheader: NavigationSubheader;
 };
 
 export type FolderItemProps = Pick<
   NavigationMenuItem,
-  'id' | 'name' | 'slug' | 'icon'
+  'id' | 'name' | 'slug' | 'icon' | 'href' | 'isActive'
 >;
 
 export type NavigationMenu = {
