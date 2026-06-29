@@ -8,7 +8,7 @@ import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { iconSize } from '@/shared/icons/iconSize';
 import cn from 'clsx';
 
-const transition = 'duration-300 ease-in-out';
+const transition = 'duration-500 ease-in-out';
 
 export const AsideHeader = () => {
   const collapsed = useAsideStore((state) => state.collapsed);
@@ -17,23 +17,27 @@ export const AsideHeader = () => {
   return (
     <header
       className={cn(
-        'border-bottom bg-sidebar relative flex w-full flex-col transition-[width,padding]',
-        transition,
-        collapsed
-          ? 'w-16 items-center px-0 py-5'
-          : 'w-[250px] items-start px-7 py-5'
+        'border-bottom bg-sidebar relative flex w-full flex-col px-3 py-5'
       )}>
-      <Link href="/" className="flex items-center">
+      <Link
+        href="/"
+        className={cn(
+          'group flex items-center overflow-hidden',
+          collapsed ? 'w-10' : 'w-full',
+          'transition-[width]',
+          transition
+        )}>
         <LogoIcon className="text-foreground h-6 w-7 shrink-0" />
 
         <TypographyP
           text="Venture"
           className={cn(
-            'text-foreground overflow-hidden whitespace-nowrap transition-[max-width,margin,opacity]',
+            'text-foreground shrink-0 overflow-hidden whitespace-nowrap',
+            'transition-[max-width,margin-left,opacity]',
             transition,
             collapsed
-              ? 'ml-0 max-w-0 opacity-0'
-              : 'ml-3 max-w-[140px] opacity-100'
+              ? 'pointer-events-none ml-0 max-w-0 opacity-0'
+              : 'ml-3 max-w-[180px] opacity-100'
           )}
         />
       </Link>

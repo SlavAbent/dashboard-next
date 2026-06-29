@@ -1,53 +1,43 @@
-'use client';
-
-import React from 'react';
-import { normalizePath } from '@/shared/config/normalizePath';
 import Link from 'next/link';
 import { cn } from '@/shared/lib/cn';
 import { SvgIcon } from '@/shared/icons/SvgIcon';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { FolderItemProps } from '@/entities/navigation/model/types';
-import { usePathname } from 'next/navigation';
 import { CardItem } from '@/shared/components/CardItem/card-item';
 import { useAsideStore } from '@/entities/aside/model/aside.store';
 
-const transition = 'duration-300 ease-in-out';
+const transition = 'duration-500 ease-in-out';
 
-export const FolderItem = ({ name, slug, icon }: FolderItemProps) => {
+export const FolderItem = ({ name, href, icon, isActive }: FolderItemProps) => {
   const collapsed = useAsideStore((state) => state.collapsed);
-  const pathname = usePathname();
-  const { isActive, href } = normalizePath(pathname, slug);
 
   const activeClass = isActive
     ? 'text-primary dark:text-black'
     : 'text-muted-foreground group-hover:text-primary dark:group-hover:text-black';
 
   return (
-    <Link href={href} prefetch>
+    <Link href={href} className="flex justify-start">
       <CardItem
         className={cn(
           'group flex items-center overflow-hidden',
-          'transition-[width,padding,gap]',
+          collapsed ? 'w-10' : 'w-full',
+          'transition-[width]',
           transition,
-          collapsed
-            ? 'h-9 w-9 justify-center gap-0 p-0'
-            : 'w-[216px] gap-3 px-4',
           isActive &&
             'text-primary bg-neutral-50 dark:bg-neutral-50 dark:text-black'
         )}>
-        <SvgIcon
-          icon={icon}
-          className={cn('shrink-0 transition-colors', transition, activeClass)}
-        />
+        <SvgIcon icon={icon} className={cn('shrink-0', activeClass)} />
 
         <TypographySmall
           text={name}
           className={cn(
-            'overflow-hidden whitespace-nowrap',
-            'transition-[max-width,opacity]',
+            'shrink-0 overflow-hidden whitespace-nowrap',
+            'transition-[max-width,margin-left,opacity]',
             transition,
-            collapsed ? 'max-w-0 opacity-0' : 'max-w-[150px] opacity-100',
-            activeClass
+            activeClass,
+            collapsed
+              ? 'pointer-events-none ml-0 max-w-0 opacity-0'
+              : 'ml-3 max-w-[180px] opacity-100'
           )}
         />
       </CardItem>
