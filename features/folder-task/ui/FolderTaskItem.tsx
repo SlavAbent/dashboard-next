@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Checkbox } from '@/shared/components/Checkbox/checkbox';
-import { TypographyP } from '@/shared/components/Typography/TypographyP';
-import { cn } from '@/shared/lib/cn';
-import { useBoardStore } from '@/entities/board/model/use-data.store';
+
 import type { Task } from '@/entities/board/model/types/list-types';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
+import { Checkbox } from '@/shared/components/Checkbox/checkbox';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,8 +12,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/shared/components/Dropdown/ui/dropdown-menu';
-import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { iconSize } from '@/shared/icons/iconSize';
+import { DotsMenuIcon } from '@/shared/icons/ui/DotsMenuIcon';
+import { cn } from '@/shared/lib/cn';
 
 type FolderTaskItemProps = {
   task: Task;

@@ -1,7 +1,8 @@
-import React from 'react';
-import IconWrapper from '@/shared/icons/iconWrapper';
 import { X } from 'lucide-react';
+import React from 'react';
+
 import { SearchShortcut } from '@/features/Search/ui/SearchChortcut';
+import IconWrapper from '@/shared/icons/iconWrapper';
 
 type SearchRightIconProps = {
   value: string;

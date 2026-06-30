@@ -1,19 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useConnectChat } from '@/features/connect-chat/model/useConnectChat';
-import { useMessageStore } from '@/entities/message/model/message.store';
-import { Input } from '@/shared/components/Input/input';
-import { Button } from '@/shared/components/Button/button';
-import { useSendMessage } from '@/features/connect-chat/model/useSendMessage';
-import { currentUser } from '@/shared/config/current-user';
 import cn from 'clsx';
+import React, { useState } from 'react';
+
+import { useMessageStore } from '@/entities/message/model/message.store';
+import { useConnectChat } from '@/features/connect-chat/model/useConnectChat';
+import { useSendMessage } from '@/features/connect-chat/model/useSendMessage';
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from '@/shared/components/Avatar/avatar';
+import { Button } from '@/shared/components/Button/button';
+import { Input } from '@/shared/components/Input/input';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import { currentUser } from '@/shared/config/current-user';
 
 export const ChatBoard = () => {
   useConnectChat();
@@ -67,7 +68,9 @@ export const ChatBoard = () => {
                       <p className="text-sm font-bold">{message.lastName}</p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground text-xs">{message.text}</p>
+                  <p className="text-muted-foreground text-xs">
+                    {message.text}
+                  </p>
                 </div>
               </div>
             );

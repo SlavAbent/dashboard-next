@@ -1,7 +1,8 @@
 import React from 'react';
-import { Input } from '@/shared/components/Input/input';
-import { FieldPath, FieldValues, useFormContext, get } from 'react-hook-form';
+import { FieldPath, FieldValues, get, useFormContext } from 'react-hook-form';
+
 import { ErrorField } from '@/shared/components/fields/ErrorField';
+import { Input } from '@/shared/components/Input/input';
 
 type InputFieldProps<T extends FieldValues> = {
   value: FieldPath<T>;

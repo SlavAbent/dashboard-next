@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { useClockStore } from './clock.store';
 
 export const useClock = () => {

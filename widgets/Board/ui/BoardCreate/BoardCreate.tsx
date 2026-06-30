@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+
 import { useViewStore } from '@/entities/board/model/list.store';
 import { viewMap } from '@/widgets/Board/ui/BoardCreate/model/viewMap';
 

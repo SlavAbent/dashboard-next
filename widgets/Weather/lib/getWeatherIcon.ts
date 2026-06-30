@@ -1,18 +1,18 @@
 import type { LucideIcon } from 'lucide-react';
 import {
-  Sun,
-  Moon,
   Cloud,
-  CloudSun,
+  CloudDrizzle,
+  CloudFog,
+  CloudHail,
+  CloudLightning,
   CloudMoon,
   CloudRain,
-  CloudDrizzle,
-  CloudSnow,
-  CloudLightning,
-  CloudFog,
-  Wind,
-  CloudHail,
   CloudRainWind,
+  CloudSnow,
+  CloudSun,
+  Moon,
+  Sun,
+  Wind,
 } from 'lucide-react';
 
 export const getWeatherIconByCode = (icon: string): LucideIcon => {

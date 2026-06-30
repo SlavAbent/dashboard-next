@@ -1,7 +1,8 @@
-import * as React from 'react';
 import { Input as InputPrimitive } from '@base-ui/react/input';
-import { cn } from '@/shared/lib/cn';
+import * as React from 'react';
+
 import { InputProps } from '@/shared/components/Input/input.types';
+import { cn } from '@/shared/lib/cn';
 
 export const Input = ({
   className,

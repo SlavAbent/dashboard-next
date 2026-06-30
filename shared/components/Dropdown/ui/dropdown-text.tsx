@@ -1,7 +1,8 @@
-import React from 'react';
 import cn from 'clsx';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import React from 'react';
+
 import { DropdownTextProps } from '@/shared/components/Dropdown/types/dropdown.types';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 
 const DropdownText = ({ classNameText, text = 'User' }: DropdownTextProps) => {
   return (

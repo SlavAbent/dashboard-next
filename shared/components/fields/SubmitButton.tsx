@@ -1,8 +1,9 @@
 import React from 'react';
-import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
-import { iconSize } from '@/shared/icons/iconSize';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+
 import { Button } from '@/shared/components/Button/button';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import { iconSize } from '@/shared/icons/iconSize';
+import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
 
 type SubmitButtonProps = {
   isEditMode: boolean;

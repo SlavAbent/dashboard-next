@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import ColumnCreate from '@/widgets/ColumnCreate/ui/ColumnCreate';
 import Folder from '@/widgets/Folder/Folder';
-import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { BoardColumnsType } from '@/widgets/ListView/types/board-columns';
 
 const BoardColumns = ({ column }: BoardColumnsType) => {

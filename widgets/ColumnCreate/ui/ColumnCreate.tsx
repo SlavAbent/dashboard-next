@@ -1,23 +1,24 @@
 'use client';
 
 import React from 'react';
-import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
-import { iconSize } from '@/shared/icons/iconSize';
-import { cn } from '@/shared/lib/cn';
-import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
-import { TypographyP } from '@/shared/components/Typography/TypographyP';
-import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
-import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
+
+import { getColumnTasksLabel } from '@/entities/board/lib/count-column-tasks';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
-import { getColumnTasksLabel } from '@/entities/board/lib/count-column-tasks';
 import { Ellipse } from '@/shared/components/Ellipse';
+import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { useCountHook } from '@/shared/hooks/useCountHook';
+import { iconSize } from '@/shared/icons/iconSize';
+import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
+import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
+import { cn } from '@/shared/lib/cn';
+import { ColumnCreateType } from '@/widgets/ColumnCreate/types/column-create';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const { completed, incomplete } = useCountHook(column);
-  const columnText = getColumnTasksLabel(column.id, completed, incomplete);
+  const columnText = getColumnTasksLabel(column.id, incomplete, completed);
 
   const toggleFolder = useBoardStore((state) => state.toggleColumn);
   const openCreateFolder = useBoardModalStore(

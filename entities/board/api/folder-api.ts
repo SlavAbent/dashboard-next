@@ -1,3 +1,4 @@
+import { getNextColumn } from '@/entities/board/lib/get-next-column';
 import {
   Column,
   CreateFolder,
@@ -8,7 +9,6 @@ import {
 } from '@/entities/board/model/types/list-types';
 import { columnsApi, taskFoldersApi, tasksApi } from '@/shared/_api/instances';
 import type { EntityId } from '@/shared/lib/same-id';
-import { getNextColumn } from '@/entities/board/lib/get-next-column';
 
 export async function updateFolders(id: EntityId, data: UpdateFolderPayload) {
   const response = await fetch(`${taskFoldersApi}/${id}`, {

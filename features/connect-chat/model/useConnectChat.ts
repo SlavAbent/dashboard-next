@@ -1,10 +1,10 @@
-import { useMessageStore } from '@/entities/message/model/message.store';
 import { useEffect } from 'react';
 
+import { getMessage } from '@/entities/message/api/getMessage';
+import { useMessageStore } from '@/entities/message/model/message.store';
+import { ChatMessage } from '@/entities/message/types/message.types';
 import { socket } from '@/shared/lib/socket/socket';
 import { SOCKET_EVENTS } from '@/shared/lib/socket/socket-events';
-import { ChatMessage } from '@/entities/message/types/message.types';
-import { getMessage } from '@/entities/message/api/getMessage';
 
 export const useConnectChat = () => {
   const addMessage = useMessageStore((s) => s.addMessage);

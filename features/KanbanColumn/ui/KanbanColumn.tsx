@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
 import { useDroppable } from '@dnd-kit/react';
+import React from 'react';
+
 import { KanbanColumnType } from '@/features/KanbanColumn/types/kanban-column.types';
 
 const KanbanColumn = (props: KanbanColumnType) => {

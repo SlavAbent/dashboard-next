@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from 'react';
 import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
+import * as React from 'react';
 
-import { cn } from '@/shared/lib/cn';
 import { AvatarSize } from '@/shared/components/Avatar/types/avatar.types';
+import { cn } from '@/shared/lib/cn';
 
 function Avatar({
   className,
@@ -70,4 +70,4 @@ function AvatarFallback({
   );
 }
 
-export { Avatar, AvatarImage, AvatarFallback };
+export { Avatar, AvatarFallback, AvatarImage };

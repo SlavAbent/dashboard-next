@@ -1,6 +1,19 @@
 'use client';
 
 import { create } from 'zustand';
+
+import {
+  createFolderTask,
+  deleteFolder,
+  updateFolderDetails,
+  updateFolders,
+} from '@/entities/board/api/folder-api';
+import {
+  createTask,
+  deleteTask,
+  updateTask,
+} from '@/entities/board/api/task-api';
+import { getNextColumn } from '@/entities/board/lib/get-next-column';
 import {
   Column,
   CreateFolder,
@@ -9,19 +22,7 @@ import {
   TaskFolder,
   UpdateFolderPayload,
 } from '@/entities/board/model/types/list-types';
-import {
-  createTask,
-  deleteTask,
-  updateTask,
-} from '@/entities/board/api/task-api';
-import { getNextColumn } from '@/entities/board/lib/get-next-column';
-import {
-  createFolderTask,
-  deleteFolder,
-  updateFolderDetails,
-  updateFolders,
-} from '@/entities/board/api/folder-api';
-import { sameId, type EntityId } from '@/shared/lib/same-id';
+import { type EntityId, sameId } from '@/shared/lib/same-id';
 
 type BoardStore = {
   tasks: Task[];

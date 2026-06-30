@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import { useBoardStore } from '@/entities/board/model/use-data.store';
+
 import { TaskFolder } from '@/entities/board/model/types/list-types';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { FolderContent } from '@/features/board-folder';
 
 const Folder = ({ columnId }: { columnId: string }) => {

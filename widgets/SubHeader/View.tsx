@@ -1,7 +1,8 @@
 import React from 'react';
+
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { SvgIcon } from '@/shared/icons/SvgIcon';
 import { cn } from '@/shared/lib/cn';
-import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { SubHeaderViewControlType } from '@/widgets/SubHeader/types/sub-header.types';
 
 const View = ({

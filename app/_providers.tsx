@@ -1,6 +1,7 @@
 'use client';
-import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React, { useEffect } from 'react';
+
 import { useThemeStore } from '@/shared/store/theme-store';
 
 const queryClient = new QueryClient();

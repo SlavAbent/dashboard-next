@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+
 import { ChatMessage } from '@/entities/message/types/message.types';
 
 interface ChatMessageStore {

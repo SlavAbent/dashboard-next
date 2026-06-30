@@ -1,9 +1,10 @@
-import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
 import { useEffect, useRef } from 'react';
+
 import { playCompletionSound } from '@/features/pomodoro/lib/audio';
-import { fireConfetti } from '@/shared/lib/confetti';
-import { blinkTitle } from '@/features/pomodoro/lib/notifications';
 import { formatTitle } from '@/features/pomodoro/lib/format';
+import { blinkTitle } from '@/features/pomodoro/lib/notifications';
+import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
+import { fireConfetti } from '@/shared/lib/confetti';
 
 export function usePomodoro() {
   const store = usePomodoroStore();

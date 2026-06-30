@@ -1,12 +1,13 @@
 'use client';
 
-import { useAsideStore } from '@/entities/aside/model/aside.store';
+import cn from 'clsx';
 import Link from 'next/link';
-import { ToggleIcon } from '@/shared/icons/ui/ToggleIcon';
-import { LogoIcon } from '@/shared/icons/ui/LogoIcon';
+
+import { useAsideStore } from '@/entities/aside/model/aside.store';
 import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { iconSize } from '@/shared/icons/iconSize';
-import cn from 'clsx';
+import { LogoIcon } from '@/shared/icons/ui/LogoIcon';
+import { ToggleIcon } from '@/shared/icons/ui/ToggleIcon';
 
 const transition = 'duration-500 ease-in-out';
 

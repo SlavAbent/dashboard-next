@@ -1,8 +1,8 @@
-import type { Task } from '@/entities/board/model/types/list-types';
 import type {
   TaskFilterOption,
   TaskSortOption,
 } from '@/entities/board/model/types/filters.types';
+import type { Task } from '@/entities/board/model/types/list-types';
 
 export function filterTasks(tasks: Task[], filter: TaskFilterOption): Task[] {
   switch (filter) {

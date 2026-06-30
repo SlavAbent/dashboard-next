@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { ErrorField } from '@/shared/components/fields/ErrorField';
-import { TaskFormValues } from '@/shared/schema/task-schema';
+
 import { useBoardStore } from '@/entities/board';
-import { sameId, toIdString } from '@/shared/lib/same-id';
+import { ErrorField } from '@/shared/components/fields/ErrorField';
 import { AppSelect } from '@/shared/components/Select/app-select';
+import { sameId, toIdString } from '@/shared/lib/same-id';
+import { TaskFormValues } from '@/shared/schema/task-schema';
 
 type SelectFieldProps = {
   className?: string;

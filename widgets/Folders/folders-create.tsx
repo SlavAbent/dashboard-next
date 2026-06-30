@@ -1,12 +1,13 @@
 'use client';
 
+import cn from 'clsx';
+import { usePathname } from 'next/navigation';
+
+import { useAsideStore } from '@/entities/aside/model/aside.store';
 import { Card } from '@/shared/components/Card';
+import { normalizePath } from '@/shared/config/normalizePath';
 import { FoldersCreateProps } from '@/widgets/Aside/types/folder-types';
 import { FolderItem } from '@/widgets/Folders/folder-item';
-import { usePathname } from 'next/navigation';
-import { normalizePath } from '@/shared/config/normalizePath';
-import { useAsideStore } from '@/entities/aside/model/aside.store';
-import cn from 'clsx';
 
 export const FoldersCreate = ({ data }: FoldersCreateProps) => {
   const pathname = usePathname();

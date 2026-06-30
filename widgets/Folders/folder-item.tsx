@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { cn } from '@/shared/lib/cn';
-import { SvgIcon } from '@/shared/icons/SvgIcon';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+
+import { useAsideStore } from '@/entities/aside/model/aside.store';
 import { FolderItemProps } from '@/entities/navigation/model/types';
 import { CardItem } from '@/shared/components/CardItem/card-item';
-import { useAsideStore } from '@/entities/aside/model/aside.store';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import { SvgIcon } from '@/shared/icons/SvgIcon';
+import { cn } from '@/shared/lib/cn';
 
 const transition = 'duration-500 ease-in-out';
 
@@ -20,7 +21,7 @@ export const FolderItem = ({ name, href, icon, isActive }: FolderItemProps) => {
       <CardItem
         className={cn(
           'group flex items-center overflow-hidden',
-          collapsed ? 'w-10' : 'w-full',
+          collapsed ? 'w-9' : 'w-full',
           'transition-[width]',
           transition,
           isActive &&

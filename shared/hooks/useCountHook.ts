@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { BoardColumn } from '@/entities/board';
 
 const countTasks = (column: BoardColumn, type: 'completed' | 'incomplete') => {

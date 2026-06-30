@@ -1,5 +1,6 @@
-import React from 'react';
 import cn from 'clsx';
+import React from 'react';
+
 import { EllipseType } from '@/shared/components/Ellipse/ellipse.types';
 import { sizeMapping } from '@/shared/components/Ellipse/shared/sizeMapping';
 

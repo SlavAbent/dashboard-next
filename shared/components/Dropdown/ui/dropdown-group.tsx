@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+
 import {
-  DropdownProps,
   DropdownItem,
+  DropdownProps,
 } from '@/shared/components/Dropdown/types/dropdown.types';
 import {
   DropdownMenuGroup,
