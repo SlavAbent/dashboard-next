@@ -6,9 +6,7 @@ export const useSendMessage = () => {
   const sendMessage = (text: string) => {
     socket.emit(SOCKET_EVENTS.SEND_MESSAGE, {
       text,
-      userID: currentUser.id,
-      firstName: currentUser.firstName,
-      lastName: currentUser.lastName,
+      userId: currentUser.id,
       createdAt: new Date().toISOString(),
     });
   };

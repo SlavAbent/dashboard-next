@@ -4,6 +4,7 @@ import cn from 'clsx';
 import React, { useState } from 'react';
 
 import { useMessageStore } from '@/entities/message/model/message.store';
+import { useUserStore } from '@/entities/user';
 import { useConnectChat } from '@/features/connect-chat/model/useConnectChat';
 import { useSendMessage } from '@/features/connect-chat/model/useSendMessage';
 import {
@@ -21,6 +22,7 @@ export const ChatBoard = () => {
   const [value, setValue] = useState('');
 
   const messages = useMessageStore((s) => s.messages);
+  const users = useUserStore((s) => s.users);
   const { sendMessage } = useSendMessage();
 
   const handleSendMessage = () => {
@@ -36,6 +38,7 @@ export const ChatBoard = () => {
         {messages &&
           messages.map((message) => {
             const isCurrentUser = message.userId === currentUser.id;
+            const author = users[message.userId];
             const createdAtTime = new Date(
               message.createdAt
             ).toLocaleTimeString([], {
@@ -55,7 +58,9 @@ export const ChatBoard = () => {
                     <div className="mb-2 flex w-full items-end">
                       <Avatar className="mr-2 h-8 w-8">
                         <AvatarImage src={''} alt="avatar" />
-                        <AvatarFallback>A</AvatarFallback>
+                        <AvatarFallback>
+                          {author?.firstName?.[0] ?? '?'}
+                        </AvatarFallback>
                       </Avatar>
                       <div className="text-muted-foreground ml-2 text-[10px]">
                         {createdAtTime}
@@ -63,9 +68,9 @@ export const ChatBoard = () => {
                     </div>
                     <div className="flex items-center">
                       <p className="mr-1 text-sm font-bold">
-                        {message.firstName}
+                        {author?.firstName}
                       </p>
-                      <p className="text-sm font-bold">{message.lastName}</p>
+                      <p className="text-sm font-bold">{author?.lastName}</p>
                     </div>
                   </div>
                   <p className="text-muted-foreground text-xs">

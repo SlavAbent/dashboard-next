@@ -1,7 +1,6 @@
-export type EntityId = string | number;
+export type EntityId = string;
 
-export const toIdString = (id: EntityId | null | undefined): string =>
-  id == null ? '' : String(id);
+export const toIdString = (id: EntityId | null | undefined): string => id ?? '';
 
 export const sameId = (
   a: EntityId | null | undefined,
@@ -9,5 +8,5 @@ export const sameId = (
 ): boolean => {
   if (a == null || b == null) return false;
 
-  return String(a) === String(b);
+  return a === b;
 };

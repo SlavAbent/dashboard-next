@@ -33,6 +33,22 @@ const assertUniqueIds = (items, label) => {
   }
 };
 
+const assertUniqueOrders = (items, groupKey, label) => {
+  const seenByGroup = {};
+
+  for (const item of items) {
+    const group = (seenByGroup[item[groupKey]] ??= new Set());
+
+    if (group.has(item.order)) {
+      errors.push(
+        `${label}: duplicate order "${item.order}" within ${groupKey} "${item[groupKey]}"`
+      );
+    }
+
+    group.add(item.order);
+  }
+};
+
 const db = readDb();
 
 if (db) {
@@ -41,6 +57,7 @@ if (db) {
   const taskFolders = db.taskFolders ?? [];
   const tasks = db.tasks ?? [];
   const messages = db.messages ?? [];
+  const users = db.users ?? [];
 
   if (!Array.isArray(menu) || menu.length === 0) {
     errors.push('navigation.menu must be a non-empty array');
@@ -51,9 +68,14 @@ if (db) {
   assertUniqueIds(taskFolders, 'taskFolders');
   assertUniqueIds(tasks, 'tasks');
   assertUniqueIds(messages, 'messages');
+  assertUniqueIds(users, 'users');
+
+  assertUniqueOrders(taskFolders, 'columnId', 'taskFolders');
+  assertUniqueOrders(tasks, 'taskFolderId', 'tasks');
 
   const columnIds = new Set(columns.map((column) => column.id));
   const folderIds = new Set(taskFolders.map((folder) => folder.id));
+  const userIds = new Set(users.map((user) => user.id));
 
   for (const item of menu) {
     if (!item.slug || !item.name) {
@@ -96,8 +118,10 @@ if (db) {
   }
 
   for (const message of messages) {
-    if (!message.userId) {
-      errors.push(`messages: message "${message.id}" must have userId`);
+    if (!message.userId || !userIds.has(message.userId)) {
+      errors.push(
+        `messages: message "${message.id}" references unknown user "${message.userId}"`
+      );
     }
   }
 }

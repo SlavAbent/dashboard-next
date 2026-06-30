@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node backend/scripts/validate-db.mjs && concurrently \"next dev\" \"npm run json-server\"",
+    "dev": "node backend/scripts/validate-db.mjs && concurrently \"node backend/server.js\" \"npm run json-server\"",
     "build": "next build",
     "start": "next start",
     "validate:db": "node backend/scripts/validate-db.mjs",
