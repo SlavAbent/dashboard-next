@@ -1,6 +1,6 @@
 export {
-  getTasks,
   createTask,
-  updateTask,
   deleteTask,
+  getTasks,
+  updateTask,
 } from '@/entities/board/api/task-api';

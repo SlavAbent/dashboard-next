@@ -1,13 +1,14 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { type TaskFormValues, taskSchema } from '@/shared/schema/task-schema';
-import { findTaskById } from '@/shared/config/findTaskById';
+
 import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/board-modal';
+import { findTaskById } from '@/shared/config/findTaskById';
 import { useCreateTask } from '@/shared/hooks/tasks/use-create-task';
 import { useEditTask } from '@/shared/hooks/tasks/use-edit-task';
 import { toIdString } from '@/shared/lib/same-id';
+import { type TaskFormValues, taskSchema } from '@/shared/schema/task-schema';
 
 export const useTaskForm = () => {
   const { tasks, taskFolders } = useBoardStore();

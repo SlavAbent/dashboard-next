@@ -1,6 +1,7 @@
 import React from 'react';
-import SubHeaderCreate from '@/widgets/SubHeader/SubHeaderCreate';
+
 import { getNavigationMenu } from '@/entities/navigation';
+import SubHeaderCreate from '@/widgets/SubHeader/SubHeaderCreate';
 
 const SubHeader = async () => {
   const navigation = await getNavigationMenu();

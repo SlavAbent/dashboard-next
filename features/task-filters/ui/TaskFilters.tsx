@@ -1,22 +1,23 @@
 'use client';
 
 import React from 'react';
-import { MenuDropdown } from '@/shared/components/MenuDropdown';
-import { SortByIcon } from '@/shared/icons/ui/SortByIcon';
-import { FiltersIcon } from '@/shared/icons/ui/FiltersIcon';
-import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+
 import { useFiltersStore } from '@/entities/board/model/filters.store';
 import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { useBoardModalStore } from '@/features/board-modal';
-import { iconSize } from '@/shared/icons/iconSize';
 import {
-  filterOptions,
   filterLabels,
-  sortOptions,
+  filterOptions,
   sortLabels,
+  sortOptions,
 } from '@/features/task-filters/config/filter-options';
+import { MenuDropdown } from '@/shared/components/MenuDropdown';
 import { Index } from '@/shared/components/Separator';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import { iconSize } from '@/shared/icons/iconSize';
+import { FiltersIcon } from '@/shared/icons/ui/FiltersIcon';
+import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
+import { SortByIcon } from '@/shared/icons/ui/SortByIcon';
 
 const TaskFilters = () => {
   const {

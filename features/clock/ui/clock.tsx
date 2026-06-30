@@ -1,9 +1,10 @@
 'use client';
 
-import { cn } from '@/shared/lib/cn';
-import { useClock } from '../model/use-clock';
 import { useClockStore } from '@/features/clock/model/clock.store';
 import { Skeleton } from '@/shared/components/Skeleton/skeleton';
+import { cn } from '@/shared/lib/cn';
+
+import { useClock } from '../model/use-clock';
 
 type ClockType = {
   className?: string;

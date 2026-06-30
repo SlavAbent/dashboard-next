@@ -2,6 +2,7 @@ node_modules
 build
 dist
 coverage
-. next
- .cache
-*. config .js
+.next
+.cache
+*.config.js
+next-env.d.ts

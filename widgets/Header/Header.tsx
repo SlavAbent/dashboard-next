@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+
+import { Clock } from '@/features/clock/ui/clock';
+import { PomodoroTimer } from '@/features/pomodoro';
+import { Search } from '@/features/Search';
 import { Dropdown } from '@/shared/components/Dropdown';
 import Weather from '@/widgets/Weather/Weather';
-import { PomodoroTimer } from '@/features/pomodoro';
-import { Clock } from '@/features/clock/ui/clock';
-import { Search } from '@/features/Search';
 
 const Header = () => {
   return (

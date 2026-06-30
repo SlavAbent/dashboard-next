@@ -1,6 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
+
 import { ModalStore } from '@/features/board-modal/types/modal.types';
 
 const initialState = {

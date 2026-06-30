@@ -1,19 +1,20 @@
 'use client';
 
-import React from 'react';
 import { usePathname } from 'next/navigation';
+import React from 'react';
+
+import { useViewStore } from '@/entities/board/model/list.store';
+import type { BoardViewMode } from '@/entities/board/model/types/list-types';
+import type { NavigationMenuItem } from '@/entities/navigation';
+import { TaskFilters } from '@/features/task-filters';
 import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
+import { formatedTitle } from '@/shared/config/formattedTitle';
+import { routeToKeyMap } from '@/shared/config/routeMapping';
 import {
   FilterType,
   SubHeaderCreateType,
 } from '@/widgets/SubHeader/types/sub-header.types';
 import View from '@/widgets/SubHeader/View';
-import type { NavigationMenuItem } from '@/entities/navigation';
-import { routeToKeyMap } from '@/shared/config/routeMapping';
-import { formatedTitle } from '@/shared/config/formattedTitle';
-import { useViewStore } from '@/entities/board/model/list.store';
-import type { BoardViewMode } from '@/entities/board/model/types/list-types';
-import { TaskFilters } from '@/features/task-filters';
 
 const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
   const pathname = usePathname();

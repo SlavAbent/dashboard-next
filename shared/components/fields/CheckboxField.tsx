@@ -1,6 +1,7 @@
 import React from 'react';
-import { Checkbox } from '@/shared/components/Checkbox/checkbox';
 import { Controller, useFormContext } from 'react-hook-form';
+
+import { Checkbox } from '@/shared/components/Checkbox/checkbox';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { TaskFormValues } from '@/shared/schema/task-schema';
 

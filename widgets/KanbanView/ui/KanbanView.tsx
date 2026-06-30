@@ -1,18 +1,19 @@
 'use client';
 
-import React, { useMemo } from 'react';
-import BoardKanban from '@/widgets/Board/ui/BoardKanban/BoardKanban';
-import { DragDropProvider } from '@dnd-kit/react';
-import KanbanColumn from '@/features/KanbanColumn/ui/KanbanColumn';
 import { move } from '@dnd-kit/helpers';
-import { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
 import type { DragEndEvent } from '@dnd-kit/react';
-import { useBoardStore } from '@/entities/board/model/use-data.store';
+import { DragDropProvider } from '@dnd-kit/react';
+import React, { useMemo } from 'react';
+
 import { useFilteredTasks } from '@/entities/board/hooks/use-filtered-tasks';
 import { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders';
+import { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { BoardModals } from '@/features/board-modal';
+import KanbanColumn from '@/features/KanbanColumn/ui/KanbanColumn';
 import type { EntityId } from '@/shared/lib/same-id';
 import { toIdString } from '@/shared/lib/same-id';
+import BoardKanban from '@/widgets/Board/ui/BoardKanban/BoardKanban';
 
 const KanbanView = () => {
   const filteredTasks = useFilteredTasks();

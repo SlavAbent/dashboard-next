@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CardType } from '@/shared/components/Card/card.types';
 
 export const Card = ({ children, className }: CardType) => {

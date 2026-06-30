@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
 import cn from 'clsx';
+import React, { useMemo } from 'react';
+
+import { useBoardStore } from '@/entities/board';
 import { SearchFolder } from '@/features/Search/ui/SearchFolder';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
-import { useBoardStore } from '@/entities/board';
 
 type SearchDropdownProps = {
   search: string;

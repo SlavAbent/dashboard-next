@@ -1,16 +1,16 @@
 'use client';
 
+import { useState } from 'react';
+
+import { DropdownProps } from '@/shared/components/Dropdown/types/dropdown.types';
+import { DropdownGroup } from '@/shared/components/Dropdown/ui/dropdown-group';
+import { DropdownHeader } from '@/shared/components/Dropdown/ui/dropdown-header';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuTrigger,
 } from '@/shared/components/Dropdown/ui/dropdown-menu';
-
-import { DropdownProps } from '@/shared/components/Dropdown/types/dropdown.types';
-import { DropdownHeader } from '@/shared/components/Dropdown/ui/dropdown-header';
-import { DropdownGroup } from '@/shared/components/Dropdown/ui/dropdown-group';
-import { useState } from 'react';
 import DropdownText from '@/shared/components/Dropdown/ui/dropdown-text';
 
 export function Dropdown(props: DropdownProps) {

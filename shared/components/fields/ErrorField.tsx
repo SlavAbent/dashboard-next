@@ -1,5 +1,6 @@
 import React from 'react';
 import { FieldError } from 'react-hook-form';
+
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 
 type Props = {

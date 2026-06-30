@@ -1,23 +1,24 @@
 'use client';
 
 import React, { ChangeEvent, useMemo, useState } from 'react';
-import { cn } from '@/shared/lib/cn';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+
+import { Button } from '@/shared/components/Button/button';
+import { Input } from '@/shared/components/Input/input';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/shared/components/Popover/popover';
-import { Button } from '@/shared/components/Button/button';
-import { Input } from '@/shared/components/Input/input';
-import { useGeocodeCity } from '@/widgets/Weather/hooks/useGeocodeCity';
-import { useWeather } from '@/widgets/Weather/hooks/useWeather';
-import { WeatherType } from '@/widgets/Weather/types/weather.types';
-import { useCurrentCoords } from '@/widgets/Weather/hooks/useCurrentPosition';
+import { Skeleton } from '@/shared/components/Skeleton/skeleton';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import { cn } from '@/shared/lib/cn';
 import { getDays } from '@/widgets/Weather/config';
 import { DEFAULT_COORDS } from '@/widgets/Weather/constants';
+import { useCurrentCoords } from '@/widgets/Weather/hooks/useCurrentPosition';
+import { useGeocodeCity } from '@/widgets/Weather/hooks/useGeocodeCity';
+import { useWeather } from '@/widgets/Weather/hooks/useWeather';
 import { getWeatherIconByCode } from '@/widgets/Weather/lib/getWeatherIcon';
-import { Skeleton } from '@/shared/components/Skeleton/skeleton';
+import { WeatherType } from '@/widgets/Weather/types/weather.types';
 
 const Weather = ({ className }: WeatherType) => {
   const [open, setOpen] = useState(false);
@@ -37,7 +38,7 @@ const Weather = ({ className }: WeatherType) => {
   const currentTemp = Math.floor(data?.list?.[0]?.main?.temp ?? 0);
   const currentCity = data?.city?.name ?? city ?? '';
   const currentWeatherId = data?.list?.[0]?.weather?.[0].icon ?? '01d';
-  const CurrentWeatherIcon = getWeatherIconByCode(currentWeatherId);
+  const currentWeatherIcon = getWeatherIconByCode(currentWeatherId);
 
   const handleSearch = () => {
     const next = query.trim();
@@ -81,10 +82,10 @@ const Weather = ({ className }: WeatherType) => {
           <div className="flex min-w-16 cursor-pointer items-center gap-1">
             {!loading ? (
               <>
-                <CurrentWeatherIcon
-                  size={24}
-                  className="text-muted-foreground"
-                />
+                {React.createElement(currentWeatherIcon, {
+                  size: 24,
+                  className: 'text-muted-foreground',
+                })}
 
                 <div className="flex items-center gap-2">
                   <TypographySmall

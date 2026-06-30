@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
+
 import type { PomodoroStore } from './types';
 
 export const usePomodoroStore = create<PomodoroStore>()(

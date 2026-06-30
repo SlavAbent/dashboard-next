@@ -1,12 +1,13 @@
-import { useEffect, useMemo } from 'react';
-import { folderSchema, FolderValues } from '@/shared/schema/folder-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
+
+import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/board-modal';
 import { useCreateFolder } from '@/shared/hooks/folder/use-create-folder';
 import { useEditFolder } from '@/shared/hooks/folder/use-edit-folder';
 import { sameId, toIdString } from '@/shared/lib/same-id';
-import { useBoardStore } from '@/entities/board';
+import { folderSchema, FolderValues } from '@/shared/schema/folder-schema';
 
 export const useFolderForm = () => {
   const { taskFolders } = useBoardStore();

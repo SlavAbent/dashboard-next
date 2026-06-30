@@ -5,100 +5,102 @@
 @import './semantic.css';
 
 @theme {
-    --font-geist-sans: sans-serif;
-    --font-geist-mono: monospace;
+  --font-geist-sans: sans-serif;
+  --font-geist-mono: monospace;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
-    html {
-        scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    body {
-        @apply bg-background text-foreground;
+  body {
+    @apply bg-background text-foreground;
 
-        min-height: 100vh;
-        font-family: var(--font-geist-sans), system-ui, sans-serif;
+    min-height: 100vh;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
 
-        line-height: 1.5;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-    }
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    * {
-        @apply border-border outline-ring/50;
-    }
+  * {
+    @apply border-border outline-ring/50;
+  }
 }
 
 @layer components {
-    .border-bottom {
-        @apply border-border border-b;
-    }
+  .border-bottom {
+    @apply border-border border-b;
+  }
 
-    .border-bottom-large {
-        border-bottom-width: 4px;
-        border-bottom-style: solid;
-        border-bottom-color: var(--foreground);
-    }
+  .border-bottom-large {
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--foreground);
+  }
 
-    .interactive-hover {
-        @apply transition-colors duration-200 hover:bg-muted;
-    }
+  .interactive-hover {
+    @apply hover:bg-muted transition-colors duration-200;
+  }
 
-    .border-right {
-        @apply border-r border-border;
-    }
+  .border-right {
+    @apply border-border border-r;
+  }
 
-    .button {
-        @apply inline-flex cursor-pointer items-center gap-2;
-    }
+  .button {
+    @apply inline-flex cursor-pointer items-center gap-2;
+  }
 }
 
 @keyframes blink {
-    50% {
-        opacity: 0;
-    }
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes shimmer {
-    100% {
-        transform: translateX(100%);
-    }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .search-highlight {
-    outline: 3px solid var(--foreground);
-    outline-offset: 4px;
-    border-radius: 2px;
+  outline: 3px solid var(--foreground);
+  outline-offset: 4px;
+  border-radius: 2px;
 
-    animation: search-pulse 3s ease, search-blind 3s ease;
+  animation:
+    search-pulse 3s ease,
+    search-blind 3s ease;
 }
 
 @keyframes search-pulse {
-    0% {
-        outline-color: var(--foreground);
-        box-shadow: 0 0 0 0 rgba(130, 130, 130, 0.9);
-    }
+  0% {
+    outline-color: var(--foreground);
+    box-shadow: 0 0 0 0 rgba(130, 130, 130, 0.9);
+  }
 
-    50% {
-        outline-color: var(--foreground);
-        box-shadow: 0 0 0 0 rgba(130, 130, 130, 0.9);
-    }
+  50% {
+    outline-color: var(--foreground);
+    box-shadow: 0 0 0 0 rgba(130, 130, 130, 0.9);
+  }
 
-    100% {
-        outline-color: transparent;
-        box-shadow: 0 0 0 20px transparent;
-    }
+  100% {
+    outline-color: transparent;
+    box-shadow: 0 0 0 20px transparent;
+  }
 }
 
 @keyframes search-blind {
-    0% {
-        background: rgba(243, 247, 255, 0.7);
-    }
+  0% {
+    background: rgba(243, 247, 255, 0.7);
+  }
 
-    100% {
-        background: transparent;
-    }
+  100% {
+    background: transparent;
+  }
 }

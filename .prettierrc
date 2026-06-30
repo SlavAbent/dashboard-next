@@ -4,8 +4,6 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "printWidth": 80,
-  "semicolons": true,
-  "quotes": true,
   "bracketSameLine": true,
   "arrowParens":"always",
   "endOfLine" :  "lf",

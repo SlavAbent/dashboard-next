@@ -1,6 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
+
 import { FiltersStore } from '@/entities/board/model/types/filters.types';
 
 export const useFiltersStore = create<FiltersStore>((set) => ({

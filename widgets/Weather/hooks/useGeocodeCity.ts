@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+
 import { getCoordsByCity } from '@/widgets/Weather/_api/api';
 
 export function useGeocodeCity(city: string | null) {

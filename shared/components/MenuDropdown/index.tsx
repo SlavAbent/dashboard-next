@@ -1,3 +1,6 @@
+import cn from 'clsx';
+import React from 'react';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,9 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/components/Dropdown/ui/dropdown-menu';
 import { MenuProps } from '@/shared/components/MenuDropdown/menu.types';
-import cn from 'clsx';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
-import React from 'react';
 
 export const MenuDropdown = ({
   label,

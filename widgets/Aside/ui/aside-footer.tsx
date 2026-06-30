@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+
 import { ThemeSwitch } from '@/shared/components/ThemeSwitch/theme-switch';
 
 export const AsideFooter = () => {

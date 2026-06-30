@@ -1,14 +1,15 @@
 'use client';
 
-import React, { useMemo, type Ref } from 'react';
-import { TypographyP } from '@/shared/components/Typography/TypographyP';
-import { Checkbox } from '@/shared/components/Checkbox/checkbox';
+import React, { type Ref, useMemo } from 'react';
+
+import { useFilteredTasks } from '@/entities/board/hooks/use-filtered-tasks';
+import { useBoardStore } from '@/entities/board/model/use-data.store';
 import { FolderDropdown } from '@/features/folder-actions';
 import { FolderTaskList } from '@/features/folder-task';
-import { useBoardStore } from '@/entities/board/model/use-data.store';
-import { useFilteredTasks } from '@/entities/board/hooks/use-filtered-tasks';
-import { sameId, type EntityId } from '@/shared/lib/same-id';
+import { Checkbox } from '@/shared/components/Checkbox/checkbox';
+import { TypographyP } from '@/shared/components/Typography/TypographyP';
 import { cn } from '@/shared/lib/cn';
+import { type EntityId, sameId } from '@/shared/lib/same-id';
 
 type FolderContentProps = {
   folderId: EntityId;

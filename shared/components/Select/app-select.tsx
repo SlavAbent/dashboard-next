@@ -1,4 +1,6 @@
+import cn from 'clsx';
 import React from 'react';
+
 import {
   Select,
   SelectContent,
@@ -6,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/components/Select/select';
-import cn from 'clsx';
 
 type SelectOptions = {
   value: string;
@@ -40,7 +41,11 @@ export const AppSelect = ({
         }
       }}>
       <SelectTrigger className={cn('w-full', className)}>
-        <SelectValue placeholder={placeholder} />
+        <SelectValue placeholder={placeholder}>
+          {(selected) =>
+            options.find((o) => o.value === selected)?.label ?? placeholder
+          }
+        </SelectValue>
       </SelectTrigger>
 
       <SelectContent>

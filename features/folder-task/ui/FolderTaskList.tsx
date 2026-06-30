@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
-import FolderTaskItem from '@/features/folder-task/ui/FolderTaskItem';
-import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
-import { iconSize } from '@/shared/icons/iconSize';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+
 import type { Task } from '@/entities/board/model/types/list-types';
-import { EntityId } from '@/shared/lib/same-id';
 import { useBoardModalStore } from '@/features/board-modal';
+import FolderTaskItem from '@/features/folder-task/ui/FolderTaskItem';
+import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import { iconSize } from '@/shared/icons/iconSize';
+import { PlusIcon } from '@/shared/icons/ui/PlusIcon';
+import { EntityId } from '@/shared/lib/same-id';
 
 type FolderTaskListProps = {
   folderId: EntityId;

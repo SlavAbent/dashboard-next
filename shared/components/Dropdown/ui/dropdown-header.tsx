@@ -1,12 +1,13 @@
 'use client';
 
-import { DropdownHeaderProps } from '@/shared/components/Dropdown/types/dropdown.types';
 import cn from 'clsx';
+
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from '@/shared/components/Avatar/avatar';
+import { DropdownHeaderProps } from '@/shared/components/Dropdown/types/dropdown.types';
 import DropdownText from '@/shared/components/Dropdown/ui/dropdown-text';
 
 export function DropdownHeader({

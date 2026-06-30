@@ -28,10 +28,6 @@ app.prepare().then(() => {
 
         text: message.text,
 
-        firstName: message.firstName,
-
-        lastName: message.lastName,
-
         userId: message.userId,
 
         createdAt: message.createdAt,

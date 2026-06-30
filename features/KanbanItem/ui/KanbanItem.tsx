@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
 import { useSortable } from '@dnd-kit/react/sortable';
-import { KanbanItemType } from '@/features/KanbanItem/types/kanban-item.types';
+import React from 'react';
+
 import { FolderContent } from '@/features/board-folder';
+import { KanbanItemType } from '@/features/KanbanItem/types/kanban-item.types';
 import { toIdString } from '@/shared/lib/same-id';
 
 const KanbanItem = (props: KanbanItemType) => {

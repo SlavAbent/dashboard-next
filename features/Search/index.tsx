@@ -1,11 +1,12 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { Input } from '@/shared/components/Input/input';
-import { SearchIcon } from '@/shared/icons/ui/SearchIcon';
-import { iconSize } from '@/shared/icons/iconSize';
-import { useClickOutside } from '@/shared/hooks/useClickOutside';
-import { SearchDropdown } from '@/features/Search/ui/SearchDropdown';
-import { useDebounce } from '@/shared/hooks/useDebounce';
+
 import { SearchRightIcon } from '@/features/Search/ui/SeachRightICon';
+import { SearchDropdown } from '@/features/Search/ui/SearchDropdown';
+import { Input } from '@/shared/components/Input/input';
+import { useClickOutside } from '@/shared/hooks/useClickOutside';
+import { useDebounce } from '@/shared/hooks/useDebounce';
+import { iconSize } from '@/shared/icons/iconSize';
+import { SearchIcon } from '@/shared/icons/ui/SearchIcon';
 
 export const Search = () => {
   const wrapperRef = useRef<HTMLInputElement>(null);

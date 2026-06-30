@@ -1,4 +1,5 @@
 import { cache } from 'react';
+
 import type { NavigationMenu } from '@/entities/navigation/model/types';
 import { navigationApi } from '@/shared/_api/instances';
 

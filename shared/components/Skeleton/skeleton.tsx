@@ -1,5 +1,5 @@
-import React from 'react';
 import cn from 'clsx';
+import React from 'react';
 
 type SkeletonType = 'pulse' | 'shimmer';
 

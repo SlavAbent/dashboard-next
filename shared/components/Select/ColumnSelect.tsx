@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useMemo } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+
 import { useBoardStore } from '@/entities/board';
+import { ErrorField } from '@/shared/components/fields/ErrorField';
 import { AppSelect } from '@/shared/components/Select/app-select';
 import { toIdString } from '@/shared/lib/same-id';
-import { Controller, useFormContext } from 'react-hook-form';
 import { FolderValues } from '@/shared/schema/folder-schema';
-import { ErrorField } from '@/shared/components/fields/ErrorField';
 
 type ColumnSelectProps = {
   className?: string;

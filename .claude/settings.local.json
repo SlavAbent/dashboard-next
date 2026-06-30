@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npx knip *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(npx prettier *)",
+      "Bash(grep -ivE \"ignored option|^\\\\s*>|^$\")",
+      "Bash(echo \"check exit code: $?\")",
+      "Bash(node -e \"const db=require\\('./backend/db/db.json'\\); console.log\\('columns:', JSON.stringify\\(db.columns,null,1\\)\\); console.log\\('sample folders:', JSON.stringify\\(\\(db.taskFolders||db.folders||[]\\).slice\\(0,3\\),null,1\\)\\);\")"
+    ]
+  }
+}

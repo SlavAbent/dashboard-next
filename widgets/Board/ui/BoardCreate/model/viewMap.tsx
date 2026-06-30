@@ -1,8 +1,9 @@
 'use client';
 
-import type { BoardViewMode } from '@/entities/board/model/types/list-types';
-import { ComponentType } from 'react';
 import dynamic from 'next/dynamic';
+import { ComponentType } from 'react';
+
+import type { BoardViewMode } from '@/entities/board/model/types/list-types';
 import { Skeleton } from '@/shared/components/Skeleton/skeleton';
 
 const KanbanView = dynamic(() => import('@/widgets/KanbanView/ui/KanbanView'), {
