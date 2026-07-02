@@ -18,17 +18,17 @@ export const WelcomeIcon = (props: IconType) => {
           y2="29.074"
           x1="-253.742"
           y1="-70.793">
-          <stop offset="0%" stopColor="#000000" />
-          <stop offset="9.3%" stopColor="#000000" />
-          <stop offset="18.7%" stopColor="#000000" />
-          <stop offset="29.3%" stopColor="#000000" />
-          <stop offset="39.9%" stopColor="#000000" />
-          <stop offset="50.4%" stopColor="#000000" />
-          <stop offset="60.9%" stopColor="#000000" />
-          <stop offset="71.2%" stopColor="#000000" />
-          <stop offset="81.4%" stopColor="#000000" />
-          <stop offset="90.7%" stopColor="#000000" />
-          <stop offset="100%" stopColor="#000000" />
+          <stop offset="0%" stopColor="currentColor" />
+          <stop offset="9.3%" stopColor="currentColor" />
+          <stop offset="18.7%" stopColor="currentColor" />
+          <stop offset="29.3%" stopColor="currentColor" />
+          <stop offset="39.9%" stopColor="currentColor" />
+          <stop offset="50.4%" stopColor="currentColor" />
+          <stop offset="60.9%" stopColor="currentColor" />
+          <stop offset="71.2%" stopColor="currentColor" />
+          <stop offset="81.4%" stopColor="currentColor" />
+          <stop offset="90.7%" stopColor="currentColor" />
+          <stop offset="100%" stopColor="currentColor" />
         </linearGradient>
       </defs>
       <g transform="matrix(1,0,0,1,-6.415,-5.654)" id="i1">

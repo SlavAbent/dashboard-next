@@ -7,7 +7,14 @@
       "Bash(npx prettier *)",
       "Bash(grep -ivE \"ignored option|^\\\\s*>|^$\")",
       "Bash(echo \"check exit code: $?\")",
-      "Bash(node -e \"const db=require\\('./backend/db/db.json'\\); console.log\\('columns:', JSON.stringify\\(db.columns,null,1\\)\\); console.log\\('sample folders:', JSON.stringify\\(\\(db.taskFolders||db.folders||[]\\).slice\\(0,3\\),null,1\\)\\);\")"
+      "Bash(node -e \"const db=require\\('./backend/db/db.json'\\); console.log\\('columns:', JSON.stringify\\(db.columns,null,1\\)\\); console.log\\('sample folders:', JSON.stringify\\(\\(db.taskFolders||db.folders||[]\\).slice\\(0,3\\),null,1\\)\\);\")",
+      "Bash(grep -oE 'fill=\"#[0-9a-fA-F]{3,6}\"|stroke=\"#[0-9a-fA-F]{3,6}\"' /Users/astoe1/Projects/Projects/dashboard/dashboard-next/shared/icons/ui/NotFoundIcon.tsx)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/not-found-test-xyz)",
+      "mcp__claude-in-chrome__navigate",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "Bash(curl -s http://localhost:3000/not-found-test-xyz)",
+      "Bash(git -C /Users/astoe1/Projects/Projects/dashboard/dashboard-next status --short)",
+      "Bash(git -C /Users/astoe1/Projects/Projects/dashboard/dashboard-next diff .claude/settings.local.json)"
     ]
   }
 }

@@ -5,7 +5,6 @@ import { Geist } from 'next/font/google';
 import { ReactNode } from 'react';
 
 import Providers from '@/app/_providers';
-import { App } from '@/app/app';
 import { cn } from '@/shared/lib/cn';
 
 const geistSans = Geist({
@@ -33,9 +32,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <Providers>
-          <App>{children}</App>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
