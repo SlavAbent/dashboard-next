@@ -15,6 +15,7 @@ export const WeatherSearch = () => {
   );
 
   const loading = weather.isFetching;
+
   return (
     <div className="flex min-w-16 cursor-pointer items-center gap-1">
       {!loading ? (

@@ -36,7 +36,7 @@ const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
   const hasFilters = currentPage?.subheader?.filters;
   const hasGrid = currentPage?.subheader?.grid;
   const views = currentPage?.subheader?.view ?? [];
-  const title = currentPage?.name?.trim() || formatedTitle(pageKey);
+  const title = currentPage?.name?.trim() || formatedTitle(pageKey ?? '');
 
   return (
     <div className="border-bottom flex min-h-[69px] items-center px-8">

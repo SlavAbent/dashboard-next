@@ -14,7 +14,26 @@
       "mcp__claude-in-chrome__tabs_context_mcp",
       "Bash(curl -s http://localhost:3000/not-found-test-xyz)",
       "Bash(git -C /Users/astoe1/Projects/Projects/dashboard/dashboard-next status --short)",
-      "Bash(git -C /Users/astoe1/Projects/Projects/dashboard/dashboard-next diff .claude/settings.local.json)"
+      "Bash(git -C /Users/astoe1/Projects/Projects/dashboard/dashboard-next diff .claude/settings.local.json)",
+      "Bash(python3 -c ' *)",
+      "Bash(xargs -I{} sh -c 'echo ==={}===; cat {}')",
+      "Bash(npx tsc *)",
+      "Bash(git stash *)",
+      "Bash(npx eslint *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/dashboard)",
+      "Bash(lsof -i :3000 -sTCP:LISTEN)",
+      "Bash(curl -s http://localhost:3000/dashboard -o /tmp/dashboard.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -s http://localhost:3000/dashboard -o /tmp/dashboard2.html)",
+      "Bash(curl -s http://localhost:3000/dashboard -o /tmp/dashboard3.html)",
+      "Bash(xargs cat)",
+      "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard4.html)",
+      "Bash(grep -o 'Tasks progress\\\\|Recent tasks\\\\|Recent chat messages\\\\|Current time\\\\|Weather\\\\|Pomodoro\\\\|task${1==1?/tasks?taskId=[a-zA-Z0-9-]*\\\\|/chat?messageId=[a-zA-Z0-9-]*' /tmp/dashboard4.html)",
+      "Bash(curl -s \"http://localhost:3000/tasks?taskId=task-2\" -o /tmp/tasks.html -w \"HTTP:%{http_code}\\\\n\")",
+      "Bash(curl -s \"http://localhost:3000/chat?messageId=gtOLvZ\" -o /tmp/chat.html -w \"HTTP:%{http_code}\\\\n\")",
+      "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard5.html)",
+      "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard6.html)",
+      "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard7.html)"
     ]
   }
 }

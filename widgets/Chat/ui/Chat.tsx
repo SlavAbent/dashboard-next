@@ -16,9 +16,15 @@ import { Button } from '@/shared/components/Button/button';
 import { Input } from '@/shared/components/Input/input';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
 import { currentUser } from '@/shared/config/current-user';
+import { useScrollHighlight } from '@/shared/hooks/useScrollHighlight';
 
-export const ChatBoard = () => {
+type ChatBoardProps = {
+  messageId?: string;
+};
+
+export const ChatBoard = ({ messageId }: ChatBoardProps) => {
   useConnectChat();
+  useScrollHighlight(messageId, 'data-message-id');
   const [value, setValue] = useState('');
 
   const messages = useMessageStore((s) => s.messages);
@@ -49,6 +55,7 @@ export const ChatBoard = () => {
             return (
               <div
                 key={message.id}
+                data-message-id={message.id}
                 className={cn(
                   'flex',
                   isCurrentUser ? 'justify-end' : 'justify-start'

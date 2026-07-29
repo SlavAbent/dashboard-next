@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { highLightElement } from '@/features/Search/lib/highLightElement';
 import { Button } from '@/shared/components/Button/button';
 import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
+import { highLightElement } from '@/shared/lib/highlightElement';
 
 type SearchFolderProps<T> = {
   title: string;

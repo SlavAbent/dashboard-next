@@ -60,7 +60,7 @@ export const WeatherContent = () => {
         text={`Current city: ${currentCity}`}
         className="!leading-5"
       />
-      <div className="flex items-center gap-2">
+      <div className="flex w-full items-center gap-2">
         <Input
           value={query}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -68,7 +68,7 @@ export const WeatherContent = () => {
           }
           onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           placeholder="Search city..."
-          className="w-[300px]"
+          className="w-full"
         />
 
         <Button onClick={handleSearch} className="w-fit rounded-sm py-[17px]">
