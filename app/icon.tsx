@@ -1,26 +1,25 @@
 import { ImageResponse } from 'next/og';
 
-import { Favicon } from '@/shared/icons/ui/Favicon';
+import { LogoIcon } from '@/shared/icons/ui/LogoIcon';
 
 export const size = {
-  width: 32,
-  height: 32,
-};
-
-const faviconContainerStyle = {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  width: 24,
+  height: 24,
 };
 
 export const contentType = 'image/png';
 
 export default function Icon() {
   return new ImageResponse(
-    <div style={faviconContainerStyle}>
-      <Favicon size={{ width: 24, height: 24 }} currentColor="#ffffff" />
+    <div
+      style={{
+        width: '24px',
+        height: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <LogoIcon size={size} currentColor="#ffffff" />
     </div>,
     size
   );
