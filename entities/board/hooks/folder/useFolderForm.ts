@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 
 import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/boardModal';
-import { useCreateFolder } from '@/shared/hooks/folder/useCreateFolder';
-import { useEditFolder } from '@/shared/hooks/folder/useEditFolder';
+import { useCreateFolder } from '@/entities/board/hooks/folder/useCreateFolder';
+import { useEditFolder } from '@/entities/board/hooks/folder/useEditFolder';
 import { sameId, toIdString } from '@/shared/lib/sameId';
-import { folderSchema, FolderValues } from '@/shared/schema/folderSchema';
+import { folderSchema, FolderValues } from '@/entities/board/schema/folderSchema';
 
 export const useFolderForm = () => {
   const { taskFolders } = useBoardStore();

@@ -3,8 +3,8 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 
+import { MODAL_CONFIG } from '@/entities/board/config/modalConfig';
 import { useBoardModalStore } from '@/features/boardModal';
-import { MODAL_CONFIG } from '@/shared/config/modalConfig';
 
 export const BoardModals = () => {
   const { isOpen, mode, closeModal } = useBoardModalStore();

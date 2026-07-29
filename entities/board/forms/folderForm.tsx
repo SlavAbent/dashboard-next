@@ -1,10 +1,10 @@
 import React from 'react';
 import { FormProvider } from 'react-hook-form';
 
+import { useFolderForm } from '@/entities/board/hooks/folder/useFolderForm';
 import { InputField } from '@/shared/components/fields/inputField';
 import { SubmitButton } from '@/shared/components/fields/submitButton';
 import { ColumnSelect } from '@/shared/components/select/columnSelect';
-import { useFolderForm } from '@/shared/hooks/folder/useFolderForm';
 
 export const FolderForm = () => {
   const { folderForm, submitFolder, isEditFolderMode } = useFolderForm();

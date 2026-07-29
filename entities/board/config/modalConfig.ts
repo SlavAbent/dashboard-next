@@ -1,5 +1,5 @@
-import { FolderForm } from '@/shared/components/forms/folderForm';
-import { TaskForm } from '@/shared/components/forms/taskForm';
+import { FolderForm } from '@/entities/board/forms/folderForm';
+import { TaskForm } from '@/entities/board/forms/taskForm';
 
 export const MODAL_CONFIG = {
   'create-folder': {

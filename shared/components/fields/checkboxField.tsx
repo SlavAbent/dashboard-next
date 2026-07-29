@@ -3,7 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { Checkbox } from '@/shared/components/checkbox/checkbox';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
-import { TaskFormValues } from '@/shared/schema/taskSchema';
+import { TaskFormValues } from '@/entities/board/schema/taskSchema';
 
 export const CheckboxField = () => {
   const { control } = useFormContext<TaskFormValues>();

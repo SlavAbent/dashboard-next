@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form';
 
 import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/boardModal';
-import { findTaskById } from '@/shared/config/findTaskById';
-import { useCreateTask } from '@/shared/hooks/tasks/useCreateTask';
-import { useEditTask } from '@/shared/hooks/tasks/useEditTask';
+import { findTaskById } from '@/entities/board/config/findTaskById';
+import { useCreateTask } from '@/entities/board/hooks/tasks/useCreateTask';
+import { useEditTask } from '@/entities/board/hooks/tasks/useEditTask';
 import { toIdString } from '@/shared/lib/sameId';
-import { type TaskFormValues, taskSchema } from '@/shared/schema/taskSchema';
+import { type TaskFormValues, taskSchema } from '@/entities/board/schema/taskSchema';
 
 export const useTaskForm = () => {
   const { tasks, taskFolders } = useBoardStore();
