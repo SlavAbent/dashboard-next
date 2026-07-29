@@ -1,9 +1,9 @@
 import React, { ReactNode, Suspense } from 'react';
 
-import { Skeleton } from '@/shared/components/Skeleton/skeleton';
-import { AppAside } from '@/widgets/Aside/ui/app-aside';
-import Header from '@/widgets/Header/Header';
-import SubHeader from '@/widgets/SubHeader/SubHeader';
+import { Skeleton } from '@/shared/components/skeleton/skeleton';
+import { AppAside } from '@/widgets/aside/ui/appAside';
+import Header from '@/widgets/header/ui/header';
+import SubHeader from '@/widgets/subHeader/ui/subHeader';
 
 export const App = ({ children }: { children: ReactNode }) => {
   return (

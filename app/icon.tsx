@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-import { LogoIcon } from '@/shared/icons/ui/LogoIcon';
+import { LogoIcon } from '@/shared/icons/ui/logoIcon';
 
 export const size = {
   width: 24,

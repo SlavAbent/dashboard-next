@@ -1,4 +1,4 @@
-export { getNavigationMenu } from '@/entities/navigation/api/get-navigation-menu';
+export { getNavigationMenu } from '@/entities/navigation/api/getNavigationMenu';
 export type {
   NavigationMenu,
   NavigationMenuItem,

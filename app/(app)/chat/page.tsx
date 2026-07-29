@@ -1,4 +1,4 @@
-import ChatBoard from '@/widgets/Chat/ui/Chat';
+import ChatBoard from '@/widgets/chat/ui/chat';
 
 type ChatProps = {
   searchParams: Promise<{ messageId?: string }>;

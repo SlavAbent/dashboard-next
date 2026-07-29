@@ -1,1 +1,1 @@
-export { PomodoroTimer } from './ui/PomodoroTimer';
+export { PomodoroTimer } from './ui/pomodoroTimer';

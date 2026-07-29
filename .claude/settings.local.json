@@ -33,7 +33,22 @@
       "Bash(curl -s \"http://localhost:3000/chat?messageId=gtOLvZ\" -o /tmp/chat.html -w \"HTTP:%{http_code}\\\\n\")",
       "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard5.html)",
       "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard6.html)",
-      "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard7.html)"
+      "Bash(curl -s \"http://localhost:3000/dashboard\" -o /tmp/dashboard7.html)",
+      "Bash(grep -v -E '\\\\.\\(lock|md\\)$')",
+      "Bash(python3 /private/tmp/claude-501/-Users-astoe1-Projects-Projects-dashboard-dashboard-next/1f1907eb-e2b9-40e9-a612-28f019a8ce77/scratchpad/renames.py)",
+      "Bash(python3 fix_imports.py)",
+      "Bash(/bin/ls widgets *)",
+      "Bash(diskutil info *)",
+      "Bash(grep -E '/[^/]*-[^/]*\\\\.tsx?$')",
+      "Bash(python3 to_camel.py)",
+      "Bash(python3 apply_camel_renames.py)",
+      "Bash(cat)",
+      "Bash(python3 fix_imports_camel.py)",
+      "Bash(sed -i '' \"s#from './ui/task-board/task-board'#from './ui/taskBoard/taskBoard'#\" widgets/board/taskBoard.ts)",
+      "Bash(sed -i '' \"s#from './dashboard-card'#from './dashboardCard'#\" widgets/dashboard/ui/pomodoroCard.tsx widgets/dashboard/ui/recentActivityCard.tsx widgets/dashboard/ui/recentMessagesCard.tsx widgets/dashboard/ui/boardColumnsCard.tsx widgets/dashboard/ui/weatherCard.tsx widgets/dashboard/ui/clockCard.tsx widgets/dashboard/ui/taskProgressCardClient.tsx)",
+      "Bash(sed -i '' \"s#from './task-progress-card-client'#from './taskProgressCardClient'#\" widgets/dashboard/ui/taskProgressCard.tsx)",
+      "Bash(sed -i '' \"s#from './board-column-row'#from './boardColumnRow'#\" widgets/dashboard/ui/boardColumnsCard.tsx)",
+      "Bash(sed -i '' \"s#from './ui/pomodoro-timer'#from './ui/pomodoroTimer'#\" features/pomodoro/index.ts)"
     ]
   }
 }

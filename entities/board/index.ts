@@ -5,18 +5,17 @@ export {
   updateFolderColumn,
   updateFolderDetails,
   updateFolders,
-} from '@/entities/board/api/folder-api';
+} from '@/entities/board/api/folderApi';
 export {
   createTask,
   deleteTask,
   getTasks,
   updateTask,
-} from '@/entities/board/api/task-api';
-export { useFilteredTasks } from '@/entities/board/hooks/use-filtered-tasks';
-export { getColumnTasksLabel } from '@/entities/board/lib/count-column-tasks';
-export { applyTaskFiltersAndSort } from '@/entities/board/lib/filter-sort-tasks';
-export { groupTasksToFolders } from '@/entities/board/lib/group-tasks-to-folders';
-export { normalizeBoardData } from '@/entities/board/lib/normalize-board-data';
+} from '@/entities/board/api/taskApi';
+export { getColumnTasksLabel } from '@/entities/board/lib/countColumnTasks';
+export { applyTaskFiltersAndSort } from '@/entities/board/lib/filterSortTasks';
+export { groupTasksToFolders } from '@/entities/board/lib/groupTasksToFolders';
+export { normalizeBoardData } from '@/entities/board/lib/normalizeBoardData';
 export { useFiltersStore } from '@/entities/board/model/filters.store';
 export { useViewStore } from '@/entities/board/model/list.store';
 export type {
@@ -34,5 +33,6 @@ export type {
   Task,
   TaskFolder,
   UpdateFolderPayload,
-} from '@/entities/board/model/types/list-types';
-export { useBoardStore } from '@/entities/board/model/use-data.store';
+} from '@/entities/board/model/types/list.types';
+export { useBoardStore } from '@/entities/board/model/useData.store';
+export { useFilteredTasks } from '@/entities/board/model/useFilteredTasks';

@@ -1,4 +1,4 @@
-import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
+import { TypographyH3 } from '@/shared/components/typography/typographyH3';
 
 export default function Calendar() {
   return (

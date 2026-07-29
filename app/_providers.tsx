@@ -2,7 +2,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
 
-import { useThemeStore } from '@/shared/store/theme-store';
+import { useThemeStore } from '@/shared/store/themeStore';
 
 const queryClient = new QueryClient();
 

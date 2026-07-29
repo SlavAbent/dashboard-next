@@ -1,6 +1,6 @@
-import { TypographyH3 } from '@/shared/components/Typography/TypographyH3';
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
-import { WelcomeIcon } from '@/shared/icons/ui/WelcomeIcon';
+import { TypographyH3 } from '@/shared/components/typography/typographyH3';
+import { TypographySmall } from '@/shared/components/typography/typographySmall';
+import { WelcomeIcon } from '@/shared/icons/ui/welcomeIcon';
 
 export default function Home() {
   return (

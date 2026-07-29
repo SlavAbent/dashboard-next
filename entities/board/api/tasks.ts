@@ -3,4 +3,4 @@ export {
   deleteTask,
   getTasks,
   updateTask,
-} from '@/entities/board/api/task-api';
+} from '@/entities/board/api/taskApi';
