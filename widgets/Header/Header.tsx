@@ -1,16 +1,28 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 import { Clock } from '@/features/clock/ui/clock';
 import { PomodoroTimer } from '@/features/pomodoro';
 import { Search } from '@/features/Search';
 import { Dropdown } from '@/shared/components/Dropdown';
-import Weather from '@/widgets/Weather/Weather';
+import { routeToKeyMap } from '@/shared/config/routeMapping';
+import { Weather } from '@/widgets/Weather/Weather';
+
+type PageKey = (typeof routeToKeyMap)[keyof typeof routeToKeyMap];
+const hiddenPages: PageKey[] = ['dashboard', 'home'];
 
 const Header = () => {
+  const pathname = usePathname();
+  const pageKey = routeToKeyMap[pathname];
+
+  if (pageKey && hiddenPages.includes(pageKey)) {
+    return null;
+  }
+
   return (
-    <div className="border-bottom flex min-h-[70px] items-center px-8 py-[15.5]">
+    <div className="border-bottom flex min-h-[69px] items-center px-8 py-[15.5]">
       <div className="relative grow">
         <Search />
       </div>

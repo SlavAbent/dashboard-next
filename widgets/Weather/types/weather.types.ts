@@ -6,7 +6,7 @@ export type Coords = {
 };
 
 export type WeatherType = {
-  className: string;
+  className?: string;
 };
 
 export const OpenWeatherForecastResponseSchema = z.object({

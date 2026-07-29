@@ -3,11 +3,11 @@ import { CircleProgressProps } from '@/shared/icons/types/icon.types';
 export function CircleProgress({
   progress = 0,
   size,
+  strokeWidth = 2,
   className,
 }: CircleProgressProps) {
   const width = size?.width ?? 20;
   const height = size?.height ?? 20;
-  const strokeWidth = 2;
   const r = (Math.min(width, height) - strokeWidth) / 2;
   const circumference = 2 * Math.PI * r;
   const offset = circumference * (1 - progress);
@@ -15,8 +15,8 @@ export function CircleProgress({
   return (
     <svg
       width={width}
-      height={size?.height}
-      viewBox={`0 0 ${size} ${size}`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       className={className}
       style={{ transform: 'rotate(-90deg)' }}
       aria-hidden="true">
@@ -26,7 +26,7 @@ export function CircleProgress({
         r={r}
         fill="none"
         stroke="currentColor"
-        strokeWidth={2}
+        strokeWidth={strokeWidth}
         strokeOpacity={0.2}
       />
       <circle
@@ -35,7 +35,7 @@ export function CircleProgress({
         r={r}
         fill="none"
         stroke="currentColor"
-        strokeWidth={2}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeDasharray={circumference}
         strokeDashoffset={offset}

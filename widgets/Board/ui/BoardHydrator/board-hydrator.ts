@@ -8,4 +8,5 @@ export type BoardHydratorType = {
   tasks: Task[];
   columns: Column[];
   folders: TaskFolder[];
+  taskId?: string;
 };

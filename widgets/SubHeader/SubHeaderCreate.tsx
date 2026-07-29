@@ -19,6 +19,7 @@ import View from '@/widgets/SubHeader/View';
 const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
   const pathname = usePathname();
   const pageKey = routeToKeyMap[pathname];
+
   const setView = useViewStore((state) => state.setView);
   const activeFilterId = useViewStore((state) => state.activeFilterId);
   const setActiveFilterId = useViewStore((state) => state.setActiveFilterId);
@@ -35,8 +36,7 @@ const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
   const hasFilters = currentPage?.subheader?.filters;
   const hasGrid = currentPage?.subheader?.grid;
   const views = currentPage?.subheader?.view ?? [];
-
-  const title = currentPage?.name?.trim() || formatedTitle(pageKey);
+  const title = currentPage?.name?.trim() || formatedTitle(pageKey ?? '');
 
   return (
     <div className="border-bottom flex min-h-[69px] items-center px-8">

@@ -12,6 +12,7 @@ export type IconType = {
 export type CircleProgressProps = {
   progress?: number;
   size?: IconSizeType;
+  strokeWidth?: number;
   className?: string;
 };
 

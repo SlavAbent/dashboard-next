@@ -58,7 +58,7 @@ export const Search = () => {
   const showDropdown = Boolean(searchInput && isOpen);
 
   return (
-    <div ref={wrapperRef}>
+    <div ref={wrapperRef} className="w-fit">
       <Input
         ref={inputRef}
         value={searchInput}
