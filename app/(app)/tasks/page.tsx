@@ -1,4 +1,4 @@
-import { TaskBoard } from '@/widgets/Board/task-board';
+import { TaskBoard } from '@/widgets/board/taskBoard';
 
 type TasksProps = {
   searchParams: Promise<{ taskId?: string }>;

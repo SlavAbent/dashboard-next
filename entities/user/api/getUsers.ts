@@ -1,5 +1,5 @@
-import { User } from '@/entities/user/types/user.types';
-import { usersApi } from '@/shared/_api/instances';
+import { User } from '@/entities/user/model/types/user.types';
+import { usersApi } from '@/shared/api/instances';
 
 export const getUsers = async (): Promise<User[]> => {
   const response = await fetch(usersApi, {

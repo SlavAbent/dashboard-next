@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { User } from '@/entities/user/types/user.types';
+import { User } from '@/entities/user/model/types/user.types';
 
 interface UserStore {
   users: Record<string, User>;

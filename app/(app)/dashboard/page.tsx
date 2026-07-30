@@ -6,7 +6,7 @@ import {
   RecentMessagesCard,
   TaskProgressCard,
   WeatherCard,
-} from '@/widgets/Dashboard';
+} from '@/widgets/dashboard';
 
 export default function Dashboard() {
   return (

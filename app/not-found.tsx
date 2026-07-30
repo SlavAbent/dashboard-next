@@ -2,9 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 
-import { TypographySmall } from '@/shared/components/Typography/TypographySmall';
-import { ArrowIcon } from '@/shared/icons/ui/ArrowIcon';
-import { NotFoundIcon } from '@/shared/icons/ui/NotFoundIcon';
+import { TypographySmall } from '@/shared/components/typography/typographySmall';
+import { ArrowIcon } from '@/shared/icons/ui/arrowIcon';
+import { NotFoundIcon } from '@/shared/icons/ui/notFoundIcon';
 
 export default function NotFound() {
   const router = useRouter();

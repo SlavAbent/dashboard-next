@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import type { BoardViewMode } from '@/entities/board/model/types/list-types';
+import type { BoardViewMode } from '@/entities/board/model/board.types';
 
 const DEFAULT_FILTER_ID = 'list';
 
