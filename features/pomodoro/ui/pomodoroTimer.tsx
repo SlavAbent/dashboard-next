@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { formatTitle } from '@/features/pomodoro/lib/format';
 import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
+import { PomodoroPanel } from '@/features/pomodoro/ui/pomodoroPanel';
 import {
   Popover,
   PopoverContent,
@@ -10,7 +11,6 @@ import {
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 import { iconSize } from '@/shared/icons/iconSize';
 import { CircleProgress } from '@/shared/icons/ui/circleProgress';
-import { Pomodoro } from '@/widgets/pomodoro';
 
 export function PomodoroTimer() {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ export function PomodoroTimer() {
       <PopoverContent
         align="end"
         className="max-w-auto border-border rounded-sm border">
-        <Pomodoro />
+        <PomodoroPanel />
       </PopoverContent>
     </Popover>
   );

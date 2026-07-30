@@ -6,9 +6,9 @@ import React from 'react';
 import { Clock } from '@/features/clock/ui/clock';
 import { PomodoroTimer } from '@/features/pomodoro';
 import { Search } from '@/features/search';
+import { Weather } from '@/features/weather';
 import { Dropdown } from '@/shared/components/dropdown';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
-import { Weather } from '@/widgets/weather/ui/weather';
 
 type PageKey = (typeof routeToKeyMap)[keyof typeof routeToKeyMap];
 const hiddenPages: PageKey[] = ['dashboard', 'home'];

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getNavigationMenu } from '@/entities/navigation';
-import { FoldersCreate } from '@/widgets/folders/ui/foldersCreate';
+import { FoldersCreate } from '@/widgets/aside/ui/folders/foldersCreate';
 
 export const AsideFolders = async () => {
   const foldersData = await getNavigationMenu();

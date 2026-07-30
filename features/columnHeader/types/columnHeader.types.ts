@@ -1,4 +1,4 @@
-import type { BoardColumn } from '@/entities/board/model/types/list.types';
+import type { BoardColumn } from '@/entities/column';
 
 export type ColumnHeaderType = {
   column: BoardColumn;

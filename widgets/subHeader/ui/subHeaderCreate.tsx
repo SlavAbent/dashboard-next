@@ -3,8 +3,8 @@
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
+import type { BoardViewMode } from '@/entities/board';
 import { useViewStore } from '@/entities/board/model/list.store';
-import type { BoardViewMode } from '@/entities/board/model/types/list.types';
 import type { NavigationMenuItem } from '@/entities/navigation';
 import { TaskFilters } from '@/features/taskFilters';
 import { TypographyH3 } from '@/shared/components/typography/typographyH3';

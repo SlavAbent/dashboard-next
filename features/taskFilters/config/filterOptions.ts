@@ -1,7 +1,7 @@
 import type {
   TaskFilterOption,
   TaskSortOption,
-} from '@/entities/board/model/types/filters.types';
+} from '@/entities/board/model/filters.types';
 
 export type TaskFilterMenuOption = {
   id: number;

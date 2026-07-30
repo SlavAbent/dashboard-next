@@ -1,9 +1,7 @@
-import {
-  getColumns,
-  getTaskFolders,
-  getTasks,
-  groupTasksToFolders,
-} from '@/entities/board';
+import { groupTasksToFolders } from '@/entities/board';
+import { getColumns } from '@/entities/column';
+import { getTaskFolders } from '@/entities/folder';
+import { getTasks } from '@/entities/task';
 
 import { BoardColumnRow } from './boardColumnRow';
 import { DashboardCard } from './dashboardCard';

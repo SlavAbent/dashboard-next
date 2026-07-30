@@ -1,6 +1,6 @@
 'use client';
 
-import { WeatherContent } from '@/widgets/weather/ui/weatherContent';
+import { WeatherContent } from '@/features/weather';
 
 import { DashboardCard } from './dashboardCard';
 

@@ -2,26 +2,25 @@
 
 import { create } from 'zustand';
 
+import type { Column } from '@/entities/column';
+import { getNextColumn } from '@/entities/column';
+import type {
+  CreateFolder,
+  TaskFolder,
+  UpdateFolderPayload,
+} from '@/entities/folder';
 import {
   createFolderTask,
   deleteFolder,
   updateFolderDetails,
   updateFolders,
-} from '@/entities/board/api/folderApi';
+} from '@/entities/folder/api/folderApi';
+import type { CreateTask, Task } from '@/entities/task';
 import {
   createTask,
   deleteTask,
   updateTask,
-} from '@/entities/board/api/taskApi';
-import { getNextColumn } from '@/entities/board/lib/getNextColumn';
-import {
-  Column,
-  CreateFolder,
-  CreateTask,
-  Task,
-  TaskFolder,
-  UpdateFolderPayload,
-} from '@/entities/board/model/types/list.types';
+} from '@/entities/task/api/taskApi';
 import { type EntityId, sameId } from '@/shared/lib/sameId';
 
 type BoardStore = {

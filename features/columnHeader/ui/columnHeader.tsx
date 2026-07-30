@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { getColumnTasksLabel } from '@/entities/board/lib/countColumnTasks';
+import { getColumnTasksLabel } from '@/entities/column';
 import { useBoardModalStore } from '@/features/boardModal';
 import { ColumnHeaderType } from '@/features/columnHeader/types/columnHeader.types';
 import { Ellipse } from '@/shared/components/ellipse';

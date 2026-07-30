@@ -1,7 +1,5 @@
-import type {
-  BoardColumn,
-  TaskFolder,
-} from '@/entities/board/model/types/list.types';
+import type { BoardColumn } from '@/entities/column';
+import type { TaskFolder } from '@/entities/folder';
 import type { EntityId } from '@/shared/lib/sameId';
 
 export type BoardKanbanType = {

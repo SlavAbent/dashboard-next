@@ -1,5 +1,6 @@
-import { getColumns, getTaskFolders } from '@/entities/board';
-import { getTasks } from '@/entities/board/api/taskApi';
+import { getColumns } from '@/entities/column';
+import { getTaskFolders } from '@/entities/folder';
+import { getTasks } from '@/entities/task';
 import BoardHydrator from '@/widgets/board/ui/boardHydrator/boardHydrator';
 
 type TaskBoardProps = {

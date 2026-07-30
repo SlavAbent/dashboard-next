@@ -1,10 +1,6 @@
-import {
-  BoardColumn,
-  BoardFolder,
-  Column,
-  Task,
-  TaskFolder,
-} from '@/entities/board/model/types/list.types';
+import type { BoardColumn, Column } from '@/entities/column';
+import type { BoardFolder, TaskFolder } from '@/entities/folder';
+import type { Task } from '@/entities/task';
 import { toIdString } from '@/shared/lib/sameId';
 
 export const groupTasksToFolders = (

@@ -1,4 +1,4 @@
-import { getTasks } from '@/entities/board';
+import { getTasks } from '@/entities/task';
 
 import { TaskProgressCardClient } from './taskProgressCardClient';
 

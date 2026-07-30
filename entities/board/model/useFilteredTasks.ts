@@ -2,9 +2,9 @@
 
 import { useMemo } from 'react';
 
-import { applyTaskFiltersAndSort } from '@/entities/board/lib/filterSortTasks';
 import { useFiltersStore } from '@/entities/board/model/filters.store';
 import { useBoardStore } from '@/entities/board/model/useData.store';
+import { applyTaskFiltersAndSort } from '@/entities/task';
 
 export function useFilteredTasks() {
   const tasks = useBoardStore((state) => state.tasks);

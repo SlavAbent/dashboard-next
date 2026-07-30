@@ -1,6 +1,6 @@
 'use client';
 
-import type { BoardColumn } from '@/entities/board';
+import type { BoardColumn } from '@/entities/column';
 import { Ellipse } from '@/shared/components/ellipse';
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';

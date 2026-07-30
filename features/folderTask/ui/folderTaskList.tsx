@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import type { Task } from '@/entities/board/model/types/list.types';
+import type { Task } from '@/entities/task';
 import { useBoardModalStore } from '@/features/boardModal';
 import FolderTaskItem from '@/features/folderTask/ui/folderTaskItem';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';

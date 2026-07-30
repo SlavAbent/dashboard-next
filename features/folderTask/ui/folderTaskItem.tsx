@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 
-import type { Task } from '@/entities/board/model/types/list.types';
 import { useBoardStore } from '@/entities/board/model/useData.store';
+import type { Task } from '@/entities/task';
 import { Checkbox } from '@/shared/components/checkbox/checkbox';
 import {
   DropdownMenu,

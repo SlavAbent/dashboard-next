@@ -2,7 +2,7 @@
 
 import { create } from 'zustand';
 
-import { FiltersStore } from '@/entities/board/model/types/filters.types';
+import { FiltersStore } from '@/entities/board/model/filters.types';
 
 export const useFiltersStore = create<FiltersStore>((set) => ({
   activeMenu: null,
