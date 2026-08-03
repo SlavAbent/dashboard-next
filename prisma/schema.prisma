@@ -1,0 +1,60 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Пользователь приложения
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? // когда подтвердили email (magic link)
+  image         String?   // avatar URL от Google
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// Связь User ↔ провайдер (google, nodemailer)
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String   // "google" | "nodemailer"
+  providerAccountId String   // id у Google или email
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+// Активная сессия (кто сейчас залогинен)
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Только для email: одноразовая ссылка входа
+model VerificationToken {
+  identifier String   // email
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

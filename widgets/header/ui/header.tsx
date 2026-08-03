@@ -1,6 +1,7 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 
 import { Clock } from '@/features/clock/ui/clock';
@@ -8,18 +9,31 @@ import { PomodoroTimer } from '@/features/pomodoro';
 import { Search } from '@/features/search';
 import { Weather } from '@/features/weather';
 import { Dropdown } from '@/shared/components/dropdown';
+import { Skeleton } from '@/shared/components/skeleton/skeleton';
 import { routeToKeyMap } from '@/shared/config/routeMapping';
 
 type PageKey = (typeof routeToKeyMap)[keyof typeof routeToKeyMap];
-const hiddenPages: PageKey[] = ['dashboard', 'home'];
+const hiddenPages = new Set<PageKey>(['dashboard', 'home']);
 
-const Header = () => {
+export const Header = () => {
+  const { data: session, status } = useSession();
   const pathname = usePathname();
+
+  if (status === 'loading') {
+    return <Skeleton mode="shimmer" />;
+  }
+
+  if (status === 'unauthenticated') {
+    return <div>Not authenticated</div>;
+  }
+
+  if (!session) {
+    redirect('/login');
+  }
+
   const pageKey = routeToKeyMap[pathname];
 
-  if (pageKey && hiddenPages.includes(pageKey)) {
-    return null;
-  }
+  if (pageKey && hiddenPages.has(pageKey)) return null;
 
   return (
     <div className="border-bottom flex min-h-[69px] items-center px-8 py-[15.5]">
@@ -29,11 +43,11 @@ const Header = () => {
       <div className="flex items-center gap-2">
         <PomodoroTimer />
         <Weather className="interactive-hover min-w-fit cursor-pointer rounded-xs p-1" />
-        <Clock className="" />
+        <Clock className="mr-2" />
         <Dropdown
-          src=""
+          src={session.user?.image ?? ''}
           isAvatar
-          text="Abent S."
+          text={session.user?.name ?? 'You perfect!'}
           className="interactive-hover min-w-fit rounded-xs p-1"
           options={[
             { id: '1', title: 'Profile' },
@@ -42,7 +56,8 @@ const Header = () => {
             {
               id: '4',
               title: 'Log out',
-              destructive: true,
+              isLogout: true,
+              style: 'destructive',
             },
           ]}
         />
