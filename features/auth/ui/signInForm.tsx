@@ -1,18 +1,16 @@
 import { signIn } from '@/auth';
-import { Button } from '@/shared/components/button/button';
+import { GoogleSignInButton } from '@/shared/components/googleSignInButton/googleSignInButton';
 
 export function SignInForm() {
+  async function handleAuthMethod(method: string) {
+    'use server';
+    await signIn(method, { redirectTo: '/' });
+  }
   return (
-    <div className="flex flex-col gap-4">
-      <form
-        action={async () => {
-          'use server';
-          await signIn('google', { redirectTo: '/' });
-        }}>
-        <Button type="submit" className="w-full">
-          Войти через Google
-        </Button>
-      </form>
-    </div>
+    <form
+      action={handleAuthMethod.bind(null, 'google')}
+      className="flex w-full items-center justify-center">
+      <GoogleSignInButton />
+    </form>
   );
 }
