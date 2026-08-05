@@ -44,3 +44,4 @@ next-env.d.ts
 *.iml
 *.xml
 .idea/
+/app/generated/prisma

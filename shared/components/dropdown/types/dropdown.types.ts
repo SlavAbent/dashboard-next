@@ -4,8 +4,9 @@ export type DropdownItem = {
   id: string;
   title?: string;
   onClick?: () => void;
-  destructive?: boolean;
+  style?: 'default' | 'destructive';
   separator?: boolean;
+  isLogout?: boolean;
 };
 
 export type DropdownBase = {

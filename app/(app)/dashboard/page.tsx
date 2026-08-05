@@ -1,3 +1,6 @@
+import { redirect } from 'next/navigation';
+
+import { auth } from '@/auth';
 import {
   BoardColumnsCard,
   ClockCard,
@@ -8,7 +11,13 @@ import {
   WeatherCard,
 } from '@/widgets/dashboard';
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const session = await auth();
+
+  if (!session) {
+    redirect('/login');
+  }
+
   return (
     <div className="grid grid-cols-12 gap-4 p-8">
       <div className="col-span-3">
