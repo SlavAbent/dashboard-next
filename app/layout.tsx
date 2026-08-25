@@ -23,13 +23,18 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(geistSans.variable)} suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="device"
+      className={cn(geistSans.variable)}
+      suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=JSON.parse(localStorage.getItem('theme-storage')||'{}');if(t.state&&t.state.theme==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})();`,
+            __html: `(function(){try{var t=JSON.parse(localStorage.getItem('theme-storage')||'{}');var theme=(t.state&&t.state.theme)||'device';if(theme!=='light'&&theme!=='dark'&&theme!=='device'){theme='device'}document.documentElement.dataset.theme=theme;document.documentElement.classList.remove('dark')}catch(e){document.documentElement.dataset.theme='device'}})();`,
           }}
         />
+        <title>Dashboard - next</title>
       </head>
       <body className="antialiased">
         <Providers>{children}</Providers>

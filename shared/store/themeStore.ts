@@ -1,25 +1,19 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type Theme = 'light' | 'dark';
+import type { Theme } from '@/shared/lib/theme';
 
 type ThemeStore = {
   theme: Theme;
   setTheme: (theme: Theme) => void;
-  toggleTheme: () => void;
 };
 
 export const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
-      theme: 'light',
+      theme: 'device',
 
       setTheme: (theme) => set({ theme }),
-
-      toggleTheme: () =>
-        set((state) => ({
-          theme: state.theme === 'dark' ? 'light' : 'dark',
-        })),
     }),
     {
       name: 'theme-storage',
