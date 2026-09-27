@@ -2,6 +2,8 @@ import { ImageResponse } from 'next/og';
 
 import { LogoIcon } from '@/shared/icons/ui/logoIcon';
 
+export const dynamic = 'force-static';
+
 export const size = {
   width: 24,
   height: 24,
