@@ -113,13 +113,13 @@
       "id": "folder-upcoming-1",
       "title": "Upcoming",
       "columnId": "upcoming",
-      "order": 1
+      "order": 2
     },
     {
       "id": "folder-completed-1",
       "title": "Completed",
       "columnId": "completed",
-      "order": 1
+      "order": 3
     }
   ],
   "tasks": [

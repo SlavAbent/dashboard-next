@@ -1,12 +1,11 @@
-import { loadEnvConfig } from '@next/env';
+import { createServer } from 'node:http';
 
+import nextEnv from '@next/env';
+import next from 'next';
+import { Server } from 'socket.io';
+
+const { loadEnvConfig } = nextEnv;
 loadEnvConfig(process.cwd());
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { createServer } = require('http');
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const next = require('next');
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { Server } = require('socket.io');
 
 const dev = process.env.NODE_ENV !== 'production';
 
