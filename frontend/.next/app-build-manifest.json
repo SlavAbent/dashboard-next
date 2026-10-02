@@ -45,6 +45,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(app)/tasks/page.js"
+    ],
+    "/(app)/calendar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(app)/calendar/page.js"
     ]
   }
 }

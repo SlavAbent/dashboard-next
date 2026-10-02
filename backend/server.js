@@ -1,4 +1,4 @@
-const { loadEnvConfig } = require('@next/env');
+import { loadEnvConfig } from '@next/env';
 
 loadEnvConfig(process.cwd());
 // eslint-disable-next-line @typescript-eslint/no-require-imports
