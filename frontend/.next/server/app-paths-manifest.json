@@ -1,0 +1,8 @@
+{
+  "/icon/route": "app/icon/route.js",
+  "/api/auth/[...nextAuth]/route": "app/api/auth/[...nextAuth]/route.js",
+  "/login/page": "app/login/page.js",
+  "/(app)/page": "app/(app)/page.js",
+  "/(app)/tasks/page": "app/(app)/tasks/page.js",
+  "/(app)/chat/page": "app/(app)/chat/page.js"
+}

@@ -1,3 +1,6 @@
+const { loadEnvConfig } = require('@next/env');
+
+loadEnvConfig(process.cwd());
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { createServer } = require('http');
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -7,7 +10,11 @@ const { Server } = require('socket.io');
 
 const dev = process.env.NODE_ENV !== 'production';
 
-const app = next({ dev });
+const app = next({
+  dev,
+  dir: './frontend',
+});
+
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
@@ -25,21 +32,16 @@ app.prepare().then(() => {
     socket.on('send-message', async (message) => {
       const newMessage = {
         id: crypto.randomUUID(),
-
         text: message.text,
-
         userId: message.userId,
-
         createdAt: message.createdAt,
       };
 
       await fetch('http://localhost:4001/messages', {
         method: 'POST',
-
         headers: {
           'Content-Type': 'application/json',
         },
-
         body: JSON.stringify(newMessage),
       });
 
