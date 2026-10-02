@@ -1,0 +1,19 @@
+{
+  "node": {
+    "40883b98c8eee837f9a5490a86de6aac064d03abc9": {
+      "workers": {
+        "app/login/page": {
+          "moduleId": "(rsc)/../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fastoe1%2FProjects%2FProjects%2Fdashboard%2Fdashboard-next%2Ffrontend%2Ffeatures%2Fauth%2Fui%2FsignInForm.tsx%22%2C%5B%7B%22id%22%3A%2240883b98c8eee837f9a5490a86de6aac064d03abc9%22%2C%22exportedName%22%3A%22%24%24RSC_SERVER_ACTION_0%22%2C%22filename%22%3A%22features%2Fauth%2Fui%2FsignInForm.tsx%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": true
+        }
+      },
+      "layer": {
+        "app/login/page": "rsc"
+      },
+      "filename": "features/auth/ui/signInForm.tsx",
+      "exportedName": "$$RSC_SERVER_ACTION_0"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "9flbEN4CZhZHxCw8fkw7RUbYxgE5qBV9E/EUd9t9Bvk="
+}
