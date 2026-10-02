@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/astoe1/Projects/Projects/dashboard/dashboard-next/frontend/app/layout\":[\"static/media/22a5144ee8d83bca-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
