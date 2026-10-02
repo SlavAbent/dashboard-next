@@ -1,11 +1,7 @@
 import type { EntityId } from '@/shared/lib/sameId';
 
 export type ModalMode =
-  | 'create-folder'
-  | 'edit-folder'
-  | 'create-task'
-  | 'edit-task'
-  | null;
+  'create-folder' | 'edit-folder' | 'create-task' | 'edit-task' | null;
 
 export type ModalStore = {
   isOpen: boolean;

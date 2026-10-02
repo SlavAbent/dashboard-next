@@ -29,5 +29,46 @@ STACK:
 
 PLANS:
 
-- PRISMA
-- POSGRESQL
+REMOVE JSON-SERVER -> POSTGRES / PRISMA / NODEJS/EXPRESS
+
+
+GETTING STARTED
+
+Make sure the following tools are installed:
+
+Node.js 24+, npm, Colima, Docker CLI, Docker Compose
+
+
+INSTALLATION:
+Clone the repository and install dependencies:
+
+git clone https://github.com/SlavAbent/dashboard-next.git
+cd dashboard-next
+npm install
+Environment Variables
+
+Create .env.local and configure the required environment variables:
+
+DATABASE_URL=postgresql://postgres@localhost:5432/dashboard_db
+
+AUTH_GOOGLE_ID=your_google_client_id
+AUTH_GOOGLE_SECRET=your_google_client_secret
+AUTH_SECRET=your_auth_secret
+Start the Project
+
+Start Colima: colima start
+Make sure Docker uses the Colima context: docker context use colima
+
+Start the development environment: npm run dev
+
+The dev script automatically:
+
+Starts the PostgreSQL container.
+Validates the database connection.
+Starts the backend API.
+Starts the JSON Server.
+Starts the Next.js development server.
+
+The application is available at: http://localhost:3000
+
+Stop the Project: colima stop
