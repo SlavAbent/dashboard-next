@@ -5,7 +5,8 @@ import { FolderItemProps } from '@/entities/navigation/model/types';
 import { CardItem } from '@/shared/components/cardItem/cardItem';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 import { SvgIcon } from '@/shared/icons/svgIcon';
-import { cn } from '@/shared/lib/cn';
+
+import { cn } from '../../../../../lib/cn';
 
 const transition = 'duration-500 ease-in-out';
 

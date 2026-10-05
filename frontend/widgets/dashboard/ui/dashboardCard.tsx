@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { Card } from '@/shared/components/card';
 import { TypographyH3 } from '@/shared/components/typography/typographyH3';
-import { cn } from '@/shared/lib/cn';
+import { cn } from '../../lib/cn';
 
 type DashboardCardProps = {
   title?: string;

@@ -1,7 +1,8 @@
 import type { BoardColumn, Column } from '@/entities/column';
 import type { BoardFolder, TaskFolder } from '@/entities/folder';
 import type { Task } from '@/entities/task';
-import { toIdString } from '@/shared/lib/sameId';
+
+import { toIdString } from '../../../../lib/sameId';
 
 export const groupTasksToFolders = (
   tasks: Task[],

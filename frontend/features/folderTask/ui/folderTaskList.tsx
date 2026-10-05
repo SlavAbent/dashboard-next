@@ -8,7 +8,8 @@ import FolderTaskItem from '@/features/folderTask/ui/folderTaskItem';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 import { iconSize } from '@/shared/icons/iconSize';
 import { PlusIcon } from '@/shared/icons/ui/plusIcon';
-import { EntityId } from '@/shared/lib/sameId';
+
+import { EntityId } from '../../../../lib/sameId';
 
 type FolderTaskListProps = {
   folderId: EntityId;

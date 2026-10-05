@@ -21,7 +21,8 @@ import {
   deleteTask,
   updateTask,
 } from '@/entities/task/api/taskApi';
-import { type EntityId, sameId } from '@/shared/lib/sameId';
+
+import { type EntityId, sameId } from '../../../../lib/sameId';
 
 type BoardStore = {
   tasks: Task[];

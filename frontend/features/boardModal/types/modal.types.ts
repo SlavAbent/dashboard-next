@@ -1,4 +1,4 @@
-import type { EntityId } from '@/shared/lib/sameId';
+import type { EntityId } from '../../../../lib/sameId';
 
 export type ModalMode =
   'create-folder' | 'edit-folder' | 'create-task' | 'edit-task' | null;

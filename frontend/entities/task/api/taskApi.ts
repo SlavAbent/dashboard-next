@@ -1,6 +1,7 @@
 import { CreateTask, Task } from '@/entities/task/model/task.types';
 import { tasksApi } from '@/shared/api/instances';
-import type { EntityId } from '@/shared/lib/sameId';
+
+import type { EntityId } from '../../../../lib/sameId';
 
 export async function getTasks(): Promise<Task[]> {
   const response = await fetch(tasksApi, {

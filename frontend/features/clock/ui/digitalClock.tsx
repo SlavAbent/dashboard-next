@@ -2,7 +2,7 @@
 
 import { useClockStore } from '@/features/clock/model/clock.store';
 import { Skeleton } from '@/shared/components/skeleton/skeleton';
-import { cn } from '@/shared/lib/cn';
+import { cn } from '../../lib/cn';
 
 import { useClock } from '../model/useClock';
 

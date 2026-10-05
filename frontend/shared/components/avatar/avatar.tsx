@@ -4,7 +4,8 @@ import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import * as React from 'react';
 
 import { AvatarSize } from '@/shared/components/avatar/types/avatar.types';
-import { cn } from '@/shared/lib/cn';
+
+import { cn } from '../../../../lib/cn';
 
 function Avatar({
   className,

@@ -3,8 +3,9 @@
 import { Laptop, MoonStar, Sun } from 'lucide-react';
 import React from 'react';
 
-import { cn } from '@/shared/lib/cn';
 import { useThemeStore } from '@/shared/store/themeStore';
+
+import { cn } from '../../../../lib/cn';
 
 export const ThemeSwitch = () => {
   const theme = useThemeStore((state) => state.theme);

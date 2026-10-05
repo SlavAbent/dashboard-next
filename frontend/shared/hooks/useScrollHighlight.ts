@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { highLightElement } from '@/shared/lib/highlightElement';
+import { highLightElement } from '../../../lib/highlightElement';
 
 const MAX_ATTEMPTS = 30;
 const RETRY_DELAY_MS = 150;

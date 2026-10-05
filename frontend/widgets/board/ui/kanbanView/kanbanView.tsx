@@ -13,9 +13,10 @@ import {
 } from '@/entities/board';
 import { BoardModals } from '@/features/boardModal';
 import KanbanColumn from '@/features/kanbanColumn/ui/kanbanColumn';
-import type { EntityId } from '@/shared/lib/sameId';
-import { toIdString } from '@/shared/lib/sameId';
 import BoardKanban from '@/widgets/board/ui/boardKanban/boardKanban';
+
+import type { EntityId } from '../../../../../lib/sameId';
+import { toIdString } from '../../../../../lib/sameId';
 
 const KanbanView = () => {
   const filteredTasks = useFilteredTasks();

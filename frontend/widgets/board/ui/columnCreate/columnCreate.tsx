@@ -13,7 +13,7 @@ import { useCountHook } from '@/shared/hooks/useCountHook';
 import { iconSize } from '@/shared/icons/iconSize';
 import { ArrowIcon } from '@/shared/icons/ui/arrowIcon';
 import { PlusIcon } from '@/shared/icons/ui/plusIcon';
-import { cn } from '@/shared/lib/cn';
+import { cn } from '../../lib/cn';
 import { ColumnCreateType } from '@/widgets/board/ui/columnCreate/columnCreate.types';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {

@@ -7,7 +7,8 @@ import { useBoardStore } from '@/entities/board';
 import { FolderValues } from '@/features/boardModal/schema/folderSchema';
 import { ErrorField } from '@/shared/components/fields/errorField';
 import { AppSelect } from '@/shared/components/select/appSelect';
-import { toIdString } from '@/shared/lib/sameId';
+
+import { toIdString } from '../../../../lib/sameId';
 
 type ColumnSelectProps = {
   className?: string;
