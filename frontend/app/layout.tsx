@@ -5,7 +5,8 @@ import { Geist } from 'next/font/google';
 import { ReactNode } from 'react';
 
 import Providers from '@/app/_providers';
-import { cn } from '@/shared/lib/cn';
+
+import { cn } from '../../lib/cn';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

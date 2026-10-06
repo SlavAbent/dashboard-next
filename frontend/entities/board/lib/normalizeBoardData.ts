@@ -1,7 +1,8 @@
 import type { BoardColumn } from '@/entities/column';
 import type { TaskFolder } from '@/entities/folder';
-import type { EntityId } from '@/shared/lib/sameId';
-import { toIdString } from '@/shared/lib/sameId';
+
+import type { EntityId } from '../../../../lib/sameId';
+import { toIdString } from '../../../../lib/sameId';
 
 export const normalizeBoardData = (boardData: BoardColumn[]) => {
   const columns: Record<string, BoardColumn> = {};

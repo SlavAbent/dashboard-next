@@ -14,7 +14,8 @@ import {
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { iconSize } from '@/shared/icons/iconSize';
 import { DotsMenuIcon } from '@/shared/icons/ui/dotsMenuIcon';
-import type { EntityId } from '@/shared/lib/sameId';
+
+import type { EntityId } from '../../../../lib/sameId';
 
 type FolderDropdownProps = {
   folderId: EntityId;

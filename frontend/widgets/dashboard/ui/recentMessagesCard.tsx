@@ -4,8 +4,8 @@ import { getMessage } from '@/entities/message/api/getMessage';
 import { getUsers } from '@/entities/user';
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
-import { formatRelativeTime } from '@/shared/lib/formatRelativeTime';
 
+import { formatRelativeTime } from '../../../../lib/formatRelativeTime';
 import { DashboardCard } from './dashboardCard';
 
 const RECENT_MESSAGES_LIMIT = 3;

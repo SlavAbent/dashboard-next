@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  formatTitle,
-  padDuration,
-} from '@/features/pomodoro/lib/format';
+import { formatTitle, padDuration } from '@/features/pomodoro/lib/format';
 import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
 import { DurationType } from '@/features/pomodoro/model/types';
 

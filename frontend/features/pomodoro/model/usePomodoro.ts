@@ -4,7 +4,8 @@ import { playCompletionSound } from '@/features/pomodoro/lib/audio';
 import { formatTitle } from '@/features/pomodoro/lib/format';
 import { blinkTitle } from '@/features/pomodoro/lib/notifications';
 import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
-import { fireConfetti } from '@/shared/lib/confetti';
+
+import { fireConfetti } from '../../../../lib/confetti';
 
 export function usePomodoro() {
   const store = usePomodoroStore();

@@ -5,7 +5,8 @@ import { useBoardStore } from '@/entities/board';
 import { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
 import { ErrorField } from '@/shared/components/fields/errorField';
 import { AppSelect } from '@/shared/components/select/appSelect';
-import { sameId, toIdString } from '@/shared/lib/sameId';
+
+import { sameId, toIdString } from '../../../../lib/sameId';
 
 type SelectFieldProps = {
   className?: string;

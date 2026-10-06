@@ -127,9 +127,7 @@
       "id": "task-2",
       "taskFolderId": "folder-planning-1",
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "tags": [
-        "react"
-      ],
+      "tags": ["react"],
       "completed": false,
       "order": 1,
       "createdAt": "2026-01-08T10:00:00.000Z",
@@ -139,9 +137,7 @@
       "id": "task-3",
       "taskFolderId": "folder-completed-1",
       "text": "Redux (redux-observable, redux-saga)",
-      "tags": [
-        "redux"
-      ],
+      "tags": ["redux"],
       "completed": true,
       "order": 1,
       "createdAt": "2026-01-05T11:00:00.000Z",
@@ -151,9 +147,7 @@
       "id": "task-4",
       "taskFolderId": "folder-upcoming-1",
       "text": "Настроить CI pipeline",
-      "tags": [
-        "devops"
-      ],
+      "tags": ["devops"],
       "completed": false,
       "order": 1,
       "createdAt": "2026-01-11T08:00:00.000Z",
@@ -163,9 +157,7 @@
       "id": "task-5",
       "taskFolderId": "folder-planning-1",
       "text": "Покрыть тестами store",
-      "tags": [
-        "testing"
-      ],
+      "tags": ["testing"],
       "completed": true,
       "order": 2,
       "createdAt": "2026-01-07T13:00:00.000Z",
@@ -175,9 +167,7 @@
       "id": "task-6",
       "taskFolderId": "folder-upcoming-1",
       "text": "Оптимизировать загрузку boardы",
-      "tags": [
-        "performance"
-      ],
+      "tags": ["performance"],
       "completed": false,
       "order": 2,
       "createdAt": "2026-01-14T09:30:00.000Z",
@@ -262,6 +252,12 @@
       "text": "цйуйцу",
       "userId": "1",
       "createdAt": "2026-10-02T13:26:26.499Z"
+    },
+    {
+      "id": "TyY4JAN1g-A",
+      "text": "123",
+      "userId": "1",
+      "createdAt": "2026-10-05T13:49:08.741Z"
     }
   ],
   "users": [

@@ -2,8 +2,9 @@ import React from 'react';
 
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { SvgIcon } from '@/shared/icons/svgIcon';
-import { cn } from '@/shared/lib/cn';
 import { SubHeaderViewControlType } from '@/widgets/subHeader/types/subHeader.types';
+
+import { cn } from '../../../../lib/cn';
 
 const View = ({
   filter,

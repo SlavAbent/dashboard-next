@@ -1,6 +1,7 @@
 import { currentUser } from '@/shared/config/currentUser';
-import { socket } from '@/shared/lib/socket/socket';
-import { SOCKET_EVENTS } from '@/shared/lib/socket/socketEvents';
+
+import { socket } from '../../../../lib/socket/socket';
+import { SOCKET_EVENTS } from '../../../../lib/socket/socketEvents';
 
 export const useSendMessage = () => {
   const sendMessage = (text: string) => {
