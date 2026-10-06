@@ -6,6 +6,6 @@ export const usersRouter = Router();
 
 usersRouter.get('/', controller.getUsers);
 usersRouter.get('/:id', controller.getUser);
-usersRouter.get('/', controller.createUser);
-usersRouter.get('/:id', controller.updateUser);
-usersRouter.get('/:id', controller.deleteUser);
+usersRouter.post('/', controller.createUser);
+usersRouter.patch('/:id', controller.updateUser);
+usersRouter.delete('/:id', controller.deleteUser);

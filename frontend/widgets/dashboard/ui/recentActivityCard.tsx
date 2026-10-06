@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { getTasks } from '@/entities/task';
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
-import { formatRelativeTime } from '@/shared/lib/formatRelativeTime';
 
+import { formatRelativeTime } from '../../../../lib/formatRelativeTime';
 import { DashboardCard } from './dashboardCard';
 
 const RECENT_TASKS_LIMIT = 5;
