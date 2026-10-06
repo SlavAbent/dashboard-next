@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 
-import { getMessage } from '@/entities/message/api/getMessage';
+import { getChat } from '@/entities/chat';
 import { useMessageStore } from '@/entities/message/model/message.store';
 import { ChatMessage } from '@/entities/message/model/types/message.types';
-import { getUsers, useUserStore } from '@/entities/user';
 
 import { socket } from '../../../../lib/socket/socket';
 import { SOCKET_EVENTS } from '../../../../lib/socket/socketEvents';
@@ -11,21 +10,15 @@ import { SOCKET_EVENTS } from '../../../../lib/socket/socketEvents';
 export const useConnectChat = () => {
   const addMessage = useMessageStore((s) => s.addMessage);
   const setMessages = useMessageStore((s) => s.setMessages);
-  const setUsers = useUserStore((s) => s.setUsers);
 
   useEffect(() => {
     const init = async () => {
-      const [messagesResult, usersResult] = await Promise.allSettled([
-        getMessage(),
-        getUsers(),
-      ]);
+      try {
+        const messages = await getChat();
 
-      if (usersResult.status === 'fulfilled') {
-        setUsers(usersResult.value);
-      }
-
-      if (messagesResult.status === 'fulfilled') {
-        setMessages(messagesResult.value);
+        setMessages(messages);
+      } catch (error) {
+        console.error('Failed to initialize chat', error);
       }
     };
 
@@ -33,7 +26,9 @@ export const useConnectChat = () => {
 
     socket.connect();
 
-    const handleReceiveMessage = (message: ChatMessage) => addMessage(message);
+    const handleReceiveMessage = (message: ChatMessage) => {
+      addMessage(message);
+    };
 
     socket.on(SOCKET_EVENTS.RECEIVE_MESSAGE, handleReceiveMessage);
 
@@ -42,5 +37,5 @@ export const useConnectChat = () => {
 
       socket.disconnect();
     };
-  }, [addMessage, setMessages, setUsers]);
+  }, [addMessage, setMessages]);
 };
