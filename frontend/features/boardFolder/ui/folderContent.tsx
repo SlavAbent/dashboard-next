@@ -8,8 +8,8 @@ import { FolderDropdown } from '@/features/folderActions';
 import { FolderTaskList } from '@/features/folderTask';
 import { Checkbox } from '@/shared/components/checkbox/checkbox';
 import { TypographyP } from '@/shared/components/typography/typographyP';
-import { cn } from '../../lib/cn';
 
+import { cn } from '../../../../lib/cn';
 import { type EntityId, sameId } from '../../../../lib/sameId';
 
 type FolderContentProps = {

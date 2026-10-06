@@ -13,8 +13,9 @@ import { useCountHook } from '@/shared/hooks/useCountHook';
 import { iconSize } from '@/shared/icons/iconSize';
 import { ArrowIcon } from '@/shared/icons/ui/arrowIcon';
 import { PlusIcon } from '@/shared/icons/ui/plusIcon';
-import { cn } from '../../lib/cn';
 import { ColumnCreateType } from '@/widgets/board/ui/columnCreate/columnCreate.types';
+
+import { cn } from '../../../../../lib/cn';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const { completed, incomplete } = useCountHook(column);

@@ -9,7 +9,7 @@ export const getUsers = async (): Promise<User[]> => {
     throw new Error('Failed to fetch users');
   }
 
-  console.log(response)
+  console.log(response);
 
   return response.json();
 };

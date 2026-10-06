@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 const BACKEND_URL = process.env.BACKEND_URL!;
 
-console.log('BACKEND_URL', BACKEND_URL)
+console.log('BACKEND_URL', BACKEND_URL);
 
 export async function GET() {
   const response = await fetch(`${BACKEND_URL}/users`, {

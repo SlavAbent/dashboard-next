@@ -31,13 +31,11 @@ PLANS:
 
 REMOVE JSON-SERVER -> POSTGRES / PRISMA / NODEJS/EXPRESS
 
-
 GETTING STARTED
 
 Make sure the following tools are installed:
 
 Node.js 24+, npm, Colima, Docker CLI, Docker Compose
-
 
 INSTALLATION:
 Clone the repository and install dependencies:
