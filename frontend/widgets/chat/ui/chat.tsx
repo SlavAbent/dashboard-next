@@ -4,7 +4,6 @@ import cn from 'clsx';
 import React, { useState } from 'react';
 
 import { useMessageStore } from '@/entities/message/model/message.store';
-import { useUserStore } from '@/entities/user';
 import { useConnectChat } from '@/features/connectChat/model/useConnectChat';
 import { useSendMessage } from '@/features/connectChat/model/useSendMessage';
 import {
@@ -25,10 +24,10 @@ type ChatBoardProps = {
 export const ChatBoard = ({ messageId }: ChatBoardProps) => {
   useConnectChat();
   useScrollHighlight(messageId, 'data-message-id');
+
   const [value, setValue] = useState('');
 
   const messages = useMessageStore((s) => s.messages);
-  const users = useUserStore((s) => s.users);
   const { sendMessage } = useSendMessage();
 
   const handleSendMessage = () => {
@@ -40,11 +39,12 @@ export const ChatBoard = ({ messageId }: ChatBoardProps) => {
 
   return (
     <div className="flex h-full flex-col gap-4 p-10">
-      <div className="flex h-full max-h-[400px] flex-col gap-4 overflow-scroll overflow-y-auto border p-4">
+      <div className="flex h-full max-h-100 flex-col gap-4 overflow-scroll overflow-y-auto border p-4">
         {messages &&
           messages.map((message) => {
             const isCurrentUser = message.userId === currentUser.id;
-            const author = users[message.userId];
+            const author = message.author;
+
             const createdAtTime = new Date(
               message.createdAt
             ).toLocaleTimeString([], {
@@ -65,9 +65,7 @@ export const ChatBoard = ({ messageId }: ChatBoardProps) => {
                     <div className="mb-2 flex w-full items-end">
                       <Avatar className="mr-2 h-8 w-8">
                         <AvatarImage src={''} alt="avatar" />
-                        <AvatarFallback>
-                          {author?.firstName?.[0] ?? '?'}
-                        </AvatarFallback>
+                        <AvatarFallback>{'S'}</AvatarFallback>
                       </Avatar>
                       <div className="text-muted-foreground ml-2 text-[10px]">
                         {createdAtTime}
@@ -92,14 +90,14 @@ export const ChatBoard = ({ messageId }: ChatBoardProps) => {
         <Input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="w-[400px] border p-2"
+          className="w-100 border p-2"
           placeholder="Message..."
         />
         <Button
           onClick={handleSendMessage}
           size="lg"
-          className="button w-[100px] rounded-sm py-4.5">
-          <TypographySmall text="Send" className="!leading-[150%]" />
+          className="button w-25 rounded-sm py-4.5">
+          <TypographySmall text="Send" className="leading-[150%]!" />
         </Button>
       </div>
     </div>

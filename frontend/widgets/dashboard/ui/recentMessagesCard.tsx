@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { getMessage } from '@/entities/message/api/getMessage';
-import { getUsers } from '@/entities/user';
+import { getUsers } from '@/entities/chat';
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
