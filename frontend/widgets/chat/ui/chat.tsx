@@ -3,7 +3,6 @@
 import cn from 'clsx';
 import React, { useState } from 'react';
 
-import { useUserStore } from '@/entities/chat';
 import { useMessageStore } from '@/entities/message/model/message.store';
 import { useConnectChat } from '@/features/connectChat/model/useConnectChat';
 import { useSendMessage } from '@/features/connectChat/model/useSendMessage';
@@ -98,7 +97,7 @@ export const ChatBoard = ({ messageId }: ChatBoardProps) => {
           onClick={handleSendMessage}
           size="lg"
           className="button w-25 rounded-sm py-4.5">
-          <TypographySmall text="Send" className="!leading-[150%]" />
+          <TypographySmall text="Send" className="leading-[150%]!" />
         </Button>
       </div>
     </div>
