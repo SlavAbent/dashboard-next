@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { getMessage } from '@/entities/message/api/getMessage';
-import { getUsers } from '@/entities/chat';
+import { getChatMessages } from '@/entities/message/api/getChatMessage.server';
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
@@ -11,9 +10,7 @@ import { DashboardCard } from './dashboardCard';
 const RECENT_MESSAGES_LIMIT = 3;
 
 export const RecentMessagesCard = async () => {
-  const [messages, users] = await Promise.all([getMessage(), getUsers()]);
-
-  const usersById = Object.fromEntries(users.map((user) => [user.id, user]));
+  const messages = await getChatMessages();
 
   const recentMessages = [...messages]
     .sort(
@@ -26,9 +23,8 @@ export const RecentMessagesCard = async () => {
     <DashboardCard title="Recent chat messages">
       <ul className="flex flex-col gap-1">
         {recentMessages.map((message) => {
-          const author = usersById[message.userId];
-          const authorName = author
-            ? `${author.firstName} ${author.lastName}`
+          const authorName = message.author
+            ? `${message.author.firstName} ${message.author.lastName}`
             : 'Unknown user';
 
           return (

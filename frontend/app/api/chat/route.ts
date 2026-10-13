@@ -1,61 +1,20 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.BACKEND_URL!;
+import { getChatMessages } from '@/entities/message/api/getChatMessage.server';
 
-type BackendUser = {
-  id: string;
-  firstName: string;
-  lastName: string;
-};
-
-type BackendMessage = {
-  id: string;
-  userId: string;
-  text: string;
-  createdAt: string;
-};
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const [messagesResponse, usersResponse] = await Promise.all([
-    fetch(`${BACKEND_URL}/messages`),
-    fetch(`${BACKEND_URL}/users`),
-  ]);
+  try {
+    const messages = await getChatMessages();
 
-  if (!messagesResponse.ok || !usersResponse.ok) {
+    return NextResponse.json(messages);
+  } catch (error) {
+    console.error('[api/chat] GET failed:', error);
+
     return NextResponse.json(
-      {
-        message: 'Failed to fetch chat data',
-      },
-      {
-        status: 500,
-      }
+      { message: 'Failed to fetch chat data' },
+      { status: 500 }
     );
   }
-
-  const [messages, users] = await Promise.all([
-    messagesResponse.json() as Promise<BackendMessage[]>,
-    usersResponse.json() as Promise<BackendUser[]>,
-  ]);
-
-  const usersById = Object.fromEntries(users.map((user) => [user.id, user]));
-
-  const result = messages.map((message) => {
-    const author = usersById[message.userId];
-
-    return {
-      id: message.id,
-      userId: message.userId,
-      text: message.text,
-      createdAt: message.createdAt,
-      author: author
-        ? {
-            id: author.id,
-            firstName: author.firstName,
-            lastName: author.lastName,
-          }
-        : null,
-    };
-  });
-
-  return NextResponse.json(result);
 }
