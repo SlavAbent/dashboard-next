@@ -1,11 +1,13 @@
-export interface ChatMessage {
+export type ChatAuthor = {
+  id: string;
+  firstName: string;
+  lastName: string;
+};
+
+export type ChatMessage = {
   id: string;
   userId: string;
   text: string;
   createdAt: string;
-  author: {
-    id: string;
-    firstName: string;
-    lastName: string;
-  } | null;
-}
+  author: ChatAuthor | null;
+};
