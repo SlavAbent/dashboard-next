@@ -8,7 +8,8 @@
     "db:stop": "docker compose stop postgres",
     "db:logs": "docker compose logs -f postgres",
     "db:studio": "prisma studio",
-    "dev": "npm run db:start && node ./backend/scripts/validate-db.mjs && concurrently \"node ./backend/server.js\" \"npm run json-server\"",
+    "dev": "npm run db:start && npm run validate:db && concurrently \"npm run backend\" \"npm run json-server\"",
+    "backend": "node ./backend/server.js",
     "json-server": "json-server ./backend/db/db.json --watch --port 4001",
     "build": "next build frontend",
     "start": "NODE_ENV=production node ./backend/server.js",
@@ -19,8 +20,6 @@
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "typecheck": "tsc --noEmit",
     "check": "npm run format:check && npm run lint && npm run typecheck",
-    "analyze": "ANALYZE=true next build frontend",
-    "knip": "knip",
     "prepare": "husky"
   },
   "prisma": {

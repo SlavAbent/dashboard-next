@@ -11,6 +11,7 @@ type BackendMessage = {
   userId: string;
   text: string;
   createdAt: string;
+  author?: ChatAuthor;
 };
 
 const getBackendUrl = () => {
@@ -52,13 +53,15 @@ export const getChatMessages = async (): Promise<ChatMessage[]> => {
       userId: message.userId,
       text: message.text,
       createdAt: message.createdAt,
-      author: author
-        ? {
-            id: author.id,
-            firstName: author.firstName,
-            lastName: author.lastName,
-          }
-        : null,
+      author:
+        message.author ??
+        (author
+          ? {
+              id: author.id,
+              firstName: author.firstName,
+              lastName: author.lastName,
+            }
+          : null),
     };
   });
 };
