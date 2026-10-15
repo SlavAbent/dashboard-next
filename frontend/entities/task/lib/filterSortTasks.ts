@@ -1,7 +1,7 @@
 import type {
   TaskFilterOption,
   TaskSortOption,
-} from '@/entities/board/model/filters.types';
+} from '@/entities/task/model/filter.types';
 import type { Task } from '@/entities/task/model/task.types';
 
 export function filterTasks(tasks: Task[], filter: TaskFilterOption): Task[] {

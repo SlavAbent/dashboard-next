@@ -7,6 +7,10 @@ export {
 export { applyTaskFiltersAndSort } from '@/entities/task/lib/filterSortTasks';
 export { findTaskById } from '@/entities/task/lib/findTaskById';
 export type {
+  TaskFilterOption,
+  TaskSortOption,
+} from '@/entities/task/model/filter.types';
+export type {
   BoardTask,
   CreateTask,
   Task,

@@ -1,8 +1,15 @@
 import { useMemo } from 'react';
 
-import { BoardColumn } from '@/entities/column';
+type CountableColumn = {
+  folders: Array<{
+    tasks: Array<{ completed: boolean }>;
+  }>;
+};
 
-const countTasks = (column: BoardColumn, type: 'completed' | 'incomplete') => {
+const countTasks = (
+  column: CountableColumn,
+  type: 'completed' | 'incomplete'
+) => {
   const isComplete = type === 'completed';
 
   return column.folders.reduce(
@@ -12,7 +19,7 @@ const countTasks = (column: BoardColumn, type: 'completed' | 'incomplete') => {
   );
 };
 
-export const useCountHook = (column: BoardColumn) => {
+export const useCountHook = (column: CountableColumn) => {
   const completed = useMemo(() => countTasks(column, 'completed'), [column]);
   const incomplete = useMemo(() => countTasks(column, 'incomplete'), [column]);
 
