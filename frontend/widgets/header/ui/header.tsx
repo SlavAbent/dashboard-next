@@ -5,6 +5,7 @@ import React from 'react';
 
 import { Clock } from '@/features/clock/ui/clock';
 import { PomodoroTimer } from '@/features/pomodoro';
+import { usePomodoro } from '@/features/pomodoro/model/usePomodoro';
 import { Search } from '@/features/search';
 import { UserDropdown } from '@/features/userDropdown';
 import { Weather } from '@/features/weather';
@@ -14,6 +15,7 @@ type PageKey = (typeof routeToKeyMap)[keyof typeof routeToKeyMap];
 const hiddenPages = new Set<PageKey>([RouteKey.DASHBOARD, RouteKey.HOME]);
 
 export const Header = () => {
+  usePomodoro();
   const pathname = usePathname();
   const pageKey = routeToKeyMap[pathname];
 

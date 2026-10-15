@@ -2,13 +2,11 @@ import { RotateCcw, SkipForward } from 'lucide-react';
 import React from 'react';
 
 import { usePomodoroStore } from '@/features/pomodoro/model/pomodoro.store';
-import { usePomodoro } from '@/features/pomodoro/model/usePomodoro';
 import { TimerDisplay } from '@/features/pomodoro/ui/timerDisplay';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
 export const PomodoroPanel = () => {
-  const { startPause, reset } = usePomodoro();
-  const { remaining, running } = usePomodoroStore();
+  const { remaining, running, startPause, reset } = usePomodoroStore();
 
   const isDone = remaining === 0;
   const startLabel = running ? 'Pause' : isDone ? 'Ready' : 'Start';

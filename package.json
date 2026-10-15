@@ -8,10 +8,11 @@
     "db:stop": "docker compose stop postgres",
     "db:logs": "docker compose logs -f postgres",
     "db:studio": "prisma studio",
-    "dev": "npm run db:start && node ./backend/scripts/validate-db.mjs && concurrently \"node ./backend/server.js\" \"npm run json-server\"",
+    "dev": "npm run db:start && npm run validate:db && concurrently \"npm run backend\" \"npm run json-server\"",
+    "backend": "node ./backend/server.js",
     "json-server": "json-server ./backend/db/db.json --watch --port 4001",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build frontend",
+    "start": "NODE_ENV=production node ./backend/server.js",
     "validate:db": "node backend/scripts/validate-db.mjs",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
@@ -19,12 +20,10 @@
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "typecheck": "tsc --noEmit",
     "check": "npm run format:check && npm run lint && npm run typecheck",
-    "analyze": "ANALYZE=true next build",
-    "knip": "knip",
     "prepare": "husky"
   },
   "prisma": {
-    "schema": "backend/prisma/schema.prisma"
+    "schema": "prisma/schema"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.3",

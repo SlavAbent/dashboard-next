@@ -77,11 +77,11 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   },
 
   toggleTask: async (id) => {
+    const task = get().tasks.find((item) => sameId(item.id, id));
+
+    if (!task) return;
+
     try {
-      const task = get().tasks.find((item) => sameId(item.id, id));
-
-      if (!task) return;
-
       set((state) => ({
         tasks: state.tasks.map((item) =>
           sameId(item.id, id) ? { ...item, completed: !item.completed } : item
@@ -92,6 +92,9 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
         completed: !task.completed,
       });
     } catch (error) {
+      set((state) => ({
+        tasks: state.tasks.map((item) => (sameId(item.id, id) ? task : item)),
+      }));
       console.error(error);
     }
   },
@@ -147,10 +150,8 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
       sameId(task.taskFolderId, id)
     );
 
-    await Promise.all([
-      deleteFolder(id),
-      ...folderTasks.map((task) => deleteTask(task.id)),
-    ]);
+    for (const task of folderTasks) await deleteTask(task.id);
+    await deleteFolder(id);
 
     set((state) => ({
       taskFolders: state.taskFolders.filter((folder) => !sameId(folder.id, id)),

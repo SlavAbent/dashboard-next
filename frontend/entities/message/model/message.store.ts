@@ -15,13 +15,17 @@ export const useMessageStore = create<ChatMessageStore>((set) => ({
 
   addMessage: (message) => {
     set((state) => ({
-      messages: [...state.messages, message],
+      messages: state.messages.some((item) => item.id === message.id)
+        ? state.messages
+        : [...state.messages, message],
     }));
   },
 
   setMessages: (messages) => {
     set({
-      messages,
+      messages: Array.from(
+        new Map(messages.map((message) => [message.id, message])).values()
+      ),
     });
   },
 }));
