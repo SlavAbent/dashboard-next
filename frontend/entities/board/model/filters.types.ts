@@ -1,6 +1,12 @@
-export type TaskSortOption = 'default' | 'asc' | 'desc';
+import type {
+  TaskFilterOption,
+  TaskSortOption,
+} from '@/entities/task/model/filter.types';
 
-export type TaskFilterOption = 'all' | 'open' | 'completed';
+export type {
+  TaskFilterOption,
+  TaskSortOption,
+} from '@/entities/task/model/filter.types';
 
 export type FiltersStore = {
   activeMenu: 'filter' | 'sort' | null;

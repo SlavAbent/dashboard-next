@@ -12,7 +12,7 @@ import {
   taskSchema,
 } from '@/features/boardModal/schema/taskSchema';
 
-import { toIdString } from '../../../../lib/sameId';
+import { toIdString } from '@lib/sameId';
 
 export const useTaskForm = () => {
   const { tasks, taskFolders } = useBoardStore();

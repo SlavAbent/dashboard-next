@@ -1,6 +1,6 @@
 'use client';
 
-import { PomodoroPanel } from '@/features/pomodoro';
+import { PomodoroPanel } from '@dashboard/pomodoro';
 
 import { DashboardCard } from './dashboardCard';
 

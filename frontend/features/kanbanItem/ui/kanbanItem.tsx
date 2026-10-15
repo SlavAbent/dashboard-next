@@ -6,7 +6,7 @@ import React from 'react';
 import { FolderContent } from '@/features/boardFolder';
 import { KanbanItemType } from '@/features/kanbanItem/types/kanbanItem.types';
 
-import { toIdString } from '../../../../lib/sameId';
+import { toIdString } from '@lib/sameId';
 
 const KanbanItem = (props: KanbanItemType) => {
   const { id, index, folder } = props;

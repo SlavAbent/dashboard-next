@@ -1,6 +1,6 @@
 import { Task } from '@/entities/task';
 
-import { EntityId, sameId } from '../../../../lib/sameId';
+import { EntityId, sameId } from '@lib/sameId';
 
 export const findTaskById = (tasks: Task[], taskId: EntityId | null) => {
   if (taskId == null) return undefined;

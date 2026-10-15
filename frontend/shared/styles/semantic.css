@@ -40,6 +40,7 @@ html[data-theme='light'] {
 
   --background: var(--color-white);
   --foreground: var(--color-black);
+  --logo-stroke: transparent;
 
   --card: var(--color-white);
   --card-foreground: var(--color-black);
@@ -77,6 +78,7 @@ html[data-theme='light'] {
 html[data-theme='dark'] {
   --background: oklch(0.26 0 0);
   --foreground: oklch(1 0 89.876);
+  --logo-stroke: var(--color-white);
 
   --card: oklch(0.32 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -124,6 +126,7 @@ html[data-theme='dark'] {
   html[data-theme='device'] {
     --background: oklch(0.26 0 0);
     --foreground: oklch(1 0 89.876);
+    --logo-stroke: var(--color-white);
 
     --card: oklch(0.32 0 0);
     --card-foreground: oklch(0.985 0 0);

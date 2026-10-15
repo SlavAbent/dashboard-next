@@ -9,7 +9,7 @@ import { TypographySmall } from '@/shared/components/typography/typographySmall'
 import { iconSize } from '@/shared/icons/iconSize';
 import { PlusIcon } from '@/shared/icons/ui/plusIcon';
 
-import { EntityId } from '../../../../lib/sameId';
+import { EntityId } from '@lib/sameId';
 
 type FolderTaskListProps = {
   folderId: EntityId;

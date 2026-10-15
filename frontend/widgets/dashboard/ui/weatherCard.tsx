@@ -1,6 +1,6 @@
 'use client';
 
-import { WeatherContent } from '@/features/weather';
+import { WeatherContent } from '@dashboard/weather';
 
 import { DashboardCard } from './dashboardCard';
 

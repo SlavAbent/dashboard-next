@@ -1,6 +1,6 @@
 'use client';
 
-import { DigitalClock } from '@/features/clock/ui/digitalClock';
+import { DigitalClock } from '@dashboard/clock';
 
 import { DashboardCard } from './dashboardCard';
 

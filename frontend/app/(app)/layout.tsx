@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { App } from '../app';
+import { App } from '@/app/app';
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   return <App>{children}</App>;

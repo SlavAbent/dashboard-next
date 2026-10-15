@@ -4,7 +4,7 @@ import { TypographyP } from '@/shared/components/typography/typographyP';
 import { SvgIcon } from '@/shared/icons/svgIcon';
 import { SubHeaderViewControlType } from '@/widgets/subHeader/types/subHeader.types';
 
-import { cn } from '../../../../lib/cn';
+import { cn } from '@lib/cn';
 
 const View = ({
   filter,

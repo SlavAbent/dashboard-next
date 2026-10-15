@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CardItemType } from '@/shared/components/cardItem/cardItem.types';
 
-import { cn } from '../../../../lib/cn';
+import { cn } from '@lib/cn';
 
 export const CardItem = ({ children, onClick, className }: CardItemType) => {
   return (

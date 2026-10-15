@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 import { useThemeStore } from '@/shared/store/themeStore';
 
-import { resolveIsDark } from '../../lib/theme';
+import { resolveIsDark } from '@lib/theme';
 
 type ThemeProviderProps = {
   children: React.ReactNode;

@@ -5,7 +5,7 @@ import {
 } from '@/entities/folder/model/folder.types';
 import { taskFoldersApi } from '@/shared/api/instances';
 
-import type { EntityId } from '../../../../lib/sameId';
+import type { EntityId } from '@lib/sameId';
 
 export async function updateFolders(id: EntityId, data: UpdateFolderPayload) {
   const response = await fetch(`${taskFoldersApi}/${id}`, {

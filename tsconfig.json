@@ -14,7 +14,14 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./frontend/*"]
+      "@/*": ["./frontend/*"],
+      "@dashboard/pomodoro": ["./packages/pomodoro/src/index.ts"],
+      "@dashboard/pomodoro/*": ["./packages/pomodoro/src/*"],
+      "@dashboard/clock": ["./packages/clock/src/index.ts"],
+      "@dashboard/weather": ["./packages/weather/src/index.ts"],
+      "@dashboard/chat": ["./packages/chat/src/index.ts"],
+      "@lib/*": ["./lib/*"],
+      "@frontend/*": ["./frontend/*"]
     },
     "plugins": [
       {
