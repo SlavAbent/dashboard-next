@@ -9,7 +9,12 @@ export const useCreateFolder = () => {
   const { addFolder, taskFolders } = useBoardStore();
   return async ({ title, columnId }: CreateFolderType) => {
     const order =
-      taskFolders.filter((folder) => folder.columnId === columnId).length + 1;
+      Math.max(
+        0,
+        ...taskFolders
+          .filter((folder) => folder.columnId === columnId)
+          .map((folder) => folder.order)
+      ) + 1;
 
     await addFolder({
       title,

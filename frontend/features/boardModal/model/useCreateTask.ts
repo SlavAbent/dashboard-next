@@ -10,8 +10,12 @@ export const useCreateTask = () => {
 
   return async (data: TaskFormValues) => {
     const nextOrder =
-      tasks.filter((task) => sameId(task.taskFolderId, data.folderId)).length +
-      1;
+      Math.max(
+        0,
+        ...tasks
+          .filter((task) => sameId(task.taskFolderId, data.folderId))
+          .map((task) => task.order)
+      ) + 1;
 
     await addTask({
       text: data.taskValue,

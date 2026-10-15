@@ -56,17 +56,32 @@ const KanbanView = () => {
     const prevItems = items;
     const nextItems = move(items, e);
 
-    const oldColumnId = findColumnByFolderId(prevItems, folderId);
     const newColumnId = findColumnByFolderId(nextItems, folderId);
 
     if (!newColumnId) return;
 
-    if (oldColumnId !== newColumnId) {
-      try {
-        await updateFolder(folderId, { columnId: newColumnId });
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      await Promise.all(
+        Object.entries(nextItems).flatMap(([nextColumn, ids]) =>
+          ids.map((id, index) => {
+            const folder = taskFolders.find(
+              (item) => toIdString(item.id) === toIdString(id)
+            );
+            const nextOrder = index + 1;
+
+            if (!folder) return Promise.resolve();
+            if (folder.columnId === nextColumn && folder.order === nextOrder)
+              return Promise.resolve();
+
+            return updateFolder(id, {
+              columnId: nextColumn,
+              order: nextOrder,
+            });
+          })
+        )
+      );
+    } catch (error) {
+      console.error(error);
     }
   };
 

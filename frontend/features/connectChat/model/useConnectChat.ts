@@ -16,7 +16,7 @@ export const useConnectChat = () => {
       try {
         const messages = await getChat();
 
-        setMessages(messages);
+        setMessages([...useMessageStore.getState().messages, ...messages]);
       } catch (error) {
         console.error('Failed to initialize chat', error);
       }

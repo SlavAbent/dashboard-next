@@ -23,7 +23,7 @@
     "prepare": "husky"
   },
   "prisma": {
-    "schema": "backend/prisma/schema.prisma"
+    "schema": "prisma/schema"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.3",
