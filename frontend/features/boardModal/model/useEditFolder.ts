@@ -1,6 +1,6 @@
 import { useBoardStore } from '@/entities/board';
 
-import type { EntityId } from '../../../../lib/sameId';
+import type { EntityId } from '@lib/sameId';
 
 type EditFolderType = {
   title: string;

@@ -4,8 +4,8 @@ import { getChat } from '@/entities/chat';
 import { useMessageStore } from '@/entities/message/model/message.store';
 import { ChatMessage } from '@/entities/message/model/types/message.types';
 
-import { socket } from '../../../../lib/socket/socket';
-import { SOCKET_EVENTS } from '../../../../lib/socket/socketEvents';
+import { socket } from '@lib/socket/socket';
+import { SOCKET_EVENTS } from '@lib/socket/socketEvents';
 
 export const useConnectChat = () => {
   const addMessage = useMessageStore((s) => s.addMessage);

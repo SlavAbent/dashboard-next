@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useClockStore } from '@/features/clock/model/clock.store';
 import { Skeleton } from '@/shared/components/skeleton/skeleton';
 
-import { cn } from '../../../../lib/cn';
-import { useClock } from '../model/useClock';
+import { cn } from '@lib/cn';
+import { useClock } from '@/features/clock/model/useClock';
 
 type DigitalClockProps = {
   className?: string;

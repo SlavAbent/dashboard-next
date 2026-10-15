@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@/shared/components/button/button';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
-import { highLightElement } from '../../../../lib/highlightElement';
+import { highLightElement } from '@lib/highlightElement';
 
 type SearchFolderProps<T> = {
   title: string;

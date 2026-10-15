@@ -1,3 +1,4 @@
+import { cn } from '@lib/cn';
 import Link from 'next/link';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
@@ -6,16 +7,14 @@ import { CardItem } from '@/shared/components/cardItem/cardItem';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 import { SvgIcon } from '@/shared/icons/svgIcon';
 
-import { cn } from '../../../../../lib/cn';
-
 const transition = 'duration-500 ease-in-out';
 
 export const FolderItem = ({ name, href, icon, isActive }: FolderItemProps) => {
   const collapsed = useAsideStore((state) => state.collapsed);
 
   const activeClass = isActive
-    ? 'text-primary dark:text-black'
-    : 'text-muted-foreground group-hover:text-primary dark:group-hover:text-black';
+    ? 'text-black dark:text-black'
+    : 'text-muted-foreground group-hover:text-black dark:group-hover:text-black';
 
   return (
     <Link href={href} className="flex justify-start">
@@ -26,7 +25,7 @@ export const FolderItem = ({ name, href, icon, isActive }: FolderItemProps) => {
           'transition-[width]',
           transition,
           isActive &&
-            'text-primary bg-neutral-50 dark:bg-neutral-50 dark:text-black'
+            'bg-neutral-50 text-black hover:bg-neutral-50 hover:text-black dark:bg-neutral-50 dark:text-black dark:hover:bg-neutral-50 dark:hover:text-black'
         )}>
         <SvgIcon icon={icon} className={cn('shrink-0', activeClass)} />
 

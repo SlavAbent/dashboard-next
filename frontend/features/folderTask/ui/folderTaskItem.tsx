@@ -16,7 +16,7 @@ import { TypographyP } from '@/shared/components/typography/typographyP';
 import { iconSize } from '@/shared/icons/iconSize';
 import { DotsMenuIcon } from '@/shared/icons/ui/dotsMenuIcon';
 
-import { cn } from '../../../../lib/cn';
+import { cn } from '@lib/cn';
 
 type FolderTaskItemProps = {
   task: Task;

@@ -11,7 +11,7 @@ import {
   PopoverTrigger,
 } from '@/shared/components/popover/popover';
 
-import { cn } from '../../../../lib/cn';
+import { cn } from '@lib/cn';
 
 export const Weather = ({ className }: WeatherType) => {
   const [open, setOpen] = useState(false);

@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { AvatarSize } from '@/shared/components/avatar/types/avatar.types';
 
-import { cn } from '../../../../lib/cn';
+import { cn } from '@lib/cn';
 
 function Avatar({
   className,

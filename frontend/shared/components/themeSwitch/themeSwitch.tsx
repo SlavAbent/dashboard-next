@@ -5,7 +5,7 @@ import React from 'react';
 
 import { useThemeStore } from '@/shared/store/themeStore';
 
-import { cn } from '../../../../lib/cn';
+import { cn } from '@lib/cn';
 
 export const ThemeSwitch = () => {
   const theme = useThemeStore((state) => state.theme);

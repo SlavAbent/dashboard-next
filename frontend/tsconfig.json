@@ -18,7 +18,9 @@
       "@dashboard/pomodoro/*": ["../packages/pomodoro/src/*"],
       "@dashboard/clock": ["../packages/clock/src/index.ts"],
       "@dashboard/weather": ["../packages/weather/src/index.ts"],
-      "@dashboard/chat": ["../packages/chat/src/index.ts"]
+      "@dashboard/chat": ["../packages/chat/src/index.ts"],
+      "@lib/*": ["../lib/*"],
+      "@frontend/*": ["./*"]
     },
     "plugins": [
       {

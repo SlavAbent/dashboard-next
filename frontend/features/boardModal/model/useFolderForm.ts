@@ -11,7 +11,7 @@ import {
   FolderValues,
 } from '@/features/boardModal/schema/folderSchema';
 
-import { sameId, toIdString } from '../../../../lib/sameId';
+import { sameId, toIdString } from '@lib/sameId';
 
 export const useFolderForm = () => {
   const { taskFolders } = useBoardStore();

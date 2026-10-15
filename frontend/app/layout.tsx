@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 
 import Providers from '@/app/_providers';
 
-import { cn } from '../../lib/cn';
+import { cn } from '@lib/cn';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

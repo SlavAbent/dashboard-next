@@ -15,7 +15,7 @@ import { ArrowIcon } from '@/shared/icons/ui/arrowIcon';
 import { PlusIcon } from '@/shared/icons/ui/plusIcon';
 import { ColumnCreateType } from '@/widgets/board/ui/columnCreate/columnCreate.types';
 
-import { cn } from '../../../../../lib/cn';
+import { cn } from '@lib/cn';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const { completed, incomplete } = useCountHook(column);

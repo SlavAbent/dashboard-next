@@ -15,8 +15,8 @@ import { BoardModals } from '@/features/boardModal';
 import KanbanColumn from '@/features/kanbanColumn/ui/kanbanColumn';
 import BoardKanban from '@/widgets/board/ui/boardKanban/boardKanban';
 
-import type { EntityId } from '../../../../../lib/sameId';
-import { toIdString } from '../../../../../lib/sameId';
+import type { EntityId } from '@lib/sameId';
+import { toIdString } from '@lib/sameId';
 
 const KanbanView = () => {
   const filteredTasks = useFilteredTasks();
