@@ -13,7 +13,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@dashboard/pomodoro": ["../packages/pomodoro/src/index.ts"],
+      "@dashboard/pomodoro/*": ["../packages/pomodoro/src/*"],
+      "@dashboard/clock": ["../packages/clock/src/index.ts"],
+      "@dashboard/weather": ["../packages/weather/src/index.ts"],
+      "@dashboard/chat": ["../packages/chat/src/index.ts"]
     },
     "plugins": [
       {

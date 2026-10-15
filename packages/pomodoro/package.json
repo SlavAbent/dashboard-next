@@ -1,0 +1,14 @@
+{
+  "name": "@dashboard/pomodoro",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "zustand": "^5.0.12"
+  }
+}

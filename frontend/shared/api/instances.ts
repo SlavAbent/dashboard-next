@@ -1,4 +1,7 @@
-const dataApi = '/mock-api';
+const dataApi =
+  typeof window === 'undefined'
+    ? (process.env.JSON_SERVER_URL ?? 'http://localhost:4001')
+    : '/mock-api';
 
 export const navigationApi = `${dataApi}/navigation`;
 export const columnsApi = `${dataApi}/columns`;
