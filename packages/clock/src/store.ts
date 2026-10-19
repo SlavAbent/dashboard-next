@@ -1,6 +1,6 @@
-import { create } from 'zustand';
+'use client';
 
-let interval: NodeJS.Timeout;
+import { create } from 'zustand';
 
 type ClockStore = {
   loading: boolean;
@@ -10,9 +10,9 @@ type ClockStore = {
   startClock: () => void;
 };
 
-const format = (value: number) => {
-  return value.toString().padStart(2, '0');
-};
+let interval: ReturnType<typeof setInterval> | undefined;
+
+const format = (value: number) => value.toString().padStart(2, '0');
 
 export const useClockStore = create<ClockStore>((set) => ({
   loading: true,
@@ -35,7 +35,6 @@ export const useClockStore = create<ClockStore>((set) => ({
     };
 
     update();
-    clearInterval(interval);
     interval = setInterval(update, 1000);
   },
 }));

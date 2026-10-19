@@ -1,5 +1,5 @@
-export { ChatBoard } from '@frontend/widgets/chat/ui/chat';
-export type {
-  ChatMessage,
-  ChatAuthor,
-} from '@frontend/entities/message/model/types/message.types';
+export { useConnectChat, useSendMessage } from './hooks';
+export { getChatMessages } from './server';
+export { useMessageStore } from './store';
+export type { ChatAuthor, ChatMessage, CurrentUser } from './types';
+export { ChatBoard } from './ui';

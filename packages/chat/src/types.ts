@@ -11,3 +11,5 @@ export type ChatMessage = {
   createdAt: string;
   author: ChatAuthor | null;
 };
+
+export type CurrentUser = ChatAuthor;

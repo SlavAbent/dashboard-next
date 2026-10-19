@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { useClockStore } from './clock.store';
+import { useClockStore } from './store';
 
 export const useClock = () => {
   const hours = useClockStore((state) => state.hours);
@@ -14,9 +14,5 @@ export const useClock = () => {
     startClock();
   }, [startClock]);
 
-  return {
-    hours,
-    minutes,
-    seconds,
-  };
+  return { hours, minutes, seconds };
 };

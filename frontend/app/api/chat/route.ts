@@ -1,6 +1,5 @@
+import { getChatMessages } from '@dashboard/chat';
 import { NextResponse } from 'next/server';
-
-import { getChatMessages } from '@/entities/message/api/getChatMessage.server';
 
 export const dynamic = 'force-dynamic';
 

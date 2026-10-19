@@ -1,6 +1,6 @@
-import type { ChatMessage } from '@/entities/message/model/types/message.types';
+import type { ChatMessage } from './types';
 
-export const getChatMessagesClient = async (): Promise<ChatMessage[]> => {
+export const getChat = async (): Promise<ChatMessage[]> => {
   const response = await fetch('/api/chat', { cache: 'no-store' });
 
   if (!response.ok) {

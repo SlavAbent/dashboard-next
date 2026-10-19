@@ -1,10 +1,10 @@
+import { getChatMessages } from '@dashboard/chat';
+import { formatRelativeTime } from '@lib/formatRelativeTime';
 import Link from 'next/link';
 
-import { getChatMessages } from '@/entities/message/api/getChatMessage.server';
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
-import { formatRelativeTime } from '@lib/formatRelativeTime';
 import { DashboardCard } from './dashboardCard';
 
 const RECENT_MESSAGES_LIMIT = 3;

@@ -1,13 +1,13 @@
 'use client';
 
+import { Clock } from '@dashboard/clock';
+import { PomodoroRuntime, PomodoroTimer } from '@dashboard/pomodoro';
+import { Weather } from '@dashboard/weather';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
-import { PomodoroRuntime, PomodoroTimer } from '@dashboard/pomodoro';
-import { Clock } from '@dashboard/clock';
 import { Search } from '@/features/search';
 import { UserDropdown } from '@/features/userDropdown';
-import { Weather } from '@dashboard/weather';
 import { RouteKey, routeToKeyMap } from '@/shared/config/routeMapping';
 
 type PageKey = (typeof routeToKeyMap)[keyof typeof routeToKeyMap];
