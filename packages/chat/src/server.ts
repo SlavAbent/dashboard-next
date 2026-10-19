@@ -1,10 +1,4 @@
-// entities/message/api/getChatMessages.server.ts
-import type {
-  ChatAuthor,
-  ChatMessage,
-} from '@/entities/message/model/types/message.types';
-
-type BackendUser = ChatAuthor;
+import type { ChatAuthor, ChatMessage } from './types';
 
 type BackendMessage = {
   id: string;
@@ -26,7 +20,6 @@ const getBackendUrl = () => {
 
 export const getChatMessages = async (): Promise<ChatMessage[]> => {
   const backendUrl = getBackendUrl();
-
   const [messagesResponse, usersResponse] = await Promise.all([
     fetch(`${backendUrl}/messages`, { cache: 'no-store' }),
     fetch(`${backendUrl}/users`, { cache: 'no-store' }),
@@ -41,8 +34,7 @@ export const getChatMessages = async (): Promise<ChatMessage[]> => {
   const [messages, users] = (await Promise.all([
     messagesResponse.json(),
     usersResponse.json(),
-  ])) as [BackendMessage[], BackendUser[]];
-
+  ])) as [BackendMessage[], ChatAuthor[]];
   const usersById = new Map(users.map((user) => [user.id, user]));
 
   return messages.map((message) => {

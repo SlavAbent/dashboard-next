@@ -2,27 +2,55 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { useClockStore } from '@/features/clock/model/clock.store';
-import { Skeleton } from '@/shared/components/skeleton/skeleton';
+import { useClockStore } from './store';
+import { useClock } from './useClock';
 
-import { cn } from '@lib/cn';
-import { useClock } from '@/features/clock/model/useClock';
+const joinClasses = (...classes: Array<string | undefined | false>) =>
+  classes.filter(Boolean).join(' ');
 
-type DigitalClockProps = {
+const Skeleton = ({ className }: { className?: string }) => (
+  <div
+    className={joinClasses(
+      'bg-muted/60 before:animate-shimmer relative w-full overflow-hidden rounded-md before:absolute before:inset-0 before:-translate-x-full before:skew-x-12 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent',
+      className
+    )}
+  />
+);
+
+type ClockProps = {
   className?: string;
 };
 
-export const DigitalClock = ({ className }: DigitalClockProps) => {
+export const Clock = ({ className }: ClockProps) => {
+  const { hours, minutes } = useClock();
+  const isLoading = useClockStore((state) => state.loading);
+
+  return (
+    <div className={joinClasses('flex h-6 w-9 items-center', className)}>
+      {!isLoading ? (
+        <>
+          <span className="text-sm !leading-5 font-medium">{hours}</span>
+          <span className="animate-blink">:</span>
+          <span className="text-sm !leading-5 font-medium">{minutes}</span>
+        </>
+      ) : (
+        <Skeleton className="h-6 w-9" />
+      )}
+    </div>
+  );
+};
+
+export const DigitalClock = ({ className }: ClockProps) => {
   const { hours, minutes } = useClock();
   const isLoading = useClockStore((state) => state.loading);
 
   if (isLoading) {
-    return <Skeleton mode="shimmer" className={cn('h-16 w-48', className)} />;
+    return <Skeleton className={joinClasses('h-16 w-48', className)} />;
   }
 
   return (
     <div
-      className={cn(
+      className={joinClasses(
         'text-foreground flex items-center gap-2 font-mono text-[70px] leading-none font-bold tracking-tight tabular-nums',
         className
       )}>
@@ -60,6 +88,7 @@ const FlipDigit = ({ value }: { value: string }) => {
 
     setPrevious(displayedRef.current);
     setFlipping(true);
+
     const topTimer = window.setTimeout(() => {
       displayedRef.current = value;
       setDisplayed(value);
@@ -83,7 +112,7 @@ const FlipDigit = ({ value }: { value: string }) => {
         </span>
       )}
       <span
-        className={cn(
+        className={joinClasses(
           'absolute inset-x-0 bottom-0 box-border flex h-1/2 items-end justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_8%,var(--background))] [line-height:1.08] [backface-visibility:hidden]',
           flipping &&
             'motion-safe:animate-flip-fold z-[3] [transform-origin:50%_0] motion-reduce:animate-none'

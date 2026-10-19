@@ -27,6 +27,15 @@ STACK:
 
 - FSD
 
+WORKSPACE MODULES:
+
+- `@dashboard/pomodoro` — Pomodoro timer and runtime;
+- `@dashboard/clock` — compact and flip-clock components;
+- `@dashboard/weather` — geolocation, city search and forecast UI;
+- `@dashboard/chat` — chat UI, message store, Socket.IO client and server data loader.
+
+The application imports these modules through their public package entry points. Their implementation lives in `packages/*/src` and does not depend on files from `frontend`.
+
 PLANS:
 
 REMOVE JSON-SERVER -> POSTGRES / PRISMA / NODEJS/EXPRESS
