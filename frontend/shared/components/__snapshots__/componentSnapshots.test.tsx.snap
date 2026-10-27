@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`shared component semantic snapshots keeps the Avatar fallback semantic contract 1`] = `
+{
+  "fallback": "AM",
+  "label": "Alex Morgan",
+  "size": "lg",
+  "slot": "avatar",
+}
+`;
+
+exports[`shared component semantic snapshots keeps the Button semantic contract 1`] = `
+{
+  "disabled": true,
+  "slot": "button",
+  "tagName": "BUTTON",
+  "text": "Save changes",
+}
+`;
