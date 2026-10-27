@@ -21,7 +21,7 @@ export const SubmitButton = ({
       : 'Create';
 
   return (
-    <Button type="submit" disabled={isSubmitting}>
+    <Button type="submit" disabled={isSubmitting} className="h-10 w-full">
       <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
       <TypographySmall text={buttonMode} className="text-muted-foreground" />
     </Button>
