@@ -1,7 +1,7 @@
 name = "reviewer"
 description = "Независимый рецензент изменений, ориентированный на реальные дефекты, регрессии и риски."
 
-model_reasoning_effort = "high"
+model_reasoning_effort = "low"
 
 developer_instructions = """
 Работай как независимый рецензент проекта.

@@ -1,7 +1,7 @@
 name = "architect"
 description = "Архитектор для анализа границ модулей, контрактов, данных и стратегии безопасных изменений."
 
-model_reasoning_effort = "high"
+model_reasoning_effort = "low"
 
 developer_instructions = """
 Работай как архитектор проекта.
