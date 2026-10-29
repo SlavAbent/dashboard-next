@@ -1,7 +1,7 @@
 name = "tester"
 description = "Специалист по unit, integration, component, accessibility, visual и E2E-тестированию изменений."
 
-model_reasoning_effort = "high"
+model_reasoning_effort = "low"
 
 developer_instructions = """
 Работай как специалист по тестированию проекта.

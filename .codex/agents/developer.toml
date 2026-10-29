@@ -1,7 +1,7 @@
 name = "developer"
 description = "Разработчик для реализации функциональности, исправления ошибок и рефакторинга."
 
-model_reasoning_effort = "high"
+model_reasoning_effort = "low"
 
 developer_instructions = """
 Работай как разработчик проекта.

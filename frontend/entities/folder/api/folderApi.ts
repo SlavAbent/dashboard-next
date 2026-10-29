@@ -1,3 +1,5 @@
+import type { EntityId } from '@lib/sameId';
+
 import {
   CreateFolder,
   TaskFolder,
@@ -5,9 +7,10 @@ import {
 } from '@/entities/folder/model/folder.types';
 import { taskFoldersApi } from '@/shared/api/instances';
 
-import type { EntityId } from '@lib/sameId';
-
-export async function updateFolders(id: EntityId, data: UpdateFolderPayload) {
+export async function updateFolders(
+  id: EntityId,
+  data: UpdateFolderPayload
+): Promise<TaskFolder> {
   const response = await fetch(`${taskFoldersApi}/${id}`, {
     method: 'PATCH',
     headers: {
@@ -24,7 +27,7 @@ export async function updateFolders(id: EntityId, data: UpdateFolderPayload) {
 }
 
 export async function deleteFolder(id: EntityId) {
-  const response = await fetch(`${taskFoldersApi}/${id}`, {
+  const response = await fetch(`${taskFoldersApi}/${id}?_dependent=tasks`, {
     method: 'DELETE',
   });
 

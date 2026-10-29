@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["cuid"]
+  "cSpell.words": [
+    "cuid"
+  ],
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }
