@@ -12,15 +12,20 @@ const options = [
 
 const MenuDropdownExample = () => {
   const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState('None');
 
   return (
-    <MenuDropdown
-      label="Filter"
-      open={open}
-      icon={<FunnelIcon aria-hidden="true" />}
-      onOpenChange={setOpen}
-      options={options}
-    />
+    <div className="flex flex-col items-start gap-3">
+      <MenuDropdown
+        label="Filter"
+        open={open}
+        icon={<FunnelIcon aria-hidden="true" />}
+        onOpenChange={setOpen}
+        options={options}
+        onSelect={(option) => setSelected(option.title)}
+      />
+      <output aria-live="polite">Selected: {selected}</output>
+    </div>
   );
 };
 
