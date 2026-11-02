@@ -3,6 +3,8 @@
 import { move } from '@dnd-kit/helpers';
 import type { DragEndEvent } from '@dnd-kit/react';
 import { DragDropProvider } from '@dnd-kit/react';
+import type { EntityId } from '@lib/sameId';
+import { sameId, toIdString } from '@lib/sameId';
 import React, { useMemo } from 'react';
 
 import {
@@ -15,15 +17,38 @@ import { BoardModals } from '@/features/boardModal';
 import KanbanColumn from '@/features/kanbanColumn/ui/kanbanColumn';
 import BoardKanban from '@/widgets/board/ui/boardKanban/boardKanban';
 
-import type { EntityId } from '@lib/sameId';
-import { toIdString } from '@lib/sameId';
+export const getFolderOrder = (
+  ids: EntityId[],
+  folderId: EntityId,
+  folders: Array<{ id: EntityId; order: number }>
+) => {
+  const folderIndex = ids.findIndex((id) => sameId(id, folderId));
+
+  if (folderIndex < 0) return null;
+
+  const previousId = ids[folderIndex - 1];
+  const nextId = ids[folderIndex + 1];
+  const previousFolder = folders.find((folder) =>
+    sameId(folder.id, previousId)
+  );
+  const nextFolder = folders.find((folder) => sameId(folder.id, nextId));
+
+  if (previousFolder && nextFolder) {
+    return (previousFolder.order + nextFolder.order) / 2;
+  }
+
+  if (previousFolder) return previousFolder.order + 1;
+  if (nextFolder) return nextFolder.order - 1;
+
+  return 1;
+};
 
 const KanbanView = () => {
   const filteredTasks = useFilteredTasks();
 
   const columns = useBoardStore((state) => state.columns);
   const taskFolders = useBoardStore((state) => state.taskFolders);
-  const updateFolder = useBoardStore((state) => state.updateFolder);
+  const reorderFolder = useBoardStore((state) => state.reorderFolder);
 
   const boardData = useMemo(() => {
     return groupTasksToFolders(filteredTasks, columns, taskFolders);
@@ -53,33 +78,27 @@ const KanbanView = () => {
 
     const folderId = String(source.id);
 
-    const prevItems = items;
     const nextItems = move(items, e);
 
     const newColumnId = findColumnByFolderId(nextItems, folderId);
 
     if (!newColumnId) return;
 
+    const folder = taskFolders.find((item) => sameId(item.id, folderId));
+    const nextOrder = getFolderOrder(
+      nextItems[newColumnId] ?? [],
+      folderId,
+      taskFolders
+    );
+
+    if (!folder || nextOrder === null) return;
+    if (folder.columnId === newColumnId && folder.order === nextOrder) return;
+
     try {
-      await Promise.all(
-        Object.entries(nextItems).flatMap(([nextColumn, ids]) =>
-          ids.map((id, index) => {
-            const folder = taskFolders.find(
-              (item) => toIdString(item.id) === toIdString(id)
-            );
-            const nextOrder = index + 1;
-
-            if (!folder) return Promise.resolve();
-            if (folder.columnId === nextColumn && folder.order === nextOrder)
-              return Promise.resolve();
-
-            return updateFolder(id, {
-              columnId: nextColumn,
-              order: nextOrder,
-            });
-          })
-        )
-      );
+      await reorderFolder(folder.id, {
+        columnId: newColumnId,
+        order: nextOrder,
+      });
     } catch (error) {
       console.error(error);
     }

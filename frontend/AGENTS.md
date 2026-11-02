@@ -1,4 +1,4 @@
-# Frontend Guidelines
+# Frontend Development Guidelines
 
 Правила действуют для `frontend/` и UI-кода в `packages/*/src/`. Для auth,
 API и серверного доступа к данным используй `backend/AGENTS.md`.

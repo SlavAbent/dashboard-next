@@ -48,8 +48,8 @@
 ## Запуск
 
 ```bash
-npm run json-server
-npm run dev
+pnpm json-server
+pnpm dev
 ```
 
 ## Workspace-пакеты

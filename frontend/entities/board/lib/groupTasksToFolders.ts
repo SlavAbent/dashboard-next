@@ -1,8 +1,8 @@
+import { toIdString } from '@lib/sameId';
+
 import type { BoardColumn, Column } from '@/entities/column';
 import type { BoardFolder, TaskFolder } from '@/entities/folder';
 import type { Task } from '@/entities/task';
-
-import { toIdString } from '@lib/sameId';
 
 export const groupTasksToFolders = (
   tasks: Task[],
@@ -38,6 +38,10 @@ export const groupTasksToFolders = (
     if (folder) {
       folder.tasks.push(task);
     }
+  }
+
+  for (const column of Object.values(columnsMap)) {
+    column.folders.sort((a, b) => a.order - b.order);
   }
 
   return Object.values(columnsMap).sort((a, b) => a.order - b.order);

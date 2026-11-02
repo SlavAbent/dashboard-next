@@ -1,4 +1,4 @@
-# Backend Guidelines
+# Backend Development Guidelines
 
 Правила действуют для `backend/`, Prisma, auth, API routes, серверных утилит и
 серверного кода в `packages/*`.

@@ -1,5 +1,6 @@
 'use client';
 
+import { type EntityId, sameId } from '@lib/sameId';
 import { create } from 'zustand';
 
 import type { Column } from '@/entities/column';
@@ -21,8 +22,6 @@ import {
   deleteTask,
   updateTask,
 } from '@/entities/task/api/taskApi';
-
-import { type EntityId, sameId } from '@lib/sameId';
 
 type BoardStore = {
   tasks: Task[];
@@ -47,10 +46,15 @@ type BoardStore = {
 
   moveFolder: (id: EntityId, currentColumn: string) => void;
   updateFolder: (id: EntityId, data: UpdateFolderPayload) => void;
+  reorderFolder: (id: EntityId, data: UpdateFolderPayload) => Promise<void>;
   addFolder: (folder: CreateFolder) => Promise<void>;
   removeFolder: (id: EntityId) => Promise<void>;
   toggleColumn: (columnId: string) => void;
 };
+
+const reorderQueues = new Map<EntityId, Promise<void>>();
+const reorderVersions = new Map<EntityId, number>();
+const persistedFolders = new Map<EntityId, TaskFolder>();
 
 export const useBoardStore = create<BoardStore>((set, get) => ({
   tasks: [],
@@ -137,6 +141,61 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     }));
   },
 
+  reorderFolder: async (id, data) => {
+    const previousFolder = get().taskFolders.find((folder) =>
+      sameId(folder.id, id)
+    );
+
+    if (!previousFolder) return;
+
+    const previousRequest = reorderQueues.get(id);
+    const version = (reorderVersions.get(id) ?? 0) + 1;
+
+    if (!reorderQueues.has(id)) {
+      persistedFolders.set(id, previousFolder);
+    }
+
+    reorderVersions.set(id, version);
+
+    set((state) => ({
+      taskFolders: state.taskFolders.map((folder) =>
+        sameId(folder.id, id) ? { ...folder, ...data } : folder
+      ),
+    }));
+
+    const persistReorder = async () => {
+      const updatedFolder = await updateFolderDetails(id, data);
+      persistedFolders.set(id, updatedFolder);
+    };
+    const request = previousRequest
+      ? previousRequest.catch(() => undefined).then(persistReorder)
+      : persistReorder();
+
+    reorderQueues.set(id, request);
+
+    try {
+      await request;
+    } catch (error) {
+      const persistedFolder = persistedFolders.get(id);
+
+      if (persistedFolder && reorderVersions.get(id) === version) {
+        set((state) => ({
+          taskFolders: state.taskFolders.map((folder) =>
+            sameId(folder.id, id) ? persistedFolder : folder
+          ),
+        }));
+      }
+
+      throw error;
+    } finally {
+      if (reorderQueues.get(id) === request) {
+        reorderQueues.delete(id);
+        reorderVersions.delete(id);
+        persistedFolders.delete(id);
+      }
+    }
+  },
+
   addFolder: async (folder) => {
     const createdFolder = await createFolderTask(folder);
 
@@ -146,11 +205,6 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   },
 
   removeFolder: async (id) => {
-    const folderTasks = get().tasks.filter((task) =>
-      sameId(task.taskFolderId, id)
-    );
-
-    for (const task of folderTasks) await deleteTask(task.id);
     await deleteFolder(id);
 
     set((state) => ({

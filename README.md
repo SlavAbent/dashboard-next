@@ -44,14 +44,14 @@ GETTING STARTED
 
 Make sure the following tools are installed:
 
-Node.js 24+, npm, Colima, Docker CLI, Docker Compose
+Node.js 24+, pnpm 11, Colima, Docker CLI, Docker Compose
 
 INSTALLATION:
 Clone the repository and install dependencies:
 
 git clone https://github.com/SlavAbent/dashboard-next.git
 cd dashboard-next
-npm install
+pnpm install
 Environment Variables
 
 Create .env.local and configure the required environment variables:
@@ -66,7 +66,7 @@ Start the Project
 Start Colima: colima start
 Make sure Docker uses the Colima context: docker context use colima
 
-Start the development environment: npm run dev
+Start the development environment: pnpm dev
 
 The dev script automatically:
 
@@ -78,4 +78,6 @@ Starts the Next.js development server.
 
 The application is available at: http://localhost:3000
 
-Stop the Project: colima stop
+Stop PostgreSQL: pnpm db:stop
+
+Stop Colima only if it was started specifically for this project: colima stop

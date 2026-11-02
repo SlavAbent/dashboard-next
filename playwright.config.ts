@@ -17,7 +17,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run storybook -- --ci',
+    command: 'pnpm storybook --ci',
     url: 'http://127.0.0.1:6006/iframe.html',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
