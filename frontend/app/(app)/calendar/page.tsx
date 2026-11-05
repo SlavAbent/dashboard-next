@@ -1,4 +1,4 @@
-import { TypographyH3 } from '@/shared/components/typography/typographyH3';
+import { TypographyH3 } from '@dashboard/ui';
 
 export default function Calendar() {
   return (

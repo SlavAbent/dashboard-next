@@ -1,4 +1,4 @@
-import { ChatBoard } from '@dashboard/chat';
+import { ChatBoard, getChatMessages } from '@dashboard/chat';
 import { redirect } from 'next/navigation';
 
 import { auth } from '@/auth';
@@ -13,6 +13,8 @@ export default async function Chat({ searchParams }: ChatProps) {
 
   if (!session?.user?.id) redirect('/login');
 
+  const messages = await getChatMessages();
+
   const [firstName = 'User', ...lastName] = (session.user.name ?? '')
     .trim()
     .split(/\s+/)
@@ -21,6 +23,7 @@ export default async function Chat({ searchParams }: ChatProps) {
   return (
     <ChatBoard
       messageId={messageId}
+      initialMessages={messages}
       currentUser={{
         id: session.user.id,
         firstName,

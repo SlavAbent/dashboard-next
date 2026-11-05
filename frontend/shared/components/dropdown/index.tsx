@@ -18,6 +18,7 @@ export function Dropdown(props: DropdownProps) {
     src,
     isAvatar,
     text = 'User',
+    compactText,
     size,
     options,
     classNameContainer,
@@ -32,6 +33,7 @@ export function Dropdown(props: DropdownProps) {
           <DropdownHeader
             src={src}
             text={text}
+            compactText={compactText}
             size={size}
             classNameContainer={classNameContainer}
             classNameText={classNameText}

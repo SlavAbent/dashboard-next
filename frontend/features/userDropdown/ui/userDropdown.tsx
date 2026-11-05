@@ -1,10 +1,9 @@
 'use client';
 
+import { Dropdown } from '@dashboard/ui';
+import { Skeleton } from '@dashboard/ui';
 import { useSession } from 'next-auth/react';
 import React from 'react';
-
-import { Dropdown } from '@/shared/components/dropdown';
-import { Skeleton } from '@/shared/components/skeleton/skeleton';
 
 export const UserDropdown = () => {
   const { data: session, status } = useSession();
@@ -17,11 +16,19 @@ export const UserDropdown = () => {
     return null;
   }
 
+  const fullName = session.user?.name?.trim() ?? '';
+  const [firstName = '', lastName = ''] = fullName.split(/\s+/);
+  const compactName = [firstName, lastName]
+    .filter(Boolean)
+    .map((part) => `${part.charAt(0).toUpperCase()}.`)
+    .join('');
+
   return (
     <Dropdown
       src={session?.user?.image ?? ''}
       isAvatar
-      text={session?.user?.name ?? ''}
+      text={fullName}
+      compactText={compactName}
       className="interactive-hover min-w-fit rounded-xs p-1"
       options={[
         { id: '1', title: 'Profile' },

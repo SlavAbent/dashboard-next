@@ -1,5 +1,6 @@
+import { GoogleSignInButton } from '@dashboard/ui';
+
 import { signIn } from '@/auth';
-import { GoogleSignInButton } from '@/shared/components/googleSignInButton/googleSignInButton';
 
 export function SignInForm() {
   async function handleAuthMethod(method: string) {

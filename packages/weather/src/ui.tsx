@@ -140,7 +140,7 @@ export const Weather = ({ className }: WeatherType) => {
           <Popover.Positioner align="end" sideOffset={4} className="z-50">
             <Popover.Popup
               aria-label="Weather forecast"
-              className="bg-popover text-popover-foreground flex w-100 flex-col gap-2.5 rounded-sm border p-4 text-xs shadow-md">
+              className="bg-popover text-popover-foreground flex w-[min(calc(100vw-1.5rem),25rem)] flex-col gap-2.5 rounded-sm border p-3 text-xs shadow-md sm:p-4">
               <WeatherContent />
             </Popover.Popup>
           </Popover.Positioner>
@@ -210,7 +210,7 @@ export const WeatherContent = () => {
           Search
         </Button>
       </div>
-      <div className="flex h-[94px] items-center justify-between">
+      <div className="flex min-h-[94px] items-center justify-between overflow-x-auto">
         {renderDays}
         {loading && <Skeleton className="h-[94px] w-full" />}
       </div>

@@ -1,7 +1,6 @@
+import { IconWrapper } from '@dashboard/ui';
 import { Command } from 'lucide-react';
 import React from 'react';
-
-import IconWrapper from '@/shared/icons/iconWrapper';
 
 export const SearchShortcut = () => {
   return (

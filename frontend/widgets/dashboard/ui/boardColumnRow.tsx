@@ -1,9 +1,10 @@
 'use client';
 
+import { Ellipse } from '@dashboard/ui';
+import { TypographyP } from '@dashboard/ui';
+import { TypographySmall } from '@dashboard/ui';
+
 import type { BoardColumn } from '@/entities/column';
-import { Ellipse } from '@/shared/components/ellipse';
-import { TypographyP } from '@/shared/components/typography/typographyP';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
 import { useCountHook } from '@/shared/hooks/useCountHook';
 
 type BoardColumnRowProps = {

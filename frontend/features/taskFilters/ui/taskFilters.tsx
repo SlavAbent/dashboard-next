@@ -1,5 +1,12 @@
 'use client';
 
+import { MenuDropdown } from '@dashboard/ui';
+import { Index } from '@dashboard/ui';
+import { TypographySmall } from '@dashboard/ui';
+import { iconSize } from '@dashboard/ui';
+import { FiltersIcon } from '@dashboard/ui';
+import { PlusIcon } from '@dashboard/ui';
+import { SortByIcon } from '@dashboard/ui';
 import React from 'react';
 
 import { useFiltersStore } from '@/entities/board/model/filters.store';
@@ -11,13 +18,6 @@ import {
   sortLabels,
   sortOptions,
 } from '@/features/taskFilters/config/filterOptions';
-import { MenuDropdown } from '@/shared/components/menuDropdown';
-import { Index } from '@/shared/components/separator';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
-import { iconSize } from '@/shared/icons/iconSize';
-import { FiltersIcon } from '@/shared/icons/ui/filtersIcon';
-import { PlusIcon } from '@/shared/icons/ui/plusIcon';
-import { SortByIcon } from '@/shared/icons/ui/sortByIcon';
 
 const TaskFilters = () => {
   const {

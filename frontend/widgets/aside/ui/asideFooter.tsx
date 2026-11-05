@@ -1,8 +1,7 @@
 'use client';
 
+import { ThemeSwitch } from '@dashboard/ui';
 import React from 'react';
-
-import { ThemeSwitch } from '@/shared/components/themeSwitch/themeSwitch';
 
 export const AsideFooter = () => {
   return (

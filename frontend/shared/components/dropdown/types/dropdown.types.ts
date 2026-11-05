@@ -13,6 +13,7 @@ export type DropdownBase = {
   src?: string;
   isAvatar?: boolean;
   text?: string;
+  compactText?: string;
   size?: AvatarSize;
   className?: string;
   classNameText?: string;
@@ -25,7 +26,12 @@ export type DropdownProps = DropdownBase & {
 
 export type DropdownHeaderProps = Pick<
   DropdownBase,
-  'src' | 'text' | 'size' | 'classNameContainer' | 'classNameText'
+  | 'src'
+  | 'text'
+  | 'compactText'
+  | 'size'
+  | 'classNameContainer'
+  | 'classNameText'
 >;
 
 export type DropdownTextProps = Pick<DropdownBase, 'text' | 'classNameText'>;

@@ -1,9 +1,7 @@
-import { ReactNode } from 'react';
-
-import { Card } from '@/shared/components/card';
-import { TypographyH3 } from '@/shared/components/typography/typographyH3';
-
+import { Card } from '@dashboard/ui';
+import { TypographyH3 } from '@dashboard/ui';
 import { cn } from '@lib/cn';
+import { ReactNode } from 'react';
 
 type DashboardCardProps = {
   title?: string;
@@ -21,7 +19,7 @@ export const DashboardCard = ({
   return (
     <Card
       className={cn(
-        'flex h-full flex-col gap-3 rounded-2xl border',
+        'flex h-full min-w-0 flex-col gap-3 overflow-hidden rounded-2xl border',
         className
       )}>
       <TypographyH3 text={title ?? ''} className="text-left" />

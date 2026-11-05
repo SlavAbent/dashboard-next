@@ -1,9 +1,9 @@
+import { Checkbox } from '@dashboard/ui';
+import { TypographySmall } from '@dashboard/ui';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
-import { Checkbox } from '@/shared/components/checkbox/checkbox';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
 export const CheckboxField = () => {
   const { control } = useFormContext<TaskFormValues>();

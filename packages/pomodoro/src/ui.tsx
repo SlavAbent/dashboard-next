@@ -16,7 +16,7 @@ export function PomodoroPanel() {
 
   return (
     <div className="flex flex-col items-center justify-center rounded-2xl p-3">
-      <div className="text-foreground font-mono text-[48px] leading-none font-bold">
+      <div className="text-foreground font-mono text-[clamp(2rem,10vw,3rem)] leading-none font-bold">
         {format(remaining)}
       </div>
       <div className="flex items-center">
@@ -26,7 +26,7 @@ export function PomodoroPanel() {
             type="button"
             aria-selected={selectedMin === minutes}
             onClick={() => setMode(minutes)}
-            className="px-4 py-2.5 font-mono text-sm">
+            className="min-h-11 px-3 py-2.5 font-mono text-sm sm:px-4">
             {String(minutes).padStart(2, '0')}:00
           </button>
         ))}
@@ -66,8 +66,8 @@ export function PomodoroTimer() {
       </button>
       {open && (
         <div
-          className="bg-popover absolute top-full right-0 z-50 rounded-sm border p-2 shadow-md"
-          style={{ minWidth: Math.max(220, totalSeconds / 2) }}>
+          className="bg-popover fixed inset-x-3 top-20 z-50 rounded-sm border p-2 shadow-md sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:w-[min(90vw,24rem)]"
+          style={{ minWidth: Math.min(220, Math.max(0, totalSeconds / 2)) }}>
           <PomodoroPanel />
         </div>
       )}

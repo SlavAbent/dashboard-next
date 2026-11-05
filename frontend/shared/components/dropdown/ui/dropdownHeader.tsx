@@ -13,6 +13,7 @@ import DropdownText from '@/shared/components/dropdown/ui/dropdownText';
 export function DropdownHeader({
   src,
   text = 'User',
+  compactText,
   size,
   classNameContainer,
   classNameText,
@@ -25,7 +26,18 @@ export function DropdownHeader({
         <AvatarImage src={src} alt={text} />
         <AvatarFallback>{avatarName}</AvatarFallback>
       </Avatar>
-      <DropdownText classNameText={classNameText} text={text} />
+      {compactText ? (
+        <>
+          <span className="hidden sm:block lg:hidden">
+            <DropdownText classNameText={classNameText} text={compactText} />
+          </span>
+          <span className="hidden lg:block">
+            <DropdownText classNameText={classNameText} text={text} />
+          </span>
+        </>
+      ) : (
+        <DropdownText classNameText={classNameText} text={text} />
+      )}
     </div>
   );
 }

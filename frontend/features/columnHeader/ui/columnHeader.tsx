@@ -1,17 +1,17 @@
 'use client';
 
+import { Ellipse } from '@dashboard/ui';
+import { TypographyH3 } from '@dashboard/ui';
+import { TypographyP } from '@dashboard/ui';
+import { TypographySmall } from '@dashboard/ui';
+import { iconSize } from '@dashboard/ui';
+import { PlusIcon } from '@dashboard/ui';
 import React from 'react';
 
 import { getColumnTasksLabel } from '@/entities/column';
 import { useBoardModalStore } from '@/features/boardModal';
 import { ColumnHeaderType } from '@/features/columnHeader/types/columnHeader.types';
-import { Ellipse } from '@/shared/components/ellipse';
-import { TypographyH3 } from '@/shared/components/typography/typographyH3';
-import { TypographyP } from '@/shared/components/typography/typographyP';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
 import { useCountHook } from '@/shared/hooks/useCountHook';
-import { iconSize } from '@/shared/icons/iconSize';
-import { PlusIcon } from '@/shared/icons/ui/plusIcon';
 
 const ColumnHeader = ({ column }: ColumnHeaderType) => {
   const openCreateFolder = useBoardModalStore(

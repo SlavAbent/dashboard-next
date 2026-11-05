@@ -1,12 +1,11 @@
+import { LogoIcon } from '@dashboard/ui/icons';
 import { ImageResponse } from 'next/og';
-
-import { LogoIcon } from '@/shared/icons/ui/logoIcon';
 
 export const dynamic = 'force-static';
 
 export const size = {
-  width: 24,
-  height: 24,
+  width: 512,
+  height: 512,
 };
 
 export const contentType = 'image/png';
@@ -15,13 +14,15 @@ export default function Icon() {
   return new ImageResponse(
     <div
       style={{
-        width: '24px',
-        height: '24px',
+        width: '512px',
+        height: '512px',
+        background: '#111827',
+        borderRadius: '96px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <LogoIcon size={size} currentColor="#ffffff" />
+      <LogoIcon size={{ width: 320, height: 320 }} currentColor="#ffffff" />
     </div>,
     size
   );

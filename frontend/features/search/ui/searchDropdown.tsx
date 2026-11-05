@@ -1,9 +1,9 @@
+import { TypographySmall } from '@dashboard/ui';
 import cn from 'clsx';
 import React, { useMemo } from 'react';
 
 import { useBoardStore } from '@/entities/board';
 import { SearchFolder } from '@/features/search/ui/searchFolder';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
 type SearchDropdownProps = {
   search: string;

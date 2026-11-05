@@ -1,10 +1,9 @@
 'use client';
 
+import { TypographySmall } from '@dashboard/ui';
+import { ArrowIcon } from '@dashboard/ui';
+import { NotFoundIcon } from '@dashboard/ui';
 import { useRouter } from 'next/navigation';
-
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
-import { ArrowIcon } from '@/shared/icons/ui/arrowIcon';
-import { NotFoundIcon } from '@/shared/icons/ui/notFoundIcon';
 
 export default function NotFound() {
   const router = useRouter();

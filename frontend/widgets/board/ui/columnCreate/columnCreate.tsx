@@ -1,21 +1,20 @@
 'use client';
 
+import { Ellipse } from '@dashboard/ui';
+import { TypographyH3 } from '@dashboard/ui';
+import { TypographyP } from '@dashboard/ui';
+import { TypographySmall } from '@dashboard/ui';
+import { iconSize } from '@dashboard/ui';
+import { ArrowIcon } from '@dashboard/ui';
+import { PlusIcon } from '@dashboard/ui';
+import { cn } from '@lib/cn';
 import React from 'react';
 
 import { useBoardStore } from '@/entities/board/model/useData.store';
 import { getColumnTasksLabel } from '@/entities/column';
 import { useBoardModalStore } from '@/features/boardModal';
-import { Ellipse } from '@/shared/components/ellipse';
-import { TypographyH3 } from '@/shared/components/typography/typographyH3';
-import { TypographyP } from '@/shared/components/typography/typographyP';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
 import { useCountHook } from '@/shared/hooks/useCountHook';
-import { iconSize } from '@/shared/icons/iconSize';
-import { ArrowIcon } from '@/shared/icons/ui/arrowIcon';
-import { PlusIcon } from '@/shared/icons/ui/plusIcon';
 import { ColumnCreateType } from '@/widgets/board/ui/columnCreate/columnCreate.types';
-
-import { cn } from '@lib/cn';
 
 const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
   const { completed, incomplete } = useCountHook(column);

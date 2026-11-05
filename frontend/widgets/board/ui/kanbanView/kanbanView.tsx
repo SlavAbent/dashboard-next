@@ -109,12 +109,12 @@ const KanbanView = () => {
       <BoardModals />
 
       <DragDropProvider onDragEnd={handleDragEnd}>
-        <div className="flex h-full items-start gap-6">
+        <div className="flex h-full min-w-max items-start gap-3 sm:gap-4 md:gap-5 xl:min-w-full xl:gap-6">
           {Object.entries(columnMap).map(([columnId, column]) => (
             <KanbanColumn
               key={columnId}
               id={columnId}
-              className="mb-8 flex h-full flex-1 flex-col overflow-auto rounded-xl border p-5">
+              className="mb-8 flex h-full w-[min(84vw,22rem)] shrink-0 flex-col overflow-auto rounded-xl border p-3 sm:w-80 sm:p-4 md:p-5 xl:w-auto xl:min-w-96 xl:flex-1">
               <BoardKanban
                 column={column}
                 itemIds={items[columnId] ?? []}

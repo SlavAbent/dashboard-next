@@ -1,11 +1,10 @@
+import { InputField, SubmitButton } from '@dashboard/ui/forms';
 import React from 'react';
 import { FormProvider } from 'react-hook-form';
 
 import { useTaskForm } from '@/features/boardModal/model/useTaskForm';
 import { CheckboxField } from '@/features/boardModal/ui/checkboxField';
 import { SelectField } from '@/features/boardModal/ui/selectField';
-import { InputField } from '@/shared/components/fields/inputField';
-import { SubmitButton } from '@/shared/components/fields/submitButton';
 
 export const TaskForm = () => {
   const { submitTask, taskForm, isEditTaskMode } = useTaskForm();

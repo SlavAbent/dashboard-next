@@ -5,12 +5,13 @@ import {
   type ChangeEvent,
   type InputHTMLAttributes,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 
 import { useConnectChat, useSendMessage } from './hooks';
 import { useMessageStore } from './store';
-import type { CurrentUser } from './types';
+import type { ChatMessage, CurrentUser } from './types';
 
 const joinClasses = (...classes: Array<string | undefined | false>) =>
   classes.filter(Boolean).join(' ');
@@ -72,17 +73,44 @@ const useScrollHighlight = (
 type ChatBoardProps = {
   messageId?: string;
   currentUser?: CurrentUser;
+  initialMessages: ChatMessage[];
 };
 
-export const ChatBoard = ({ messageId, currentUser }: ChatBoardProps) => {
-  useConnectChat();
+export const ChatBoard = ({
+  messageId,
+  currentUser,
+  initialMessages,
+}: ChatBoardProps) => {
+  useConnectChat(initialMessages);
 
   const [value, setValue] = useState('');
   const messages = useMessageStore((state) => state.messages);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const previousMessagesCountRef = useRef(0);
+
   useScrollHighlight(
     messageId,
     messages.some((message) => message.id === messageId)
   );
+
+  useEffect(() => {
+    const previousCount = previousMessagesCountRef.current;
+    const hasNewMessage = messages.length > previousCount;
+    const isInitialLoad = previousCount === 0;
+
+    previousMessagesCountRef.current = messages.length;
+
+    if (!hasNewMessage || (isInitialLoad && messageId)) return;
+
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: isInitialLoad ? 'auto' : 'smooth',
+    });
+  }, [messageId, messages.length]);
+
   const { sendMessage } = useSendMessage();
 
   const handleSendMessage = () => {
@@ -92,8 +120,10 @@ export const ChatBoard = ({ messageId, currentUser }: ChatBoardProps) => {
   };
 
   return (
-    <div className="flex h-full flex-col gap-4 p-10">
-      <div className="flex h-full max-h-100 flex-col gap-4 overflow-scroll overflow-y-auto border p-4">
+    <div className="flex h-full min-h-0 min-w-0 flex-col gap-3 p-3 sm:gap-4 sm:p-5 md:p-10">
+      <div
+        ref={messagesContainerRef}
+        className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto rounded-md border p-3 sm:p-4">
         {messages.map((message) => {
           const isCurrentUser = message.userId === currentUser?.id;
           const author = message.author;
@@ -125,13 +155,15 @@ export const ChatBoard = ({ messageId, currentUser }: ChatBoardProps) => {
                     <p className="text-sm font-bold">{author?.lastName}</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground text-xs">{message.text}</p>
+                <p className="text-muted-foreground max-w-[min(80vw,42rem)] text-xs [overflow-wrap:anywhere]">
+                  {message.text}
+                </p>
               </div>
             </div>
           );
         })}
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex min-w-0 items-center gap-2">
         <Input
           value={value}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -140,10 +172,10 @@ export const ChatBoard = ({ messageId, currentUser }: ChatBoardProps) => {
           onKeyDown={(event) => {
             if (event.key === 'Enter') handleSendMessage();
           }}
-          className="w-100 border p-2"
+          className="min-w-0 flex-1 border p-2"
           placeholder="Message..."
         />
-        <Button onClick={handleSendMessage} className="w-25 py-4.5">
+        <Button onClick={handleSendMessage} className="min-h-11 shrink-0 px-4">
           Send
         </Button>
       </div>

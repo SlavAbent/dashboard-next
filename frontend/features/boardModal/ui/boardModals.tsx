@@ -1,6 +1,6 @@
 'use client';
 
-import * as Dialog from '@radix-ui/react-dialog';
+import { Dialog } from '@dashboard/ui';
 import React from 'react';
 
 import { useBoardModalStore } from '@/features/boardModal';

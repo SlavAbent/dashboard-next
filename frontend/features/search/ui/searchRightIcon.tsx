@@ -1,8 +1,8 @@
+import { IconWrapper } from '@dashboard/ui';
 import { X } from 'lucide-react';
 import React from 'react';
 
 import { SearchShortcut } from '@/features/search/ui/searchShortcut';
-import IconWrapper from '@/shared/icons/iconWrapper';
 
 type SearchRightIconProps = {
   value: string;
@@ -18,5 +18,9 @@ export const SearchRightIcon = ({ value, onClear }: SearchRightIconProps) => {
     );
   }
 
-  return <SearchShortcut />;
+  return (
+    <span className="hidden lg:block">
+      <SearchShortcut />
+    </span>
+  );
 };

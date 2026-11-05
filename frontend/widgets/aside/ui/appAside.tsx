@@ -1,18 +1,19 @@
+import { Skeleton } from '@dashboard/ui';
 import React, { Suspense } from 'react';
 
 import { AsideHeader } from '@/entities/aside/ui/asideHeader';
-import { Skeleton } from '@/shared/components/skeleton/skeleton';
 import { AsideFolders } from '@/widgets/aside/ui/asideFolders';
 import { AsideFooter } from '@/widgets/aside/ui/asideFooter';
+import { AsideShell } from '@/widgets/aside/ui/asideShell';
 
 export const AppAside = () => {
   return (
-    <div className="border-right bg-sidebar flex max-h-screen flex-col">
+    <AsideShell>
       <AsideHeader />
       <Suspense fallback={<Skeleton />}>
         <AsideFolders />
       </Suspense>
       <AsideFooter />
-    </div>
+    </AsideShell>
   );
 };

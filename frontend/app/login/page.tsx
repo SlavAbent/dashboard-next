@@ -1,6 +1,7 @@
+import { TypographyH1 } from '@dashboard/ui';
+import { LogoIcon } from '@dashboard/ui';
+
 import { SignInForm } from '@/features/auth/ui/signInForm';
-import { TypographyH1 } from '@/shared/components/typography/typographyH1';
-import { LogoIcon } from '@/shared/icons/ui/logoIcon';
 
 export default function LoginPage() {
   return (

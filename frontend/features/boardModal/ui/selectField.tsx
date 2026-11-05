@@ -1,12 +1,11 @@
+import { AppSelect } from '@dashboard/ui';
+import { ErrorField } from '@dashboard/ui/forms';
+import { sameId, toIdString } from '@lib/sameId';
 import React, { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { useBoardStore } from '@/entities/board';
 import { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
-import { ErrorField } from '@/shared/components/fields/errorField';
-import { AppSelect } from '@/shared/components/select/appSelect';
-
-import { sameId, toIdString } from '@lib/sameId';
 
 type SelectFieldProps = {
   className?: string;

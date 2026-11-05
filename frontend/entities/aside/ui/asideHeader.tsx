@@ -1,13 +1,10 @@
 'use client';
 
+import { iconSize, LogoIcon, ToggleIcon, TypographyP } from '@dashboard/ui';
 import cn from 'clsx';
 import Link from 'next/link';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
-import { TypographyP } from '@/shared/components/typography/typographyP';
-import { iconSize } from '@/shared/icons/iconSize';
-import { LogoIcon } from '@/shared/icons/ui/logoIcon';
-import { ToggleIcon } from '@/shared/icons/ui/toggleIcon';
 
 const transition = 'duration-500 ease-in-out';
 
@@ -18,7 +15,7 @@ export const AsideHeader = () => {
   return (
     <header
       className={cn(
-        'border-bottom bg-sidebar relative flex w-full flex-col px-3 py-5'
+        'border-bottom bg-sidebar relative flex min-h-14 w-full flex-col justify-center px-3 md:h-[69px] md:min-h-[69px]'
       )}>
       <Link
         href="/"
@@ -45,8 +42,9 @@ export const AsideHeader = () => {
 
       <button
         type="button"
+        aria-label="Toggle navigation"
         onClick={toggle}
-        className="absolute top-1/2 -right-[14px] -translate-y-1/2 cursor-pointer">
+        className="absolute top-1/2 -right-[14px] hidden -translate-y-1/2 cursor-pointer lg:block">
         <ToggleIcon size={iconSize(28)} className="text-muted-foreground" />
       </button>
     </header>

@@ -1,11 +1,11 @@
+import { CardItem } from '@dashboard/ui';
+import { TypographySmall } from '@dashboard/ui';
+import { SvgIcon } from '@dashboard/ui';
 import { cn } from '@lib/cn';
 import Link from 'next/link';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
 import { FolderItemProps } from '@/entities/navigation/model/types';
-import { CardItem } from '@/shared/components/cardItem/cardItem';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
-import { SvgIcon } from '@/shared/icons/svgIcon';
 
 const transition = 'duration-500 ease-in-out';
 
