@@ -36,9 +36,6 @@ WORKSPACE MODULES:
 
 The application imports these modules through their public package entry points. Their implementation lives in `packages/*/src` and does not depend on files from `frontend`.
 
-PLANS:
-
-REMOVE JSON-SERVER -> POSTGRES / PRISMA / NODEJS/EXPRESS
 
 GETTING STARTED
 
