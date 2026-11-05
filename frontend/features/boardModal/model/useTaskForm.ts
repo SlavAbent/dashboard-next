@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toIdString } from '@lib/sameId';
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -11,8 +12,6 @@ import {
   type TaskFormValues,
   taskSchema,
 } from '@/features/boardModal/schema/taskSchema';
-
-import { toIdString } from '@lib/sameId';
 
 export const useTaskForm = () => {
   const { tasks, taskFolders } = useBoardStore();
@@ -41,15 +40,7 @@ export const useTaskForm = () => {
       folderId: toIdString(editingFolderId ?? firstFolderId),
       completed: false,
     };
-  }, [
-    isEditTaskMode,
-    editingTask?.text,
-    editingTask?.taskFolderId,
-    editingTask?.completed,
-    editingTask?.id,
-    editingFolderId,
-    firstFolderId,
-  ]);
+  }, [isEditTaskMode, editingTask, editingFolderId, firstFolderId]);
 
   const taskForm = useForm<TaskFormValues>({
     resolver: zodResolver(taskSchema),

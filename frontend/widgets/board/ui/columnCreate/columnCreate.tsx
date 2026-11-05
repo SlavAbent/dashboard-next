@@ -51,7 +51,7 @@ const ColumnCreate = ({ column, isOpen }: ColumnCreateType) => {
       <div
         role="button"
         onClick={() => openCreateFolder(column.id)}
-        className="bg-secondary text-secondary-foreground flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
+        className="bg-secondary text-secondary-foreground flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
         <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
         <TypographySmall
           text="Create Folder"

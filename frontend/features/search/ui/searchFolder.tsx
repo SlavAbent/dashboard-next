@@ -1,6 +1,7 @@
 import { Button } from '@dashboard/ui';
 import { TypographySmall } from '@dashboard/ui';
 import { highLightElement } from '@lib/highlightElement';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 
 type SearchFolderProps<T> = {
@@ -9,6 +10,7 @@ type SearchFolderProps<T> = {
   highlight: 'folder' | 'task';
   getLabel: (item: T) => string;
   getId: (item: T) => string;
+  getHref: (id: string) => string;
 };
 
 export const SearchFolder = <T,>({
@@ -17,7 +19,11 @@ export const SearchFolder = <T,>({
   highlight,
   getLabel,
   getId,
+  getHref,
 }: SearchFolderProps<T>) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
   if (!resultData.length) return null;
 
   return (
@@ -32,6 +38,14 @@ export const SearchFolder = <T,>({
               key={id}
               className="gap-2"
               onClick={() => {
+                const href = getHref(id);
+                const targetPath = href.split('?')[0];
+
+                if (pathname !== targetPath) {
+                  router.push(href);
+                  return;
+                }
+
                 highLightElement(`[data-${highlight}-id="${id}"]`);
               }}>
               {getLabel(item)}

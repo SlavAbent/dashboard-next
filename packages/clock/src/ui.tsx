@@ -11,7 +11,7 @@ const joinClasses = (...classes: Array<string | undefined | false>) =>
 const Skeleton = ({ className }: { className?: string }) => (
   <div
     className={joinClasses(
-      'bg-muted/60 before:animate-shimmer relative w-full overflow-hidden rounded-md before:absolute before:inset-0 before:-translate-x-full before:skew-x-12 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent',
+      'bg-muted/60 before:animate-shimmer relative w-full overflow-hidden rounded-md before:absolute before:inset-0 before:-translate-x-full before:skew-x-12 before:bg-linear-to-r before:from-transparent before:via-white/10 before:to-transparent',
       className
     )}
   />
@@ -29,9 +29,9 @@ export const Clock = ({ className }: ClockProps) => {
     <div className={joinClasses('flex h-6 w-9 items-center', className)}>
       {!isLoading ? (
         <>
-          <span className="text-sm !leading-5 font-medium">{hours}</span>
+          <span className="text-sm leading-5! font-medium">{hours}</span>
           <span className="animate-blink">:</span>
-          <span className="text-sm !leading-5 font-medium">{minutes}</span>
+          <span className="text-sm leading-5! font-medium">{minutes}</span>
         </>
       ) : (
         <Skeleton className="h-6 w-9" />
@@ -102,26 +102,26 @@ const FlipDigit = ({ value }: { value: string }) => {
   }, [value]);
 
   return (
-    <span className="relative inline-block h-[1.08em] w-[0.72em] overflow-hidden rounded-[0.12em] bg-[color-mix(in_srgb,var(--foreground)_10%,transparent)] [perspective:12em] after:absolute after:inset-x-0 after:top-1/2 after:z-[5] after:h-px after:bg-[rgb(255_255_255_/_15%)] after:shadow-[0_1px_0_color-mix(in_srgb,var(--foreground)_12%,transparent)] after:content-['']">
-      <span className="absolute inset-x-0 top-0 box-border flex h-1/2 [align-items:flex-start] justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_8%,var(--background))] [line-height:1.08] [backface-visibility:hidden]">
+    <span className="relative inline-block h-[1.08em] w-[0.72em] overflow-hidden rounded-[0.12em] bg-[color-mix(in_srgb,var(--foreground)_10%,transparent)] perspective-[12em] after:absolute after:inset-x-0 after:top-1/2 after:z-5 after:h-px after:bg-[rgb(255_255_255/15%)] after:shadow-[0_1px_0_color-mix(in_srgb,var(--foreground)_12%,transparent)] after:content-['']">
+      <span className="absolute inset-x-0 top-0 box-border flex h-1/2 items-start justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_8%,var(--background))] leading-[1.08] backface-hidden">
         {displayed}
       </span>
       {flipping && (
-        <span className="motion-safe:animate-flip-top-fall absolute inset-x-0 top-0 z-[5] box-border flex h-1/2 [transform-origin:50%_100%] [align-items:flex-start] justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_14%,var(--background))] [line-height:1.08] [backface-visibility:hidden] motion-reduce:hidden">
+        <span className="motion-safe:animate-flip-top-fall absolute inset-x-0 top-0 z-5 box-border flex h-1/2 origin-[50%_100%] items-start justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_14%,var(--background))] leading-[1.08] backface-hidden motion-reduce:hidden">
           {previous}
         </span>
       )}
       <span
         className={joinClasses(
-          'absolute inset-x-0 bottom-0 box-border flex h-1/2 items-end justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_8%,var(--background))] [line-height:1.08] [backface-visibility:hidden]',
+          'absolute inset-x-0 bottom-0 box-border flex h-1/2 items-end justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_8%,var(--background))] leading-[1.08] backface-hidden',
           flipping &&
-            'motion-safe:animate-flip-fold z-[3] [transform-origin:50%_0] motion-reduce:animate-none'
+            'motion-safe:animate-flip-fold z-3 origin-[50%_0] motion-reduce:animate-none'
         )}>
         {flipping ? previous : displayed}
       </span>
       {flipping && (
         <span
-          className="motion-safe:animate-flip-unfold absolute inset-x-0 bottom-0 z-[4] box-border flex h-1/2 [transform-origin:50%_0] [transform:rotateX(-90deg)] items-end justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_14%,var(--background))] [line-height:1.08] [backface-visibility:hidden] motion-reduce:animate-none"
+          className="motion-safe:animate-flip-unfold absolute inset-x-0 bottom-0 z-4 box-border flex h-1/2 origin-[50%_0] transform-[rotateX(-90deg)] items-end justify-center overflow-hidden bg-[color-mix(in_srgb,var(--foreground)_14%,var(--background))] leading-[1.08] backface-hidden motion-reduce:animate-none"
           style={{ animationDelay: '500ms' }}>
           {value}
         </span>

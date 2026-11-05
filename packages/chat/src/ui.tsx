@@ -22,7 +22,7 @@ const Input = ({
 }: InputHTMLAttributes<HTMLInputElement>) => (
   <input
     {...props}
-    className={`border-input focus-visible:border-ring focus-visible:ring-ring/50 w-full rounded-sm border bg-transparent py-[7px] pl-3 text-[14px] transition-colors outline-none focus-visible:ring-1 ${className}`}
+    className={`border-input focus-visible:border-ring focus-visible:ring-ring/50 w-full rounded-sm border bg-transparent py-1.75 pl-3 text-[14px] transition-colors outline-none focus-visible:ring-1 ${className}`}
   />
 );
 
@@ -155,7 +155,7 @@ export const ChatBoard = ({
                     <p className="text-sm font-bold">{author?.lastName}</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground max-w-[min(80vw,42rem)] text-xs [overflow-wrap:anywhere]">
+                <p className="text-muted-foreground max-w-[min(80vw,42rem)] text-xs wrap-anywhere">
                   {message.text}
                 </p>
               </div>

@@ -2,10 +2,16 @@ node_modules
 build
 dist
 coverage
-. next
- .cache
-package -lock.json
+.next
+.cache
+storybook-static
+test-results
+playwright-report
+.agents
+.codex
+.vscode
+package-lock.json
 yarn.lock
 pnpm-lock.yaml
-*. min .js
-*. min .css
+*.min.js
+*.min.css
