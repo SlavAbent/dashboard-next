@@ -1,12 +1,10 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { iconSize, Input, SearchIcon } from '@dashboard/ui';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import { SearchDropdown } from '@/features/search/ui/searchDropdown';
 import { SearchRightIcon } from '@/features/search/ui/searchRightIcon';
-import { Input } from '@/shared/components/input/input';
 import { useClickOutside } from '@/shared/hooks/useClickOutside';
 import { useDebounce } from '@/shared/hooks/useDebounce';
-import { iconSize } from '@/shared/icons/iconSize';
-import { SearchIcon } from '@/shared/icons/ui/searchIcon';
 
 export const Search = () => {
   const wrapperRef = useRef<HTMLInputElement>(null);
@@ -58,14 +56,14 @@ export const Search = () => {
   const showDropdown = Boolean(searchInput && isOpen);
 
   return (
-    <div ref={wrapperRef} className="w-fit">
+    <div ref={wrapperRef} className="w-44 md:w-fit lg:w-fit">
       <Input
         ref={inputRef}
         value={searchInput}
         onFocus={handleFocus}
         onChange={(e) => handleChange(e)}
         placeholder="Search"
-        className="min-w-[360px]"
+        className="min-w-0 max-lg:h-9 max-lg:pr-3 max-lg:placeholder:text-transparent"
         leftIcon={<SearchIcon size={iconSize(20)} />}
         rightIcon={
           <SearchRightIcon value={searchInput} onClear={handleClear} />

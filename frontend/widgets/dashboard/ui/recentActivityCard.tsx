@@ -1,9 +1,9 @@
+import { TypographyP } from '@dashboard/ui';
+import { TypographySmall } from '@dashboard/ui';
 import { formatRelativeTime } from '@lib/formatRelativeTime';
 import Link from 'next/link';
 
 import { getBoard } from '@/entities/board/api/getBoard';
-import { TypographyP } from '@/shared/components/typography/typographyP';
-import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
 import { DashboardCard } from './dashboardCard';
 

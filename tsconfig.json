@@ -21,6 +21,8 @@
       "@dashboard/clock": ["./packages/clock/src/index.ts"],
       "@dashboard/weather": ["./packages/weather/src/index.ts"],
       "@dashboard/chat": ["./packages/chat/src/index.ts"],
+      "@dashboard/ui": ["./frontend/shared/ui/index.ts"],
+      "@dashboard/ui/*": ["./frontend/shared/ui/*.ts"],
       "@lib/*": ["./lib/*"],
       "@frontend/*": ["./frontend/*"]
     },

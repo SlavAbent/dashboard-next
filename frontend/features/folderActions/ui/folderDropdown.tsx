@@ -1,21 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
-
-import { useBoardStore } from '@/entities/board/model/useData.store';
-import { useBoardModalStore } from '@/features/boardModal';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/components/dropdown/ui/dropdownMenu';
-import { TypographyP } from '@/shared/components/typography/typographyP';
-import { iconSize } from '@/shared/icons/iconSize';
-import { DotsMenuIcon } from '@/shared/icons/ui/dotsMenuIcon';
-
+} from '@dashboard/ui';
+import { TypographyP } from '@dashboard/ui';
+import { iconSize } from '@dashboard/ui';
+import { DotsMenuIcon } from '@dashboard/ui';
 import type { EntityId } from '@lib/sameId';
+import React, { useState } from 'react';
+
+import { useBoardStore } from '@/entities/board/model/useData.store';
+import { useBoardModalStore } from '@/features/boardModal';
 
 type FolderDropdownProps = {
   folderId: EntityId;

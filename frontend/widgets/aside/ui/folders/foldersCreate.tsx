@@ -1,10 +1,10 @@
 'use client';
 
+import { Card } from '@dashboard/ui';
 import cn from 'clsx';
 import { usePathname } from 'next/navigation';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
-import { Card } from '@/shared/components/card';
 import { normalizePath } from '@/shared/config/normalizePath';
 import { FoldersCreateProps } from '@/widgets/aside/types/folder.types';
 import { FolderItem } from '@/widgets/aside/ui/folders/folderItem';

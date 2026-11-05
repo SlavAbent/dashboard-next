@@ -62,12 +62,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    min-width: 320px;
+    min-height: 100%;
   }
 
   body {
     @apply bg-background text-foreground;
 
-    min-height: 100vh;
+    min-height: 100dvh;
+    min-width: 320px;
+    overflow-x: hidden;
+    padding-top: env(safe-area-inset-top);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
     font-family: var(--font-geist-sans), system-ui, sans-serif;
 
     line-height: 1.5;
@@ -77,6 +85,14 @@
 
   * {
     @apply border-border outline-ring/50;
+  }
+
+  button,
+  [role='button'],
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
   }
 }
 

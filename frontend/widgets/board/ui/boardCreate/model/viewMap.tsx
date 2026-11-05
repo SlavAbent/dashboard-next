@@ -1,10 +1,10 @@
 'use client';
 
+import { Skeleton } from '@dashboard/ui';
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 
 import type { BoardViewMode } from '@/entities/board';
-import { Skeleton } from '@/shared/components/skeleton/skeleton';
 
 const KanbanView = dynamic(
   () => import('@/widgets/board/ui/kanbanView/kanbanView'),

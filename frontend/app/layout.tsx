@@ -1,12 +1,12 @@
 import '../shared/styles/global.css';
 
-import type { Metadata } from 'next';
+import { cn } from '@lib/cn';
+import type { Metadata, Viewport } from 'next';
 import { Geist } from 'next/font/google';
 import { ReactNode } from 'react';
 
 import Providers from '@/app/_providers';
-
-import { cn } from '@lib/cn';
+import { PwaRegistration } from '@/app/pwaRegistration';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -16,6 +16,23 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: 'Dashboard-next',
   description: 'Dashboard-next pet',
+  manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Dashboard',
+  },
+  formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#111827' },
+  ],
 };
 
 export default function RootLayout({
@@ -38,7 +55,10 @@ export default function RootLayout({
         <title>Dashboard - next</title>
       </head>
       <body className="antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          <PwaRegistration />
+          {children}
+        </Providers>
       </body>
     </html>
   );

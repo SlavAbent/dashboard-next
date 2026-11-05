@@ -51,7 +51,7 @@ export const DigitalClock = ({ className }: ClockProps) => {
   return (
     <div
       className={joinClasses(
-        'text-foreground flex items-center gap-2 font-mono text-[70px] leading-none font-bold tracking-tight tabular-nums',
+        'text-foreground flex max-w-full items-center gap-[clamp(0.25rem,1vw,0.5rem)] font-mono text-[clamp(2.25rem,9vw,4.375rem)] leading-none font-bold tracking-tight tabular-nums',
         className
       )}>
       <FlipGroup value={hours} />

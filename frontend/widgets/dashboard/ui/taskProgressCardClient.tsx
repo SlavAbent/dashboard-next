@@ -1,9 +1,8 @@
 'use client';
 
+import { iconSize } from '@dashboard/ui';
+import { CircleProgress } from '@dashboard/ui';
 import { useEffect, useState } from 'react';
-
-import { iconSize } from '@/shared/icons/iconSize';
-import { CircleProgress } from '@/shared/icons/ui/circleProgress';
 
 import { DashboardCard } from './dashboardCard';
 
