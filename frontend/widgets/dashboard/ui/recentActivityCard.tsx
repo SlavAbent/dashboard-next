@@ -1,16 +1,16 @@
+import { formatRelativeTime } from '@lib/formatRelativeTime';
 import Link from 'next/link';
 
-import { getTasks } from '@/entities/task';
+import { getBoard } from '@/entities/board/api/getBoard';
 import { TypographyP } from '@/shared/components/typography/typographyP';
 import { TypographySmall } from '@/shared/components/typography/typographySmall';
 
-import { formatRelativeTime } from '@lib/formatRelativeTime';
 import { DashboardCard } from './dashboardCard';
 
 const RECENT_TASKS_LIMIT = 5;
 
 export const RecentActivityCard = async () => {
-  const tasks = await getTasks();
+  const { tasks } = await getBoard();
 
   const recentTasks = [...tasks]
     .sort(

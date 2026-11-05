@@ -1,6 +1,4 @@
-import { getColumns } from '@/entities/column';
-import { getTaskFolders } from '@/entities/folder';
-import { getTasks } from '@/entities/task';
+import { getBoard } from '@/entities/board/api/getBoard';
 import BoardHydrator from '@/widgets/board/ui/boardHydrator/boardHydrator';
 
 type TaskBoardProps = {
@@ -8,16 +6,12 @@ type TaskBoardProps = {
 };
 
 const TaskBoard = async ({ taskId }: TaskBoardProps) => {
-  const [tasksData, columnsData, folders] = await Promise.all([
-    getTasks(),
-    getColumns(),
-    getTaskFolders(),
-  ]);
+  const { tasks, columns, folders } = await getBoard();
 
   return (
     <BoardHydrator
-      tasks={tasksData}
-      columns={columnsData}
+      tasks={tasks}
+      columns={columns}
       folders={folders}
       taskId={taskId}
     />

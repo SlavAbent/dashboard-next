@@ -1,17 +1,11 @@
 import { groupTasksToFolders } from '@/entities/board';
-import { getColumns } from '@/entities/column';
-import { getTaskFolders } from '@/entities/folder';
-import { getTasks } from '@/entities/task';
+import { getBoard } from '@/entities/board/api/getBoard';
 
 import { BoardColumnRow } from './boardColumnRow';
 import { DashboardCard } from './dashboardCard';
 
 export const BoardColumnsCard = async () => {
-  const [tasks, columns, folders] = await Promise.all([
-    getTasks(),
-    getColumns(),
-    getTaskFolders(),
-  ]);
+  const { tasks, columns, folders } = await getBoard();
 
   const boardColumns = groupTasksToFolders(tasks, columns, folders);
 

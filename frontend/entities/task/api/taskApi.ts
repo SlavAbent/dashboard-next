@@ -1,19 +1,7 @@
-import { CreateTask, Task } from '@/entities/task/model/task.types';
-import { tasksApi } from '@/shared/api/instances';
-
 import type { EntityId } from '@lib/sameId';
 
-export async function getTasks(): Promise<Task[]> {
-  const response = await fetch(tasksApi, {
-    next: { revalidate: 30 },
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed fetch tasks');
-  }
-
-  return response.json();
-}
+import { CreateTask, Task } from '@/entities/task/model/task.types';
+import { tasksApi } from '@/shared/api/instances';
 
 export async function createTask(task: CreateTask): Promise<Task> {
   const response = await fetch(tasksApi, {
@@ -21,11 +9,7 @@ export async function createTask(task: CreateTask): Promise<Task> {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      ...task,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    }),
+    body: JSON.stringify(task),
   });
 
   if (!response.ok) {
@@ -44,16 +28,27 @@ export async function updateTask(
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      ...data,
-      updatedAt: new Date().toISOString(),
-    }),
+    body: JSON.stringify(data),
   });
 
   if (!response.ok) {
     throw new Error('Failed to update task');
   }
 
+  return response.json();
+}
+
+export async function moveTask(
+  id: EntityId,
+  data: Pick<Task, 'taskFolderId' | 'order'>
+): Promise<Task> {
+  const response = await fetch(`${tasksApi}/${id}/move`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) throw new Error('Failed to move task');
   return response.json();
 }
 

@@ -1,0 +1,66 @@
+import type { BoardTemplate } from './board.types.ts';
+
+export const boardTemplate: BoardTemplate = {
+  columns: [
+    { id: 'planning', title: 'Planning', order: 1, color: '#B1AB1D' },
+    { id: 'upcoming', title: 'Upcoming', order: 2, color: '#6884FD' },
+    { id: 'completed', title: 'Completed', order: 3, color: '#39C682' },
+  ],
+  folders: [
+    {
+      templateId: 'folder-planning-1',
+      title: 'Planning',
+      columnId: 'upcoming',
+      order: 1,
+    },
+    {
+      templateId: 'folder-upcoming-1',
+      title: 'Upcoming',
+      columnId: 'upcoming',
+      order: 2,
+    },
+    {
+      templateId: 'folder-completed-1',
+      title: 'Completed',
+      columnId: 'completed',
+      order: 3,
+    },
+  ],
+  tasks: [
+    {
+      folderTemplateId: 'folder-planning-1',
+      text: 'ReactJS Hooks (useState, useReducer, useEffect и т.д.)',
+      tags: ['react'],
+      completed: false,
+      order: 1,
+    },
+    {
+      folderTemplateId: 'folder-completed-1',
+      text: 'Redux (redux-observable, redux-saga)',
+      tags: ['redux'],
+      completed: true,
+      order: 1,
+    },
+    {
+      folderTemplateId: 'folder-upcoming-1',
+      text: 'Настроить CI pipeline',
+      tags: ['devops'],
+      completed: false,
+      order: 1,
+    },
+    {
+      folderTemplateId: 'folder-planning-1',
+      text: 'Покрыть тестами store',
+      tags: ['testing'],
+      completed: true,
+      order: 2,
+    },
+    {
+      folderTemplateId: 'folder-upcoming-1',
+      text: 'Оптимизировать загрузку boardы',
+      tags: ['performance'],
+      completed: false,
+      order: 2,
+    },
+  ],
+};

@@ -1,10 +1,15 @@
-import 'dotenv/config';
+import { z } from 'zod';
+
+const schema = z.object({
+  DATABASE_URL: z.string().min(1),
+  PORT: z.coerce.number().int().positive().default(3000),
+  APP_ORIGIN: z.string().url().optional(),
+});
+
+const parsed = schema.parse(process.env);
 
 export const env = {
-  port: Number(process.env.PORT ?? 3001),
-  databaseUrl: process.env.DATABASE_URL ?? '',
+  databaseUrl: parsed.DATABASE_URL,
+  port: parsed.PORT,
+  appOrigin: parsed.APP_ORIGIN ?? `http://localhost:${parsed.PORT}`,
 };
-
-if (!env.databaseUrl) {
-  throw new Error('DATABASE_URL is not defined');
-}

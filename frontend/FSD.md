@@ -16,7 +16,7 @@
 
 ### `entities/board`
 
-- `api/` — запросы к json-server (tasks, columns, tasksFolder)
+- `api/` — запросы к Express API (board, tasks, folders)
 - `model/` — zustand store, типы
 - `lib/` — `groupTasksToFolders`, `normalizeBoardData`, счётчики
 
@@ -48,7 +48,6 @@
 ## Запуск
 
 ```bash
-pnpm json-server
 pnpm dev
 ```
 

@@ -1,59 +1,19 @@
-import type { ChatAuthor, ChatMessage } from './types';
+import { cookies } from 'next/headers';
 
-type BackendMessage = {
-  id: string;
-  userId: string;
-  text: string;
-  createdAt: string;
-  author?: ChatAuthor;
-};
-
-const getBackendUrl = () => {
-  const url = process.env.BACKEND_URL;
-
-  if (!url) {
-    throw new Error('BACKEND_URL is not set');
-  }
-
-  return url;
-};
+import type { ChatMessage } from './types';
 
 export const getChatMessages = async (): Promise<ChatMessage[]> => {
-  const backendUrl = getBackendUrl();
-  const [messagesResponse, usersResponse] = await Promise.all([
-    fetch(`${backendUrl}/messages`, { cache: 'no-store' }),
-    fetch(`${backendUrl}/users`, { cache: 'no-store' }),
-  ]);
+  const cookieStore = await cookies();
+  const port = process.env.PORT ?? '3000';
+  const origin = process.env.APP_ORIGIN ?? `http://localhost:${port}`;
+  const response = await fetch(`${origin}/api/v1/messages`, {
+    headers: { cookie: cookieStore.toString() },
+    cache: 'no-store',
+  });
 
-  if (!messagesResponse.ok || !usersResponse.ok) {
-    throw new Error(
-      `Failed to fetch chat data: messages ${messagesResponse.status}, users ${usersResponse.status}`
-    );
+  if (!response.ok) {
+    throw new Error(`Failed to fetch chat messages: ${response.status}`);
   }
 
-  const [messages, users] = (await Promise.all([
-    messagesResponse.json(),
-    usersResponse.json(),
-  ])) as [BackendMessage[], ChatAuthor[]];
-  const usersById = new Map(users.map((user) => [user.id, user]));
-
-  return messages.map((message) => {
-    const author = usersById.get(message.userId);
-
-    return {
-      id: message.id,
-      userId: message.userId,
-      text: message.text,
-      createdAt: message.createdAt,
-      author:
-        message.author ??
-        (author
-          ? {
-              id: author.id,
-              firstName: author.firstName,
-              lastName: author.lastName,
-            }
-          : null),
-    };
-  });
+  return response.json();
 };

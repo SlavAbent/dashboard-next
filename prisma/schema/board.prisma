@@ -1,0 +1,51 @@
+model Board {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  columns BoardColumn[]
+}
+
+model BoardColumn {
+  id      String @id @default(cuid())
+  boardId String
+  key     String
+  title   String
+  order   Float
+  color   String
+
+  board   Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  folders TaskFolder[]
+
+  @@unique([boardId, key])
+  @@index([boardId, order])
+}
+
+model TaskFolder {
+  id       String @id @default(cuid())
+  columnId String
+  title    String
+  order    Float
+
+  column BoardColumn @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  tasks  Task[]
+
+  @@index([columnId, order])
+}
+
+model Task {
+  id           String   @id @default(cuid())
+  taskFolderId String
+  text         String
+  tags         String[]
+  completed    Boolean  @default(false)
+  order        Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  taskFolder TaskFolder @relation(fields: [taskFolderId], references: [id], onDelete: Cascade)
+
+  @@index([taskFolderId, order])
+}

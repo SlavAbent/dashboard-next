@@ -11,7 +11,10 @@ export async function updateFolders(
   id: EntityId,
   data: UpdateFolderPayload
 ): Promise<TaskFolder> {
-  const response = await fetch(`${taskFoldersApi}/${id}`, {
+  const endpoint = data.columnId
+    ? `${taskFoldersApi}/${id}/move`
+    : `${taskFoldersApi}/${id}`;
+  const response = await fetch(endpoint, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -27,7 +30,7 @@ export async function updateFolders(
 }
 
 export async function deleteFolder(id: EntityId) {
-  const response = await fetch(`${taskFoldersApi}/${id}?_dependent=tasks`, {
+  const response = await fetch(`${taskFoldersApi}/${id}`, {
     method: 'DELETE',
   });
 
@@ -62,18 +65,6 @@ export async function createFolderTask(
 
   if (!response.ok) {
     throw new Error('Failed to add folder');
-  }
-
-  return response.json();
-}
-
-export async function getTaskFolders(): Promise<TaskFolder[]> {
-  const response = await fetch(taskFoldersApi, {
-    next: { revalidate: 30 },
-  });
-
-  if (!response.ok) {
-    throw new Error('No task folders found.');
   }
 
   return response.json();

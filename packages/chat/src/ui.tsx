@@ -15,12 +15,6 @@ import type { CurrentUser } from './types';
 const joinClasses = (...classes: Array<string | undefined | false>) =>
   classes.filter(Boolean).join(' ');
 
-const DEFAULT_USER: CurrentUser = {
-  id: '1',
-  firstName: 'Svyatoslav',
-  lastName: 'Abent',
-};
-
 const Input = ({
   className = '',
   ...props
@@ -80,10 +74,7 @@ type ChatBoardProps = {
   currentUser?: CurrentUser;
 };
 
-export const ChatBoard = ({
-  messageId,
-  currentUser = DEFAULT_USER,
-}: ChatBoardProps) => {
+export const ChatBoard = ({ messageId, currentUser }: ChatBoardProps) => {
   useConnectChat();
 
   const [value, setValue] = useState('');
@@ -104,7 +95,7 @@ export const ChatBoard = ({
     <div className="flex h-full flex-col gap-4 p-10">
       <div className="flex h-full max-h-100 flex-col gap-4 overflow-scroll overflow-y-auto border p-4">
         {messages.map((message) => {
-          const isCurrentUser = message.userId === currentUser.id;
+          const isCurrentUser = message.userId === currentUser?.id;
           const author = message.author;
           const createdAtTime = new Date(message.createdAt).toLocaleTimeString(
             [],

@@ -1,7 +1,7 @@
 export {
   createTask,
   deleteTask,
-  getTasks,
+  moveTask,
   updateTask,
 } from '@/entities/task/api/taskApi';
 export { applyTaskFiltersAndSort } from '@/entities/task/lib/filterSortTasks';

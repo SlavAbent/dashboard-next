@@ -1,7 +1,6 @@
 export {
   createFolderTask,
   deleteFolder,
-  getTaskFolders,
   updateFolderColumn,
   updateFolderDetails,
   updateFolders,

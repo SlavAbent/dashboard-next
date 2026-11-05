@@ -201,9 +201,6 @@ importers:
       jest-environment-jsdom:
         specifier: 30.5.2
         version: 30.5.2(supports-color@8.1.1)
-      json-server:
-        specifier: ^1.0.0-beta.14
-        version: 1.0.0-beta.15
       knip:
         specifier: ^5.66.0
         version: 5.88.1(@types/node@20.19.41)(typescript@5.9.3)
@@ -4506,11 +4503,6 @@ packages:
 
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
-
-  json-server@1.0.0-beta.15:
-    resolution: {integrity: sha512-I5UB/OWHLGoQW9IVld2yzZFYYiGYNBn2OYRlGbkfj5xDidT26yKYkV7Sr093zJtPh9zbofaLgyT89Ov5U0RRBQ==}
-    engines: {node: '>=22.12.0'}
-    hasBin: true
 
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
@@ -10893,22 +10885,6 @@ snapshots:
   json-schema-traverse@0.4.1: {}
 
   json-schema-traverse@1.0.0: {}
-
-  json-server@1.0.0-beta.15:
-    dependencies:
-      '@tinyhttp/app': 3.0.7
-      '@tinyhttp/cors': 2.0.1
-      '@tinyhttp/logger': 2.1.0
-      chalk: 5.6.2
-      chokidar: 5.0.0
-      dot-prop: 10.1.0
-      eta: 4.6.0
-      inflection: 3.0.2
-      json5: 2.2.3
-      lowdb: 7.0.1
-      milliparsec: 5.1.1
-      sirv: 3.0.2
-      sort-on: 7.0.0
 
   json-stable-stringify-without-jsonify@1.0.1: {}
 

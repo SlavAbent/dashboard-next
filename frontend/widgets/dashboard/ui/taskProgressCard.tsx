@@ -1,9 +1,9 @@
-import { getTasks } from '@/entities/task';
+import { getBoard } from '@/entities/board/api/getBoard';
 
 import { TaskProgressCardClient } from './taskProgressCardClient';
 
 export const TaskProgressCard = async () => {
-  const tasks = await getTasks();
+  const { tasks } = await getBoard();
 
   const totalCount = tasks.length;
   const doneCount = tasks.filter((task) => task.completed).length;
