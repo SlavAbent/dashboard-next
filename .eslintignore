@@ -4,5 +4,8 @@ dist
 coverage
 .next
 .cache
+storybook-static
+test-results
+playwright-report
 *.config.js
 next-env.d.ts

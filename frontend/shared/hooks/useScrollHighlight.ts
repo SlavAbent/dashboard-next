@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import { highLightElement } from '@lib/highlightElement';
+import { useEffect } from 'react';
 
 const MAX_ATTEMPTS = 30;
 const RETRY_DELAY_MS = 150;

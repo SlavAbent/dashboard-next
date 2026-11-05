@@ -65,7 +65,7 @@ const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
       <div className="flex min-w-0 grow items-center gap-2 sm:gap-4 md:gap-6">
         <TypographyH3
           text={title}
-          className={cn('', showProfileDropdown ? 'flex grow' : 'flex')}
+          className={cn('flex', showProfileDropdown && 'grow')}
         />
 
         <div className="flex items-center">

@@ -81,10 +81,7 @@ const TaskFilters = () => {
         }
       />
 
-      <Index
-        orientation="vertical"
-        className="bg-border h-[50px] w-[1px] gap-4"
-      />
+      <Index orientation="vertical" className="bg-border h-[50px] w-px" />
 
       <button
         type="button"

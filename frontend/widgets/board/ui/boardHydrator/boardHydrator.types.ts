@@ -7,4 +7,5 @@ export type BoardHydratorType = {
   columns: Column[];
   folders: TaskFolder[];
   taskId?: string;
+  folderId?: string;
 };

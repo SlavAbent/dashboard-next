@@ -1,7 +1,6 @@
+import type { Theme } from '@lib/theme';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-import type { Theme } from '@lib/theme';
 
 type ThemeStore = {
   theme: Theme;

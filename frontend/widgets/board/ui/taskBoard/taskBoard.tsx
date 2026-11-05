@@ -3,9 +3,10 @@ import BoardHydrator from '@/widgets/board/ui/boardHydrator/boardHydrator';
 
 type TaskBoardProps = {
   taskId?: string;
+  folderId?: string;
 };
 
-const TaskBoard = async ({ taskId }: TaskBoardProps) => {
+const TaskBoard = async ({ taskId, folderId }: TaskBoardProps) => {
   const { tasks, columns, folders } = await getBoard();
 
   return (
@@ -14,6 +15,7 @@ const TaskBoard = async ({ taskId }: TaskBoardProps) => {
       columns={columns}
       folders={folders}
       taskId={taskId}
+      folderId={folderId}
     />
   );
 };

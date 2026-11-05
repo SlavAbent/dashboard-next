@@ -12,6 +12,7 @@ const BoardHydrator = ({
   columns,
   folders,
   taskId,
+  folderId,
 }: BoardHydratorType) => {
   const hydratedRef = useRef(false);
   const setBoardData = useBoardStore((state) => state.setBoardData);
@@ -40,6 +41,7 @@ const BoardHydrator = ({
   }, [taskId, tasks, folders, closedColumns, toggleColumn]);
 
   useScrollHighlight(taskId, 'data-task-id');
+  useScrollHighlight(folderId, 'data-folder-id');
 
   return <BoardCreate />;
 };

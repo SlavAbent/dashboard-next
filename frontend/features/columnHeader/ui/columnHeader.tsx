@@ -1,12 +1,13 @@
 'use client';
 
-import { Ellipse } from '@dashboard/ui';
-import { TypographyH3 } from '@dashboard/ui';
-import { TypographyP } from '@dashboard/ui';
-import { TypographySmall } from '@dashboard/ui';
-import { iconSize } from '@dashboard/ui';
-import { PlusIcon } from '@dashboard/ui';
-import React from 'react';
+import {
+  Ellipse,
+  iconSize,
+  PlusIcon,
+  TypographyH3,
+  TypographyP,
+  TypographySmall,
+} from '@dashboard/ui';
 
 import { getColumnTasksLabel } from '@/entities/column';
 import { useBoardModalStore } from '@/features/boardModal';
@@ -30,14 +31,14 @@ const ColumnHeader = ({ column }: ColumnHeaderType) => {
           <TypographyH3 text={column.title} />
           <TypographyP
             text={columnText}
-            className="text-muted-foreground !leading-[145%]"
+            className="text-muted-foreground leading-[145%]!"
           />
         </div>
       </div>
       <div
         role="button"
         onClick={() => openCreateFolder(column.id)}
-        className="bg-secondary text-secondary-foreground mb-4 flex max-h-[40px] min-h-[40px] w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
+        className="bg-secondary text-secondary-foreground mb-4 flex max-h-10 min-h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-sm">
         <PlusIcon size={iconSize(16)} className="text-muted-foreground" />
         <TypographySmall
           text="Create Folder"

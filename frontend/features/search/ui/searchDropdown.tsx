@@ -42,6 +42,7 @@ export const SearchDropdown = ({ search }: SearchDropdownProps) => {
         resultData={resultDataSearch.folders}
         getId={(folder) => folder.id}
         getLabel={(folder) => folder.title}
+        getHref={(id) => `/tasks?folderId=${encodeURIComponent(id)}`}
       />
       <SearchFolder
         title="Tasks"
@@ -49,6 +50,7 @@ export const SearchDropdown = ({ search }: SearchDropdownProps) => {
         resultData={resultDataSearch.tasks}
         getId={(task) => task.id}
         getLabel={(task) => task.text}
+        getHref={(id) => `/tasks?taskId=${encodeURIComponent(id)}`}
       />
 
       {resultDataSearch.folders.length === 0 &&

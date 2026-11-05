@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { sameId, toIdString } from '@lib/sameId';
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -10,8 +11,6 @@ import {
   folderSchema,
   FolderValues,
 } from '@/features/boardModal/schema/folderSchema';
-
-import { sameId, toIdString } from '@lib/sameId';
 
 export const useFolderForm = () => {
   const { taskFolders } = useBoardStore();
@@ -35,7 +34,7 @@ export const useFolderForm = () => {
           ? toIdString(selectedColumnId)
           : '',
     }),
-    [folder?.title, folder?.columnId, selectedColumnId]
+    [folder, selectedColumnId]
   );
 
   const folderForm = useForm<FolderValues>({

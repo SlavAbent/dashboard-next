@@ -1,12 +1,11 @@
 'use client';
 
+import { toIdString } from '@lib/sameId';
 import React from 'react';
 
 import ColumnHeader from '@/features/columnHeader/ui/columnHeader';
 import KanbanItem from '@/features/kanbanItem/ui/kanbanItem';
 import { BoardKanbanType } from '@/widgets/board/ui/boardKanban/boardKanban.types';
-
-import { toIdString } from '@lib/sameId';
 
 const BoardKanban = ({ column, itemIds, tasksMap }: BoardKanbanType) => {
   return (
