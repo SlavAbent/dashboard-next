@@ -4,7 +4,11 @@ import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useBoardStore } from '@/entities/board';
-import { findTaskById } from '@/entities/task';
+import {
+  findTaskById,
+  isTaskNameTaken,
+  TaskNameConflictError,
+} from '@/entities/task';
 import { useBoardModalStore } from '@/features/boardModal';
 import { useCreateTask } from '@/features/boardModal/model/useCreateTask';
 import { useEditTask } from '@/features/boardModal/model/useEditTask';
@@ -32,6 +36,9 @@ export const useTaskForm = () => {
         taskValue: editingTask.text,
         folderId: toIdString(editingTask.taskFolderId),
         completed: editingTask.completed,
+        startDate: editingTask.startDate,
+        endDate: editingTask.endDate,
+        priority: editingTask.priority,
       };
     }
 
@@ -39,6 +46,9 @@ export const useTaskForm = () => {
       taskValue: '',
       folderId: toIdString(editingFolderId ?? firstFolderId),
       completed: false,
+      startDate: null,
+      endDate: null,
+      priority: 'none',
     };
   }, [isEditTaskMode, editingTask, editingFolderId, firstFolderId]);
 
@@ -52,12 +62,34 @@ export const useTaskForm = () => {
   }, [defaultValues, taskForm]);
 
   const submitTask = taskForm.handleSubmit(async (data) => {
-    if (isEditTaskMode && editingTask) {
-      await updateTask(editingTask.id, data);
+    const editingTaskId = isEditTaskMode ? editingTask?.id : undefined;
+
+    if (isTaskNameTaken(tasks, data.taskValue, editingTaskId)) {
+      taskForm.setError('taskValue', {
+        type: 'validate',
+        message: 'A task with this name already exists',
+      });
       return;
     }
 
-    await createTask(data);
+    try {
+      if (isEditTaskMode && editingTask) {
+        await updateTask(editingTask.id, data);
+        return;
+      }
+
+      await createTask(data);
+    } catch (error) {
+      if (error instanceof TaskNameConflictError) {
+        taskForm.setError('taskValue', {
+          type: 'validate',
+          message: error.message,
+        });
+        return;
+      }
+
+      throw error;
+    }
   });
 
   return {

@@ -1,5 +1,6 @@
 import { AppSelect } from '@dashboard/ui';
 import { ErrorField } from '@dashboard/ui/forms';
+import { cn } from '@lib/cn';
 import { sameId, toIdString } from '@lib/sameId';
 import React, { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
@@ -30,6 +31,7 @@ export const SelectField = ({ className }: SelectFieldProps) => {
 
   return (
     <div className="flex flex-col gap-1">
+      <label className="text-sm font-medium">Folder</label>
       <Controller
         name="folderId"
         control={control}
@@ -41,7 +43,11 @@ export const SelectField = ({ className }: SelectFieldProps) => {
               onChange={field.onChange}
               options={options}
               placeholder="Select folder"
-              className={className}
+              ariaLabel="Folder"
+              className={cn(
+                'bg-background h-9 rounded-sm px-3 text-sm',
+                className
+              )}
             />
           );
         }}

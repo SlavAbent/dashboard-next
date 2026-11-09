@@ -37,6 +37,9 @@ const initialFolder = {
   columnId: 'todo',
   title: 'Folder',
   order: 1,
+  startDate: null,
+  endDate: null,
+  priority: 'none' as const,
 };
 
 const initialTask = {
@@ -47,6 +50,9 @@ const initialTask = {
   taskFolderId: initialFolder.id,
   order: 1,
   createdAt: '2026-01-01T00:00:00.000Z',
+  startDate: null,
+  endDate: null,
+  priority: 'none' as const,
 };
 
 describe('useBoardStore folder mutations', () => {
@@ -200,6 +206,38 @@ describe('useBoardStore folder mutations', () => {
 
     expect(useBoardStore.getState().taskFolders).toEqual([initialFolder]);
     expect(useBoardStore.getState().tasks).toEqual([initialTask]);
+  });
+
+  it('updates folder details before moving it to another column', async () => {
+    const detailsResponse = {
+      ...initialFolder,
+      title: 'Release',
+      startDate: '2026-11-05',
+      endDate: '2026-11-12',
+      priority: 'critical' as const,
+    };
+    const movedResponse = { ...detailsResponse, columnId: 'in-progress' };
+    mockedUpdateFolderDetails.mockResolvedValue(detailsResponse);
+    mockedUpdateFolders.mockResolvedValue(movedResponse);
+
+    await useBoardStore.getState().updateFolder(initialFolder.id, {
+      title: 'Release',
+      columnId: 'in-progress',
+      startDate: '2026-11-05',
+      endDate: '2026-11-12',
+      priority: 'critical',
+    });
+
+    expect(mockedUpdateFolderDetails).toHaveBeenCalledWith(initialFolder.id, {
+      title: 'Release',
+      startDate: '2026-11-05',
+      endDate: '2026-11-12',
+      priority: 'critical',
+    });
+    expect(mockedUpdateFolders).toHaveBeenCalledWith(initialFolder.id, {
+      columnId: 'in-progress',
+    });
+    expect(useBoardStore.getState().taskFolders).toEqual([movedResponse]);
   });
 
   afterAll(() => {

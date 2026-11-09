@@ -1,4 +1,6 @@
-export type Task = {
+import type { Schedule } from '@/shared/model/schedule';
+
+export type Task = Schedule & {
   id: string;
   text: string;
   tags: string[];

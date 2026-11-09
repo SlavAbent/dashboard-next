@@ -23,6 +23,9 @@ export const useCreateTask = () => {
       taskFolderId: data.folderId,
       completed: false,
       order: nextOrder,
+      startDate: data.startDate ?? null,
+      endDate: data.endDate ?? null,
+      priority: data.priority,
     });
 
     closeModal();

@@ -1,6 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FormProvider, useForm } from 'react-hook-form';
+import {
+  FormProvider,
+  type Resolver,
+  type ResolverResult,
+  useForm,
+} from 'react-hook-form';
 
 import { ErrorField } from './errorField';
 import { InputField } from './inputField';
@@ -8,8 +13,31 @@ import { SubmitButton } from './submitButton';
 
 type FormValues = { title: string };
 
-function TestForm({ onSubmit }: { onSubmit: (values: FormValues) => void }) {
-  const methods = useForm<FormValues>();
+const requiredTitleResolver: Resolver<FormValues> = async (
+  values
+): Promise<ResolverResult<FormValues>> => {
+  if (values.title) {
+    return { values, errors: {} };
+  }
+
+  return {
+    values: {},
+    errors: {
+      title: { type: 'required', message: 'Folder name is required' },
+    },
+  };
+};
+
+function TestForm({
+  onSubmit,
+  required = false,
+}: {
+  onSubmit: (values: FormValues) => void;
+  required?: boolean;
+}) {
+  const methods = useForm<FormValues>({
+    resolver: required ? requiredTitleResolver : undefined,
+  });
 
   return (
     <FormProvider {...methods}>
@@ -44,6 +72,22 @@ describe('form components', () => {
       <ErrorField error={{ type: 'required', message: 'Required field' }} />
     );
     expect(screen.getByText('Required field')).toBeVisible();
+  });
+
+  it('keeps the input enabled after an invalid submit', async () => {
+    const user = userEvent.setup();
+
+    render(<TestForm required onSubmit={jest.fn()} />);
+
+    await user.click(screen.getByRole('button', { name: 'Create' }));
+
+    const input = screen.getByPlaceholderText('Task title');
+    expect(screen.getByText('Folder name is required')).toBeVisible();
+    expect(input).toBeEnabled();
+
+    await user.type(input, 'New folder');
+
+    expect(input).toHaveValue('New folder');
   });
 
   it.each([

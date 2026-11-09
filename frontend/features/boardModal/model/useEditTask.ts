@@ -13,6 +13,9 @@ export const useEditTask = () => {
       text: data.taskValue,
       taskFolderId: data.folderId,
       completed: data.completed,
+      startDate: data.startDate ?? null,
+      endDate: data.endDate ?? null,
+      priority: data.priority,
     });
 
     closeModal();

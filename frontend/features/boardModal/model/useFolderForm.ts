@@ -33,6 +33,9 @@ export const useFolderForm = () => {
         : selectedColumnId
           ? toIdString(selectedColumnId)
           : '',
+      startDate: folder?.startDate ?? null,
+      endDate: folder?.endDate ?? null,
+      priority: folder?.priority ?? 'none',
     }),
     [folder, selectedColumnId]
   );

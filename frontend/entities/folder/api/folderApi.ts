@@ -49,7 +49,26 @@ export async function updateFolderDetails(
   id: EntityId,
   data: UpdateFolderPayload
 ) {
-  return updateFolders(id, data);
+  const details: UpdateFolderPayload = {
+    title: data.title,
+    order: data.order,
+    startDate: data.startDate,
+    endDate: data.endDate,
+    priority: data.priority,
+  };
+  const response = await fetch(`${taskFoldersApi}/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(details),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to update folder details');
+  }
+
+  return response.json() as Promise<TaskFolder>;
 }
 
 export async function createFolderTask(

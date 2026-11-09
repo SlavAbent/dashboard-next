@@ -20,6 +20,9 @@ const KanbanItem = (props: KanbanItemType) => {
         folderId={folder.id}
         columnId={folder.columnId}
         title={folder.title}
+        startDate={folder.startDate}
+        endDate={folder.endDate}
+        priority={folder.priority}
         dragHandleRef={handleRef}
         isDragging={isDragging}
       />

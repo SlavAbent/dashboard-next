@@ -1,4 +1,5 @@
 import { prisma } from '../../../lib/prisma.ts';
+import { toDatabaseDate } from '../../shared/schedule.ts';
 import { toFolderDto } from './folder.mapper.ts';
 import type {
   CreateFolderInput,
@@ -16,7 +17,19 @@ export class FolderRepository {
     if (!column) return null;
 
     const folder = await prisma.taskFolder.create({
-      data: { columnId: column.id, title: input.title, order: input.order },
+      data: {
+        columnId: column.id,
+        title: input.title,
+        order: input.order,
+        startDate: toDatabaseDate(input.startDate),
+        endDate: toDatabaseDate(input.endDate),
+        priority: input.priority.toUpperCase() as
+          | 'NONE'
+          | 'LOW'
+          | 'MEDIUM'
+          | 'HIGH'
+          | 'CRITICAL',
+      },
     });
     return toFolderDto(folder, column.key);
   }
@@ -28,7 +41,18 @@ export class FolderRepository {
   ): Promise<FolderDto | null> {
     const result = await prisma.taskFolder.updateMany({
       where: { id, column: { board: { userId } } },
-      data: input,
+      data: {
+        ...input,
+        startDate: toDatabaseDate(input.startDate),
+        endDate: toDatabaseDate(input.endDate),
+        priority: input.priority?.toUpperCase() as
+          | 'NONE'
+          | 'LOW'
+          | 'MEDIUM'
+          | 'HIGH'
+          | 'CRITICAL'
+          | undefined,
+      },
     });
     return result.count ? this.findById(userId, id) : null;
   }

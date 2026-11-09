@@ -65,7 +65,19 @@ export class BoardRepository {
         if (!columnId)
           throw new Error(`Unknown template column: ${folder.columnId}`);
         const created = await tx.taskFolder.create({
-          data: { columnId, title: folder.title, order: folder.order },
+          data: {
+            columnId,
+            title: folder.title,
+            order: folder.order,
+            startDate: folder.startDate,
+            endDate: folder.endDate,
+            priority: folder.priority.toUpperCase() as
+              | 'NONE'
+              | 'LOW'
+              | 'MEDIUM'
+              | 'HIGH'
+              | 'CRITICAL',
+          },
         });
         folders.set(folder.templateId, created.id);
       }
@@ -81,6 +93,14 @@ export class BoardRepository {
             tags: task.tags,
             completed: task.completed,
             order: task.order,
+            startDate: task.startDate,
+            endDate: task.endDate,
+            priority: task.priority.toUpperCase() as
+              | 'NONE'
+              | 'LOW'
+              | 'MEDIUM'
+              | 'HIGH'
+              | 'CRITICAL',
           },
         });
       }

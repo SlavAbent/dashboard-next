@@ -19,6 +19,7 @@ type AppSelectProps = {
   onChange: (value: string) => void;
   options: SelectOptions[];
   placeholder: string;
+  ariaLabel?: string;
   className?: string;
 };
 
@@ -28,6 +29,7 @@ export const AppSelect = ({
   className,
   options,
   placeholder,
+  ariaLabel,
 }: AppSelectProps) => {
   const safeValue = options.some((o) => o.value === value) ? value : undefined;
 
@@ -40,7 +42,7 @@ export const AppSelect = ({
           onChange(v);
         }
       }}>
-      <SelectTrigger className={cn('w-full', className)}>
+      <SelectTrigger aria-label={ariaLabel} className={cn('w-full', className)}>
         <SelectValue placeholder={placeholder}>
           {(selected) =>
             options.find((o) => o.value === selected)?.label ?? placeholder

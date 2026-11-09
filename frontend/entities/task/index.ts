@@ -4,8 +4,10 @@ export {
   moveTask,
   updateTask,
 } from '@/entities/task/api/taskApi';
+export { TaskNameConflictError } from '@/entities/task/api/taskApi';
 export { applyTaskFiltersAndSort } from '@/entities/task/lib/filterSortTasks';
 export { findTaskById } from '@/entities/task/lib/findTaskById';
+export { isTaskNameTaken } from '@/entities/task/lib/isTaskNameTaken';
 export type {
   TaskFilterOption,
   TaskSortOption,

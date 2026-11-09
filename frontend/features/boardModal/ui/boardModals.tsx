@@ -1,6 +1,13 @@
 'use client';
 
-import { Dialog } from '@dashboard/ui';
+import {
+  Drawer,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from '@dashboard/ui';
 import React from 'react';
 
 import { useBoardModalStore } from '@/features/boardModal';
@@ -18,14 +25,22 @@ export const BoardModals = () => {
   const { title, Component } = config;
 
   return (
-    <Dialog.Root open={isOpen} onOpenChange={(open) => !open && closeModal()}>
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/40" />
-        <Dialog.Content className="bg-background text-card-foreground dark:muted-foreground fixed top-1/2 left-1/2 z-10 w-[min(100%-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-md p-6 shadow-lg">
-          <Dialog.Title className="mb-4">{title}</Dialog.Title>
+    <Drawer
+      open={isOpen}
+      swipeDirection="right"
+      onOpenChange={(open) => !open && closeModal()}>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>{title}</DrawerTitle>
+          <DrawerDescription>
+            Enter a name, due date, and priority.
+          </DrawerDescription>
+          <DrawerCloseButton />
+        </DrawerHeader>
+        <div className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
           <Component />
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+        </div>
+      </DrawerContent>
+    </Drawer>
   );
 };

@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@dashboard/ui';
 import { TypographyP } from '@dashboard/ui';
+import { ScheduleMeta } from '@dashboard/ui';
 import { iconSize } from '@dashboard/ui';
 import { DotsMenuIcon } from '@dashboard/ui';
 import { cn } from '@lib/cn';
@@ -33,8 +34,9 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
   };
 
   return (
-    <div className="flex items-center gap-3 py-1" data-task-id={task.id}>
+    <div className="flex items-start gap-3 py-1" data-task-id={task.id}>
       <Checkbox
+        className="mt-0.5"
         checked={task.completed}
         onCheckedChange={() => toggleTask(task.id)}
       />
@@ -48,6 +50,12 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
             '!text-sm !leading-[145%]',
             task.completed && 'text-muted-foreground line-through'
           )}
+        />
+        <ScheduleMeta
+          startDate={task.startDate}
+          endDate={task.endDate}
+          priority={task.priority}
+          compact
         />
       </button>
       <DropdownMenu open={openDropdown} onOpenChange={setOpenDropdown}>

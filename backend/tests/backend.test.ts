@@ -9,10 +9,54 @@ import { createBoardRouter } from '../modules/board/board.routes.ts';
 import { BoardService } from '../modules/board/board.service.ts';
 import type { BoardSnapshot } from '../modules/board/board.types.ts';
 import { ChatService } from '../modules/chat/chat.service.ts';
+import { createFolderSchema } from '../modules/folder/folder.schemas.ts';
 import { FolderService } from '../modules/folder/folder.service.ts';
+import { createTaskSchema } from '../modules/task/task.schemas.ts';
 import { TaskService } from '../modules/task/task.service.ts';
 
 const emptyBoard: BoardSnapshot = { columns: [], folders: [], tasks: [] };
+
+test('Task and folder schemas validate schedule ranges and priorities', () => {
+  const schedule = {
+    startDate: '2026-11-05',
+    endDate: '2026-11-12',
+    priority: 'critical',
+  };
+
+  assert.equal(
+    createFolderSchema.safeParse({
+      columnId: 'upcoming',
+      title: 'Release',
+      order: 1,
+      ...schedule,
+    }).success,
+    true
+  );
+  assert.equal(
+    createTaskSchema.safeParse({
+      taskFolderId: 'folder-1',
+      text: 'Prepare release',
+      tags: [],
+      completed: false,
+      order: 1,
+      ...schedule,
+    }).success,
+    true
+  );
+  assert.equal(
+    createTaskSchema.safeParse({
+      taskFolderId: 'folder-1',
+      text: 'Prepare release',
+      tags: [],
+      completed: false,
+      order: 1,
+      startDate: '2026-11-12',
+      endDate: '2026-11-05',
+      priority: 'high',
+    }).success,
+    false
+  );
+});
 
 test('BoardService bootstraps a missing board exactly once', async () => {
   let snapshot: BoardSnapshot | null = null;
@@ -48,6 +92,7 @@ test('FolderService hides missing and foreign resources behind NOT_FOUND', async
 
 test('TaskService hides missing and foreign resources behind NOT_FOUND', async () => {
   const service = new TaskService({
+    hasDuplicateName: async () => false,
     create: async () => null,
     update: async () => null,
     move: async () => null,
@@ -59,6 +104,39 @@ test('TaskService hides missing and foreign resources behind NOT_FOUND', async (
     (error: unknown) =>
       error instanceof Error && 'code' in error && error.code === 'NOT_FOUND'
   );
+});
+
+test('TaskService rejects duplicate task names without creating a task', async () => {
+  let createCalls = 0;
+  const service = new TaskService({
+    hasDuplicateName: async () => true,
+    create: async () => {
+      createCalls += 1;
+      return null;
+    },
+    update: async () => null,
+    move: async () => null,
+    delete: async () => false,
+  });
+
+  await assert.rejects(
+    () =>
+      service.createTask('user-1', {
+        taskFolderId: 'folder-1',
+        text: 'Duplicate',
+        tags: [],
+        completed: false,
+        order: 1,
+        startDate: null,
+        endDate: null,
+        priority: 'none',
+      }),
+    (error: unknown) =>
+      error instanceof Error &&
+      'code' in error &&
+      error.code === 'TASK_NAME_CONFLICT'
+  );
+  assert.equal(createCalls, 0);
 });
 
 test('ChatService trims and validates message text before persistence', async () => {

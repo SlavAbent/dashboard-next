@@ -39,7 +39,17 @@ type BoardStore = {
   addTask: (task: CreateTask) => Promise<void>;
   editTask: (
     id: EntityId,
-    data: Partial<Pick<Task, 'text' | 'taskFolderId' | 'completed'>>
+    data: Partial<
+      Pick<
+        Task,
+        | 'text'
+        | 'taskFolderId'
+        | 'completed'
+        | 'startDate'
+        | 'endDate'
+        | 'priority'
+      >
+    >
   ) => Promise<void>;
   toggleTask: (id: EntityId) => Promise<void>;
   removeTask: (id: EntityId) => Promise<void>;
@@ -132,7 +142,21 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
   },
 
   updateFolder: async (id, data) => {
-    const updatedFolder = await updateFolderDetails(id, data);
+    const currentFolder = get().taskFolders.find((folder) =>
+      sameId(folder.id, id)
+    );
+    const { columnId, ...details } = data;
+    let updatedFolder = currentFolder;
+
+    if (Object.values(details).some((value) => value !== undefined)) {
+      updatedFolder = await updateFolderDetails(id, details);
+    }
+
+    if (columnId && currentFolder?.columnId !== columnId) {
+      updatedFolder = await updateFolders(id, { columnId });
+    }
+
+    if (!updatedFolder) return;
 
     set((state) => ({
       taskFolders: state.taskFolders.map((folder) =>
