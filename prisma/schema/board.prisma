@@ -24,10 +24,13 @@ model BoardColumn {
 }
 
 model TaskFolder {
-  id       String @id @default(cuid())
-  columnId String
-  title    String
-  order    Float
+  id        String       @id @default(cuid())
+  columnId  String
+  title     String
+  order     Float
+  startDate DateTime?    @db.Date
+  endDate   DateTime?    @db.Date
+  priority  TaskPriority @default(NONE)
 
   column BoardColumn @relation(fields: [columnId], references: [id], onDelete: Cascade)
   tasks  Task[]
@@ -36,16 +39,27 @@ model TaskFolder {
 }
 
 model Task {
-  id           String   @id @default(cuid())
+  id           String       @id @default(cuid())
   taskFolderId String
   text         String
   tags         String[]
-  completed    Boolean  @default(false)
+  completed    Boolean      @default(false)
   order        Float
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  startDate    DateTime?    @db.Date
+  endDate      DateTime?    @db.Date
+  priority     TaskPriority @default(NONE)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   taskFolder TaskFolder @relation(fields: [taskFolderId], references: [id], onDelete: Cascade)
 
   @@index([taskFolderId, order])
+}
+
+enum TaskPriority {
+  NONE
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
 }

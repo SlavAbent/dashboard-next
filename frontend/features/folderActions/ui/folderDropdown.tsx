@@ -28,12 +28,10 @@ const FolderDropdown = ({ folderId, columnId }: FolderDropdownProps) => {
 
   return (
     <DropdownMenu open={openDropdown} onOpenChange={setOpenDropdown}>
-      <DropdownMenuTrigger>
-        <div
-          role="button"
-          className="interactive-hover flex cursor-pointer items-center gap-2 px-1 py-1">
-          <DotsMenuIcon size={iconSize(20)} />
-        </div>
+      <DropdownMenuTrigger
+        aria-label="Действия с карточкой"
+        className="interactive-hover flex cursor-pointer items-center gap-2 px-1 py-1">
+        <DotsMenuIcon size={iconSize(20)} />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-40">

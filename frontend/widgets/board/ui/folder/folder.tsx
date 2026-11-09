@@ -23,6 +23,9 @@ const Folder = ({ columnId }: { columnId: string }) => {
             folderId={folder.id}
             columnId={folder.columnId}
             title={folder.title}
+            startDate={folder.startDate}
+            endDate={folder.endDate}
+            priority={folder.priority}
           />
         );
       })}

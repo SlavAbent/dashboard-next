@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import 'react-day-picker/style.css';
 
 @import './theme.css';
 @import './semantic.css';
@@ -118,6 +119,59 @@
   .button {
     @apply inline-flex cursor-pointer items-center gap-2;
   }
+}
+
+.dashboard-calendar {
+  --rdp-accent-color: var(--primary);
+  --rdp-accent-background-color: var(--muted);
+  --rdp-day-height: 36px;
+  --rdp-day-width: 36px;
+  --rdp-day_button-height: 30px;
+  --rdp-day_button-width: 30px;
+  --rdp-day_button-border-radius: var(--radius-sm);
+  --rdp-selected-border: 1px solid var(--primary);
+  --rdp-today-color: var(--foreground);
+  --rdp-range_middle-background-color: color-mix(
+    in oklch,
+    var(--primary) 14%,
+    var(--background)
+  );
+  --rdp-range_middle-color: var(--foreground);
+  --rdp-range_start-color: var(--primary-foreground);
+  --rdp-range_end-color: var(--primary-foreground);
+}
+
+.dashboard-calendar .rdp-range_middle .rdp-day_button {
+  border-radius: 0;
+}
+
+.dashboard-calendar .rdp-day_button,
+.dashboard-calendar .rdp-selected .rdp-day_button {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.dashboard-calendar .rdp-selected {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.dashboard-calendar .rdp-day:not(.rdp-selected) .rdp-day_button:hover,
+.dashboard-calendar .rdp-button_previous:hover,
+.dashboard-calendar .rdp-button_next:hover {
+  background-color: var(--muted);
+}
+
+.dashboard-calendar .rdp-day_button:focus-visible,
+.dashboard-calendar .rdp-button_previous:focus-visible,
+.dashboard-calendar .rdp-button_next:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.dashboard-calendar .rdp-button_previous,
+.dashboard-calendar .rdp-button_next {
+  border-radius: var(--radius-sm);
 }
 
 @keyframes blink {
