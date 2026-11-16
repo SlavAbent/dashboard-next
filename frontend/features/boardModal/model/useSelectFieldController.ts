@@ -7,6 +7,7 @@ import { useBoardStore } from '@/entities/board';
 import { useSelectFieldStore } from '@/features/boardModal/model/selectField.store';
 import { useCreateFolder } from '@/features/boardModal/model/useCreateFolder';
 import { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
+import { notifications } from '@/shared/lib/notifications';
 
 type UseSelectFieldControllerOptions = {
   defaultNewFolderColumnId?: string;
@@ -122,13 +123,15 @@ export const useSelectFieldController = ({
     setFolderError(null);
 
     try {
-      const createdFolder = await createFolderMutation({
-        title,
-        columnId: newFolderColumnId,
-        startDate: null,
-        endDate: null,
-        priority: 'none',
-      });
+      const createdFolder = await notifications.folder.run('create', () =>
+        createFolderMutation({
+          title,
+          columnId: newFolderColumnId,
+          startDate: null,
+          endDate: null,
+          priority: 'none',
+        })
+      );
 
       if (operationIdRef.current !== operationId) return;
 

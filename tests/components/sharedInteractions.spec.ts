@@ -61,4 +61,16 @@ test.describe('shared component interactions', () => {
     await item.click();
     await expect(page.getByText('Selected: Profile')).toBeVisible();
   });
+
+  test('closes Notification through its accessible button', async ({
+    page,
+  }) => {
+    await page.goto(
+      '/iframe.html?id=shared-notification--close-interaction&viewMode=story'
+    );
+
+    await expect(page.getByText('Folder moved')).toBeVisible();
+    await page.getByRole('button', { name: 'Close notification' }).click();
+    await expect(page.getByText('Notification closed')).toBeVisible();
+  });
 });

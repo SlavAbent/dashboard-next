@@ -109,7 +109,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
       set((state) => ({
         tasks: state.tasks.map((item) => (sameId(item.id, id) ? task : item)),
       }));
-      console.error(error);
+      throw error;
     }
   },
 

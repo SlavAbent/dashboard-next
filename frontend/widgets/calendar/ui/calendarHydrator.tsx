@@ -8,6 +8,7 @@ import type { Column } from '@/entities/column';
 import type { TaskFolder } from '@/entities/folder';
 import type { Task } from '@/entities/task';
 import { BoardModals, useBoardModalStore } from '@/features/boardModal';
+import { notifications } from '@/shared/lib/notifications';
 import {
   filterCalendarTasks,
   moveTaskScheduleToDate,
@@ -77,7 +78,45 @@ export const CalendarHydrator = ({
   const moveTaskToDate = async (taskId: string, date: string) => {
     const task = storeTasks.find((item) => item.id === taskId);
     if (!task) return;
-    await editTask(task.id, moveTaskScheduleToDate(task, date));
+
+    try {
+      await notifications.task.run('move', () =>
+        editTask(task.id, moveTaskScheduleToDate(task, date))
+      );
+    } catch {
+      // The error notification is handled by the notification factory.
+    }
+  };
+
+  const moveTaskToFolder = async (taskId: string, folderId: string) => {
+    try {
+      await notifications.task.run('move', () =>
+        editTask(taskId, { taskFolderId: folderId })
+      );
+    } catch {
+      // The error notification is handled by the notification factory.
+    }
+  };
+
+  const toggleCalendarTask = async (taskId: string) => {
+    const task = storeTasks.find((item) => item.id === taskId);
+    if (!task) return;
+
+    try {
+      await notifications.task.run(task.completed ? 'reopen' : 'complete', () =>
+        toggleTask(taskId)
+      );
+    } catch {
+      // The store has already restored the previous task state.
+    }
+  };
+
+  const deleteCalendarTask = async (taskId: string) => {
+    try {
+      await notifications.task.run('delete', () => removeTask(taskId));
+    } catch {
+      // The error notification is handled by the notification factory.
+    }
   };
 
   const quickCreateTask = async (date: string, text: string) => {
@@ -94,16 +133,22 @@ export const CalendarHydrator = ({
           .map((task) => task.order)
       ) + 1;
 
-    await addTask({
-      text,
-      tags: [],
-      taskFolderId: folder.id,
-      completed: false,
-      order: nextOrder,
-      startDate: date,
-      endDate: date,
-      priority: 'none',
-    });
+    try {
+      await notifications.task.run('create', () =>
+        addTask({
+          text,
+          tags: [],
+          taskFolderId: folder.id,
+          completed: false,
+          order: nextOrder,
+          startDate: date,
+          endDate: date,
+          priority: 'none',
+        })
+      );
+    } catch {
+      // The error notification is handled by the notification factory.
+    }
   };
 
   return (
@@ -125,10 +170,10 @@ export const CalendarHydrator = ({
               void moveTaskToDate(taskId, date)
             }
             onMoveTaskToFolder={(taskId, folderId) =>
-              void editTask(taskId, { taskFolderId: folderId })
+              void moveTaskToFolder(taskId, folderId)
             }
-            onToggleTask={(taskId) => void toggleTask(taskId)}
-            onDeleteTask={(taskId) => void removeTask(taskId)}
+            onToggleTask={(taskId) => void toggleCalendarTask(taskId)}
+            onDeleteTask={(taskId) => void deleteCalendarTask(taskId)}
             onQuickCreateTask={(date, text) => void quickCreateTask(date, text)}
           />
         </div>

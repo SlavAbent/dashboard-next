@@ -11,6 +11,7 @@ import {
   folderSchema,
   FolderValues,
 } from '@/features/boardModal/schema/folderSchema';
+import { notifications } from '@/shared/lib/notifications';
 
 export const useFolderForm = () => {
   const { taskFolders } = useBoardStore();
@@ -51,12 +52,14 @@ export const useFolderForm = () => {
 
   const submitFolder = folderForm.handleSubmit(async (data) => {
     if (isEditFolderMode && editingFolderId) {
-      await editFolder({
-        folderId: editingFolderId,
-        ...data,
-      });
+      await notifications.folder.run('update', () =>
+        editFolder({
+          folderId: editingFolderId,
+          ...data,
+        })
+      );
     } else {
-      await createFolder(data);
+      await notifications.folder.run('create', () => createFolder(data));
     }
 
     closeModal();
