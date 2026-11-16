@@ -57,7 +57,7 @@ type BoardStore = {
   moveFolder: (id: EntityId, currentColumn: string) => void;
   updateFolder: (id: EntityId, data: UpdateFolderPayload) => void;
   reorderFolder: (id: EntityId, data: UpdateFolderPayload) => Promise<void>;
-  addFolder: (folder: CreateFolder) => Promise<void>;
+  addFolder: (folder: CreateFolder) => Promise<TaskFolder>;
   removeFolder: (id: EntityId) => Promise<void>;
   toggleColumn: (columnId: string) => void;
 };
@@ -226,6 +226,8 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     set((state) => ({
       taskFolders: [...state.taskFolders, createdFolder],
     }));
+
+    return createdFolder;
   },
 
   removeFolder: async (id) => {

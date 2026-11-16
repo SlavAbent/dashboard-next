@@ -19,7 +19,8 @@ import {
 
 export const useTaskForm = () => {
   const { tasks, taskFolders } = useBoardStore();
-  const { mode, editingTaskId, editingFolderId } = useBoardModalStore();
+  const { mode, editingTaskId, editingFolderId, initialTaskDate } =
+    useBoardModalStore();
 
   const createTask = useCreateTask();
   const updateTask = useEditTask();
@@ -29,11 +30,21 @@ export const useTaskForm = () => {
   const editingTask = findTaskById(tasks, editingTaskId);
 
   const firstFolderId = toIdString(taskFolders[0]?.id ?? '');
+  const selectedFolderId = toIdString(editingFolderId ?? firstFolderId);
+  const selectedFolder = taskFolders.find(
+    (folder) => toIdString(folder.id) === selectedFolderId
+  );
 
   const defaultValues = useMemo<TaskFormValues>(() => {
     if (isEditTaskMode && editingTask) {
       return {
         taskValue: editingTask.text,
+        columnId: toIdString(
+          taskFolders.find(
+            (folder) =>
+              toIdString(folder.id) === toIdString(editingTask.taskFolderId)
+          )?.columnId ?? ''
+        ),
         folderId: toIdString(editingTask.taskFolderId),
         completed: editingTask.completed,
         startDate: editingTask.startDate,
@@ -44,13 +55,21 @@ export const useTaskForm = () => {
 
     return {
       taskValue: '',
-      folderId: toIdString(editingFolderId ?? firstFolderId),
+      columnId: toIdString(selectedFolder?.columnId ?? ''),
+      folderId: selectedFolderId,
       completed: false,
-      startDate: null,
-      endDate: null,
+      startDate: initialTaskDate,
+      endDate: initialTaskDate,
       priority: 'none',
     };
-  }, [isEditTaskMode, editingTask, editingFolderId, firstFolderId]);
+  }, [
+    isEditTaskMode,
+    editingTask,
+    initialTaskDate,
+    selectedFolder?.columnId,
+    selectedFolderId,
+    taskFolders,
+  ]);
 
   const taskForm = useForm<TaskFormValues>({
     resolver: zodResolver(taskSchema),

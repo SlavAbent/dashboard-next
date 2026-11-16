@@ -1,0 +1,5 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e8]:
+    - button [ref=e10] [cursor=pointer]
+    - heading "Login to dashboard-next" [level=3] [ref=e18]
+  - alert [ref=e19]

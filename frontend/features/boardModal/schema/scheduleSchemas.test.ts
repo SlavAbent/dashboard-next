@@ -12,6 +12,7 @@ describe('board modal schedule schemas', () => {
     expect(
       taskSchema.safeParse({
         taskValue: 'Prepare release',
+        columnId: 'upcoming',
         folderId: 'folder-1',
         completed: false,
         ...schedule,
@@ -34,6 +35,7 @@ describe('board modal schedule schemas', () => {
   it('rejects an incomplete or reversed range', () => {
     const base = {
       taskValue: 'Prepare release',
+      columnId: 'upcoming',
       folderId: 'folder-1',
       completed: false,
       priority: 'high' as const,
