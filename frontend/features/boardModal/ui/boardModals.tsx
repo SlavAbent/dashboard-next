@@ -12,9 +12,16 @@ import React from 'react';
 
 import { useBoardModalStore } from '@/features/boardModal';
 import { MODAL_CONFIG } from '@/features/boardModal/config/modalConfig';
+import { useSelectFieldStore } from '@/features/boardModal/model/selectField.store';
+import { TaskForm } from '@/features/boardModal/ui/taskForm';
 
-export const BoardModals = () => {
+type BoardModalsProps = {
+  defaultNewFolderColumnId?: string;
+};
+
+export const BoardModals = ({ defaultNewFolderColumnId }: BoardModalsProps) => {
   const { isOpen, mode, closeModal } = useBoardModalStore();
+  const resetSelectField = useSelectFieldStore((state) => state.reset);
 
   if (!isOpen || !mode) return null;
 
@@ -28,7 +35,11 @@ export const BoardModals = () => {
     <Drawer
       open={isOpen}
       swipeDirection="right"
-      onOpenChange={(open) => !open && closeModal()}>
+      onOpenChange={(open) => {
+        if (open) return;
+        resetSelectField();
+        closeModal();
+      }}>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>{title}</DrawerTitle>
@@ -38,7 +49,11 @@ export const BoardModals = () => {
           <DrawerCloseButton />
         </DrawerHeader>
         <div className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
-          <Component />
+          {mode === 'create-task' || mode === 'edit-task' ? (
+            <TaskForm defaultNewFolderColumnId={defaultNewFolderColumnId} />
+          ) : (
+            <Component />
+          )}
         </div>
       </DrawerContent>
     </Drawer>

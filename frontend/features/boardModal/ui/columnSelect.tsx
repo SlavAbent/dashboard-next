@@ -1,5 +1,6 @@
 'use client';
 
+import { NativeSelect } from '@dashboard/ui';
 import { ErrorField } from '@dashboard/ui/forms';
 import { toIdString } from '@lib/sameId';
 import React, { useMemo } from 'react';
@@ -33,27 +34,21 @@ export const ColumnSelect = () => {
         name="columnId"
         control={control}
         render={({ field }) => (
-          <div className="relative">
-            <select
-              {...field}
-              id="board-column"
-              value={field.value ? toIdString(field.value) : ''}
-              className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/50 h-9 w-full cursor-pointer appearance-none rounded-sm border px-3 pr-8 text-sm transition-colors outline-none focus-visible:ring-1">
-              <option value="" disabled>
-                Select column
+          <NativeSelect
+            {...field}
+            id="board-column"
+            value={field.value ? toIdString(field.value) : ''}
+            containerClassName="w-full"
+            className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/50 h-9 w-full cursor-pointer rounded-sm border px-3 pr-8 text-sm transition-colors outline-none focus-visible:ring-1">
+            <option value="" disabled>
+              Select column
+            </option>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
               </option>
-              {options.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <span
-              aria-hidden="true"
-              className="text-muted-foreground pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-xs">
-              ▼
-            </span>
-          </div>
+            ))}
+          </NativeSelect>
         )}
       />
 

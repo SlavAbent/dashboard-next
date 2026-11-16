@@ -8,6 +8,7 @@ const initialState = {
   isOpen: false,
   mode: null as ModalStore['mode'],
   selectedColumnId: null,
+  initialTaskDate: null,
   editingFolderId: null,
   editingTaskId: null,
 };
@@ -20,6 +21,7 @@ export const useBoardModalStore = create<ModalStore>((set) => ({
       isOpen: true,
       mode: 'create-folder',
       selectedColumnId: columnId,
+      initialTaskDate: null,
       editingFolderId: null,
       editingTaskId: null,
     }),
@@ -29,17 +31,19 @@ export const useBoardModalStore = create<ModalStore>((set) => ({
       isOpen: true,
       mode: 'edit-folder',
       selectedColumnId: columnId,
+      initialTaskDate: null,
       editingFolderId: folderId,
       editingTaskId: null,
     }),
 
-  openCreateTask: (folderId) =>
+  openCreateTask: (folderId, initialDate) =>
     set({
       isOpen: true,
       mode: 'create-task',
-      editingFolderId: folderId,
+      editingFolderId: folderId ?? null,
       editingTaskId: null,
       selectedColumnId: null,
+      initialTaskDate: initialDate ?? null,
     }),
 
   openEditTask: (taskId) =>
@@ -49,6 +53,7 @@ export const useBoardModalStore = create<ModalStore>((set) => ({
       editingTaskId: taskId,
       editingFolderId: null,
       selectedColumnId: null,
+      initialTaskDate: null,
     }),
 
   closeModal: () => set(initialState),

@@ -9,6 +9,7 @@ import { useAsideStore } from '@/entities/aside/model/aside.store';
 import type { BoardViewMode } from '@/entities/board';
 import { useViewStore } from '@/entities/board/model/list.store';
 import type { NavigationMenuItem } from '@/entities/navigation';
+import { CalendarNavigation } from '@/features/calendarNavigation';
 import { TaskFilters } from '@/features/taskFilters';
 import { UserDropdown } from '@/features/userDropdown/ui/userDropdown';
 import { formatedTitle } from '@/shared/config/formattedTitle';
@@ -39,6 +40,7 @@ const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
   const title = currentPage?.name?.trim() || formatedTitle(pageKey ?? '');
   const showProfileDropdown =
     pageKey === RouteKey.HOME || pageKey === RouteKey.DASHBOARD;
+  const showCalendarNavigation = pageKey === RouteKey.CALENDAR;
 
   const handleFilterClick = (id: string, name: BoardViewMode) => {
     setActiveFilterId(id);
@@ -65,8 +67,10 @@ const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
       <div className="flex min-w-0 grow items-center gap-2 sm:gap-4 md:gap-6">
         <TypographyH3
           text={title}
-          className={cn('flex', showProfileDropdown && 'grow')}
+          className={cn('flex shrink-0', showProfileDropdown && 'grow')}
         />
+
+        {showCalendarNavigation && <CalendarNavigation />}
 
         <div className="flex items-center">
           {showProfileDropdown && <UserDropdown />}

@@ -5,6 +5,7 @@ import { priorities } from '@/shared/model/schedule';
 export const taskSchema = z
   .object({
     taskValue: z.string().min(1, 'Task name is required'),
+    columnId: z.string().min(1, 'Section is required'),
     folderId: z.string().min(1, 'Folder is required'),
     completed: z.boolean(),
     startDate: z.string().nullable(),

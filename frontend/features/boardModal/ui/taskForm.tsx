@@ -8,7 +8,11 @@ import { DateRangeField } from '@/features/boardModal/ui/dateRangeField';
 import { PriorityField } from '@/features/boardModal/ui/priorityField';
 import { SelectField } from '@/features/boardModal/ui/selectField';
 
-export const TaskForm = () => {
+type TaskFormProps = {
+  defaultNewFolderColumnId?: string;
+};
+
+export const TaskForm = ({ defaultNewFolderColumnId }: TaskFormProps) => {
   const { submitTask, taskForm, isEditTaskMode } = useTaskForm();
   const {
     formState: { isSubmitting },
@@ -22,7 +26,7 @@ export const TaskForm = () => {
           label="Task name"
           placeholder="Enter task name"
         />
-        <SelectField />
+        <SelectField defaultNewFolderColumnId={defaultNewFolderColumnId} />
         <DateRangeField />
         <PriorityField />
 

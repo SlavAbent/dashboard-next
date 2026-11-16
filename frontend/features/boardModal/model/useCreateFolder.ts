@@ -9,7 +9,9 @@ type CreateFolderType = {
 };
 
 export const useCreateFolder = () => {
-  const { addFolder, taskFolders } = useBoardStore();
+  const addFolder = useBoardStore((state) => state.addFolder);
+  const taskFolders = useBoardStore((state) => state.taskFolders);
+
   return async ({
     title,
     columnId,
@@ -25,7 +27,7 @@ export const useCreateFolder = () => {
           .map((folder) => folder.order)
       ) + 1;
 
-    await addFolder({
+    return addFolder({
       title,
       columnId,
       order,
