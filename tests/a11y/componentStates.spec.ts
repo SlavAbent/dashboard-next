@@ -19,6 +19,14 @@ const stories = [
     id: 'shared-avatar--sizes',
     readySelector: '#storybook-root [data-slot="avatar"]',
   },
+  {
+    id: 'shared-notification--success',
+    readySelector: '#storybook-root [role="status"]',
+  },
+  {
+    id: 'shared-notification--error',
+    readySelector: '#storybook-root [role="alert"]',
+  },
 ];
 
 test.describe('Storybook component accessibility', () => {

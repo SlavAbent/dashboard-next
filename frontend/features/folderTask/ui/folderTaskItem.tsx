@@ -17,6 +17,7 @@ import React, { useState } from 'react';
 
 import { useBoardStore } from '@/entities/board/model/useData.store';
 import type { Task } from '@/entities/task';
+import { notifications } from '@/shared/lib/notifications';
 
 type FolderTaskItemProps = {
   task: Task;
@@ -33,12 +34,32 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
     setOpenDropdown(false);
   };
 
+  const handleToggleTask = async () => {
+    try {
+      await notifications.task.run(task.completed ? 'reopen' : 'complete', () =>
+        toggleTask(task.id)
+      );
+    } catch {
+      // The store has already restored the previous task state.
+    }
+  };
+
+  const handleRemoveTask = async () => {
+    setOpenDropdown(false);
+
+    try {
+      await notifications.task.run('delete', () => removeTask(task.id));
+    } catch {
+      // The error notification is handled by the notification factory.
+    }
+  };
+
   return (
     <div className="flex items-start gap-3 py-1" data-task-id={task.id}>
       <Checkbox
         className="mt-0.5"
         checked={task.completed}
-        onCheckedChange={() => toggleTask(task.id)}
+        onCheckedChange={() => void handleToggleTask()}
       />
       <button
         type="button"
@@ -74,11 +95,7 @@ const FolderTaskItem = ({ task, onEdit }: FolderTaskItemProps) => {
                 className="text-muted-foreground !text-sm !leading-[145%]"
               />
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => {
-                removeTask(task.id);
-                setOpenDropdown(false);
-              }}>
+            <DropdownMenuItem onClick={() => void handleRemoveTask()}>
               <TypographyP
                 text="Delete"
                 className="text-muted-foreground !text-sm !leading-[145%]"

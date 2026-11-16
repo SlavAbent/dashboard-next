@@ -15,6 +15,7 @@ import React, { useState } from 'react';
 
 import { useBoardStore } from '@/entities/board/model/useData.store';
 import { useBoardModalStore } from '@/features/boardModal';
+import { notifications } from '@/shared/lib/notifications';
 
 type FolderDropdownProps = {
   folderId: EntityId;
@@ -25,6 +26,16 @@ const FolderDropdown = ({ folderId, columnId }: FolderDropdownProps) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const removeFolder = useBoardStore((state) => state.removeFolder);
   const openEditFolder = useBoardModalStore((state) => state.openEditFolder);
+
+  const handleRemoveFolder = async () => {
+    setOpenDropdown(false);
+
+    try {
+      await notifications.folder.run('delete', () => removeFolder(folderId));
+    } catch {
+      // The error notification is handled by the notification factory.
+    }
+  };
 
   return (
     <DropdownMenu open={openDropdown} onOpenChange={setOpenDropdown}>
@@ -46,11 +57,7 @@ const FolderDropdown = ({ folderId, columnId }: FolderDropdownProps) => {
               className="text-muted-foreground !leading-[145%]"
             />
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              removeFolder(folderId);
-              setOpenDropdown(false);
-            }}>
+          <DropdownMenuItem onClick={() => void handleRemoveFolder()}>
             <TypographyP
               text="Delete"
               className="text-muted-foreground !leading-[145%]"

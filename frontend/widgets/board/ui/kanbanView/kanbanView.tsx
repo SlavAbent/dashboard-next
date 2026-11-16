@@ -15,6 +15,7 @@ import {
 } from '@/entities/board';
 import { BoardModals } from '@/features/boardModal';
 import KanbanColumn from '@/features/kanbanColumn/ui/kanbanColumn';
+import { notifications } from '@/shared/lib/notifications';
 import BoardKanban from '@/widgets/board/ui/boardKanban/boardKanban';
 
 export const getFolderOrder = (
@@ -95,12 +96,14 @@ const KanbanView = () => {
     if (folder.columnId === newColumnId && folder.order === nextOrder) return;
 
     try {
-      await reorderFolder(folder.id, {
-        columnId: newColumnId,
-        order: nextOrder,
-      });
-    } catch (error) {
-      console.error(error);
+      await notifications.folder.run('move', () =>
+        reorderFolder(folder.id, {
+          columnId: newColumnId,
+          order: nextOrder,
+        })
+      );
+    } catch {
+      // The store rolls back the folder and the factory reports the error.
     }
   };
 

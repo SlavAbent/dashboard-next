@@ -29,6 +29,11 @@ export { GoogleSignInButton } from '../components/googleSignInButton/googleSignI
 export { Input } from '../components/input/input';
 export { MenuDropdown } from '../components/menuDropdown';
 export { NativeSelect } from '../components/nativeSelect/nativeSelect';
+export type {
+  NotificationProps,
+  NotificationVariant,
+} from '../components/notification';
+export { Notification } from '../components/notification';
 export {
   Popover,
   PopoverContent,

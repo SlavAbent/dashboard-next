@@ -3,6 +3,7 @@ import { sameId } from '@lib/sameId';
 import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/boardModal';
 import { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
+import { notifications } from '@/shared/lib/notifications';
 
 export const useCreateTask = () => {
   const { addTask, tasks } = useBoardStore();
@@ -17,16 +18,18 @@ export const useCreateTask = () => {
           .map((task) => task.order)
       ) + 1;
 
-    await addTask({
-      text: data.taskValue,
-      tags: [],
-      taskFolderId: data.folderId,
-      completed: false,
-      order: nextOrder,
-      startDate: data.startDate ?? null,
-      endDate: data.endDate ?? null,
-      priority: data.priority,
-    });
+    await notifications.task.run('create', () =>
+      addTask({
+        text: data.taskValue,
+        tags: [],
+        taskFolderId: data.folderId,
+        completed: false,
+        order: nextOrder,
+        startDate: data.startDate ?? null,
+        endDate: data.endDate ?? null,
+        priority: data.priority,
+      })
+    );
 
     closeModal();
   };
