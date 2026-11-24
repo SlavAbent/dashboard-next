@@ -1,12 +1,7 @@
 export type NotificationEntity = 'task' | 'folder';
 
 export type TaskNotificationAction =
-  | 'create'
-  | 'update'
-  | 'delete'
-  | 'move'
-  | 'complete'
-  | 'reopen';
+  'create' | 'update' | 'delete' | 'move' | 'complete' | 'reopen';
 
 export type FolderNotificationAction = 'create' | 'update' | 'delete' | 'move';
 

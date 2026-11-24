@@ -5,7 +5,7 @@ import { PomodoroRuntime, PomodoroTimer } from '@dashboard/pomodoro';
 import { Button } from '@dashboard/ui';
 import { Weather } from '@dashboard/weather';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
 import { Search } from '@/features/search';
@@ -16,6 +16,9 @@ type PageKey = (typeof routeToKeyMap)[keyof typeof routeToKeyMap];
 const hiddenPages = new Set<PageKey>([RouteKey.DASHBOARD, RouteKey.HOME]);
 
 export const Header = () => {
+  const [activeWidget, setActiveWidget] = useState<
+    'pomodoro' | 'weather' | null
+  >(null);
   const pathname = usePathname();
   const toggleNavigation = useAsideStore((state) => state.toggle);
   const pageKey = routeToKeyMap[pathname];
@@ -44,9 +47,18 @@ export const Header = () => {
           </div>
           <div className="flex shrink-0 items-center gap-1 sm:gap-2">
             <div className="hidden lg:block">
-              <PomodoroTimer />
+              <PomodoroTimer
+                open={activeWidget === 'pomodoro'}
+                onOpenChange={(open) =>
+                  setActiveWidget(open ? 'pomodoro' : null)
+                }
+              />
             </div>
-            <Weather className="interactive-hover flex min-w-fit cursor-pointer rounded-xs p-1" />
+            <Weather
+              open={activeWidget === 'weather'}
+              onOpenChange={(open) => setActiveWidget(open ? 'weather' : null)}
+              className="interactive-hover flex min-w-fit cursor-pointer rounded-xs p-1"
+            />
             <Clock className="mr-1 flex" />
             <UserDropdown />
           </div>

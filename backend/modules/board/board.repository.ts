@@ -72,11 +72,7 @@ export class BoardRepository {
             startDate: folder.startDate,
             endDate: folder.endDate,
             priority: folder.priority.toUpperCase() as
-              | 'NONE'
-              | 'LOW'
-              | 'MEDIUM'
-              | 'HIGH'
-              | 'CRITICAL',
+              'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
           },
         });
         folders.set(folder.templateId, created.id);
@@ -96,11 +92,7 @@ export class BoardRepository {
             startDate: task.startDate,
             endDate: task.endDate,
             priority: task.priority.toUpperCase() as
-              | 'NONE'
-              | 'LOW'
-              | 'MEDIUM'
-              | 'HIGH'
-              | 'CRITICAL',
+              'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
           },
         });
       }

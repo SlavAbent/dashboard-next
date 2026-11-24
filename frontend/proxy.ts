@@ -1,6 +1,6 @@
 import { authMiddleware } from '@/shared/middlewares/authMiddleware';
 
-export default authMiddleware;
+export const proxy = authMiddleware;
 
 export const config = {
   matcher: [

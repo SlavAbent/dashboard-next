@@ -39,11 +39,7 @@ export class TaskRepository {
           startDate: toDatabaseDate(input.startDate),
           endDate: toDatabaseDate(input.endDate),
           priority: input.priority.toUpperCase() as
-            | 'NONE'
-            | 'LOW'
-            | 'MEDIUM'
-            | 'HIGH'
-            | 'CRITICAL',
+            'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
         },
       })
     );
@@ -66,12 +62,7 @@ export class TaskRepository {
         startDate: toDatabaseDate(input.startDate),
         endDate: toDatabaseDate(input.endDate),
         priority: input.priority?.toUpperCase() as
-          | 'NONE'
-          | 'LOW'
-          | 'MEDIUM'
-          | 'HIGH'
-          | 'CRITICAL'
-          | undefined,
+          'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | undefined,
       },
     });
     return result.count ? this.findById(userId, id) : null;

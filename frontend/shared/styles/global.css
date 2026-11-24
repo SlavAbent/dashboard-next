@@ -2,6 +2,8 @@
 @import 'tw-animate-css';
 @import 'react-day-picker/style.css';
 
+@source '../../../packages';
+
 @import './theme.css';
 @import './semantic.css';
 

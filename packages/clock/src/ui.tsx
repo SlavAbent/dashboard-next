@@ -51,16 +51,16 @@ export const DigitalClock = ({ className }: ClockProps) => {
   return (
     <div
       className={joinClasses(
-        'text-foreground flex max-w-full items-center gap-[clamp(0.25rem,1vw,0.5rem)] font-mono text-[clamp(2.25rem,9vw,4.375rem)] leading-none font-bold tracking-tight tabular-nums',
+        'text-foreground flex max-w-full items-center gap-[clamp(0.25rem,1vw,0.5rem)] font-mono text-[length:clamp(2.25rem,9vw,4.375rem)] leading-none font-bold tracking-tight tabular-nums',
         className
       )}>
       <FlipGroup value={hours} />
       <span
         className="mx-[0.02em] flex h-[1.08em] flex-col justify-center gap-[0.18em]"
         aria-hidden="true">
-        <span className="motion-safe:animate-flip-clock-dot size-[0.1em] rounded-full bg-white opacity-20 motion-reduce:animate-none motion-reduce:opacity-100" />
+        <span className="motion-safe:animate-flip-clock-dot bg-foreground size-[0.1em] rounded-full opacity-20 motion-reduce:animate-none motion-reduce:opacity-100" />
         <span
-          className="motion-safe:animate-flip-clock-dot size-[0.1em] rounded-full bg-white opacity-20 motion-reduce:animate-none motion-reduce:opacity-100"
+          className="motion-safe:animate-flip-clock-dot bg-foreground size-[0.1em] rounded-full opacity-20 motion-reduce:animate-none motion-reduce:opacity-100"
           style={{ animationDelay: '500ms' }}
         />
       </span>

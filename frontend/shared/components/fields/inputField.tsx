@@ -1,4 +1,10 @@
-import { FieldPath, FieldValues, get, useFormContext } from 'react-hook-form';
+import {
+  FieldError,
+  FieldPath,
+  FieldValues,
+  get,
+  useFormContext,
+} from 'react-hook-form';
 
 import { ErrorField } from '@/shared/components/fields/errorField';
 import { Input } from '@/shared/components/input/input';
@@ -8,6 +14,15 @@ type InputFieldProps<T extends FieldValues> = {
   placeholder: string;
   label?: string;
 };
+
+function isFieldError(error: unknown): error is FieldError {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'type' in error &&
+    typeof error.type === 'string'
+  );
+}
 
 export function InputField<T extends FieldValues>({
   value,
@@ -35,7 +50,7 @@ export function InputField<T extends FieldValues>({
         classNameContainer="w-full"
       />
 
-      <ErrorField error={error} />
+      <ErrorField error={isFieldError(error) ? error : undefined} />
     </div>
   );
 }
