@@ -24,11 +24,7 @@ export class FolderRepository {
         startDate: toDatabaseDate(input.startDate),
         endDate: toDatabaseDate(input.endDate),
         priority: input.priority.toUpperCase() as
-          | 'NONE'
-          | 'LOW'
-          | 'MEDIUM'
-          | 'HIGH'
-          | 'CRITICAL',
+          'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
       },
     });
     return toFolderDto(folder, column.key);
@@ -46,12 +42,7 @@ export class FolderRepository {
         startDate: toDatabaseDate(input.startDate),
         endDate: toDatabaseDate(input.endDate),
         priority: input.priority?.toUpperCase() as
-          | 'NONE'
-          | 'LOW'
-          | 'MEDIUM'
-          | 'HIGH'
-          | 'CRITICAL'
-          | undefined,
+          'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | undefined,
       },
     });
     return result.count ? this.findById(userId, id) : null;

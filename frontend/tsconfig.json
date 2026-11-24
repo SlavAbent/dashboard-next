@@ -11,7 +11,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./*"],
       "@dashboard/pomodoro": ["../packages/pomodoro/src/index.ts"],
@@ -29,14 +29,15 @@
         "name": "next"
       }
     ],
-    "moduleResolution": "node"
+    "moduleResolution": "bundler"
   },
   "include": [
     "../global.d.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

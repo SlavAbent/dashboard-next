@@ -15,18 +15,18 @@ export function PomodoroPanel() {
   const options: DurationType[] = [5, 10, 25];
 
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl p-3">
-      <div className="text-foreground font-mono text-[clamp(2rem,10vw,3rem)] leading-none font-bold">
+    <div className="flex flex-col items-center justify-center gap-3 rounded-2xl px-3 py-4">
+      <div className="text-foreground font-mono text-[length:clamp(2rem,10vw,3rem)] leading-none font-bold">
         {format(remaining)}
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center gap-2">
         {options.map((minutes) => (
           <button
             key={minutes}
             type="button"
-            aria-selected={selectedMin === minutes}
+            aria-pressed={selectedMin === minutes}
             onClick={() => setMode(minutes)}
-            className="min-h-11 px-3 py-2.5 font-mono text-sm sm:px-4">
+            className="bg-pomodoro-button text-pomodoro-button-foreground hover:bg-pomodoro-button-hover hover:text-pomodoro-button-hover-foreground aria-pressed:ring-ring min-h-11 rounded-sm px-3 py-2.5 font-mono text-sm transition-colors aria-pressed:ring-2 sm:px-4">
             {String(minutes).padStart(2, '0')}:00
           </button>
         ))}
@@ -36,13 +36,13 @@ export function PomodoroPanel() {
           type="button"
           onClick={reset}
           aria-label="Reset"
-          className="flex items-center gap-2 rounded-full p-2">
+          className="bg-pomodoro-button text-pomodoro-button-foreground hover:bg-pomodoro-button-hover hover:text-pomodoro-button-hover-foreground flex items-center gap-2 rounded-sm px-3 py-2 transition-colors">
           <RotateCcw size={18} /> Reset
         </button>
         <button
           type="button"
           onClick={startPause}
-          className="flex items-center gap-2 rounded-full p-2">
+          className="bg-pomodoro-button text-pomodoro-button-foreground hover:bg-pomodoro-button-hover hover:text-pomodoro-button-hover-foreground flex items-center gap-2 rounded-sm px-3 py-2 transition-colors">
           <SkipForward size={18} />{' '}
           {running ? 'Pause' : remaining === 0 ? 'Ready' : 'Start'}
         </button>
@@ -51,16 +51,33 @@ export function PomodoroPanel() {
   );
 }
 
-export function PomodoroTimer() {
-  const [open, setOpen] = useState(false);
+type PomodoroTimerProps = {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+};
+
+export function PomodoroTimer({
+  open: controlledOpen,
+  onOpenChange,
+}: PomodoroTimerProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlledOpen ?? internalOpen;
   const remaining = usePomodoroStore((state) => state.remaining);
   const totalSeconds = usePomodoroStore((state) => state.totalSeconds);
+
+  const setOpen = (nextOpen: boolean) => {
+    if (controlledOpen === undefined) {
+      setInternalOpen(nextOpen);
+    }
+    onOpenChange?.(nextOpen);
+  };
 
   return (
     <div className="relative">
       <button
         type="button"
-        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
         className="interactive-hover rounded-xs px-1 py-2">
         {remaining === 0 ? 'Done! Rest & chill' : `${format(remaining)} ◔`}
       </button>

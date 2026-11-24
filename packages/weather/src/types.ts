@@ -7,6 +7,8 @@ export type Coords = {
 
 export type WeatherType = {
   className?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 };
 
 export const OpenWeatherForecastResponseSchema = z.object({

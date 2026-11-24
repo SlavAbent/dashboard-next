@@ -125,8 +125,20 @@ const Button = ({
   />
 );
 
-export const Weather = ({ className }: WeatherType) => {
-  const [open, setOpen] = useState(false);
+export const Weather = ({
+  className,
+  open: controlledOpen,
+  onOpenChange,
+}: WeatherType) => {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlledOpen ?? internalOpen;
+
+  const setOpen = (nextOpen: boolean) => {
+    if (controlledOpen === undefined) {
+      setInternalOpen(nextOpen);
+    }
+    onOpenChange?.(nextOpen);
+  };
 
   return (
     <div className={`relative flex items-center gap-2 ${className ?? ''}`}>
