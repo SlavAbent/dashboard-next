@@ -1,6 +1,6 @@
 'use client';
 
-import { resolveIsDark } from '@lib/theme';
+import { isTheme, resolveIsDark } from '@lib/theme';
 import React, { useEffect } from 'react';
 
 import { useThemeStore } from '@/shared/store/themeStore';
@@ -12,10 +12,12 @@ type ThemeProviderProps = {
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   useEffect(() => {
     const syncTheme = () => {
-      const theme = useThemeStore.getState().theme;
+      const storedTheme = useThemeStore.getState().theme;
+      const theme = isTheme(storedTheme) ? storedTheme : 'device';
       const isDark = resolveIsDark(theme);
 
-      document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+      document.documentElement.dataset.theme =
+        theme === 'device' ? (isDark ? 'dark' : 'light') : theme;
     };
 
     syncTheme();

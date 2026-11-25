@@ -43,7 +43,7 @@ const FolderContent = ({
     <div
       data-folder-id={folderId}
       className={cn(
-        'relative flex flex-col rounded-sm border',
+        'bg-card text-card-foreground relative flex flex-col rounded-sm border',
         priorityConfig[priority].cardBorderClassName,
         isDragging && 'opacity-60'
       )}>

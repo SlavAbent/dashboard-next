@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'ThemeSwitch — кнопка циклического переключения тем light, dark и device через Zustand store.',
+          'ThemeSwitch — меню профиля с режимом оформления и анимированным свитчером цветовых палитр.',
       },
     },
   },
@@ -20,4 +20,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    user: {
+      name: 'Анна Смирнова',
+    },
+  },
+};

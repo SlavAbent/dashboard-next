@@ -1,9 +1,10 @@
 import '../frontend/shared/styles/global.css';
 
+import type { Theme } from '@lib/theme';
 import type { Decorator, Preview } from '@storybook/nextjs-vite';
 
 const withTheme: Decorator = (Story, context) => {
-  const theme = context.globals.theme as 'light' | 'dark';
+  const theme = context.globals.theme as Theme;
 
   if (typeof document !== 'undefined') {
     document.documentElement.dataset.theme = theme;
@@ -27,6 +28,10 @@ const preview: Preview = {
         items: [
           { title: 'Light', value: 'light' },
           { title: 'Dark', value: 'dark' },
+          { title: 'System', value: 'device' },
+          { title: 'Yellow', value: 'yellow' },
+          { title: 'Green', value: 'green' },
+          { title: 'Red', value: 'red' },
         ],
       },
     },

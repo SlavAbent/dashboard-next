@@ -49,7 +49,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=JSON.parse(localStorage.getItem('theme-storage')||'{}');var theme=(t.state&&t.state.theme)||'device';if(theme!=='light'&&theme!=='dark'&&theme!=='device'){theme='device'}document.documentElement.dataset.theme=theme;document.documentElement.classList.remove('dark')}catch(e){document.documentElement.dataset.theme='device'}})();`,
+            __html: `(function(){try{var t=JSON.parse(localStorage.getItem('theme-storage')||'{}');var theme=(t.state&&t.state.theme)||'device';var themes=['light','dark','device','yellow','green','red'];if(!themes.includes(theme)){theme='device'}document.documentElement.dataset.theme=theme;document.documentElement.classList.remove('dark')}catch(e){document.documentElement.dataset.theme='device'}})();`,
           }}
         />
         <title>Dashboard - next</title>

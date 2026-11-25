@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { useThemeStore } from '@/shared/store/themeStore';
@@ -11,22 +11,46 @@ describe('ThemeSwitch', () => {
   });
 
   afterEach(() => {
-    useThemeStore.setState({ theme: 'device' });
+    act(() => useThemeStore.setState({ theme: 'device' }));
   });
 
-  it('cycles through light, dark and device themes', async () => {
+  it('opens the theme menu and applies the selected theme', async () => {
     const user = userEvent.setup();
 
-    render(<ThemeSwitch />);
-    const button = screen.getByRole('button', { name: 'Переключить тему' });
+    render(
+      <ThemeSwitch user={{ name: 'Сергей Абент' }} onLogout={jest.fn()} />
+    );
+    const button = screen.getByRole('button', {
+      name: 'Открыть меню пользователя и тем',
+    });
 
-    await user.click(button);
-    expect(useThemeStore.getState().theme).toBe('dark');
+    expect(screen.getByText('С.Абент')).toHaveClass('max-w-0', 'opacity-0');
 
-    await user.click(button);
-    expect(useThemeStore.getState().theme).toBe('device');
+    button.focus();
+    await user.keyboard('{ArrowDown}');
+    expect(await screen.findByText('Сергей Абент')).toHaveClass('truncate');
+    expect(screen.getByRole('button', { name: 'Светлая' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    );
+    expect(screen.getByRole('button', { name: 'Тёмная' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Системная' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Жёлтая' })).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Зелёная' })).toBeVisible();
 
-    await user.click(button);
-    expect(useThemeStore.getState().theme).toBe('light');
+    await user.click(screen.getByRole('button', { name: 'Красная' }));
+    expect(useThemeStore.getState().theme).toBe('red');
+  });
+
+  it('shows the user name in the trigger only when requested', () => {
+    const { rerender } = render(
+      <ThemeSwitch user={{ name: 'Сергей Абент' }} />
+    );
+
+    expect(screen.getByText('С.Абент')).toHaveClass('max-w-0');
+
+    rerender(<ThemeSwitch user={{ name: 'Сергей Абент' }} showUserName />);
+
+    expect(screen.getByText('С.Абент')).toHaveClass('max-w-28', 'opacity-100');
   });
 });
