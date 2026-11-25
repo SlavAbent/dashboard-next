@@ -9,7 +9,6 @@ import React, { useState } from 'react';
 
 import { useAsideStore } from '@/entities/aside/model/aside.store';
 import { Search } from '@/features/search';
-import { UserDropdown } from '@/features/userDropdown';
 import { RouteKey, routeToKeyMap } from '@/shared/config/routeMapping';
 
 type PageKey = (typeof routeToKeyMap)[keyof typeof routeToKeyMap];
@@ -60,7 +59,6 @@ export const Header = () => {
               className="interactive-hover flex min-w-fit cursor-pointer rounded-xs p-1"
             />
             <Clock className="mr-1 flex" />
-            <UserDropdown />
           </div>
         </div>
       )}

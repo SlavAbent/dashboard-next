@@ -43,6 +43,21 @@
   --radius-xl: calc(var(--radius) * 1.25);
 }
 
+::view-transition-group(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0s;
+  }
+}
+
 :root,
 html[data-theme='light'] {
   --radius: 0.625rem;
@@ -147,6 +162,84 @@ html[data-theme='dark'] {
   --pomodoro-button-hover-foreground: var(--primary-foreground);
 }
 
+html[data-theme='yellow'],
+html[data-theme='green'],
+html[data-theme='red'] {
+  --foreground: oklch(0.25 0.025 var(--theme-hue));
+  --logo-stroke: transparent;
+
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --primary-foreground: oklch(0.99 0.005 var(--theme-hue));
+  --secondary-foreground: var(--foreground);
+  --muted-foreground: oklch(0.48 0.04 var(--theme-hue));
+  --accent-foreground: oklch(0.36 0.08 var(--theme-hue));
+
+  --destructive: oklch(0.57 0.2 27);
+  --destructive-foreground: var(--color-white);
+  --success: var(--color-green-60);
+  --warning: var(--color-orange-60);
+  --info: var(--color-blue-60);
+  --error: var(--color-orange-60);
+
+  --pomodoro-button: var(--primary);
+  --pomodoro-button-foreground: var(--primary-foreground);
+  --pomodoro-button-hover: color-mix(
+    in oklch,
+    var(--primary) 84%,
+    var(--background)
+  );
+  --pomodoro-button-hover-foreground: var(--primary-foreground);
+}
+
+html[data-theme='yellow'] {
+  --theme-hue: 95;
+  --background: oklch(0.975 0.02 95);
+  --card: oklch(0.995 0.01 95);
+  --popover: oklch(0.995 0.012 95);
+  --primary: oklch(0.48 0.105 88);
+  --secondary: oklch(0.91 0.055 95);
+  --muted: oklch(0.93 0.038 95);
+  --accent: oklch(0.9 0.07 95);
+  --muted-background: oklch(0.94 0.04 95);
+  --sidebar: oklch(0.925 0.055 95);
+  --border: oklch(0.8 0.06 95);
+  --input: oklch(0.82 0.05 95);
+  --ring: oklch(0.56 0.11 88);
+}
+
+html[data-theme='green'] {
+  --theme-hue: 145;
+  --background: oklch(0.975 0.018 145);
+  --card: oklch(0.995 0.008 145);
+  --popover: oklch(0.995 0.01 145);
+  --primary: oklch(0.46 0.1 145);
+  --secondary: oklch(0.91 0.045 145);
+  --muted: oklch(0.935 0.03 145);
+  --accent: oklch(0.9 0.06 145);
+  --muted-background: oklch(0.945 0.032 145);
+  --sidebar: oklch(0.925 0.048 145);
+  --border: oklch(0.8 0.05 145);
+  --input: oklch(0.82 0.045 145);
+  --ring: oklch(0.54 0.11 145);
+}
+
+html[data-theme='red'] {
+  --theme-hue: 25;
+  --background: oklch(0.975 0.018 25);
+  --card: oklch(0.995 0.008 25);
+  --popover: oklch(0.995 0.01 25);
+  --primary: oklch(0.5 0.13 25);
+  --secondary: oklch(0.915 0.045 25);
+  --muted: oklch(0.94 0.028 25);
+  --accent: oklch(0.91 0.055 25);
+  --muted-background: oklch(0.95 0.03 25);
+  --sidebar: oklch(0.93 0.045 25);
+  --border: oklch(0.81 0.05 25);
+  --input: oklch(0.83 0.04 25);
+  --ring: oklch(0.56 0.13 25);
+}
+
 @media (prefers-color-scheme: dark) {
   html[data-theme='device'] {
     --background: oklch(0.26 0 0);
@@ -216,4 +309,10 @@ html[data-theme='light'] {
 
 html[data-theme='dark'] {
   color-scheme: dark;
+}
+
+html[data-theme='yellow'],
+html[data-theme='green'],
+html[data-theme='red'] {
+  color-scheme: light;
 }

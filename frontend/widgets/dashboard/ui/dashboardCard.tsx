@@ -19,7 +19,7 @@ export const DashboardCard = ({
   return (
     <Card
       className={cn(
-        'flex h-full min-w-0 flex-col gap-3 overflow-hidden rounded-2xl border',
+        'bg-card text-card-foreground flex h-full min-w-0 flex-col gap-3 overflow-hidden rounded-2xl border',
         className
       )}>
       <TypographyH3 text={title ?? ''} className="text-left" />

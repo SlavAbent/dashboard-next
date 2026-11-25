@@ -11,7 +11,6 @@ import { useViewStore } from '@/entities/board/model/list.store';
 import type { NavigationMenuItem } from '@/entities/navigation';
 import { CalendarNavigation } from '@/features/calendarNavigation';
 import { TaskFilters } from '@/features/taskFilters';
-import { UserDropdown } from '@/features/userDropdown/ui/userDropdown';
 import { formatedTitle } from '@/shared/config/formattedTitle';
 import { RouteKey, routeToKeyMap } from '@/shared/config/routeMapping';
 import {
@@ -71,10 +70,6 @@ const SubHeaderCreate = ({ navigation }: SubHeaderCreateType) => {
         />
 
         {showCalendarNavigation && <CalendarNavigation />}
-
-        <div className="flex items-center">
-          {showProfileDropdown && <UserDropdown />}
-        </div>
 
         <div
           className={cn(
