@@ -1,7 +1,6 @@
 import { Button, Input, NativeSelect } from '@dashboard/ui';
 import { ErrorField } from '@dashboard/ui/forms';
 import { cn } from '@lib/cn';
-import { toIdString } from '@lib/sameId';
 import React, { useId } from 'react';
 import { Controller } from 'react-hook-form';
 
@@ -54,7 +53,7 @@ export const SelectField = ({
               Select section
             </option>
             {columns.map((column) => (
-              <option key={column.id} value={toIdString(column.id)}>
+              <option key={column.id} value={column.id}>
                 {column.title}
               </option>
             ))}
@@ -77,7 +76,7 @@ export const SelectField = ({
         name="folderId"
         control={control}
         render={({ field }) => {
-          const value = field.value ? toIdString(field.value) : '';
+          const value = field.value ?? '';
           return (
             <NativeSelect
               {...field}
@@ -120,7 +119,7 @@ export const SelectField = ({
               Select section
             </option>
             {columns.map((column) => (
-              <option key={column.id} value={toIdString(column.id)}>
+              <option key={column.id} value={column.id}>
                 {column.title}
               </option>
             ))}

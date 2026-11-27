@@ -9,6 +9,12 @@ export const priorities = [
 ] as const;
 
 export type Priority = (typeof priorities)[number];
+export type DatabasePriority = Uppercase<Priority>;
+
+export function toDatabasePriority(value: Priority): DatabasePriority;
+export function toDatabasePriority(value: Priority | undefined) {
+  return value?.toUpperCase() as DatabasePriority | undefined;
+}
 
 export const prioritySchema = z.enum(priorities);
 export const dateOnlySchema = z

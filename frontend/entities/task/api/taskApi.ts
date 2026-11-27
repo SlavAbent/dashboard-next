@@ -1,7 +1,6 @@
-import type { EntityId } from '@lib/sameId';
-
 import { CreateTask, Task } from '@/entities/task/model/task.types';
 import { tasksApi } from '@/shared/api/instances';
+import { request, requestJson } from '@/shared/api/request';
 
 export class TaskNameConflictError extends Error {
   constructor() {
@@ -10,34 +9,30 @@ export class TaskNameConflictError extends Error {
   }
 }
 
-const throwTaskApiError = async (response: Response, fallback: string) => {
+const getTaskApiError = async (response: Response, fallback: string) => {
   const body = await response.json().catch(() => null);
 
   if (response.status === 409 && body?.error?.code === 'TASK_NAME_CONFLICT') {
-    throw new TaskNameConflictError();
+    return new TaskNameConflictError();
   }
 
-  throw new Error(fallback);
+  return new Error(fallback);
 };
 
 export async function createTask(task: CreateTask): Promise<Task> {
-  const response = await fetch(tasksApi, {
+  return requestJson<Task>(tasksApi, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(task),
+    errorMessage: 'Failed adding task',
+    mapError: (response) => getTaskApiError(response, 'Failed adding task'),
   });
-
-  if (!response.ok) {
-    await throwTaskApiError(response, 'Failed adding task');
-  }
-
-  return response.json();
 }
 
 export async function updateTask(
-  id: EntityId,
+  id: string,
   data: Partial<
     Pick<
       Task,
@@ -51,43 +46,34 @@ export async function updateTask(
     >
   >
 ): Promise<Task> {
-  const response = await fetch(`${tasksApi}/${id}`, {
+  return requestJson<Task>(`${tasksApi}/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
+    errorMessage: 'Failed to update task',
+    mapError: (response) => getTaskApiError(response, 'Failed to update task'),
   });
-
-  if (!response.ok) {
-    await throwTaskApiError(response, 'Failed to update task');
-  }
-
-  return response.json();
 }
 
 export async function moveTask(
-  id: EntityId,
+  id: string,
   data: Pick<Task, 'taskFolderId' | 'order'>
 ): Promise<Task> {
-  const response = await fetch(`${tasksApi}/${id}/move`, {
+  return requestJson<Task>(`${tasksApi}/${id}/move`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    errorMessage: 'Failed to move task',
   });
-
-  if (!response.ok) throw new Error('Failed to move task');
-  return response.json();
 }
 
-export async function deleteTask(id: EntityId) {
-  const response = await fetch(`${tasksApi}/${id}`, {
+export async function deleteTask(id: string) {
+  await request(`${tasksApi}/${id}`, {
     method: 'DELETE',
+    errorMessage: 'Failed to delete task',
   });
-
-  if (!response.ok) {
-    throw new Error('Failed to delete task');
-  }
 
   return true;
 }

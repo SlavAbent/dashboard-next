@@ -3,7 +3,6 @@
 import { TypographyP } from '@dashboard/ui';
 import { ScheduleMeta } from '@dashboard/ui';
 import { cn } from '@lib/cn';
-import { type EntityId, sameId } from '@lib/sameId';
 import React, { type Ref, useMemo } from 'react';
 
 import { useFilteredTasks } from '@/entities/board/model/useFilteredTasks';
@@ -12,7 +11,7 @@ import { FolderTaskList } from '@/features/folderTask';
 import { type Priority, priorityConfig } from '@/shared/model/schedule';
 
 type FolderContentProps = {
-  folderId: EntityId;
+  folderId: string;
   columnId: string;
   title: string;
   startDate: string | null;
@@ -35,7 +34,7 @@ const FolderContent = ({
   const filteredTasks = useFilteredTasks();
 
   const folderTasks = useMemo(
-    () => filteredTasks.filter((task) => sameId(task.taskFolderId, folderId)),
+    () => filteredTasks.filter((task) => task.taskFolderId === folderId),
     [filteredTasks, folderId]
   );
 

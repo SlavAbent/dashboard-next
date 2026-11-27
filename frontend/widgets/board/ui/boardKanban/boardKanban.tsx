@@ -1,6 +1,5 @@
 'use client';
 
-import { toIdString } from '@lib/sameId';
 import React from 'react';
 
 import ColumnHeader from '@/features/columnHeader/ui/columnHeader';
@@ -13,18 +12,11 @@ const BoardKanban = ({ column, itemIds, tasksMap }: BoardKanbanType) => {
       <ColumnHeader column={column} />
       <div className="flex flex-col gap-4">
         {itemIds.map((id, index) => {
-          const folder = tasksMap[toIdString(id)];
+          const folder = tasksMap[id];
 
           if (!folder) return null;
 
-          return (
-            <KanbanItem
-              key={toIdString(id)}
-              id={id}
-              folder={folder}
-              index={index}
-            />
-          );
+          return <KanbanItem key={id} id={id} folder={folder} index={index} />;
         })}
       </div>
     </>

@@ -48,29 +48,35 @@ jest.mock('@/shared/ui/index', () => {
   };
 });
 
-jest.mock('@/entities/board', () => ({
-  useBoardStore: (
-    selector: (state: {
-      columns: Array<{ id: string; title: string }>;
-      taskFolders: Array<{
-        id: string;
-        title: string;
-        columnId: string;
-        order: number;
-      }>;
-      addFolder: typeof mockAddFolder;
-    }) => unknown
-  ) =>
-    selector({
-      columns: [
-        { id: 'planning', title: 'Planning' },
-        { id: 'upcoming', title: 'Upcoming' },
-        { id: 'in-progress', title: 'In progress' },
-      ],
-      taskFolders: mockTaskFolders,
-      addFolder: mockAddFolder,
-    }),
-}));
+jest.mock('@/entities/board', () => {
+  const actual =
+    jest.requireActual<typeof import('@/entities/board')>('@/entities/board');
+
+  return {
+    ...actual,
+    useBoardStore: (
+      selector: (state: {
+        columns: Array<{ id: string; title: string }>;
+        taskFolders: Array<{
+          id: string;
+          title: string;
+          columnId: string;
+          order: number;
+        }>;
+        addFolder: typeof mockAddFolder;
+      }) => unknown
+    ) =>
+      selector({
+        columns: [
+          { id: 'planning', title: 'Planning' },
+          { id: 'upcoming', title: 'Upcoming' },
+          { id: 'in-progress', title: 'In progress' },
+        ],
+        taskFolders: mockTaskFolders,
+        addFolder: mockAddFolder,
+      }),
+  };
+});
 
 import { ColumnSelect } from '@/features/boardModal/ui/columnSelect';
 import { DateRangeField } from '@/features/boardModal/ui/dateRangeField';

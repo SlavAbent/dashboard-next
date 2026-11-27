@@ -1,6 +1,4 @@
-import { sameId } from '@lib/sameId';
-
-import { useBoardStore } from '@/entities/board';
+import { getNextOrder, useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/boardModal';
 import { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
 import { notifications } from '@/shared/lib/notifications';
@@ -10,13 +8,9 @@ export const useCreateTask = () => {
   const { closeModal } = useBoardModalStore();
 
   return async (data: TaskFormValues) => {
-    const nextOrder =
-      Math.max(
-        0,
-        ...tasks
-          .filter((task) => sameId(task.taskFolderId, data.folderId))
-          .map((task) => task.order)
-      ) + 1;
+    const nextOrder = getNextOrder(
+      tasks.filter((task) => task.taskFolderId === data.folderId)
+    );
 
     await notifications.task.run('create', () =>
       addTask({

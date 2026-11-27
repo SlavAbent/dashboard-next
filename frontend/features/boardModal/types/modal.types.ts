@@ -1,5 +1,3 @@
-import type { EntityId } from '@lib/sameId';
-
 export type ModalMode =
   'create-folder' | 'edit-folder' | 'create-task' | 'edit-task' | null;
 
@@ -8,12 +6,12 @@ export type ModalStore = {
   mode: ModalMode;
   selectedColumnId: string | null;
   initialTaskDate: string | null;
-  editingFolderId: EntityId | null;
-  editingTaskId: EntityId | null;
+  editingFolderId: string | null;
+  editingTaskId: string | null;
 
   openCreateFolder: (columnId: string) => void;
-  openEditFolder: (folderId: EntityId, columnId: string) => void;
-  openCreateTask: (folderId?: EntityId, initialDate?: string) => void;
-  openEditTask: (taskId: EntityId) => void;
+  openEditFolder: (folderId: string, columnId: string) => void;
+  openCreateTask: (folderId?: string, initialDate?: string) => void;
+  openEditTask: (taskId: string) => void;
   closeModal: () => void;
 };

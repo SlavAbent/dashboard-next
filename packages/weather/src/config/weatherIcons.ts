@@ -1,0 +1,42 @@
+import {
+  Cloud,
+  CloudDrizzle,
+  CloudFog,
+  CloudHail,
+  CloudLightning,
+  CloudMoon,
+  CloudRain,
+  CloudRainWind,
+  CloudSnow,
+  CloudSun,
+  type LucideIcon,
+  Moon,
+  Sun,
+  Wind,
+} from 'lucide-react';
+
+const weatherIcons: Record<string, LucideIcon> = {
+  '01d': Sun,
+  '01n': Moon,
+  '02d': CloudSun,
+  '02n': CloudMoon,
+  '03d': Cloud,
+  '03n': Cloud,
+  '04d': Cloud,
+  '04n': Cloud,
+  '09d': CloudDrizzle,
+  '09n': CloudDrizzle,
+  '10d': CloudRain,
+  '10n': CloudRain,
+  '10-strong': CloudRainWind,
+  '11d': CloudLightning,
+  '11n': CloudLightning,
+  '13d': CloudSnow,
+  '13n': CloudSnow,
+  '50d': CloudFog,
+  '50n': CloudFog,
+  wind: Wind,
+  hail: CloudHail,
+};
+
+export const getWeatherIcon = (code: string) => weatherIcons[code] ?? Cloud;

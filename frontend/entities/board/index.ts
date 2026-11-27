@@ -1,5 +1,6 @@
 export { groupTasksToFolders } from '@/entities/board/lib/groupTasksToFolders';
 export { normalizeBoardData } from '@/entities/board/lib/normalizeBoardData';
+export { getNextOrder } from '@/entities/board/lib/order';
 export type { BoardViewMode } from '@/entities/board/model/board.types';
 export { useFiltersStore } from '@/entities/board/model/filters.store';
 export type {

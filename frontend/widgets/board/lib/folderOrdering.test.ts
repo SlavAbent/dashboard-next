@@ -1,10 +1,4 @@
-import { getFolderOrder } from '@/widgets/board/ui/kanbanView/kanbanView';
-
-jest.mock('@dnd-kit/helpers', () => ({ move: jest.fn() }));
-jest.mock('@dnd-kit/react', () => ({ DragDropProvider: jest.fn() }));
-jest.mock('@/features/boardModal', () => ({ BoardModals: jest.fn() }));
-jest.mock('@/features/kanbanColumn/ui/kanbanColumn', () => jest.fn());
-jest.mock('@/widgets/board/ui/boardKanban/boardKanban', () => jest.fn());
+import { getFolderOrder } from '@/widgets/board/lib/folderOrdering';
 
 const folders = [
   { id: 'first', order: 1 },

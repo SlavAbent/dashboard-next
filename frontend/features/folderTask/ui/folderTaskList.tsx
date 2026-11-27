@@ -3,7 +3,6 @@
 import { TypographySmall } from '@dashboard/ui';
 import { iconSize } from '@dashboard/ui';
 import { PlusIcon } from '@dashboard/ui';
-import { EntityId } from '@lib/sameId';
 import React from 'react';
 
 import type { Task } from '@/entities/task';
@@ -11,7 +10,7 @@ import { useBoardModalStore } from '@/features/boardModal';
 import FolderTaskItem from '@/features/folderTask/ui/folderTaskItem';
 
 type FolderTaskListProps = {
-  folderId: EntityId;
+  folderId: string;
   tasks: Task[];
 };
 

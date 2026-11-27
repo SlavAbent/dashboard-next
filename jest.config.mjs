@@ -13,7 +13,10 @@ const config = {
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironment: 'jsdom',
-  testMatch: ['<rootDir>/frontend/**/*.test.{ts,tsx}'],
+  testMatch: [
+    '<rootDir>/frontend/**/*.test.{ts,tsx}',
+    '<rootDir>/packages/**/*.test.{ts,tsx}',
+  ],
 };
 
 export default createJestConfig(config);
