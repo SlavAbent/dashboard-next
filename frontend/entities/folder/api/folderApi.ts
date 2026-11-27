@@ -1,52 +1,43 @@
-import type { EntityId } from '@lib/sameId';
-
 import {
   CreateFolder,
   TaskFolder,
   UpdateFolderPayload,
 } from '@/entities/folder/model/folder.types';
 import { taskFoldersApi } from '@/shared/api/instances';
+import { request, requestJson } from '@/shared/api/request';
 
 export async function updateFolders(
-  id: EntityId,
+  id: string,
   data: UpdateFolderPayload
 ): Promise<TaskFolder> {
   const endpoint = data.columnId
     ? `${taskFoldersApi}/${id}/move`
     : `${taskFoldersApi}/${id}`;
-  const response = await fetch(endpoint, {
+  return requestJson<TaskFolder>(endpoint, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
+    errorMessage: 'Failed to update folder',
   });
-
-  if (!response.ok) {
-    throw new Error('Failed to update folder');
-  }
-
-  return response.json();
 }
 
-export async function deleteFolder(id: EntityId) {
-  const response = await fetch(`${taskFoldersApi}/${id}`, {
+export async function deleteFolder(id: string) {
+  await request(`${taskFoldersApi}/${id}`, {
     method: 'DELETE',
+    errorMessage: 'Failed to delete folder',
   });
-
-  if (!response.ok) {
-    throw new Error('Failed to delete folder');
-  }
 
   return true;
 }
 
-export async function updateFolderColumn(id: EntityId, column: string) {
+export async function updateFolderColumn(id: string, column: string) {
   return updateFolders(id, { columnId: column });
 }
 
 export async function updateFolderDetails(
-  id: EntityId,
+  id: string,
   data: UpdateFolderPayload
 ) {
   const details: UpdateFolderPayload = {
@@ -56,35 +47,25 @@ export async function updateFolderDetails(
     endDate: data.endDate,
     priority: data.priority,
   };
-  const response = await fetch(`${taskFoldersApi}/${id}`, {
+  return requestJson<TaskFolder>(`${taskFoldersApi}/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(details),
+    errorMessage: 'Failed to update folder details',
   });
-
-  if (!response.ok) {
-    throw new Error('Failed to update folder details');
-  }
-
-  return response.json() as Promise<TaskFolder>;
 }
 
 export async function createFolderTask(
   taskFolder: CreateFolder
 ): Promise<TaskFolder> {
-  const response = await fetch(taskFoldersApi, {
+  return requestJson<TaskFolder>(taskFoldersApi, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(taskFolder),
+    errorMessage: 'Failed to add folder',
   });
-
-  if (!response.ok) {
-    throw new Error('Failed to add folder');
-  }
-
-  return response.json();
 }

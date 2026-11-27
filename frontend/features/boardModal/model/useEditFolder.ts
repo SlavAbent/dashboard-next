@@ -1,11 +1,9 @@
-import type { EntityId } from '@lib/sameId';
-
 import { useBoardStore } from '@/entities/board';
 
 type EditFolderType = {
   title: string;
   columnId: string;
-  folderId: EntityId;
+  folderId: string;
   startDate?: string | null;
   endDate?: string | null;
   priority: 'none' | 'low' | 'medium' | 'high' | 'critical';

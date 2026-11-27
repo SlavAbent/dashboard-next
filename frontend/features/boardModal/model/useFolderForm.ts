@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { sameId, toIdString } from '@lib/sameId';
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -22,18 +21,12 @@ export const useFolderForm = () => {
   const createFolder = useCreateFolder();
   const editFolder = useEditFolder();
 
-  const folder = taskFolders.find((folder) =>
-    sameId(folder.id, editingFolderId)
-  );
+  const folder = taskFolders.find((folder) => folder.id === editingFolderId);
 
   const defaultValues = useMemo<FolderValues>(
     () => ({
       title: folder?.title ?? '',
-      columnId: folder?.columnId
-        ? toIdString(folder.columnId)
-        : selectedColumnId
-          ? toIdString(selectedColumnId)
-          : '',
+      columnId: folder?.columnId ?? selectedColumnId ?? '',
       startDate: folder?.startDate ?? null,
       endDate: folder?.endDate ?? null,
       priority: folder?.priority ?? 'none',

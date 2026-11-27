@@ -1,4 +1,3 @@
-import { sameId, toIdString } from '@lib/sameId';
 import { useEffect, useMemo, useRef } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useShallow } from 'zustand/react/shallow';
@@ -66,9 +65,9 @@ export const useSelectFieldController = ({
 
   const folderOptions = useMemo(() => {
     return folders
-      .filter((folder) => sameId(folder.columnId, selectedColumnId))
+      .filter((folder) => folder.columnId === selectedColumnId)
       .map((folder) => ({
-        value: toIdString(folder.id),
+        value: folder.id,
         label: folder.title,
       }));
   }, [folders, selectedColumnId]);
@@ -109,7 +108,7 @@ export const useSelectFieldController = ({
     if (
       folders.some(
         (folder) =>
-          sameId(folder.columnId, newFolderColumnId) &&
+          folder.columnId === newFolderColumnId &&
           folder.title.trim().toLocaleLowerCase() === title.toLocaleLowerCase()
       )
     ) {
@@ -135,11 +134,11 @@ export const useSelectFieldController = ({
 
       if (operationIdRef.current !== operationId) return;
 
-      setValue('columnId', toIdString(createdFolder.columnId), {
+      setValue('columnId', createdFolder.columnId, {
         shouldDirty: true,
         shouldValidate: true,
       });
-      setValue('folderId', toIdString(createdFolder.id), {
+      setValue('folderId', createdFolder.id, {
         shouldDirty: true,
         shouldValidate: true,
       });

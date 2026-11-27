@@ -1,5 +1,3 @@
-import { toIdString } from '@lib/sameId';
-
 import type { BoardColumn, Column } from '@/entities/column';
 import type { BoardFolder, TaskFolder } from '@/entities/folder';
 import type { Task } from '@/entities/task';
@@ -25,7 +23,7 @@ export const groupTasksToFolders = (
       tasks: [],
     };
 
-    foldersMap[toIdString(folder.id)] = folderData;
+    foldersMap[folder.id] = folderData;
 
     if (columnsMap[folder.columnId]) {
       columnsMap[folder.columnId].folders.push(folderData);
@@ -33,7 +31,7 @@ export const groupTasksToFolders = (
   }
 
   for (const task of tasks) {
-    const folder = foldersMap[toIdString(task.taskFolderId)];
+    const folder = foldersMap[task.taskFolderId];
 
     if (folder) {
       folder.tasks.push(task);

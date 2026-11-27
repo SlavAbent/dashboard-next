@@ -1,5 +1,5 @@
 import { prisma } from '../../../lib/prisma.ts';
-import { toDatabaseDate } from '../../shared/schedule.ts';
+import { toDatabaseDate, toDatabasePriority } from '../../shared/schedule.ts';
 import { toTaskDto } from './task.mapper.ts';
 import type {
   CreateTaskInput,
@@ -38,8 +38,7 @@ export class TaskRepository {
           ...input,
           startDate: toDatabaseDate(input.startDate),
           endDate: toDatabaseDate(input.endDate),
-          priority: input.priority.toUpperCase() as
-            'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
+          priority: toDatabasePriority(input.priority),
         },
       })
     );
@@ -61,8 +60,7 @@ export class TaskRepository {
         ...input,
         startDate: toDatabaseDate(input.startDate),
         endDate: toDatabaseDate(input.endDate),
-        priority: input.priority?.toUpperCase() as
-          'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | undefined,
+        priority: toDatabasePriority(input.priority),
       },
     });
     return result.count ? this.findById(userId, id) : null;

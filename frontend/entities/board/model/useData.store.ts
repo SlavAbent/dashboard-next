@@ -1,6 +1,5 @@
 'use client';
 
-import { type EntityId, sameId } from '@lib/sameId';
 import { create } from 'zustand';
 
 import type { Column } from '@/entities/column';
@@ -38,7 +37,7 @@ type BoardStore = {
 
   addTask: (task: CreateTask) => Promise<void>;
   editTask: (
-    id: EntityId,
+    id: string,
     data: Partial<
       Pick<
         Task,
@@ -51,20 +50,20 @@ type BoardStore = {
       >
     >
   ) => Promise<void>;
-  toggleTask: (id: EntityId) => Promise<void>;
-  removeTask: (id: EntityId) => Promise<void>;
+  toggleTask: (id: string) => Promise<void>;
+  removeTask: (id: string) => Promise<void>;
 
-  moveFolder: (id: EntityId, currentColumn: string) => void;
-  updateFolder: (id: EntityId, data: UpdateFolderPayload) => void;
-  reorderFolder: (id: EntityId, data: UpdateFolderPayload) => Promise<void>;
+  moveFolder: (id: string, currentColumn: string) => void;
+  updateFolder: (id: string, data: UpdateFolderPayload) => void;
+  reorderFolder: (id: string, data: UpdateFolderPayload) => Promise<void>;
   addFolder: (folder: CreateFolder) => Promise<TaskFolder>;
-  removeFolder: (id: EntityId) => Promise<void>;
+  removeFolder: (id: string) => Promise<void>;
   toggleColumn: (columnId: string) => void;
 };
 
-const reorderQueues = new Map<EntityId, Promise<void>>();
-const reorderVersions = new Map<EntityId, number>();
-const persistedFolders = new Map<EntityId, TaskFolder>();
+const reorderQueues = new Map<string, Promise<void>>();
+const reorderVersions = new Map<string, number>();
+const persistedFolders = new Map<string, TaskFolder>();
 
 export const useBoardStore = create<BoardStore>((set, get) => ({
   tasks: [],
@@ -84,21 +83,19 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     const updatedTask = await updateTask(id, data);
 
     set((state) => ({
-      tasks: state.tasks.map((task) =>
-        sameId(task.id, id) ? updatedTask : task
-      ),
+      tasks: state.tasks.map((task) => (task.id === id ? updatedTask : task)),
     }));
   },
 
   toggleTask: async (id) => {
-    const task = get().tasks.find((item) => sameId(item.id, id));
+    const task = get().tasks.find((item) => item.id === id);
 
     if (!task) return;
 
     try {
       set((state) => ({
         tasks: state.tasks.map((item) =>
-          sameId(item.id, id) ? { ...item, completed: !item.completed } : item
+          item.id === id ? { ...item, completed: !item.completed } : item
         ),
       }));
 
@@ -107,7 +104,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
       });
     } catch (error) {
       set((state) => ({
-        tasks: state.tasks.map((item) => (sameId(item.id, id) ? task : item)),
+        tasks: state.tasks.map((item) => (item.id === id ? task : item)),
       }));
       throw error;
     }
@@ -117,7 +114,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     await deleteTask(id);
 
     set((state) => ({
-      tasks: state.tasks.filter((task) => !sameId(task.id, id)),
+      tasks: state.tasks.filter((task) => task.id !== id),
     }));
   },
 
@@ -136,15 +133,13 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
 
     set((state) => ({
       taskFolders: state.taskFolders.map((folder) =>
-        sameId(folder.id, id) ? updatedFolder : folder
+        folder.id === id ? updatedFolder : folder
       ),
     }));
   },
 
   updateFolder: async (id, data) => {
-    const currentFolder = get().taskFolders.find((folder) =>
-      sameId(folder.id, id)
-    );
+    const currentFolder = get().taskFolders.find((folder) => folder.id === id);
     const { columnId, ...details } = data;
     let updatedFolder = currentFolder;
 
@@ -160,15 +155,13 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
 
     set((state) => ({
       taskFolders: state.taskFolders.map((folder) =>
-        sameId(folder.id, id) ? updatedFolder : folder
+        folder.id === id ? updatedFolder : folder
       ),
     }));
   },
 
   reorderFolder: async (id, data) => {
-    const previousFolder = get().taskFolders.find((folder) =>
-      sameId(folder.id, id)
-    );
+    const previousFolder = get().taskFolders.find((folder) => folder.id === id);
 
     if (!previousFolder) return;
 
@@ -183,7 +176,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
 
     set((state) => ({
       taskFolders: state.taskFolders.map((folder) =>
-        sameId(folder.id, id) ? { ...folder, ...data } : folder
+        folder.id === id ? { ...folder, ...data } : folder
       ),
     }));
 
@@ -205,7 +198,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
       if (persistedFolder && reorderVersions.get(id) === version) {
         set((state) => ({
           taskFolders: state.taskFolders.map((folder) =>
-            sameId(folder.id, id) ? persistedFolder : folder
+            folder.id === id ? persistedFolder : folder
           ),
         }));
       }
@@ -234,8 +227,8 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     await deleteFolder(id);
 
     set((state) => ({
-      taskFolders: state.taskFolders.filter((folder) => !sameId(folder.id, id)),
-      tasks: state.tasks.filter((task) => !sameId(task.taskFolderId, id)),
+      taskFolders: state.taskFolders.filter((folder) => folder.id !== id),
+      tasks: state.tasks.filter((task) => task.taskFolderId !== id),
     }));
   },
 

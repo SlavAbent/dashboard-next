@@ -9,80 +9,28 @@ import {
   PopoverTrigger,
 } from '@dashboard/ui';
 import { ErrorField } from '@dashboard/ui/forms';
-import { format, parseISO } from 'date-fns';
-import {
-  createContext,
-  type PointerEvent as ReactPointerEvent,
-  useCallback,
-  useContext,
-  useMemo,
-  useRef,
-} from 'react';
-import {
-  type DateRange,
-  DayButton,
-  type DayButtonProps,
-} from 'react-day-picker';
+import { parseISO } from 'date-fns';
+import { useCallback } from 'react';
+import type { DateRange } from 'react-day-picker';
 import { useFormContext, useWatch } from 'react-hook-form';
+
+import { useDragDateRange } from '@/features/boardModal/model/useDragDateRange';
+import {
+  DragRangeContext,
+  DragRangeDayButton,
+} from '@/features/boardModal/ui/dragRangeDayButton';
+import {
+  formatScheduleDate,
+  formatScheduleRange,
+  toDateOnly,
+} from '@/shared/model/schedule';
 
 type ScheduleFormValues = {
   startDate: string | null;
   endDate: string | null;
 };
 
-const toDateOnly = (date: Date) => format(date, 'yyyy-MM-dd');
-
-type DragRangeContextValue = {
-  start: (date: Date) => void;
-  extend: (date: Date, event: ReactPointerEvent) => void;
-  finish: () => void;
-  shouldIgnoreClick: () => boolean;
-};
-
-const DragRangeContext = createContext<DragRangeContextValue | null>(null);
-
-const DragRangeDayButton = ({
-  day,
-  onPointerDown,
-  onPointerEnter,
-  onPointerUp,
-  onClick,
-  ...props
-}: DayButtonProps) => {
-  const dragRange = useContext(DragRangeContext);
-
-  return (
-    <DayButton
-      {...props}
-      day={day}
-      onPointerDown={(event) => {
-        onPointerDown?.(event);
-        if (event.button === 0) dragRange?.start(day.date);
-      }}
-      onPointerEnter={(event) => {
-        onPointerEnter?.(event);
-        dragRange?.extend(day.date, event);
-      }}
-      onPointerUp={(event) => {
-        onPointerUp?.(event);
-        dragRange?.finish();
-      }}
-      onClick={(event) => {
-        if (dragRange?.shouldIgnoreClick()) {
-          event.preventDefault();
-          event.stopPropagation();
-          return;
-        }
-
-        onClick?.(event);
-      }}
-    />
-  );
-};
-
 export const DateRangeField = () => {
-  const dragStartRef = useRef<Date | null>(null);
-  const didDragRef = useRef(false);
   const {
     control,
     setValue,
@@ -102,8 +50,8 @@ export const DateRangeField = () => {
 
   const label = startDate
     ? endDate
-      ? `${format(parseISO(startDate), 'dd.MM.yyyy')} — ${format(parseISO(endDate), 'dd.MM.yyyy')}`
-      : format(parseISO(startDate), 'dd.MM.yyyy')
+      ? formatScheduleRange(startDate, endDate)
+      : formatScheduleDate(startDate)
     : 'Select due date';
 
   const handleSelect = useCallback(
@@ -120,38 +68,7 @@ export const DateRangeField = () => {
     [setValue]
   );
 
-  const dragRange = useMemo<DragRangeContextValue>(
-    () => ({
-      start: (date) => {
-        dragStartRef.current = date;
-        didDragRef.current = false;
-      },
-      extend: (date, event) => {
-        const start = dragStartRef.current;
-        if (
-          !start ||
-          (event.buttons & 1) !== 1 ||
-          start.getTime() === date.getTime()
-        ) {
-          return;
-        }
-
-        didDragRef.current = true;
-        handleSelect(
-          start < date ? { from: start, to: date } : { from: date, to: start }
-        );
-      },
-      finish: () => {
-        dragStartRef.current = null;
-      },
-      shouldIgnoreClick: () => {
-        const shouldIgnore = didDragRef.current;
-        didDragRef.current = false;
-        return shouldIgnore;
-      },
-    }),
-    [handleSelect]
-  );
+  const dragRange = useDragDateRange(handleSelect);
 
   return (
     <div className="flex flex-col gap-1">

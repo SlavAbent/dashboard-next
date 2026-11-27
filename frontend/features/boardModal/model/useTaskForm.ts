@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { toIdString } from '@lib/sameId';
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -29,23 +28,20 @@ export const useTaskForm = () => {
 
   const editingTask = findTaskById(tasks, editingTaskId);
 
-  const firstFolderId = toIdString(taskFolders[0]?.id ?? '');
-  const selectedFolderId = toIdString(editingFolderId ?? firstFolderId);
+  const firstFolderId = taskFolders[0]?.id ?? '';
+  const selectedFolderId = editingFolderId ?? firstFolderId;
   const selectedFolder = taskFolders.find(
-    (folder) => toIdString(folder.id) === selectedFolderId
+    (folder) => folder.id === selectedFolderId
   );
 
   const defaultValues = useMemo<TaskFormValues>(() => {
     if (isEditTaskMode && editingTask) {
       return {
         taskValue: editingTask.text,
-        columnId: toIdString(
-          taskFolders.find(
-            (folder) =>
-              toIdString(folder.id) === toIdString(editingTask.taskFolderId)
-          )?.columnId ?? ''
-        ),
-        folderId: toIdString(editingTask.taskFolderId),
+        columnId:
+          taskFolders.find((folder) => folder.id === editingTask.taskFolderId)
+            ?.columnId ?? '',
+        folderId: editingTask.taskFolderId,
         completed: editingTask.completed,
         startDate: editingTask.startDate,
         endDate: editingTask.endDate,
@@ -55,7 +51,7 @@ export const useTaskForm = () => {
 
     return {
       taskValue: '',
-      columnId: toIdString(selectedFolder?.columnId ?? ''),
+      columnId: selectedFolder?.columnId ?? '',
       folderId: selectedFolderId,
       completed: false,
       startDate: initialTaskDate,

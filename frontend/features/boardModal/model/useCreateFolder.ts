@@ -1,4 +1,4 @@
-import { useBoardStore } from '@/entities/board';
+import { getNextOrder, useBoardStore } from '@/entities/board';
 
 type CreateFolderType = {
   title: string;
@@ -19,13 +19,9 @@ export const useCreateFolder = () => {
     endDate,
     priority,
   }: CreateFolderType) => {
-    const order =
-      Math.max(
-        0,
-        ...taskFolders
-          .filter((folder) => folder.columnId === columnId)
-          .map((folder) => folder.order)
-      ) + 1;
+    const order = getNextOrder(
+      taskFolders.filter((folder) => folder.columnId === columnId)
+    );
 
     return addFolder({
       title,

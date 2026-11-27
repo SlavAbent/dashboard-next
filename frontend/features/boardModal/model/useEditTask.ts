@@ -1,5 +1,3 @@
-import { EntityId } from '@lib/sameId';
-
 import { useBoardStore } from '@/entities/board';
 import { useBoardModalStore } from '@/features/boardModal';
 import { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
@@ -9,7 +7,7 @@ export const useEditTask = () => {
   const { editTask } = useBoardStore();
   const { closeModal } = useBoardModalStore();
 
-  return async (taskId: EntityId, data: TaskFormValues) => {
+  return async (taskId: string, data: TaskFormValues) => {
     await notifications.task.run('update', () =>
       editTask(taskId, {
         text: data.taskValue,

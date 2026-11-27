@@ -1,5 +1,5 @@
 import { prisma } from '../../../lib/prisma.ts';
-import { toDatabaseDate } from '../../shared/schedule.ts';
+import { toDatabaseDate, toDatabasePriority } from '../../shared/schedule.ts';
 import { toFolderDto } from './folder.mapper.ts';
 import type {
   CreateFolderInput,
@@ -23,8 +23,7 @@ export class FolderRepository {
         order: input.order,
         startDate: toDatabaseDate(input.startDate),
         endDate: toDatabaseDate(input.endDate),
-        priority: input.priority.toUpperCase() as
-          'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
+        priority: toDatabasePriority(input.priority),
       },
     });
     return toFolderDto(folder, column.key);
@@ -41,8 +40,7 @@ export class FolderRepository {
         ...input,
         startDate: toDatabaseDate(input.startDate),
         endDate: toDatabaseDate(input.endDate),
-        priority: input.priority?.toUpperCase() as
-          'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | undefined,
+        priority: toDatabasePriority(input.priority),
       },
     });
     return result.count ? this.findById(userId, id) : null;

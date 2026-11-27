@@ -13,8 +13,14 @@ import { createFolderSchema } from '../modules/folder/folder.schemas.ts';
 import { FolderService } from '../modules/folder/folder.service.ts';
 import { createTaskSchema } from '../modules/task/task.schemas.ts';
 import { TaskService } from '../modules/task/task.service.ts';
+import { toDatabasePriority } from '../shared/schedule.ts';
 
 const emptyBoard: BoardSnapshot = { columns: [], folders: [], tasks: [] };
+
+test('Schedule helpers convert API priorities to database priorities', () => {
+  assert.equal(toDatabasePriority('critical'), 'CRITICAL');
+  assert.equal(toDatabasePriority(undefined), undefined);
+});
 
 test('Task and folder schemas validate schedule ranges and priorities', () => {
   const schedule = {

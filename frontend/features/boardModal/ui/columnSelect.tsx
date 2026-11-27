@@ -2,7 +2,6 @@
 
 import { NativeSelect } from '@dashboard/ui';
 import { ErrorField } from '@dashboard/ui/forms';
-import { toIdString } from '@lib/sameId';
 import React, { useId, useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
@@ -20,7 +19,7 @@ export const ColumnSelect = () => {
   const options = useMemo(
     () =>
       columns.map((column) => ({
-        value: toIdString(column.id),
+        value: column.id,
         label: column.title,
       })),
     [columns]
@@ -38,7 +37,7 @@ export const ColumnSelect = () => {
           <NativeSelect
             {...field}
             id={columnId}
-            value={field.value ? toIdString(field.value) : ''}
+            value={field.value ?? ''}
             containerClassName="w-full"
             className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/50 h-9 w-full cursor-pointer rounded-sm border px-3 pr-8 text-sm transition-colors outline-none focus-visible:ring-1">
             <option value="" disabled>

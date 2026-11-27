@@ -10,7 +10,6 @@ import {
 import { TypographyP } from '@dashboard/ui';
 import { iconSize } from '@dashboard/ui';
 import { DotsMenuIcon } from '@dashboard/ui';
-import type { EntityId } from '@lib/sameId';
 import React, { useState } from 'react';
 
 import { useBoardStore } from '@/entities/board/model/useData.store';
@@ -18,7 +17,7 @@ import { useBoardModalStore } from '@/features/boardModal';
 import { notifications } from '@/shared/lib/notifications';
 
 type FolderDropdownProps = {
-  folderId: EntityId;
+  folderId: string;
   columnId: string;
 };
 

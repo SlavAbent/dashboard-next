@@ -1,4 +1,5 @@
 import { prisma } from '../../../lib/prisma.ts';
+import { toDatabasePriority } from '../../shared/schedule.ts';
 import { toFolderDto } from '../folder/folder.mapper.ts';
 import { toTaskDto } from '../task/task.mapper.ts';
 import { boardTemplate } from './board.template.ts';
@@ -71,8 +72,7 @@ export class BoardRepository {
             order: folder.order,
             startDate: folder.startDate,
             endDate: folder.endDate,
-            priority: folder.priority.toUpperCase() as
-              'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
+            priority: toDatabasePriority(folder.priority),
           },
         });
         folders.set(folder.templateId, created.id);
@@ -91,8 +91,7 @@ export class BoardRepository {
             order: task.order,
             startDate: task.startDate,
             endDate: task.endDate,
-            priority: task.priority.toUpperCase() as
-              'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
+            priority: toDatabasePriority(task.priority),
           },
         });
       }

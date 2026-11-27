@@ -69,8 +69,13 @@ export const formatScheduleRange = (
 ) => {
   if (!startDate || !endDate) return null;
 
-  const start = format(parseISO(startDate), 'dd.MM.yyyy');
-  const end = format(parseISO(endDate), 'dd.MM.yyyy');
+  const start = formatScheduleDate(startDate);
+  const end = formatScheduleDate(endDate);
 
   return start === end ? start : `${start} — ${end}`;
 };
+
+export const formatScheduleDate = (value: string) =>
+  format(parseISO(value), 'dd.MM.yyyy');
+
+export const toDateOnly = (date: Date) => format(date, 'yyyy-MM-dd');
