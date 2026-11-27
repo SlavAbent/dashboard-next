@@ -3,6 +3,7 @@
 import { NativeSelect } from '@dashboard/ui';
 import { ErrorField } from '@dashboard/ui/forms';
 import { cn } from '@lib/cn';
+import { useId } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import type { TaskFormValues } from '@/features/boardModal/schema/taskSchema';
@@ -15,6 +16,7 @@ import {
 type FormValues = TaskFormValues & { priority: Priority };
 
 export const PriorityField = () => {
+  const priorityId = useId();
   const {
     control,
     formState: { errors },
@@ -22,7 +24,7 @@ export const PriorityField = () => {
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor="board-priority" className="text-sm font-medium">
+      <label htmlFor={priorityId} className="text-sm font-medium">
         Priority
       </label>
       <Controller
@@ -39,7 +41,7 @@ export const PriorityField = () => {
             />
             <NativeSelect
               {...field}
-              id="board-priority"
+              id={priorityId}
               containerClassName="w-full"
               className="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/50 h-9 w-full cursor-pointer appearance-none rounded-sm border pr-8 pl-8 text-sm transition-colors outline-none focus-visible:ring-1">
               {priorities.map((priority) => (

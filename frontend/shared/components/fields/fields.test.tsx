@@ -42,7 +42,11 @@ function TestForm({
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <InputField<FormValues> value="title" placeholder="Task title" />
+        <InputField<FormValues>
+          value="title"
+          label="Title"
+          placeholder="Task title"
+        />
         <SubmitButton isEditMode={false} isSubmitting={false} />
       </form>
     </FormProvider>
@@ -62,6 +66,22 @@ describe('form components', () => {
       { title: 'Plan tests' },
       expect.anything()
     );
+  });
+
+  it('uses unique ids for repeated fields with the same name', () => {
+    render(
+      <>
+        <TestForm onSubmit={jest.fn()} />
+        <TestForm onSubmit={jest.fn()} />
+      </>
+    );
+
+    const inputs = screen.getAllByRole('textbox', { name: 'Title' });
+
+    expect(inputs).toHaveLength(2);
+    expect(inputs[0]).toHaveAttribute('id');
+    expect(inputs[1]).toHaveAttribute('id');
+    expect(inputs[0].id).not.toBe(inputs[1].id);
   });
 
   it('renders a field error only when it exists', () => {
