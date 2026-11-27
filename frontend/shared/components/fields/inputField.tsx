@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import {
   FieldError,
   FieldPath,
@@ -29,6 +30,7 @@ export function InputField<T extends FieldValues>({
   placeholder,
   label,
 }: InputFieldProps<T>) {
+  const inputId = useId();
   const { register, formState } = useFormContext<T>();
   const { isSubmitting, errors } = formState;
 
@@ -37,12 +39,12 @@ export function InputField<T extends FieldValues>({
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label htmlFor={String(value)} className="text-sm font-medium">
+        <label htmlFor={inputId} className="text-sm font-medium">
           {label}
         </label>
       )}
       <Input
-        id={String(value)}
+        id={inputId}
         {...register(value)}
         disabled={isSubmitting}
         placeholder={placeholder}

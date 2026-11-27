@@ -2,7 +2,7 @@ import { Button, Input, NativeSelect } from '@dashboard/ui';
 import { ErrorField } from '@dashboard/ui/forms';
 import { cn } from '@lib/cn';
 import { toIdString } from '@lib/sameId';
-import React from 'react';
+import React, { useId } from 'react';
 import { Controller } from 'react-hook-form';
 
 import { useSelectFieldController } from '@/features/boardModal/model/useSelectFieldController';
@@ -16,6 +16,8 @@ export const SelectField = ({
   className,
   defaultNewFolderColumnId,
 }: SelectFieldProps) => {
+  const newFolderSectionId = useId();
+  const newTaskFolderId = useId();
   const {
     control,
     errors,
@@ -103,11 +105,11 @@ export const SelectField = ({
 
       {showCreateFolder && (
         <div className="mt-2 flex flex-col gap-2 rounded-sm border p-2">
-          <label htmlFor="new-folder-section" className="text-xs font-medium">
+          <label htmlFor={newFolderSectionId} className="text-xs font-medium">
             Section for new folder
           </label>
           <NativeSelect
-            id="new-folder-section"
+            id={newFolderSectionId}
             aria-label="Section for new folder"
             containerClassName="w-full"
             value={newFolderColumnId}
@@ -123,12 +125,12 @@ export const SelectField = ({
               </option>
             ))}
           </NativeSelect>
-          <label htmlFor="new-task-folder" className="text-xs font-medium">
+          <label htmlFor={newTaskFolderId} className="text-xs font-medium">
             Folder name
           </label>
           <div className="flex items-center gap-2">
             <Input
-              id="new-task-folder"
+              id={newTaskFolderId}
               value={folderName}
               placeholder="Folder name"
               disabled={isCreatingFolder}
